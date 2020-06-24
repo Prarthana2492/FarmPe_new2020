@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:background="#fff"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    >
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingHorizontal="15dp"
+    android:orientation="vertical"
+    android:background="@drawable/curved_linear_background">
+
+    <TextView
+        android:id="@+id/bottom_sheet_title"
+        android:text="Title"
+        android:textColor="#000"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/segoeui"
+        android:layout_width="match_parent"
+        android:paddingVertical="8dp"
+        android:layout_marginTop="25dp"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/user_text"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:paddingVertical="12dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/grey"
+        android:textColor="#000"
+        android:imeOptions="actionGo"
+        android:singleLine="true"/>
+
+    <TextView
+        android:id="@+id/bottom_sheet_description"
+        android:text="Description"
+        android:textSize="15dp"
+        android:fontFamily="@font/segoeui"
+        android:layout_width="match_parent"
+        android:paddingVertical="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_height="wrap_content"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="25dp"
+            android:gravity="right|center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp"
+            android:paddingBottom="20dp">
+
+            <TextView
+                android:id="@+id/negetive_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20sp"
+                android:fontFamily="@font/segoeui"
+                android:text="Cancel"
+                android:textColor="#279e5e"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/positive_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/segoeui"
+                android:text="Save"
+                android:textColor="#279e5e"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+</LinearLayout>
+</LinearLayout>

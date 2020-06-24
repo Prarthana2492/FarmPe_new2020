@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:weightSum="100"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="100">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:background="@color/green"
+                android:gravity="center_vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:orientation="horizontal"
+                    android:background="@color/menu_green">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="7Nine Store Details"
+                        android:textSize="22dp"
+                        android:textColor="#fff"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        android:layout_marginHorizontal="10dp"
+                        android:id="@+id/toolbar_title" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="22dp"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/fsname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/ic_astrick_icon"
+                    android:drawablePadding="5dp"
+                    android:text="Store Name"
+                    android:textColor="#9D9D9D"
+                    android:textSize="15dp" />
+
+
+                <EditText
+                    android:id="@+id/shopname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:fontFamily="@font/segoeui"
+                    android:maxLength="30"
+                    android:textColorHint="#C7C7C7"
+                    android:singleLine="true"
+                    android:textSize="18dp"
+
+                    />
+
+
+                <TextView
+                    android:id="@+id/fsaddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:text="Store Address"
+                    android:textColor="#9D9D9D"
+                    android:textSize="15dp" />
+
+
+                <TextView
+                    android:id="@+id/line1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:drawableRight="@drawable/ic_astrick_icon"
+                    android:drawablePadding="3dp"
+                    android:text="Line 1"
+                    android:textColor="#9D9D9D"
+                    android:textSize="15dp" />
+
+
+                <EditText
+                    android:id="@+id/address1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/segoeui"
+                    android:singleLine="true"
+                    android:textColorHint="#C7C7C7"
+                    android:textSize="16dp"
+
+                    />
+
+
+                <TextView
+                    android:id="@+id/line2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:text="Line 2"
+                    android:textColor="#9D9D9D"
+                    android:textSize="15dp" />
+
+
+                <EditText
+                    android:id="@+id/address2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/segoeui"
+                    android:singleLine="true"
+                    android:textColorHint="#C7C7C7"
+                    android:textSize="16dp"
+
+                    />
+
+                <TextView
+                    android:id="@+id/gst_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:text="GST (Optional)"
+                    android:textColor="#9D9D9D"
+                    android:textSize="15dp" />
+
+
+                <EditText
+                    android:id="@+id/gst"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/segoeui"
+                    android:singleLine="true"
+                    android:textColorHint="#C7C7C7"
+                    android:textSize="16dp"
+
+
+                    />
+
+
+            </LinearLayout>
+
+
+</LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/continuebtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/grey_curved_border"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+
+
+        <TextView
+            android:id="@+id/apply_loan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Proceed"
+            android:textAllCaps="true"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:padding="12dp"
+            android:fontFamily="@font/segoeui"
+            android:textColor="#ffffff"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

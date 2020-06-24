@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+    >
+
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        card_view:cardElevation="10dp"
+        android:layout_marginBottom="-10dp"
+        card_view:cardCornerRadius="10dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:orientation="vertical"
+        android:weightSum="100"
+        android:paddingBottom="40dp"
+        >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:background="#ffffff"
+        android:layout_marginTop="20dp"
+
+        android:orientation="vertical"
+        android:weightSum="100"
+        >
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Capture store Photo"
+            android:textColor="#000"
+            android:fontFamily="@font/segoeui"
+            android:layout_marginHorizontal="20dp"
+            android:textSize="18dp"
+            />
+
+        <TextView
+            android:id="@+id/txt1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:textColor="#000"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/segoeui"
+            android:text="We verify your store photo by checking it with the photo you submit here. "
+            android:textSize="14dp"
+            />
+
+        <TextView
+            android:id="@+id/logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:visibility="gone"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="20dp"
+            android:textSize="14dp"
+            />
+
+    </LinearLayout>
+
+        <TextView
+            android:id="@+id/tips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tips"
+            android:textColor="#090BCD"
+            android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="20dp"
+            android:textSize="18dp"
+            />
+
+
+        <LinearLayout
+            android:id="@+id/tips_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        android:weightSum="100"
+           android:visibility="gone"
+            android:fontFamily="@font/segoeui"
+        android:gravity="right"
+        >
+
+            <TextView
+                android:id="@+id/tips_txt1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Go few steps back and capture a picture of the full building"
+                android:textColor="#000"
+                android:fontFamily="@font/segoeui"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/ic_verified_green"
+                android:drawablePadding="10dp"
+                android:textSize="14dp"
+                />
+
+            <TextView
+                android:id="@+id/tips_txt2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Take pictures in a day.No pictures in the night"
+                android:textColor="#000"
+                android:fontFamily="@font/segoeui"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/ic_verified_green"
+                android:drawablePadding="10dp"
+                android:textSize="14dp"
+                />
+
+            <TextView
+                android:id="@+id/tips_txt3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Store name board should be visible"
+                android:textColor="#000"
+                android:fontFamily="@font/segoeui"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/ic_verified_green"
+                android:drawablePadding="10dp"
+                android:textSize="14dp"
+                />
+
+
+            <TextView
+                android:id="@+id/phhoto_should"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Photo should be clear and sharp"
+                android:textColor="#000"
+                android:fontFamily="@font/segoeui"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/ic_verified_green"
+                android:drawablePadding="10dp"
+                android:textSize="14dp"
+                />
+
+
+
+            <TextView
+                android:id="@+id/take_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Take photo again"
+                android:textColor="#713ECC"
+                android:textSize="16dp"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                />
+
+
+            <ImageView
+                android:id="@+id/cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_close_icon"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>
+</LinearLayout>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:weightSum="100"
+    android:background="#F1F1F1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F1F1F1"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="8dp"
+            android:background="#fff"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="20dp"
+            app:cardElevation="8dp">
+
+
+            <LinearLayout
+                android:id="@+id/itemmm"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="100">
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="right"
+                    android:layout_weight="100"
+                    android:gravity="right"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:id="@+id/imageff"
+                        android:layout_width="match_parent"
+                        android:layout_height="260dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/store_name"
+                         />
+
+
+                    <ImageView
+                        android:id="@+id/default_img"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_gallery__default"
+                        android:visibility="gone" />
+
+
+                    <!-- <ImageView
+                        android:id="@+id/fav_request"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/ic_star" />-->
+
+                </FrameLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                    android:layout_marginTop="5dp"
+                        android:layout_gravity="bottom">
+
+
+                        <TextView
+                            android:id="@+id/area"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/segoeui"
+                            android:layout_marginLeft="12dp"
+                            android:text="hhjkjkjkjk"
+                            android:gravity="bottom"
+                            android:layout_marginTop="5dp"
+                            android:textColor="#000"
+                            android:textSize="14dp"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:id="@+id/gst_no"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/segoeui"
+                            android:layout_marginLeft="12dp"
+                            android:text="ghhhh"
+                            android:layout_marginTop="2dp"
+                            android:singleLine="true"
+                            android:textColor="#000"
+                            android:textSize="14dp" />
+
+
+
+                        <TextView
+                            android:id="@+id/city"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/segoeui"
+                            android:layout_marginLeft="10dp"
+                            android:singleLine="true"
+                            android:layout_marginTop="2dp"
+                            android:text="ghghjg"
+                            android:textColor="#000"
+                            android:textSize="14dp" />
+
+                    </LinearLayout>
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:weightSum="100"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="7dp">
+
+
+                    <TextView
+                        android:id="@+id/brochure"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="80"
+                        android:text="  View Details"
+                      android:gravity="right"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="#005474"
+                        android:padding="10dp"
+                        android:textSize="14dp" />
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="20"
+                        android:orientation="vertical">
+
+                        <com.github.angads25.toggle.LabeledSwitch
+                            android:id="@+id/switch4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="16dp"
+                            android:textSize="14sp"
+                            app:colorBorder="#E50914"
+                            app:colorOn="#E50914"
+                            app:on="false"
+                            android:padding="10dp"
+                            app:textOff="OFF"
+                            app:textOn="ON" />
+
+                       <!-- <TextView
+                            android:id="@+id/selectt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_marginLeft="30dp"
+                            android:baselineAligned="false"
+                            android:gravity="center"
+                            android:paddingHorizontal="15dp"
+                            android:paddingVertical="10dp"
+                            android:text="  Select"
+                            android:textAllCaps="true"
+                            android:textColor="@color/red"
+                            android:textSize="14dp"
+                            android:textStyle="bold" />-->
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+
+
+    </LinearLayout>
+</LinearLayout>

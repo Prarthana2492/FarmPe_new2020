@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.SevenNine.Essentials">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permisssion.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+   <!-- <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />-->
+
+    <uses-permission
+        android:name="android.permission.RECEIVE_SMS"
+        tools:node="remove" />
+    <uses-permission
+        android:name="android.permission.READ_SMS"
+        tools:node="remove" />
+
+    <application
+        android:name="com.SevenNine.Essentials.Activity.MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/seven_nine_logo"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@drawable/seven_nine_logo"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:replace="android:allowBackup">
+        <activity
+            android:name="com.SevenNine.Essentials.Activity.CameraActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.SevenNine.Essentials.Activity.ActivitySelectLang"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.SevenNine.Essentials.Activity.GetLocationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.SevenNine.Essentials.Activity.UploadCamera_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.SevenNine.Essentials.Activity.SelectLanguageActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.SevenNine.Essentials.Activity.LandingPageActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.SevenNine.Essentials.Activity.Extra_Activity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.SevenNine.Essentials.Activity.Slider_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.SevenNine.Essentials.Activity.NewSignUpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.SevenNine.Essentials.Activity.NewEnterOTP"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.SevenNine.Essentials.Activity.SelectStoreLocation"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAXsifFPLFyNsK0YxpmcMld89LDRDC2SGI" /> <!-- android:value="AIzaSyBrYtFN3tRw8ElIi5P8ayOwgNbykiMYcjM" /> -->
+        <!--
+ <receiver
+            android:name="com.FarmPe.SellerHub.ReadSms"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+        -->
+        <service android:name="com.SevenNine.Essentials.GpsService" /> <!-- Firebase Notifications -->
+        <service android:name="com.SevenNine.Essentials.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name="com.SevenNine.Essentials.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>

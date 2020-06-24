@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">7-Nine Essentials</string>
+
+
+    <string name="Postage">Postage &amp; Packaging:</string>
+    <string name="Fruits">Fruits &amp; Vegetables</string>
+    <string name="Foodgrains">Foodgrains, Oil &amp; Masala</string>
+    <string name="Categories">Categories: Biscuits &amp; Namkeens:</string>
+    <string name="recently_added">Sort by </string>
+
+    <string name="verification">Our agent will call you soon to verify your shop. Please be availabele over call.</string>
+
+
+</resources>

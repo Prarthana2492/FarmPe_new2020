@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/bottom_sheet1"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:layout_marginBottom="2dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+
+
+    <!-- <android.support.v7.widget.CardView
+         android:id="@+id/card_id"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         app:cardBackgroundColor="@android:color/white"
+         app:cardCornerRadius="4dp">-->
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="true"
+        android:id="@+id/adres_layout2"
+        app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <LinearLayout
+            android:id="@+id/address_book"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+
+            >
+
+            <LinearLayout
+                android:id="@+id/linear_frame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="1dp"
+                android:layout_marginLeft="16dp">
+
+
+                <TextView
+                    android:id="@+id/bankname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Lorem Ipsum"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/segoeui"
+                    android:textColor="#161823"
+                    android:textStyle="bold"/>
+
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:textColor="#000"
+                    android:fontFamily="@font/segoeui"
+                    android:text="Jagdish kumar"/>
+
+                <TextView
+                    android:id="@+id/ph_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:textColor="#000"
+                    android:fontFamily="@font/segoeui"
+                    android:text="305032321111"/>
+
+                <TextView
+                    android:id="@+id/area"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:textColor="#000"
+                    android:fontFamily="@font/segoeui"
+                    android:text="RR nagar,Bangalore"/>
+
+
+
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="16dp"
+                android:weightSum="20"
+                android:fontFamily="@font/segoeui"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/edit_bank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Edit"
+                    android:fontFamily="@font/segoeui"
+                    android:textColor="@color/blue"
+                    android:textSize="14dp"
+                    android:layout_weight="5"
+                    >
+                </TextView>
+
+                <TextView
+                    android:id="@+id/delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Delete"
+                    android:fontFamily="@font/segoeui"
+                    android:textColor="@color/blue"
+                    android:textSize="14dp"
+
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+
+</LinearLayout>

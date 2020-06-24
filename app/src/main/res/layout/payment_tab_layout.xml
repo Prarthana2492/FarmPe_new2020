@@ -1,0 +1,164 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#f1f1f1">
+
+      <!-- <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+
+           >
+
+
+       </LinearLayout> -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:orientation="horizontal"
+            android:background="@color/menu_green"
+            tools:ignore="MissingConstraints">
+
+
+
+            <LinearLayout
+                android:id="@+id/back_feed"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_filter_state"
+                android:gravity="center">
+
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_go_back_left_arrow_"
+
+                    />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Payments"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/segoeui"
+                android:textColor="#fff"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center"
+                android:id="@+id/toolbar_title" />
+
+
+
+
+        </LinearLayout>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/simpleTabLayout_land"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:layout_gravity="center_horizontal"
+        app:tabIndicatorColor="@color/green"
+        app:tabSelectedTextColor="#000000"
+        app:tabTextAppearance="@style/TabLayoutStyle"
+        app:tabTextColor="#000000"
+
+        />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="100"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="80"
+                android:text="Last 6 Months"
+                android:fontFamily="@font/segoeui"
+                android:layout_gravity="center_vertical"
+                android:padding="10dp"
+                />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="50dp"
+                android:background="#dcdcdc"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="20"
+                android:text="Filter"
+                android:fontFamily="@font/segoeui"
+                android:drawableRight="@drawable/ic_right_angle_arrow"
+                android:layout_gravity="center_vertical"
+                android:padding="10dp"
+                />
+        </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/simpleViewPager_tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    </LinearLayout>
+    <!-- <include layout="@layout/discover"
+         app:layout_constraintHorizontal_bias="0.0"
+         app:layout_constraintLeft_toLeftOf="parent"
+         app:layout_constraintRight_toRightOf="parent"
+         app:layout_constraintTop_toTopOf="parent"
+         ></include>-->
+
+   <!-- <include layout="@layout/farm_loc_bottom_nav"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        ></include>-->
+
+  <!--  <include layout="@layout/menu"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        ></include>-->
+
+
+
+   <!-- <include layout="@layout/profile_view"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        ></include>-->
+
+    <com.aurelhubert.ahbottomnavigation.AHBottomNavigation
+        android:id="@+id/bottom_navigation_land"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:layout_gravity="bottom"/>
+
+
+
+
+
+</LinearLayout>

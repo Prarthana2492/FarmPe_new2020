@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="100"
+    android:gravity="center"
+    android:background="#fff">
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/menu_green"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+
+        <LinearLayout
+            android:id="@+id/back_feed"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_filter_state"
+            android:gravity="center">
+
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_go_back_left_arrow_"
+
+                />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:text="Select Payment Method"
+            android:textColor="#fff"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="100"
+        android:gravity="center"
+
+        >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/online_pay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ONLINE PAYMENT"
+            android:textSize="18dp"
+            android:gravity="center"
+            android:padding="12dp"
+            android:background="@drawable/border_filled_orrange"
+            android:fontFamily="@font/segoeui"
+            android:textColor="#fff"
+            android:layout_marginHorizontal="30dp"
+            />
+        <TextView
+            android:id="@+id/cod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cash on Delivery (CoD)"
+            android:textSize="18dp"
+            android:gravity="center"
+            android:padding="12dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/border_filled_gray_curved"
+            android:fontFamily="@font/segoeui"
+            android:textColor="#000"
+            android:layout_marginHorizontal="30dp"
+            />
+
+    </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

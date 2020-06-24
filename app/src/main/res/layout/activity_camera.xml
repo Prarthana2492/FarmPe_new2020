@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/const_lyt"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.CameraActivity">
+
+
+   <!-- <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="10"
+        android:gravity="bottom"
+
+        >
+
+        <LinearLayout
+            android:id="@+id/back_feed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:padding="10dp"
+            android:background="@drawable/ripple_effect"
+            >
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_go_back_left_arrow"
+
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+-->
+
+    <SurfaceView
+        android:id="@+id/surfaceView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:id="@+id/backfeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="28dp"
+        android:src="@drawable/ic_go_back_left_arrow_"
+        app:layout_constraintBaseline_toBaselineOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+
+        />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="170dp"
+        android:padding="28dp"
+        android:background="@drawable/ic_optic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+<!--
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/gallery"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="52dp"
+        android:src="@drawable/cam_flag"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.953"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/selfie"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="52dp"
+        android:src="@drawable/selfie"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+-->
+
+    <!-- <LinearLayout
+         android:id="@+id/animation"
+         android:visibility="gone"
+         android:layout_width="match_parent"
+         android:layout_height="122dp"
+         android:layout_gravity="center_horizontal"
+         android:layout_marginBottom="76dp"
+         android:baselineAligned="false"
+         android:orientation="vertical"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintHorizontal_bias="0.0"
+         app:layout_constraintLeft_toLeftOf="parent"
+         app:layout_constraintRight_toRightOf="parent">
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:text="Slide up For Gallery" />
+         &lt;!&ndash;   <GridView
+                android:id="@+id/gv_folder"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="17dp"
+                android:numColumns="2"
+                android:scrollbars="horizontal"></GridView>
+    &ndash;&gt;
+
+
+
+
+     </LinearLayout>-->
+
+</android.support.constraint.ConstraintLayout>

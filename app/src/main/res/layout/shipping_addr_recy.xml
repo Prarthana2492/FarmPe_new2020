@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:weightSum="100"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/menu_green"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+
+        <LinearLayout
+            android:id="@+id/back_feed"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_filter_state"
+            android:gravity="center">
+
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_go_back_left_arrow_"
+
+                />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:text="Select Delivery Address"
+            android:textColor="#fff"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recy_shipping"
+        android:layout_width="match_parent"
+        android:background="#fff"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+
+
+<TextView
+    android:id="@+id/delivery_addr"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Deliver to this address"
+    android:background="@drawable/border_filled_orrange"
+    android:gravity="center"
+    android:textColor="#000"
+    android:textSize="16dp"
+    android:visibility="gone"
+    android:layout_marginTop="20dp"
+    android:fontFamily="@font/segoeui"
+    android:paddingVertical="15dp"
+    android:layout_marginHorizontal="16dp"
+    />
+    <TextView
+        android:id="@+id/edit_addr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Edit address"
+        android:background="@drawable/border_filled_gray_curved"
+        android:gravity="center"
+        android:textColor="#000"
+        android:textSize="16dp"
+        android:visibility="gone"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/segoeui"
+        android:paddingVertical="15dp"
+        android:layout_marginHorizontal="16dp"
+        />
+
+    <TextView
+        android:id="@+id/add_new"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add New Address"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="#005474"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/segoeui"
+        android:paddingVertical="15dp"
+        android:layout_marginHorizontal="16dp"
+        />
+
+</LinearLayout>

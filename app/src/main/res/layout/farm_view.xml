@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+    >
+
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        card_view:cardElevation="10dp"
+        android:layout_marginBottom="-10dp"
+        card_view:cardCornerRadius="10dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:orientation="vertical"
+        android:weightSum="100"
+        >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:background="#ffffff"
+        android:layout_marginTop="40dp"
+
+        android:orientation="vertical"
+        android:weightSum="100"
+        >
+
+        <TextView
+            android:id="@+id/enter_name_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter your name"
+            android:textColor="#000"
+            android:layout_marginHorizontal="20dp"
+            android:textSize="16dp"
+            />
+
+        <EditText
+            android:id="@+id/enter_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:backgroundTint="#999999"
+            android:textColor="#666666"
+            android:layout_marginTop="10dp"
+            android:textCursorDrawable="@drawable/cursor_color"
+            android:textSize="14dp"
+            />
+
+        <TextView
+            android:id="@+id/logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:visibility="gone"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="20dp"
+            android:textSize="14dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:background="#ffffff"
+        android:orientation="horizontal"
+        android:weightSum="100"
+        android:paddingBottom="70dp"
+        android:gravity="right"
+        >
+
+        <TextView
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
+            android:textColor="#279E5E"
+            android:textSize="14dp"
+            />
+
+        <TextView
+            android:id="@+id/save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Save"
+            android:textColor="#279E5E"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>
+</LinearLayout>

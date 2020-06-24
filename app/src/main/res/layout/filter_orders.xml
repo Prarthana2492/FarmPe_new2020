@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+    android:weightSum="100"
+    android:background="#f5f5f5"
+    >
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="100"
+        android:layout_marginHorizontal="10dp"
+        android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:fontFamily="@font/segoeui"
+        android:text="Order type"
+        android:textSize="18dp"
+        android:padding="10dp"
+        android:gravity="start"
+        android:layout_marginTop="10dp"
+        android:textColor="#000000"
+        />
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="100"
+            android:layout_marginTop="5dp"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/black_bordr_white_filled"
+            android:orientation="vertical">
+
+            <RadioGroup
+                android:id="@+id/order_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <RadioButton
+                    android:id="@+id/order_radio_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Orders"
+                    android:tag="1"
+                    android:padding="10dp"
+                    />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e5e5e5"
+                />
+
+
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Open orders"
+                    android:tag="2"
+                    android:padding="10dp"
+                    />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e5e5e5"
+                />
+
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cancelled orders"
+                    android:tag="3"
+                    android:padding="10dp"
+                    />
+
+
+</RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/time_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/time_filter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:fontFamily="@font/segoeui"
+            android:text="Time filter"
+            android:textSize="18dp"
+            android:padding="10dp"
+            android:gravity="start"
+            android:layout_marginTop="10dp"
+            android:textColor="#000000"
+            />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="100"
+                android:layout_marginTop="5dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/black_bordr_white_filled"
+                android:orientation="vertical">
+
+                <RadioGroup
+                    android:id="@+id/time_radio_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                        <RadioButton
+                            android:tag="4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Last 30 Days"
+                            android:padding="10dp"
+                            />
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#e5e5e5"
+                        />
+
+
+
+                        <RadioButton
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Last 6 months"
+                            android:padding="10dp"
+                            android:tag="5"
+                            />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#e5e5e5"
+                        />
+
+
+                        <RadioButton
+                            android:id="@+id/current_year"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="2019"
+                            android:padding="10dp"
+                            android:tag="6"
+                            />
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#e5e5e5"
+                        />
+
+
+
+                        <RadioButton
+                            android:id="@+id/pre_year"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="2018"
+                            android:padding="10dp"
+                            android:tag="7"
+                            />
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#e5e5e5"
+                        />
+
+
+                        <RadioButton
+                            android:id="@+id/pre_pre_year"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="2017"
+                            android:padding="10dp"
+                            android:tag="8"
+                            />
+
+
+
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+        <TextView
+            android:id="@+id/apply"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/segoeui"
+            android:hint="Apply"
+            android:background="@drawable/border_filled_red"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:padding="15dp"
+            android:layout_marginTop="20dp"
+            android:textColor="#ffffff"
+            />
+
+        <TextView
+            android:id="@+id/note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:fontFamily="@font/segoeui"
+            android:text="Time filter will not apply to Open or Cancelled orders"
+            android:textSize="12dp"
+
+            android:gravity="start"
+            android:layout_marginTop="10dp"
+            />
+
+</LinearLayout>
+
+
+</LinearLayout>

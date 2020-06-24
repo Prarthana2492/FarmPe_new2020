@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="100"
+    android:gravity="center"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/mainlayout"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+
+    <ImageView
+        android:id="@+id/im_slider"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginHorizontal="40dp"
+        android:src="@drawable/seven_nine_logo"
+        android:scaleType="centerCrop"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+    <TextView
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your Essentials Store"
+        android:textColor="#1e8434"
+        android:textSize="22dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/segoeui"
+        android:paddingHorizontal="20dp"
+        />
+
+        <TextView
+            android:id="@+id/banner_descr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Your Go-To Convenience Store for Vegetables, Fruits, Groceries, Dairy and More."
+            android:textColor="#999999"
+            android:textSize="18dp"
+            android:gravity="center"
+            android:fontFamily="@font/segoeui"
+            android:layout_marginTop="10dp"
+            android:paddingHorizontal="20dp"
+            />
+    </LinearLayout>
+
+</LinearLayout>

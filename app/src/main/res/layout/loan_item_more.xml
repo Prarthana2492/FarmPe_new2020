@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:weightSum="10"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_more_icon" />
+
+        <!--<TextView
+            android:id="@+id/morecount"
+            android:text="10"
+            android:gravity="center"
+            android:textSize="12dp"
+            android:textStyle="bold"
+            android:fontFamily="@font/segoeui"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />-->
+
+    </RelativeLayout>
+
+    <TextView
+        android:textColor="#000"
+        android:text="More"
+        android:textSize="12dp"
+        android:fontFamily="@font/segoeui"
+        android:layout_width="wrap_content"
+        android:layout_weight="4"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="0dp" />
+
+</LinearLayout>

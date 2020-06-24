@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:weightSum="100"
+    android:background="#fff"
+    android:layout_marginBottom="2dp"
+    >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="100"
+            android:layout_marginLeft="5dp"
+            android:paddingVertical="30dp"
+            >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginHorizontal="10dp"
+                android:layout_weight="15">
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/received_from" />
+
+                <TextView
+                    android:id="@+id/loan_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/segoeui"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="16dp" />
+
+                <!--<de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/bank_img"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/avatarmale"
+                    app:civ_border_color="#dcdcdc"
+                    app:civ_border_width="0.0dp" />-->
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="55">
+
+                <TextView
+                    android:id="@+id/received_from"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/segoeui"
+                    android:gravity="center_vertical"
+                    android:text="Received from"
+                    android:textColor="#000"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="14dp" />
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/segoeui"
+                    android:gravity="center_vertical"
+                    android:text="ABC XYZ, 9898909745"
+                    android:textColor="#000"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="12dp" />
+                <TextView
+                    android:id="@+id/order_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/segoeui"
+                    android:gravity="center_vertical"
+                    android:text="Order # : 404-8614299-2321138"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/credited_to"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/segoeui"
+                    android:gravity="center_vertical"
+                    android:text="Credited To : HDFC Bank"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="12dp" />
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/segoeui"
+                    android:gravity="center_vertical"
+                    android:text="09-Mar-2020"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="right"
+                android:layout_weight="30">
+
+                <TextView
+                    android:id="@+id/amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/segoeui"
+                    android:gravity="center_vertical"
+                    android:text="Rs.10,000"
+                    android:textColor="#000"
+                    android:textStyle="bold"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+

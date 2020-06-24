@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_layout"
+    android:layout_width="130dp"
+    android:layout_height="150dp"
+    android:layout_centerInParent="true"
+    android:layout_marginLeft="3dp"
+    android:background="@drawable/grey_background"
+    android:orientation="vertical"
+    android:weightSum="100">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            >
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/image"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+
+                    />
+
+                <TextView
+                    android:id="@+id/farm_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/segoeui"
+                    android:text=""
+                    android:layout_gravity="center_vertical"
+                    android:textColor="#000"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/farm_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/segoeui"
+                    android:text=""
+                    android:layout_gravity="center_vertical"
+                    android:textColor="#000"
+                    android:textSize="12dp" />
+        </LinearLayout>
+
+
+</LinearLayout>
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+
+
+    <!--<de.hdodenhof.circleimageview.CircleImageView-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--android:id="@+id/image"-->
+    <!--android:layout_width="90dp"-->
+    <!--android:layout_height="90dp"-->
+    <!--android:layout_centerInParent="true"-->
+    <!--app:civ_border_color="#000"-->
+    <!--app:civ_border_width="0.5dp"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:weightSum="100">-->
+
+
+    <!---->
+    <!--&lt;!&ndash;<ImageView-->
+    <!--android:id="@+id/image"-->
+    <!--android:layout_width="100dp"-->
+    <!--android:layout_height="100dp"-->
+    <!--android:src="@drawable/tractor_sonalika" />&ndash;&gt;-->
+
+
+
+    <!--</de.hdodenhof.circleimageview.CircleImageView>-->

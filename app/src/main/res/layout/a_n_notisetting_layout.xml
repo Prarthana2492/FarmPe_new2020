@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FAFAFA"
+    >
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scroll">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/lay_account">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                android:background="@color/green"
+                >
+
+                <!--<android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:minHeight="?attr/actionBarSize"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:titleTextColor="@android:color/white"
+                    android:background="@color/green"
+                    >
+        -->
+                <LinearLayout
+                    android:id="@+id/back_feed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:padding="10dp"
+                    android:background="@drawable/ripple_effect"
+                    android:layout_marginLeft="10dp"
+                    >
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_go_back_left_arrow_"
+
+                        android:background="?attr/selectableItemBackgroundBorderless"
+
+                        />
+
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Notifications"
+                    android:textSize="20dp"
+                    android:layout_marginHorizontal="25dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/segoeui"
+                    android:textColor="#fff"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="15dp"
+                    android:id="@+id/lang_title" />
+
+                <!--
+                          </android.support.v7.widget.Toolbar>
+                -->
+
+            </LinearLayout>
+
+
+            <!--
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:orientation="horizontal"
+                    android:background="@color/green"
+                    tools:ignore="MissingConstraints">
+
+
+
+                        <LinearLayout
+                            android:id="@+id/back_feed"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:gravity="center">
+
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_go_back_left_arrow_"
+
+                                />
+
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Notifications"
+                            android:textSize="20dp"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="20dp"
+                            android:layout_gravity="center"
+                            android:id="@+id/setting_tittle" />
+
+
+                </LinearLayout>
+            -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="100"
+        >
+
+    <LinearLayout
+        android:id="@+id/all_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingVertical="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:weightSum="100"
+        >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="75"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+
+            <TextView
+                android:id="@+id/all_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="All"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="#000"
+                />
+
+            <TextView
+                android:id="@+id/all"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="All Notifications"
+                android:textSize="14dp"
+                android:textColor="#666666"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="25"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            >
+
+
+           <!--<Switch
+               android:id="@+id/switch_noti"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:thumbTint="#279E5E"
+               />-->
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/switch_noti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:checked="true"
+                android:theme="@style/SCBSwitch"/>
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dcdcdc"
+            android:layout_marginTop="10dp"
+            />
+
+
+<!--
+        <LinearLayout
+            android:id="@+id/farmer_acti_lay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingVertical="20dp"
+            android:layout_marginHorizontal="20dp"
+            android:weightSum="100"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                >
+
+                <TextView
+                    android:id="@+id/farmer_acti"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Farmer Activities"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:textColor="#279E5E"
+                    />
+
+                <TextView
+                    android:id="@+id/farmer_request"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Requests"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="3dp"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    />
+
+                <TextView
+                    android:id="@+id/new_req_int"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:textColor="#666666"
+                    android:text="New requests and interests"
+                    android:textSize="14dp"
+                    />
+
+            </LinearLayout>
+
+
+
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dcdcdc"
+            android:layout_marginTop="10dp"
+            />
+
+
+
+
+        <LinearLayout
+            android:id="@+id/acc_info_lay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingVertical="20dp"
+            android:layout_marginHorizontal="20dp"
+            android:weightSum="100"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                >
+
+                <TextView
+                    android:id="@+id/farmpe_acti"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="FarmPe Activities"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:textColor="#279E5E"
+                    />
+
+                <TextView
+                    android:id="@+id/farmpe_news"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="News"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="3dp"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    />
+
+                <TextView
+                    android:id="@+id/news"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:textColor="#666666"
+                    android:text="Farmer related news from FarmPe"
+                    android:textSize="14dp"
+                    />
+
+            </LinearLayout>
+
+
+
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dcdcdc"
+            android:layout_marginTop="10dp"
+            />
+
+-->
+
+
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+    </LinearLayout>
+

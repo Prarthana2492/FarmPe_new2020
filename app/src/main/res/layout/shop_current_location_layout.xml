@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:id="@+id/main_layout"
+    android:layout_height="match_parent"
+    android:weightSum="100">
+
+    <!--  <fragment
+          android:id="@+id/autocomplete_fragment"
+          android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_weight="10" />-->
+    <!--<fragment-->
+    <!--android:id="@+id/autocomplete_fragment"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="0dp"-->
+    <!--android:layout_weight="10"-->
+    <!--android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"-->
+    <!--/>-->
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="80"
+        >
+
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                tools:ignore="MissingConstraints">
+
+
+                <LinearLayout
+                    android:id="@+id/back_feed"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/ic_filter_state"
+                    android:gravity="center">
+
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_go_back_left_arrow"
+
+                        />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <!--<LinearLayout-->
+            <!--android:id="@+id/nomap"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:background="#928F8F"-->
+            <!--android:orientation="horizontal" />-->
+
+
+            <!--<android.support.design.widget.FloatingActionButton-->
+            <!--android:id="@+id/fab"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="end|bottom"-->
+            <!--android:layout_marginBottom="20dp"-->
+            <!--android:layout_marginRight="5dp"-->
+            <!--android:background="@color/white"-->
+            <!--android:src="@drawable/ic_target"-->
+            <!--app:fabSize="mini"-->
+            <!--app:backgroundTint="@android:color/white"-->
+            <!--app:layout_anchorGravity="bottom|right|end" />-->
+
+
+            <!--<LinearLayout-->
+            <!--android:id="@+id/back_feed"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:padding="10dp"-->
+            <!--android:layout_marginHorizontal="15dp"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:background="@drawable/ic_filter_state"-->
+            <!--&gt;-->
+
+
+            <!--<ImageView-->
+            <!--android:id="@+id/b_arrow"-->
+            <!--android:layout_width="15dp"-->
+            <!--android:layout_height="15dp"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:src="@drawable/ic_go_back_left_arrow"-->
+            <!--style="@style/SelectableItemBackground"-->
+            <!--android:background="?attr/selectableItemBackgroundBorderless"-->
+            <!--/>-->
+
+            <!--</LinearLayout>-->
+        <!--    />-->
+        </fragment>
+
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_marker" />
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        >
+
+        <Button
+            android:id="@+id/capture_loc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/border_filled_red_not_curved"
+            android:textColor="@color/white"
+            android:text="Capture"
+            android:textSize="18dp"
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        >
+
+        <TextView
+            android:id="@+id/select_address"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="#000"
+            android:gravity="center"
+            android:text="Select Address from list"
+            android:textSize="18dp"
+
+            />
+    </LinearLayout>
+
+</LinearLayout>

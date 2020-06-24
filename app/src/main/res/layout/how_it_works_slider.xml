@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="20dp"
+            >
+
+    <TextView
+        android:id="@+id/howit"
+        android:textSize="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/segoeui"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:text="How it Works?"/>
+
+
+            <TextView
+                android:id="@+id/register"
+                android:textSize="22dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/segoeui"
+                android:textColor="#999999"
+                android:textStyle="bold"
+                android:text="1. Register"/>
+
+            <TextView
+                android:id="@+id/registerby"
+                android:textSize="18dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/segoeui"
+                android:textColor="#000"
+                android:text="Register by entering required details."/>
+
+            <TextView
+                android:id="@+id/order"
+                android:textSize="22dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/segoeui"
+                android:textColor="#999999"
+                android:textStyle="bold"
+                android:text="2. Order"/>
+
+            <TextView
+                android:id="@+id/ord_txt"
+                android:textSize="18dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/segoeui"
+                android:textColor="#000"
+                android:text="Place an order in the app by selecting the required items."/>
+
+            <TextView
+                android:id="@+id/deliver"
+                android:textSize="22dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/segoeui"
+                android:textColor="#999999"
+                android:textStyle="bold"
+                android:text="3. Delivery"/>
+
+            <TextView
+                android:id="@+id/dlr_txt"
+                android:textSize="18dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/segoeui"
+                android:textColor="#000"
+                android:text="Get the required items at your shop delivered in the mentioned date."/>
+
+            <TextView
+                android:id="@+id/pay"
+                android:textSize="22dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/segoeui"
+                android:textColor="#999999"
+                android:textStyle="bold"
+                android:text="4.  Pay"/>
+
+            <TextView
+                android:id="@+id/pay_txt"
+                android:textSize="18dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/segoeui"
+                android:textColor="#000"
+                android:text="Pay Online post order placement"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

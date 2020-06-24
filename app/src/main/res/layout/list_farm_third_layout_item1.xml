@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linear_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerInParent="true"
+    android:orientation="vertical"
+    android:weightSum="100"
+    >
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="100"
+        android:fillViewport="true">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:orientation="vertical"
+            android:weightSum="100">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:background="@color/green"
+                    android:contentInsetStart="0dp"
+                    android:contentInsetLeft="0dp"
+                    android:contentInsetEnd="0dp"
+                    android:contentInsetRight="0dp"
+                    android:gravity="left"
+                    android:minHeight="?attr/actionBarSize"
+                    app:contentInsetEnd="0dp"
+                    app:contentInsetLeft="0dp"
+                    app:contentInsetRight="0dp"
+                    app:contentInsetStart="10dp"
+                    app:titleTextColor="@android:color/white">
+
+
+                    <LinearLayout
+                        android:id="@+id/back_feed"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/ripple_effect"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/b_arrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="15dp"
+                            android:src="@drawable/ic_go_back_left_arrow_" />
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/toolbar_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Add Address"
+                        android:textColor="#fff"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                </android.support.v7.widget.Toolbar>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="100"
+                android:background="#ffff"
+                android:orientation="vertical">
+
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <RadioButton
+                        android:id="@+id/home_rd"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="50"
+                        android:text="Home" />
+
+                    <RadioButton
+                        android:id="@+id/work_rd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="50"
+                        android:text="Work" />
+
+                </RadioGroup>
+
+                <!--<TextView
+                    android:id="@+id/current_loc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" USE CURRENT LOCATION"
+                    android:textSize="12dp"
+                    android:fontFamily="@font/segoeui"
+                    android:layout_marginTop="25dp"
+                    android:textColor="#000"
+                    android:drawableLeft="@drawable/ic_gps_pin"
+                    android:padding="10dp"
+                    android:visibility="gone"
+                    android:layout_gravity="center"
+                    android:background="@drawable/border_red"
+                    />-->
+
+                <EditText
+                    android:id="@+id/full_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/border_grey"
+                    android:fontFamily="@font/segoeui"
+                    android:hint="Name"
+                    android:maxLength="30"
+                    android:padding="12dp"
+                    android:paddingVertical="2dp"
+                    android:paddingRight="10dp"
+                    android:textColorHint="#000"
+                    android:textSize="13dp" />
+
+
+                <EditText
+                    android:id="@+id/mob_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/border_grey"
+                    android:fontFamily="@font/segoeui"
+                    android:hint="Mobile Number"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:padding="12dp"
+                    android:paddingVertical="2dp"
+                    android:paddingRight="10dp"
+                    android:textColorHint="#000"
+                    android:textSize="13dp" />
+
+
+               <!-- <EditText
+                    android:id="@+id/house_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/border_grey"
+                    android:fontFamily="@font/segoeui"
+                    android:hint="Address"
+                    android:maxLength="30"
+                    android:padding="12dp"
+                    android:paddingVertical="2dp"
+                    android:paddingRight="10dp"
+                    android:singleLine="true"
+                    android:textColorHint="#000"
+                    android:textSize="13dp" />-->
+                <EditText
+                    android:id="@+id/house_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/border_grey"
+                    android:fontFamily="@font/segoeui"
+                    android:hint="Address"
+                    android:digits="qwertyuiopasdfghjklzxcvbnm 1234567890 QWERTYUIOPASDFGHJKLZXCVBNM ,./;:'[]{}\|()#@!%^_+-*"
+                    android:maxLength="30"
+                    android:padding="12dp"
+                    android:paddingVertical="2dp"
+                    android:paddingRight="10dp"
+                    android:textColorHint="#000"
+                    android:textSize="13dp" />
+
+                <EditText
+                    android:id="@+id/landmark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/border_grey"
+                    android:digits="qwertyuiopasdfghjklzxcvbnm 1234567890 QWERTYUIOPASDFGHJKLZXCVBNM ,./;:'[]{}\|()#@!%^_+-*"
+                    android:fontFamily="@font/segoeui"
+                    android:hint="Landmark"
+                    android:maxLength="50"
+                    android:padding="12dp"
+                    android:paddingVertical="2dp"
+                    android:paddingRight="10dp"
+                    android:singleLine="true"
+                    android:textColorHint="#000"
+                    android:textSize="13dp" />
+
+                <EditText
+                    android:id="@+id/pincode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/border_grey"
+                    android:fontFamily="@font/segoeui"
+                    android:hint="Pincode"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    android:padding="12dp"
+                    android:paddingVertical="2dp"
+                    android:paddingRight="10dp"
+                    android:textColorHint="#000"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/ed_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/border_grey"
+                    android:drawableRight="@drawable/ic_down_arrow"
+                    android:editable="false"
+                    android:fontFamily="@font/segoeui"
+                    android:hint="State"
+                    android:maxLength="30"
+                    android:padding="12dp"
+                    android:paddingVertical="2dp"
+                    android:paddingRight="10dp"
+                    android:textColorHint="#000"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/ed_dstrt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/border_grey"
+                    android:drawableRight="@drawable/ic_down_arrow"
+                    android:editable="false"
+                    android:fontFamily="@font/segoeui"
+                    android:hint="District"
+                    android:maxLength="30"
+                    android:padding="12dp"
+                    android:paddingVertical="2dp"
+                    android:paddingRight="10dp"
+                    android:textColorHint="#000"
+
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/ed_tsl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/border_grey"
+                    android:drawableRight="@drawable/ic_down_arrow"
+                    android:editable="false"
+                    android:fontFamily="@font/segoeui"
+                    android:hint="Block"
+                    android:maxLength="30"
+                    android:padding="12dp"
+                    android:paddingVertical="2dp"
+                    android:paddingRight="10dp"
+                    android:textColorHint="#000"
+                    android:textSize="13dp" />
+
+<!--
+                <TextView
+                    android:id="@+id/nyay_panch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/border_grey"
+                    android:drawableRight="@drawable/ic_down_arrow"
+                    android:editable="false"
+                    android:fontFamily="@font/segoeui"
+                    android:hint="NyayPanchayat"
+                    android:padding="12dp"
+                    android:paddingVertical="2dp"
+                    android:paddingRight="10dp"
+                    android:textColorHint="#000"
+                    android:textSize="13dp" />
+-->
+
+<!--
+                <TextView
+                    android:id="@+id/gram_pancha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/border_grey"
+                    android:drawableRight="@drawable/ic_down_arrow"
+                    android:editable="false"
+                    android:fontFamily="@font/segoeui"
+                    android:hint="GramPanchayat"
+                    android:padding="12dp"
+                    android:paddingVertical="2dp"
+                    android:paddingRight="10dp"
+                    android:textColorHint="#000"
+                    android:textSize="13dp" />
+-->
+
+                <TextView
+                    android:id="@+id/ed_vill"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/border_grey"
+                    android:drawableRight="@drawable/ic_down_arrow"
+                    android:editable="false"
+                    android:fontFamily="@font/segoeui"
+                    android:hint="Village"
+                    android:padding="12dp"
+                    android:paddingVertical="2dp"
+                    android:paddingRight="10dp"
+                    android:textColorHint="#000"
+                    android:textSize="13dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_filled_red"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/save_1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/segoeui"
+            android:layout_gravity="center"
+            android:text="CONTINUE"
+            android:padding="15dp"
+            android:gravity="center"
+            android:drawablePadding="20dp"
+            android:drawableRight="@drawable/ic_right_arrow2"
+            android:textColor="#fff"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linear_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="100"
+    android:orientation="vertical"
+    android:background="@color/white"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15"
+        android:gravity="center"
+
+        >
+
+        <TextView
+            android:id="@+id/toast_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter your phone number to proceed"
+            android:background="@drawable/border_filled_black"
+            android:fontFamily="@font/segoeui"
+            android:textSize="14dp"
+            android:padding="10dp"
+            android:textColor="#ffffff"
+            android:visibility="invisible"
+            android:layout_gravity="bottom"
+            />
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="50"
+            android:weightSum="100"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="60"
+                android:weightSum="100"
+                android:gravity="center"
+                android:orientation="vertical"
+                >
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/seven_nine_logo" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="40"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/made_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Essentials Store"
+                android:paddingLeft="10dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:fontFamily="@font/segoeui"
+                android:paddingRight="10dp"
+                android:textSize="22dp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+
+
+                />
+
+
+
+            <TextView
+                android:id="@+id/conflu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Go-To Convenience Store for Vegetables, Fruits, Groceries, Dairy and More."
+                android:paddingLeft="10dp"
+                android:textColor="#999999"
+                android:fontFamily="@font/segoeui"
+                android:paddingRight="10dp"
+                android:textSize="19dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+              />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="35"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        >
+
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text = "Enter your phone number to get started"
+            android:textColor="@color/phblack"
+            android:textSize = "18dp"
+            android:layout_marginLeft = "15dp"/>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="100"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:text="+91"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <EditText
+              android:id="@+id/phonenumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="90"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="0dp"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:inputType="number"
+                android:textSize="20dp"
+                android:maxLength="10"
+
+    />
+
+
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="17dp"
+            android:weightSum="2"
+            android:gravity="center">
+
+
+
+         <TextView
+             android:id="@+id/register_btn"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:padding="12dp"
+             android:background="@drawable/border_filled_red_register"
+             android:text="REGISTER"
+             android:textSize="18dp"
+             android:gravity="center"
+             android:textColor="@color/white"
+             android:layout_marginLeft="15dp"
+             android:layout_marginRight="15dp"
+
+             />
+
+
+            <TextView
+                android:id="@+id/login_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_filled_red"
+                android:layout_weight="1"
+                android:text="LOGIN"
+                android:padding="12dp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp" />
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+
+
+

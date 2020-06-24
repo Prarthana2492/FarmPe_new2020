@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/wt_vsell"
+        android:textSize="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/segoeui"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:layout_marginHorizontal="16dp"
+        android:text="What We Sell"/>
+
+    <android.support.v7.widget.RecyclerView
+    android:id="@+id/rv"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
