@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.SevenNine.Essentials.Bean.StateBean;
 import com.SevenNine.Essentials.Fragment.AddNewAddressFragment;
+import com.SevenNine.Essentials.Fragment.NewAddressFragment;
 import com.SevenNine.Essentials.R;
 
 import java.util.List;
@@ -48,9 +49,13 @@ public class VillageAdapter extends RecyclerView.Adapter<VillageAdapter.HoblisMy
             @Override
             public void onClick(View view) {
                villageid = stateBean.getId();
-                AddNewAddressFragment.ed_vill.setText(holder.statename.getText().toString());
-                AddNewAddressFragment.drawer.closeDrawers();
-
+                if (NewAddressFragment.address!=null){
+                    NewAddressFragment.ed_vill.setText(holder.statename.getText().toString());
+                    NewAddressFragment.drawer.closeDrawers();
+                }else {
+                    AddNewAddressFragment.ed_vill.setText(holder.statename.getText().toString());
+                    AddNewAddressFragment.drawer.closeDrawers();
+                }
             }
         });
     }

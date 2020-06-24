@@ -37,6 +37,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.SevenNine.Essentials.Adapter.Address_Adapter;
 import com.SevenNine.Essentials.Adapter.DistrictAdapter;
 import com.SevenNine.Essentials.Adapter.HoblisAdapter;
 import com.SevenNine.Essentials.Adapter.StateApdater;
@@ -154,7 +155,7 @@ public class NewAddressFragment extends Fragment {
         home_rd=view.findViewById(R.id.home_rd);
         work_rd=view.findViewById(R.id.work_rd);
 
-        address="Add_new_address";
+        address="Add_new_addresss";
         sessionManager=new SessionManager(getActivity());
         setupUI(linearLayout);
 
@@ -1004,37 +1005,49 @@ public class NewAddressFragment extends Fragment {
             jsonObject.put("PinCode",pincode_no.getText().toString());
             jsonObject.put("Address",house_numb.getText().toString());
             jsonObject.put("LandMark",landmrk.getText().toString());
-            jsonObject.put("StateId",StateApdater.stateid);
-            jsonObject.put("DistrictId",DistrictAdapter.districtid);
-            jsonObject.put("BlockId",TalukAdapter.talukid);
-            jsonObject.put("VillageId", VillageAdapter.villageid);
-          //  jsonObject.put("UserAddressId","");
-            // jsonObject.put("BlockId",TalukAdapter.talukid);
-            jsonObject.put("CreatedBy",sessionManager.getRegId("userId"));
-
-
-
-            //jsonObject.put("IsDefaultAddress","1");
             jsonObject.put("UserId",sessionManager.getRegId("userId"));
-            System.out.println("Add_New_AddresssssssssssssssssjsonObject"+jsonObject);
-           /* if(getArguments().getString("navigation_from").equals("your_add")){
-
-                jsonObject.put("Id", You_Address_Adapter.add_id);
-
-
-            } else{
+            jsonObject.put("CreatedBy",sessionManager.getRegId("userId"));
+            jsonObject.put("CustomerLatitude","");
+            jsonObject.put("CustomerLongitude","");
 
 
-            }*/
+            if (StateApdater.stateid==0){
+                jsonObject.put("StateId",getArguments().getString("Addr_stateId"));
+            }else{
+                jsonObject.put("StateId",StateApdater.stateid);
+            }
+            if (DistrictAdapter.districtid==0){
+                jsonObject.put("DistrictId",getArguments().getString("Addr_districtId"));
+            }else{
+                jsonObject.put("DistrictId",DistrictAdapter.districtid);
+            }
+            if (TalukAdapter.talukid==0){
+                jsonObject.put("BlockId",getArguments().getString("Addr_blockId"));
+            }else{
+                jsonObject.put("BlockId",TalukAdapter.talukid);
+            }
+            if (VillageAdapter.villageid==0){
+                jsonObject.put("VillageId",getArguments().getString("Addr_villageId"));
+            }else{
+                jsonObject.put("VillageId", VillageAdapter.villageid);
+            }
 
+            if(Address_Adapter.add_id!=null){
+                jsonObject.put("UserAddressId",Address_Adapter.add_id);
+            }else{
+                jsonObject.put("UserAddressId","");
+
+            }
+
+            System.out.println("Add_New_Addressssssssssssssssslllllllllllllllllllllll"+jsonObject);
 
             Crop_Post.crop_posting(getActivity(), Urls.Add_New_Address, jsonObject, new VoleyJsonObjectCallback() {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
                     Bundle bundle=new Bundle();
                     Bundle bundle1=getArguments();
+                    System.out.println("dddddAdd_New_Addressssssssssssssssslllllllllllllllllllllll"+result);
 
-                    System.out.println("Add_New_Addressssssssssssssssslllllllllllllllllllllll"+result);
                     try{
 
                         status= result.getString("Status");
@@ -1061,7 +1074,7 @@ public class NewAddressFragment extends Fragment {
                                 tv.setGravity(Gravity.CENTER_HORIZONTAL);
                             }
                             snackbar.show();
-                            selectedFragment = NewAddressDetails_Fragment.newInstance();
+                            selectedFragment = SelectShippingAddress.newInstance();
                             FragmentTransaction transaction = (getActivity()).getSupportFragmentManager().beginTransaction();
                             transaction.replace(R.id.frame_layout1, selectedFragment);
                             transaction.commit();

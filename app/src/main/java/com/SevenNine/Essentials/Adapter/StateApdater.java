@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.SevenNine.Essentials.Bean.StateBean;
 import com.SevenNine.Essentials.Fragment.AddNewAddressFragment;
 import com.SevenNine.Essentials.Fragment.Add_NewBankDetails_Fragment;
+import com.SevenNine.Essentials.Fragment.NewAddressFragment;
 import com.SevenNine.Essentials.R;
 
 import java.util.List;
@@ -54,6 +55,9 @@ public class StateApdater extends RecyclerView.Adapter<StateApdater.MyStateHolde
                     Add_NewBankDetails_Fragment.state.setText(holder.statename.getText().toString());
                     Add_NewBankDetails_Fragment.drawer.closeDrawers();
 
+                }else if (NewAddressFragment.address!=null){
+                    NewAddressFragment.ed_state.setText(holder.statename.getText().toString());
+                    NewAddressFragment.drawer.closeDrawers();
                 }else{
                     AddNewAddressFragment.ed_state.setText(holder.statename.getText().toString());
                     AddNewAddressFragment.drawer.closeDrawers();

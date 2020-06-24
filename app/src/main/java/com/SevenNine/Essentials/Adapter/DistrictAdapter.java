@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.SevenNine.Essentials.Bean.StateBean;
 import com.SevenNine.Essentials.Fragment.AddNewAddressFragment;
 import com.SevenNine.Essentials.Fragment.Add_NewBankDetails_Fragment;
+import com.SevenNine.Essentials.Fragment.NewAddressFragment;
 import com.SevenNine.Essentials.R;
 
 import java.util.List;
@@ -56,7 +57,10 @@ public class DistrictAdapter extends RecyclerView.Adapter<DistrictAdapter.MyStat
                     Add_NewBankDetails_Fragment.district.setText(holder.statename.getText().toString());
                     Add_NewBankDetails_Fragment.drawer.closeDrawers();
 
-                }else{
+                }else if (NewAddressFragment.address!=null){
+                    NewAddressFragment.ed_dstrt.setText(holder.statename.getText().toString());
+                    NewAddressFragment.drawer.closeDrawers();
+                } else{
                     AddNewAddressFragment.ed_dstrt.setText(holder.statename.getText().toString());
                     AddNewAddressFragment.drawer.closeDrawers();
                 }

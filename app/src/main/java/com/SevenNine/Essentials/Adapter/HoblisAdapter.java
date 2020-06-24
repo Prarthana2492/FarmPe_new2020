@@ -49,8 +49,14 @@ public class HoblisAdapter extends RecyclerView.Adapter<HoblisAdapter.HoblisMyVi
             @Override
             public void onClick(View view) {
                 hobliid=stateBean.getId();
-                NewAddressFragment.ed_tsl.setText(holder.statename.getText().toString());
-                NewAddressFragment.drawer.closeDrawers();
+                 if (NewAddressFragment.address!=null){
+                    NewAddressFragment.ed_tsl.setText(holder.statename.getText().toString());
+                    NewAddressFragment.drawer.closeDrawers();
+                }else{
+                     NewAddressFragment.ed_tsl.setText(holder.statename.getText().toString());
+                     NewAddressFragment.drawer.closeDrawers();
+                 }
+
 
             }
         });
