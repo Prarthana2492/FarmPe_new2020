@@ -121,7 +121,7 @@ public class ActivitySelectLang extends AppCompatActivity implements Connectivit
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a_a_selectlang);
-        //  checkConnection();
+        ////  checkConnection();
         sessionManager = new SessionManager(this); //check
 
         sessionManager.checkLogin();
