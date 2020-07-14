@@ -67,7 +67,7 @@ public class OrderDetailsAdapter extends RecyclerView.Adapter<OrderDetailsAdapte
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final OrderDetailBean products1 = productList.get(position);
         if (products1.getProd_desc().equals("")){
-            holder.prod_name.setText(products1.getProd_name()+", "+products1.getCart_prodlistid());
+            holder.prod_name.setText(products1.getProd_name());
         }else{
             holder.prod_name.setText(products1.getProd_name()+", "+products1.getProd_desc()+", "+products1.getBrand());
         }

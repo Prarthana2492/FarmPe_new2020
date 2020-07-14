@@ -20,7 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.SevenNine.essentialscode.Adapter.CategoryProdDetailAdapter;
+import com.SevenNine.essentialscode.Adapter.SaveForLaterAdapter;
 import com.SevenNine.essentialscode.Bean.Sellbean;
 import com.SevenNine.essentialscode.CircleAnimationUtil;
 import com.SevenNine.essentialscode.R;
@@ -42,7 +42,7 @@ public class SaveForLaterList extends Fragment {
     public static ArrayList<Sellbean> newOrderBeansList_subcat = new ArrayList<>();
 
     public static RecyclerView recyclerView_main;
-    public static CategoryProdDetailAdapter livestock_types_adapter;
+    public static SaveForLaterAdapter livestock_types_adapter;
     JSONObject jsonObject1;
     Fragment selectedFragment = null;
     TextView toolbar_title,name;
@@ -63,13 +63,13 @@ public class SaveForLaterList extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.save_for_later_recy, container, false);
         Window window = getActivity().getWindow();
-        window.setStatusBarColor(ContextCompat.getColor(getActivity(),R.color.dark_green));
+        window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.dark_green));
        /* Status_bar_change_singleton.getInstance().color_change(getActivity());
         HomePage_With_Bottom_Navigation.linear_bottonsheet.setVisibility(View.GONE);
         HomePage_With_Bottom_Navigation.view.setVisibility(View.GONE);*/
 
         recyclerView_main=view.findViewById(R.id.recy_save);
-        back_feed=view.findViewById(R.id.back_feed);
+       // back_feed=view.findViewById(R.id.back_feed);
        // name=view.findViewById(R.id.name);
 sessionManager=new SessionManager(getActivity());
         linearLayout = view.findViewById(R.id.main_layout);
@@ -97,7 +97,7 @@ sessionManager=new SessionManager(getActivity());
                 return false;
             }
         });
-        back_feed.setOnClickListener(new View.OnClickListener() {
+       /* back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selectedFragment = HomeFragment.newInstance();
@@ -106,7 +106,7 @@ sessionManager=new SessionManager(getActivity());
                 transaction.addToBackStack("spicescateory");
                 transaction.commit();
             }
-        });
+        });*/
         newOrderBeansList_subcat.clear();
         // livestock_types_adapter = new Livestock_Types_Adapter( getActivity(),newOrderBeansList);
         GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false);
@@ -125,7 +125,7 @@ sessionManager=new SessionManager(getActivity());
         try{
 
             //  newOrderBeansList_subcat_veg.clear();
-            JSONObject jsonObject = new JSONObject();
+            final JSONObject jsonObject = new JSONObject();
             jsonObject.put("UserId",sessionManager.getRegId("userId"));
 
             System.out.println("jhfdfdjc111"+jsonObject);
@@ -140,13 +140,21 @@ sessionManager=new SessionManager(getActivity());
                         for(int i=0;i<get_soiltype.length();i++){
 
                             JSONObject jsonObject1 = get_soiltype.getJSONObject(i);
-                            Sellbean sellbean = new Sellbean(jsonObject1.getString("ProductName"),jsonObject1.getString("SellingCategoryId"),jsonObject1.getString("SellingListIcon"),jsonObject1.getString("SellingQuantity"),jsonObject1.getString("Amount"),"","Kg",jsonObject1.getString("ProductDescription"),jsonObject1.getString("UnitOfPriceId"),jsonObject1.getString("ProductId"),"","");
 
-                            newOrderBeansList_subcat.add(sellbean);
+                            System.out.println(";sdlkfdsfkl"+jsonObject1.getString("IsShortlisted"));
+
+                            if (jsonObject1.getString("IsShortlisted").equals("true")){
+
+                                Sellbean sellbean = new Sellbean(jsonObject1.getString("ProductName"),jsonObject1.getString("CartProductListId"),jsonObject1.getString("ProductIcon"),jsonObject1.getString("SelectedQuantity"),jsonObject1.getString("Amount"),jsonObject1.getString("MRP"),"Kg",jsonObject1.getString("ProductDescription"),jsonObject1.getString("UnitOfPriceId"),jsonObject1.getString("ProductId"),"","");
+                                newOrderBeansList_subcat.add(sellbean);
+                                System.out.println(";bbbbeee"+jsonObject1.getString("IsShortlisted"));
+
+                            }
+
                         }
-                        livestock_types_adapter=new CategoryProdDetailAdapter(getActivity(),newOrderBeansList_subcat);
+                        livestock_types_adapter=new SaveForLaterAdapter(getActivity(),newOrderBeansList_subcat);
                         recyclerView_main.setAdapter(livestock_types_adapter);
-                        livestock_types_adapter.setActionListener(new CategoryProdDetailAdapter.ProductItemActionListener() {
+                        livestock_types_adapter.setActionListener(new SaveForLaterAdapter.ProductItemActionListener() {
                             @Override
                             public void onItemTap(ImageView imageView) {
                                 if (imageView != null)

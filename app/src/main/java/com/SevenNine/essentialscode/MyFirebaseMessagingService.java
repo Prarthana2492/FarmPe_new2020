@@ -9,14 +9,12 @@ import com.google.firebase.messaging.RemoteMessage;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onMessageReceived(RemoteMessage message) {
-        System.out.println("Notificationnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnbb"+message.getNotification().getBody());
 
             sendMyNotification(message.getNotification().getBody());
-
-
 
     }
 
@@ -24,7 +22,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void sendMyNotification(String message) {
 
-//
+
+
 //        String stop = "stop";
 //       // registerReceiver(stopReceiver, new IntentFilter(stop));
 //        PendingIntent broadcastIntent = PendingIntent.getBroadcast(

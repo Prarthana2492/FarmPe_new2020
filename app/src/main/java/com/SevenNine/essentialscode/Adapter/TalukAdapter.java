@@ -8,13 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.SevenNine.essentialscode.Bean.StateBean;
 import com.SevenNine.essentialscode.Fragment.AddNewAddressFragment;
 import com.SevenNine.essentialscode.Fragment.NewAddressFragment;
 import com.SevenNine.essentialscode.R;
 
 import java.util.List;
-
 
 
 public class TalukAdapter extends RecyclerView.Adapter<TalukAdapter.TalukMyViewHolder> {
@@ -24,7 +24,7 @@ public class TalukAdapter extends RecyclerView.Adapter<TalukAdapter.TalukMyViewH
     Activity activity;
 
 
-    public TalukAdapter(List<StateBean> stateBeanList,Activity activity) {
+    public TalukAdapter(List<StateBean> stateBeanList, Activity activity) {
         this.stateBeanList = stateBeanList;
         this.activity=activity;
     }

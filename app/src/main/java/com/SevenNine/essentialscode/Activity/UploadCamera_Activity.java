@@ -1,4 +1,5 @@
 package com.SevenNine.essentialscode.Activity;
+
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -9,7 +10,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.SevenNine.essentialscode.G_Vision_Controller;
-
 import com.SevenNine.essentialscode.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -29,7 +29,7 @@ public class  UploadCamera_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gallery_fragment);
-        g_vision_controller=G_Vision_Controller.getInstance();
+        g_vision_controller= G_Vision_Controller.getInstance();
         imageView= findViewById(R.id.reyclerview_message_list);
         upload= findViewById(R.id.button_upload);
 
@@ -69,7 +69,7 @@ public class  UploadCamera_Activity extends AppCompatActivity {
     public void onBackPressed() {
 
 
-        Intent intent=new Intent(UploadCamera_Activity.this,CameraActivity.class);
+        Intent intent=new Intent(UploadCamera_Activity.this, CameraActivity.class);
         startActivity(intent);
         finish();
     }

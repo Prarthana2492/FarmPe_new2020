@@ -65,11 +65,11 @@ public class SelectShippingAddress extends Fragment {
         add_new=view.findViewById(R.id.add_new);
         delivery_addr=view.findViewById(R.id.delivery_addr);
         back_feed=view.findViewById(R.id.back_feed);
-        edit_addr=view.findViewById(R.id.edit_addr);
+      //  edit_addr=view.findViewById(R.id.edit_addr);
  sessionManager=new SessionManager(getActivity());
 
         Window window = getActivity().getWindow();
-        window.setStatusBarColor(ContextCompat.getColor(getActivity(),R.color.dark_green));
+        window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.dark_green));
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,10 +102,13 @@ HomeFragment.cart_icon.setVisibility(View.INVISIBLE);
         add_new.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedFragment = NewAddressFragment.newInstance();
+                Bundle bundle=new Bundle();
+                bundle.putString("Shipping","shipping_addr");
+                selectedFragment = AddNewAddressFragment.newInstance();
                 FragmentTransaction transaction =getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout1, selectedFragment);
                 transaction.addToBackStack("track1");
+                selectedFragment.setArguments(bundle);
                 transaction.commit();
             }
         });
@@ -191,10 +194,10 @@ HomeFragment.cart_icon.setVisibility(View.INVISIBLE);
                             System.out.println("adreess_list_size"+newOrderBeansList.size());
                             if (newOrderBeansList.size()==0){
                                 delivery_addr.setVisibility(View.GONE);
-                                edit_addr.setVisibility(View.GONE);
+                              //  edit_addr.setVisibility(View.GONE);
                             }else {
                                 delivery_addr.setVisibility(View.VISIBLE);
-                                edit_addr.setVisibility(View.VISIBLE);
+                             //   edit_addr.setVisibility(View.VISIBLE);
                                 madapter = new ShippingAddressAdapter(getActivity(), newOrderBeansList);
                                 recyclerView.setAdapter(madapter);
                             }

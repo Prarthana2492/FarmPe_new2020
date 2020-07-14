@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.SevenNine.essentialscode.Activity.Status_bar_change_singleton;
 import com.SevenNine.essentialscode.Adapter.SelectLanguageAdapter;
 import com.SevenNine.essentialscode.Bean.SelectLanguageBean;
@@ -28,7 +29,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 
 public class ChangeLanguageFragment extends Fragment {

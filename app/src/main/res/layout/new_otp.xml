@@ -115,6 +115,7 @@
                 />-->
 
 
+<!--
             <com.chaos.view.PinView
                 android:id="@+id/pinView"
                 style="@style/PinWidget.PinView"
@@ -127,7 +128,8 @@
                 android:textColor="#222222"
                 android:textSize="18sp"
                 android:cursorVisible="true"
-                android:itemBackground="#E9E9E9"
+                android:focusable="true"
+                android:imeOptions="actionDone"
                 app:cursorColor="@color/gray"
                 app:cursorWidth="2dp"
                 app:itemCount="4"
@@ -138,6 +140,120 @@
                 app:lineColor="#E9E9E9"
                 app:lineWidth="2dp"
                 app:viewType="rectangle" />
+-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="100"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <EditText
+                        android:id="@+id/otp1"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:fontFamily="@font/segoeui"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:cursorVisible="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginVertical="0dp"
+                        android:textCursorDrawable="@drawable/cursor_color"
+                        android:background="@drawable/border_grey_filled"
+                        android:singleLine="true"
+                        android:textColor="#999999"
+                        android:textSize="16dp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <EditText
+                        android:id="@+id/otp2"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:fontFamily="@font/segoeui"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:layout_marginVertical="0dp"
+                        android:layout_marginLeft="10dp"
+                        android:cursorVisible="true"
+                        android:textCursorDrawable="@drawable/cursor_color"
+                        android:background="@drawable/border_grey_filled"
+                        android:singleLine="true"
+                        android:textColor="#999999"
+                        android:textSize="16dp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <EditText
+                        android:id="@+id/otp3"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:fontFamily="@font/segoeui"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:cursorVisible="true"
+                        android:layout_marginLeft="10dp"
+                        android:textCursorDrawable="@drawable/cursor_color"
+                        android:background="@drawable/border_grey_filled"
+                        android:singleLine="true"
+                        android:layout_marginVertical="0dp"
+                        android:textColor="#999999"
+                        android:textSize="16dp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <EditText
+                        android:id="@+id/otp4"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:fontFamily="@font/segoeui"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:cursorVisible="true"
+                        android:layout_marginLeft="10dp"
+                        android:textCursorDrawable="@drawable/cursor_color"
+                        android:background="@drawable/border_grey_filled"
+                        android:singleLine="true"
+                        android:layout_marginVertical="0dp"
+                        android:textColor="#999999"
+                        android:textSize="16dp"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
 
         </LinearLayout>
 

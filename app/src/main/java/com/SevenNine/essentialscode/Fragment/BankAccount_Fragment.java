@@ -60,7 +60,7 @@ public class BankAccount_Fragment extends Fragment {
         View view = inflater.inflate(R.layout.soil_details_recy_layout, container, false);
        // Status_bar_change_singleton.getInstance().color_change(getActivity());
         Window window = getActivity().getWindow();
-        window.setStatusBarColor(ContextCompat.getColor(getActivity(),R.color.dark_green));
+        window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.dark_green));
         //HomePage_With_Bottom_Navigation.linear_bottonsheet.setVisibility(View.GONE);
         recyclerView=view.findViewById(R.id.recycler_what_looking);
         toolbar_title=view.findViewById(R.id.toolbar_title);

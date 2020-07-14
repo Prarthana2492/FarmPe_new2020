@@ -19,7 +19,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
 import com.SevenNine.essentialscode.Adapter.SliderPagerAdapter;
 import com.SevenNine.essentialscode.Bean.ListBean2;
 import com.SevenNine.essentialscode.R;
@@ -29,7 +28,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-
 
 
 public class Slider_Activity extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener  {
@@ -72,7 +70,7 @@ public class Slider_Activity extends AppCompatActivity implements ConnectivityRe
                 Snackbar snackbar = Snackbar.make(main_layout,toast_internet, duration);
                 View sbView = snackbar.getView();
                 TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
-                textView.setBackgroundColor(ContextCompat.getColor(Slider_Activity.this,R.color.orange));
+                textView.setBackgroundColor(ContextCompat.getColor(Slider_Activity.this, R.color.orange));
                 textView.setTextColor(Color.WHITE);
                 snackbar.show();
 
@@ -164,36 +162,36 @@ checkConnection();
 
 
         apply_loan = new ArrayList<>();
-        ListBean2 bean=new ListBean2("Vegitables",1,R.drawable.veg,1);
+        ListBean2 bean=new ListBean2("Vegitables",1, R.drawable.veg,1);
         apply_loan.add(bean);
 
-        ListBean2 bean3=new ListBean2("Fruits",2,R.drawable.fruit,1);
+        ListBean2 bean3=new ListBean2("Fruits",2, R.drawable.fruit,1);
         apply_loan.add(bean3);
 
-        ListBean2 bean4=new ListBean2("Groceries",3,R.drawable.groceries,1);
+        ListBean2 bean4=new ListBean2("Groceries",3, R.drawable.groceries,1);
         apply_loan.add(bean4);
 
-        ListBean2 bean5=new ListBean2("Cooking Oils",4,R.drawable.cooking_oil,1);
+        ListBean2 bean5=new ListBean2("Cooking Oils",4, R.drawable.cooking_oil,1);
         apply_loan.add(bean5);
 
-        ListBean2 bean11=new ListBean2("Masala",5,R.drawable.masala,1);
+        ListBean2 bean11=new ListBean2("Masala",5, R.drawable.masala,1);
         apply_loan.add(bean11);
 
-        ListBean2 bean8=new ListBean2("Bakery",6,R.drawable.bakery,1);
+        ListBean2 bean8=new ListBean2("Bakery",6, R.drawable.bakery,1);
         apply_loan.add(bean8);
 
-        ListBean2 bean6=new ListBean2("Dairy",7,R.drawable.dairy,1);
+        ListBean2 bean6=new ListBean2("Dairy",7, R.drawable.dairy,1);
         apply_loan.add(bean6);
 
-        ListBean2 bean7=new ListBean2("Baverages",8,R.drawable.beverages,1);
+        ListBean2 bean7=new ListBean2("Baverages",8, R.drawable.beverages,1);
         apply_loan.add(bean7);
 
-        ListBean2 bean9=new ListBean2("Snacks",9,R.drawable.snacks,1);
+        ListBean2 bean9=new ListBean2("Snacks",9, R.drawable.snacks,1);
         apply_loan.add(bean9);
 
-        ListBean2 bean14=new ListBean2("Foods",10,R.drawable.food,1);
+        ListBean2 bean14=new ListBean2("Foods",10, R.drawable.food,1);
         apply_loan.add(bean14);
-        ListBean2 bean15=new ListBean2("Beauty",11,R.drawable.beauty,1);
+        ListBean2 bean15=new ListBean2("Beauty",11, R.drawable.beauty,1);
         apply_loan.add(bean15);
         apply_loan.add(bean15);
         apply_loan.add(bean15);
@@ -248,7 +246,7 @@ checkConnection();
     public void onBackPressed() {
 
 
-        Intent intent=new Intent(Slider_Activity.this,SelectStoreLocation.class);
+        Intent intent=new Intent(Slider_Activity.this, SelectStoreLocation.class);
         startActivity(intent);
         // finish();
     }

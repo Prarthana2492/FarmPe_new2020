@@ -1,8 +1,10 @@
 package com.SevenNine.essentialscode.Fragment;
 
 import android.animation.Animator;
+import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,9 +16,12 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -40,8 +45,10 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.content.Context.INPUT_METHOD_SERVICE;
 
-public class CategoryProdDetailList extends Fragment {
+
+public class CategoryProdDetailListSearch extends Fragment {
 
     public static ArrayList<Sellbean> newOrderBeansList_subcat = new ArrayList<>();
     private List<Sellbean> searchresultAraaylist = new ArrayList<>();
@@ -53,43 +60,70 @@ public class CategoryProdDetailList extends Fragment {
     public static TextView toolbar_title,name;
     EditText search;
     public static String livestock_status;
-    LinearLayout back_feed,linearLayout;
+    LinearLayout back_feed,linearLayout,main_layout;
     JSONArray get_categorylist_array;
     JSONArray get_soiltype;
     public static String sellingcatId,sellnavigation;
     SessionManager sessionManager;
+    private Handler mHandler= new Handler();
 
-    public static CategoryProdDetailList newInstance() {
-        CategoryProdDetailList fragment = new CategoryProdDetailList();
+    public static CategoryProdDetailListSearch newInstance() {
+        CategoryProdDetailListSearch fragment = new CategoryProdDetailListSearch();
         return fragment;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.category_prod_recy, container, false);
+        View view = inflater.inflate(R.layout.category_prod_recy_search, container, false);
+        getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
         Window window = getActivity().getWindow();
         window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryDark1));
+
        /* Status_bar_change_singleton.getInstance().color_change(getActivity());
         HomePage_With_Bottom_Navigation.linear_bottonsheet.setVisibility(View.GONE);
         HomePage_With_Bottom_Navigation.view.setVisibility(View.GONE);*/
-
         recyclerView_main=view.findViewById(R.id.recycler_cat_detail);
         search=view.findViewById(R.id.search);
         name=view.findViewById(R.id.name);
-sessionManager=new SessionManager(getActivity());
+        sessionManager=new SessionManager(getActivity());
         linearLayout = view.findViewById(R.id.linearLayout);
+        main_layout = view.findViewById(R.id.main_layout);
+     //   getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        mHandler.post(
+                new Runnable() {
+                    public void run() {
+                        InputMethodManager inputMethodManager =  (InputMethodManager)getActivity().getSystemService(INPUT_METHOD_SERVICE);
+                        inputMethodManager.toggleSoftInputFromWindow(search.getApplicationWindowToken(), InputMethodManager.SHOW_FORCED, 0);
+                        search.requestFocus();
+                    }
+                });
+        /*InputMethodManager inputMethodManager =
+                (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputMethodManager.toggleSoftInputFromWindow(
+                main_layout.getApplicationWindowToken(),
+                InputMethodManager.SHOW_FORCED, 0);*/
+
 //        toolbar_title.setText("Select Category");
         // sellingdetailsid=Inventory_Details_Fragment.SId;
         if (getArguments()==null){
             System.out.println("hommmmmmee");
-            sellingcatId= HomeFragment.shop_cat_id;
+            sellingcatId=HomeFragment.shop_cat_id;
 
         }else{
             sellingcatId=getArguments().getString("sellingCatId");
 
         }
+        search.requestFocus();
+        search.setCursorVisible(true);
 
+        setupUI(main_layout);
+
+       /* if (DiscoverCategoryFragment.search_st!=null){
+            System.out.println("requesttttt");
+            search.setCursorVisible(true);
+        }*/
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {
@@ -126,10 +160,10 @@ sessionManager=new SessionManager(getActivity());
 
             //  newOrderBeansList_subcat_veg.clear();
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("SellingCategoryId",sellingcatId);
+           // jsonObject.put("SellingCategoryId",sellingcatId);
 
             System.out.println("jhfdfdjc111"+jsonObject);
-            Crop_Post.crop_posting(getActivity(), Urls.GetProductDetailsList, jsonObject, new VoleyJsonObjectCallback() {
+            Crop_Post.crop_posting(getActivity(), Urls.GetProductDetailsFrom7NinePartner, jsonObject, new VoleyJsonObjectCallback() {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
 
@@ -138,7 +172,7 @@ sessionManager=new SessionManager(getActivity());
 
                     try{
 
-                        get_soiltype = result.getJSONArray("SellDetails");
+                        get_soiltype = result.getJSONArray("ProductDetailsFromPartner");
 
                         for(int i=0;i<get_soiltype.length();i++){
 
@@ -177,6 +211,8 @@ sessionManager=new SessionManager(getActivity());
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                search.requestFocus();
+                search.setCursorVisible(true);
 
                 // TODO Auto-generated method stub
             }
@@ -307,5 +343,52 @@ sessionManager=new SessionManager(getActivity());
         });
     }
 
+    public void setupUI(View view) {
 
+
+        if(!(view instanceof EditText)) {
+            view.setOnTouchListener(new View.OnTouchListener() {
+
+                public boolean onTouch(View v, MotionEvent event) {
+                    hideSoftKeyboard(getActivity());
+                    return false;
+                }
+
+            });
+        }
+        if (view instanceof ViewGroup) {
+
+            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
+
+                View innerView = ((ViewGroup) view).getChildAt(i);
+
+                setupUI(innerView);
+            }
+        }
+    }
+
+    public static void hideSoftKeyboard(Activity activity) {
+
+
+        InputMethodManager inputManager = (InputMethodManager)
+                activity.getSystemService(
+                        INPUT_METHOD_SERVICE);
+        View focusedView = activity.getCurrentFocus();
+
+        if (focusedView != null) {
+
+            try {
+                assert inputManager != null;
+                inputManager.hideSoftInputFromWindow(focusedView.getWindowToken(),
+                        InputMethodManager.HIDE_NOT_ALWAYS);
+            } catch (AssertionError e) {
+                e.printStackTrace();
+            }
+        }
+    }
+   /* private void setFocusCursor(){
+        mBinding.replyConversationsFooter.footerEditText.setFocusable(true);
+        mBinding.replyConversationsFooter.footerEditText.setFocusableInTouchMode(true);
+        mBinding.replyConversationsFooter.footerEditText.requestFocus();
+    }*/
 }

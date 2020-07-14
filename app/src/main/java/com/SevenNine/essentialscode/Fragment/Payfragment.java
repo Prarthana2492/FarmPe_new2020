@@ -1,40 +1,40 @@
 package com.SevenNine.essentialscode.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.SevenNine.essentialscode.Activity.MyApplication;
+import com.SevenNine.essentialscode.AppEnvironment;
 import com.SevenNine.essentialscode.R;
 import com.SevenNine.essentialscode.SessionManager;
-import com.android.volley.toolbox.StringRequest;
-import com.payumoney.core.PayUmoneySdkInitializer;
-
-import android.content.Intent;
-import android.util.Log;
-import android.view.KeyEvent;
-
-import com.SevenNine.essentialscode.AppEnvironment;
 import com.SevenNine.essentialscode.Urls;
 import com.SevenNine.essentialscode.volleypost.VolleySingletonQuee;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-
+import com.android.volley.toolbox.StringRequest;
 import com.payumoney.core.PayUmoneyConstants;
+import com.payumoney.core.PayUmoneySdkInitializer;
 import com.payumoney.core.entity.TransactionResponse;
 import com.payumoney.sdkui.ui.utils.PayUmoneyFlowManager;
 import com.payumoney.sdkui.ui.utils.ResultModel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
+
 import static android.app.Activity.RESULT_OK;
+
 public class Payfragment extends Fragment {
 
     private PayUmoneySdkInitializer.PaymentParam mPaymentParams;

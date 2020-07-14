@@ -255,9 +255,9 @@ public class LoanSliderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
         // Just as an example, return 0 or 2 depending on position
         // Note that unlike in ListView adapters, types don't have to be contiguous
-        System.out.println("jhdjsk"+position+" "+SliderPagerAdapter.morecount);
+        System.out.println("jhdjsk"+position+" "+ SliderPagerAdapter.morecount);
         if (position==11 & SliderPagerAdapter.morecount!=0) {
-            System.out.println("my pos "+SliderPagerAdapter.morecount);
+            System.out.println("my pos "+ SliderPagerAdapter.morecount);
             return 1;
         }
         else return 0;

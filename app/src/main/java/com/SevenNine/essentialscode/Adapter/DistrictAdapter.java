@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
 import com.SevenNine.essentialscode.Bean.StateBean;
 import com.SevenNine.essentialscode.Fragment.AddNewAddressFragment;
 import com.SevenNine.essentialscode.Fragment.Add_NewBankDetails_Fragment;
@@ -25,7 +24,7 @@ public class DistrictAdapter extends RecyclerView.Adapter<DistrictAdapter.MyStat
 
 
 
-    public DistrictAdapter(List<StateBean> stateBeans,Activity activity) {
+    public DistrictAdapter(List<StateBean> stateBeans, Activity activity) {
         this.stateBeans = stateBeans;
         this.activity=activity;
     }

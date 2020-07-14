@@ -6,18 +6,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#fff"
+    android:background="#f1f1f1"
     android:weightSum="100"
     >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp"
+        android:background="#fff"
         android:orientation="horizontal"
-        android:background="@color/menu_green">
+       >
 
 
 
+<!--
         <LinearLayout
             android:id="@+id/back_feed"
             android:layout_width="50dp"
@@ -35,15 +37,15 @@
                 />
 
         </LinearLayout>
+-->
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Save for Later"
+            android:text="Wishlist"
             android:textSize="20dp"
-            android:textColor="#fff"
-            android:textStyle="bold"
+            android:textColor="#000"
             android:layout_gravity="center"
             android:layout_marginHorizontal="10dp"
             android:id="@+id/toolbar_title" />
@@ -56,6 +58,7 @@
         android:id="@+id/recy_save"
         android:layout_width="match_parent"
         android:background="#f1f1f1"
+        android:layout_marginTop="2dp"
         android:layout_height="wrap_content">
 
     </android.support.v7.widget.RecyclerView>

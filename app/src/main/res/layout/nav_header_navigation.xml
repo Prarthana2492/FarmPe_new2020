@@ -210,7 +210,7 @@
              />
 
          <TextView
-             android:id="@+id/settings"
+             android:id="@+id/sell_on"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:text="Sell on 7-Nine"

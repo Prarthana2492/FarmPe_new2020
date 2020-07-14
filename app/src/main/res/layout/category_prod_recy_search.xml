@@ -8,10 +8,21 @@
     android:orientation="vertical"
     android:background="#f1f1f1"
     android:weightSum="100"
+    android:fitsSystemWindows="true"
     >
+
+   <!-- <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="100"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:padding="9dp"
         android:background="@color/dark_green"
         android:gravity="center_vertical">
@@ -33,14 +44,17 @@
                 android:id="@+id/search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:padding="10dp"
-                android:drawablePadding="10dp"
-                android:drawableLeft="@drawable/ic_search_green"
                 android:background="@drawable/border_empty_curve"
+                android:cursorVisible="true"
+                android:drawableLeft="@drawable/ic_search_green"
+                android:drawablePadding="10dp"
                 android:fontFamily="@font/segoeui"
+                android:padding="10dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:textColor="@color/gray"
-                />
+                android:textColorHint="#9D9D9D"
+                android:textSize="16dp" />
 
         </LinearLayout>
     </LinearLayout>
@@ -50,6 +64,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="#fff"
+        android:visibility="gone"
         android:gravity="center_vertical">
     <TextView
         android:id="@+id/name"
@@ -63,7 +78,10 @@
         android:layout_marginLeft="10dp"
         />
     </LinearLayout>
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </ScrollView>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -114,7 +132,9 @@
 
 
         </LinearLayout>
-
-
-
+       <!-- </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>-->
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
 </LinearLayout>

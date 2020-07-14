@@ -43,7 +43,7 @@ public class PaymentsTabLayout extends Fragment implements TabLayout.OnTabSelect
         View view = inflater.inflate(R.layout.payment_tab_layout, container, false);
 
         Window window = getActivity().getWindow();
-        window.setStatusBarColor(ContextCompat.getColor(getActivity(),R.color.dark_green));
+        window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.dark_green));
 
         //  compose_msg=view.findViewById(R.id.fab__compose);
         tabLayout = view.findViewById(R.id.simpleTabLayout_land);

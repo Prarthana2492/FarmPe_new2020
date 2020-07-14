@@ -1,4 +1,5 @@
 package com.SevenNine.essentialscode.Fragment;
+
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -15,8 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.SevenNine.essentialscode.Adapter.What_Areu_Looking_Adapter;
-import com.SevenNine.essentialscode.R;
 import com.SevenNine.essentialscode.Bean.Sellbean;
+import com.SevenNine.essentialscode.R;
 
 import org.json.JSONArray;
 
@@ -46,7 +47,7 @@ public class What_Are_looking extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.livestock_recy_layout, container, false);
         Window window = getActivity().getWindow();
-        window.setStatusBarColor(ContextCompat.getColor(getActivity(),R.color.dark_green));
+        window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.dark_green));
        /* Status_bar_change_singleton.getInstance().color_change(getActivity());
         HomePage_With_Bottom_Navigation.linear_bottonsheet.setVisibility(View.GONE);
         HomePage_With_Bottom_Navigation.view.setVisibility(View.GONE);*/

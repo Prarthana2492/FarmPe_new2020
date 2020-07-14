@@ -115,7 +115,7 @@ public class ShopbyCategoryAdapter extends RecyclerView.Adapter<ShopbyCategoryAd
                 jsonObject.put("SellingTypeId",products.getId());
 
                 System.out.println("jhfdfdjc111"+jsonObject);
-                Crop_Post.crop_posting(activity, Urls.GetSellingCategoryList, jsonObject, new VoleyJsonObjectCallback() {
+                Crop_Post.lang_posting(activity, Urls.GetSellingCategoryList, jsonObject, new VoleyJsonObjectCallback() {
                     @Override
                     public void onSuccessResponse(JSONObject result) {
 

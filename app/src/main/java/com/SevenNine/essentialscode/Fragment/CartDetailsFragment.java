@@ -70,7 +70,7 @@ public class CartDetailsFragment extends Fragment {
 
 sessionManager=new SessionManager(getActivity());
         Window window = getActivity().getWindow();
-        window.setStatusBarColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+        window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {

@@ -57,7 +57,7 @@ public class Verify_KYC_Fragment extends Fragment {
         getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         Window window = getActivity().getWindow();
-        window.setStatusBarColor(ContextCompat.getColor(getActivity(),R.color.dark_green));
+        window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.dark_green));
         back_feed=view.findViewById(R.id.back_feed);
         select_document_type=view.findViewById(R.id.fullname);
         enter_id_nu=view.findViewById(R.id.relationship);

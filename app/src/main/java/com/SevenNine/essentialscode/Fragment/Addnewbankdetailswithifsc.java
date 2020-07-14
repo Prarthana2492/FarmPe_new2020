@@ -16,7 +16,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
 import com.SevenNine.essentialscode.R;
 
 import org.json.JSONObject;
@@ -49,7 +48,7 @@ public class Addnewbankdetailswithifsc extends Fragment {
 
 
         Window window = getActivity().getWindow();
-        window.setStatusBarColor(ContextCompat.getColor(getActivity(),R.color.dark_green));
+        window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.dark_green));
 
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override

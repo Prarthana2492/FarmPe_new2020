@@ -1,25 +1,23 @@
 package com.SevenNine.essentialscode.Activity;
 
-import android.app.Activity;
 import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.os.Vibrator;
-import android.support.v4.app.Fragment;
+import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -29,51 +27,34 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.SevenNine.essentialscode.R;
-import com.SevenNine.essentialscode.ReadSms;
 import com.SevenNine.essentialscode.SessionManager;
-import com.SevenNine.essentialscode.SmsListener;
 import com.SevenNine.essentialscode.Urls;
-import com.SevenNine.essentialscode.Volly_class.Crop_Post;
 import com.SevenNine.essentialscode.Volly_class.Login_post;
 import com.SevenNine.essentialscode.Volly_class.VoleyJsonObjectCallback;
-import com.chaos.view.PinView;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 
 public class NewEnterOTP extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener {
-    TextView submit;
 
-    PinView otpedittext;
-    public  static String sessionId,otp_get_text,enter_otp_toast,invalid_otp_toast,exceed_toast,another_chance_toast,toast_otp,restr_sucess,toast_invalid_otp,toast_internet,toast_nointernet,exceed,Nflogin,register_txt,login_txt,resend_txt;
-
-    BroadcastReceiver receiver;
-    Vibrator vibe;
-    TextView resendotp,timer,phone_number,otpsenttxt,otp_sent_to,didnt_receive_otp,enter_otp_here;
-    JSONObject lngObject;
-    LinearLayout linearLayout,back_feed;
-    private Context mContext= NewEnterOTP.this;
-    private static final int REQUEST=1;
-    String number;
-    ProgressBar otp_sent;
-    ImageView otpsentimg;
+    LinearLayout sele_loc,selfie_img,back_feed,main_layout;
+    EditText otp1,otp2,otp3,otp4;
+    TextView sent_text,mob_no,register_btn,timer,didnt,otp_send_to,enter_otp_here;
+    ImageView sent_img;
     SessionManager sessionManager;
-    LinearLayout left_arrow,regiter_backgrd;
-    JSONObject verifictn_array;
-    Fragment selectedFragment;
-
-
+    String otp_string;
+    String otp_generated;
+    CountDownTimer cTimer = null;
+    String otp_get;
+    BroadcastReceiver receiver;
+    String toast_internet,toast_nointernet;
     public static boolean connectivity_check;
-
     ConnectivityReceiver connectivityReceiver;
-    @Override
-    protected void onStop()
-    {
-        unregisterReceiver(connectivityReceiver);
-        super.onStop();
-    }
-
-
+    ProgressBar otp_sent;
+    String mob;
+    String IsUserUploaded;
+    public static   JSONObject lngObject;
 
     private void checkConnection() {
         boolean isConnected = ConnectivityReceiver.isConnected();
@@ -86,32 +67,17 @@ public class NewEnterOTP extends AppCompatActivity implements ConnectivityReceiv
         int color=0;
         if (isConnected) {
             if(connectivity_check) {
+
                 message = "Good! Connected to Internet";
                 color = Color.WHITE;
-
-                Toast toast = Toast.makeText(NewEnterOTP.this,toast_internet, Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
-                toast.show();
-
-/*                Toast toast = Toast.makeText(NewEnterOTP.this, toast_internet, Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
-                TextView toastMessage=(TextView) toast.getView().findViewById(android.R.id.message);
-                toastMessage.setTextColor(Color.WHITE); toast.getView().setBackgroundResource(R.drawable.black_curve_background); toast.show();*/
-               /* int duration=1000;
-                Snackbar snackbar = Snackbar.make(linearLayout,toast_internet, duration);
+                int duration=1000;
+                Snackbar snackbar = Snackbar.make(main_layout,message, duration);
                 View sbView = snackbar.getView();
                 TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
-                textView.setBackgroundColor(ContextCompat.getColor(NewEnterOTP.this,R.color.orange));
+                textView.setBackgroundColor(ContextCompat.getColor(NewEnterOTP.this, R.color.orange));
                 textView.setTextColor(Color.WHITE);
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-                    textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                } else {
-                    textView.setGravity(Gravity.CENTER_HORIZONTAL);
-                }
-
                 snackbar.show();
-*/
+
 
                 connectivity_check=false;
             }
@@ -120,20 +86,16 @@ public class NewEnterOTP extends AppCompatActivity implements ConnectivityReceiv
             message = "No Internet Connection";
             color = Color.RED;
 
+            int duration=1000;
             connectivity_check=true;
-            Toast toast = Toast.makeText(NewEnterOTP.this,toast_nointernet, Toast.LENGTH_LONG);
-            toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
-            toast.show();
 
-
-
+            Snackbar.make(findViewById(android.R.id.content),message, duration).show();
         }
     }
 
-
     @Override
     public void onResume() {
-        LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(receiver, new IntentFilter("otp"));
+        LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(receiver, new IntentFilter("otpnumber"));
         super.onResume();
 
         final IntentFilter intentFilter = new IntentFilter();
@@ -145,543 +107,612 @@ public class NewEnterOTP extends AppCompatActivity implements ConnectivityReceiv
 
     }
 
-
-   /* @Override
-    public void onPause() {
-        super.onPause();
-        LocalBroadcastManager.getInstance(getApplicationContext()).unregisterReceiver(receiver);
-    }
-*/
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        checkConnection();
-
         setContentView(R.layout.new_otp);
-        vibe = (Vibrator) getApplication().getSystemService(Context.VIBRATOR_SERVICE);
-
-        otpedittext = findViewById(R.id.pinView);
-        linearLayout = findViewById(R.id.main_layout);
-        submit = findViewById(R.id.submit);
+        otp1 = findViewById(R.id.otp1);
+        otp2 = findViewById(R.id.otp2);
+        otp3 = findViewById(R.id.otp3);
+        otp4 = findViewById(R.id.otp4);
+        otp_sent = findViewById(R.id.otp_sent);
+        sent_img = findViewById(R.id.otpsent);
+        //  progressBar = findViewById(R.id.progressBar_sent);
+        sent_text = findViewById(R.id.otpsenttxt);
+        mob_no = findViewById(R.id.ph_num);
+        register_btn = findViewById(R.id.submit);
         timer = findViewById(R.id.time);
         back_feed = findViewById(R.id.back_feed);
-        phone_number = findViewById(R.id.ph_num);
-        otp_sent = findViewById(R.id.otp_sent);
-        otpsentimg = findViewById(R.id.otpsent);
-        otpsenttxt = findViewById(R.id.otpsenttxt);
-        otp_sent_to = findViewById(R.id.otp_sento);
-        didnt_receive_otp = findViewById(R.id.did_receive);
+        main_layout = findViewById(R.id.main_layout);
+        didnt = findViewById(R.id.did_receive);
+        otp_send_to = findViewById(R.id.otp_sento);
         enter_otp_here = findViewById(R.id.etr_otp_here);
-        regiter_backgrd = findViewById(R.id.register_bgrd);
-        sessionId= getIntent().getStringExtra("otpnumber");
+        // submit=findViewById(R.id.submit);
+        // VerifyAadhar.this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+        getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        sessionManager=new SessionManager(this);
 
-        sessionManager = new SessionManager(this);
+        otp_get= getIntent().getStringExtra("otpnumber");
+        // otp1.setText("1");
+        mob = NewSignUpActivity.contact;
 
-      /*  if(getIntent().getStringExtra("FromLogin").equals("flogin")){
+        main_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                View view1 = NewEnterOTP.this.getCurrentFocus();
+                if (view1 != null) {
+                    InputMethodManager inputManager = (InputMethodManager) NewEnterOTP.this.getSystemService(NewEnterOTP.this.INPUT_METHOD_SERVICE);
+                    inputManager.hideSoftInputFromWindow(view1.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                }
+            }
+        });
+        try {
 
-            submit.setText("Login");
-        }
-
-*/
-
-
-        //    sessionManager.checkRegister();
-
-
-
-        /*try {
             lngObject = new JSONObject(sessionManager.getRegId("language"));
 
-            otp_sent_to.setText(lngObject.getString("OTPSentto"));
-            otpsenttxt.setText(lngObject.getString("OTPSent").replace("\n",""));
-            didnt_receive_otp.setText(lngObject.getString("DidntreceiveOTP"));
+            otp_send_to.setText(lngObject.getString("OTPSentto"));
             enter_otp_here.setText(lngObject.getString("EnterOTPhere"));
-            enter_otp_toast =(lngObject.getString("EntertheOTP"));
-            invalid_otp_toast =(lngObject.getString("InvalidOTP"));
-            another_chance_toast =(lngObject.getString("Youhaveanother1chancetosendOTP"));
-            exceed_toast =(lngObject.getString("Youhaveexceededthelimitofresendingotp"));
-            register_txt =(lngObject.getString("REGISTER"));
-            login_txt =(lngObject.getString("LOGIN"));
-            resend_txt =(lngObject.getString("Resend"));
+            didnt.setText(lngObject.getString("DidntreceiveOTP"));
+            sent_text.setText(lngObject.getString("OTPSent"));
 
 
         } catch (JSONException e) {
             e.printStackTrace();
-        }*/
+        }
+        back_feed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(NewEnterOTP.this, NewSignUpActivity.class);
+                startActivity(intent);
+            }
+        });
+        if (getIntent().getStringExtra("Login")!=null){
+            System.out.println("llllllogiiinn");
+            // register_btn.setText("Login");
+            try {
 
+                lngObject = new JSONObject(sessionManager.getRegId("language"));
 
+                register_btn.setText(lngObject.getString("LOGIN"));
 
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
+        }else{
+            // register_btn.setText("Register");
+            try {
 
-        number= sessionManager.getRegId("phone");
-        phone_number.setText(number);
+                lngObject = new JSONObject(sessionManager.getRegId("language"));
 
-        setupUI(linearLayout);
+                register_btn.setText(lngObject.getString("REGISTER"));
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        mob_no.setText(sessionManager.getRegId("phone"));
+        System.out.println("uuuuuuuuuu"+sessionManager.getRegId("phone"));
+        /*sent_img.setVisibility(View.VISIBLE);
+        sent_text.setVisibility(View.VISIBLE);*/
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                otpsentimg.setVisibility(View.VISIBLE);
-                otpsenttxt.setVisibility(View.VISIBLE);
+                sent_img.setVisibility(View.VISIBLE);
+                sent_text.setVisibility(View.GONE);
                 otp_sent.setVisibility(View.GONE);
-            }
-        }, 7000);
-
-
-
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                otpsentimg.setVisibility(View.GONE);
-                otpsenttxt.setVisibility(View.GONE);
-                otp_sent.setVisibility(View.GONE);
-            }
-        }, 9000);
-
-
-
-        new CountDownTimer(30000, 1000) {
-            public void onTick(long millisUntilFinished) {
-                timer.setText("00 :" + millisUntilFinished / 1000);
-                String timer_limit=""+millisUntilFinished/1000;
-                System.out.println("dhsjn"+timer_limit);
-                if (timer_limit.length()==1){
-
-                    timer.setText("00:"+"0"+millisUntilFinished / 1000);
-
-                }
-
-                /*if(millisUntilFinished == 1)
-                {
-
+                if (otp_sent.getVisibility()==View.GONE){
+                    sent_img.setVisibility(View.VISIBLE);
+                    sent_text.setVisibility(View.VISIBLE);
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            timer.setText("( 00 )");
+                            sent_text.setVisibility(View.GONE);
+                            sent_img.setVisibility(View.GONE);
                         }
                     }, 1000);
-                }*/
+                }
+            }
+        }, 3000);
+
+
+        cTimer= new CountDownTimer(30000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                timer.setText("00:"+millisUntilFinished / 1000);
+                String timer_limit=""+millisUntilFinished/1000;
+                if (timer_limit.length()==1){
+                    timer.setText("00:"+"0"+millisUntilFinished / 1000);
+
+                }
+                if (timer.getText().toString().equals("00:00")){
+                    otp1.setFocusable(false);
+                    otp2.setFocusable(false);
+                    otp3.setFocusable(false);
+                    otp4.setFocusable(false);
+                }
+                //here you can have your logic to set text to edittext
+            }
+
+            public void onFinish() {
+                if (otp1.getText().toString().equals("")||otp2.getText().toString().equals("")||otp3.getText().toString().equals("")||otp4.getText().toString().equals("")){
+                    timer.setText("RESEND");
+                    timer.setBackgroundResource(R.drawable.border_filled_red_time);
+                    if (timer.getText().toString().equals("RESEND")){
+                       /* otp_sent.setVisibility(View.INVISIBLE);
+                        sent_img.setVisibility(View.INVISIBLE);
+                        sent_text.setVisibility(View.INVISIBLE);*/
+                    }
+                }else{
+
+                }
 
             }
-            public void onFinish() {
-                timer.setText("Resend");
-                timer.setBackgroundResource(R.drawable.border_filled_red_time);
-                timer.setOnClickListener(new View.OnClickListener() {
+
+        }.start();
+
+otp1.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        otp1.setBackgroundResource(R.drawable.border_green_empty);
+        otp2.setBackgroundResource(R.drawable.border_grey_filled);
+        otp3.setBackgroundResource(R.drawable.border_grey_filled);
+        otp4.setBackgroundResource(R.drawable.border_grey_filled);
+
+    }
+});
+        otp2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                otp2.setBackgroundResource(R.drawable.border_green_empty);
+                otp1.setBackgroundResource(R.drawable.border_grey_filled);
+                otp3.setBackgroundResource(R.drawable.border_grey_filled);
+                otp4.setBackgroundResource(R.drawable.border_grey_filled);
+
+            }
+        });
+
+        otp3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                otp3.setBackgroundResource(R.drawable.border_green_empty);
+                otp1.setBackgroundResource(R.drawable.border_grey_filled);
+                otp2.setBackgroundResource(R.drawable.border_grey_filled);
+                otp4.setBackgroundResource(R.drawable.border_grey_filled);
+
+            }
+        });
+
+        otp4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                otp4.setBackgroundResource(R.drawable.border_green_empty);
+                otp1.setBackgroundResource(R.drawable.border_grey_filled);
+                otp2.setBackgroundResource(R.drawable.border_grey_filled);
+                otp3.setBackgroundResource(R.drawable.border_grey_filled);
+
+            }
+        });
+
+
+        otp1.addTextChangedListener(new TextWatcher() {
+            public void afterTextChanged(Editable s) {
+                otp1.setBackgroundResource(R.drawable.border_green_empty);
+                if (s.length() ==1) {
+                    otp1.clearFocus();
+                    otp1.setBackgroundResource(R.drawable.border_grey_filled);
+                    otp3.setBackgroundResource(R.drawable.border_grey_filled);
+                    otp4.setBackgroundResource(R.drawable.border_grey_filled);
+                    otp2.setBackgroundResource(R.drawable.border_green_empty);
+
+                    otp2 .requestFocus();
+                }
+
+            }
+
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before,
+                                      int count) {
+            }
+        });
+
+        otp2.addTextChangedListener(new TextWatcher() {
+            public void afterTextChanged(Editable s) {
+                if (s.length() == 1) {
+                    otp2.clearFocus();
+                    otp2.setBackgroundResource(R.drawable.border_grey_filled);
+                    otp1.setBackgroundResource(R.drawable.border_grey_filled);
+                    otp4.setBackgroundResource(R.drawable.border_grey_filled);
+                    otp3.setBackgroundResource(R.drawable.border_green_empty);
+
+                    otp3.requestFocus();
+                }
+
+            }
+
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before,
+                                      int count) {
+
+            }
+        });
+        otp3.addTextChangedListener(new TextWatcher() {
+            public void afterTextChanged(Editable s) {
+                if (s.length() == 1) {
+                    otp3.clearFocus();
+                    otp3.setBackgroundResource(R.drawable.border_grey_filled);
+                    otp2.setBackgroundResource(R.drawable.border_grey_filled);
+                    otp1.setBackgroundResource(R.drawable.border_grey_filled);
+                    otp4.setBackgroundResource(R.drawable.border_green_empty);
+
+                    otp4.requestFocus();
+                }
+
+            }
+
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before,
+                                      int count) {
+
+            }
+        });
+
+        otp4.addTextChangedListener(new TextWatcher() {
+            public void afterTextChanged(Editable s) {
+                if (s.length() == 1) {
+                    otp4.clearFocus();
+                    otp1.setBackgroundResource(R.drawable.border_grey_filled);
+                    otp2.setBackgroundResource(R.drawable.border_grey_filled);
+                    otp3.setBackgroundResource(R.drawable.border_grey_filled);
+                    otp4.setBackgroundResource(R.drawable.border_grey_filled);
+
+                    otp1.clearFocus();
+                    // otp1.setFocusable(false);
+                    otp1.setCursorVisible(false);
+                    // sent_img.setVisibility(View.INVISIBLE);
+                    // sent_text.setVisibility(View.INVISIBLE);
+                    otp_string=otp1.getText().toString()+otp2.getText().toString()+otp3.getText().toString()+otp4.getText().toString();
+                    register_btn.setBackgroundResource(R.drawable.border_filled_red);
+
+                }
+
+            }
+
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before,
+                                      int count) {
+
+            }
+        });
+
+
+        timer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Handler().postDelayed(new Runnable() {
                     @Override
-                    public void onClick(View v) {
-                        if (timer.getText().toString().equals("Resend")){
-                            timer.setBackgroundResource(R.drawable.border_filled_gray_time);
-                        }
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                otpsentimg.setVisibility(View.VISIBLE);
-                                otpsenttxt.setVisibility(View.VISIBLE);
-                                otp_sent.setVisibility(View.GONE);
-                            }
-                        }, 7000);
-
-
-
-
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                otpsentimg.setVisibility(View.GONE);
-                                otpsenttxt.setVisibility(View.GONE);
-                                otp_sent.setVisibility(View.GONE);
-                            }
-                        }, 9000);
-
-
-
-                        new CountDownTimer(30000, 1000) {
-                            public void onTick(long millisUntilFinished) {
-                                timer.setText("00 :" + millisUntilFinished / 1000);
-                                String timer_limit=""+millisUntilFinished/1000;
-                                System.out.println("dhsjn"+timer_limit);
-                                if (timer_limit.length()==1){
-
-                                    timer.setText("00:"+"0"+millisUntilFinished / 1000);
-
+                    public void run() {
+                        sent_img.setVisibility(View.VISIBLE);
+                        sent_text.setVisibility(View.GONE);
+                        otp_sent.setVisibility(View.GONE);
+                        if (otp_sent.getVisibility()==View.GONE){
+                            sent_img.setVisibility(View.VISIBLE);
+                            sent_text.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    sent_text.setVisibility(View.GONE);
+                                    sent_img.setVisibility(View.GONE);
                                 }
+                            }, 1000);
+                        }
+                    }
+                }, 3000);
 
-                                /*if(millisUntilFinished == 1)
-                                {
+                if (timer.getText().toString().equals("RESEND")) {
+                    sent_img.setVisibility(View.VISIBLE);
+                    sent_text.setVisibility(View.VISIBLE);
+                    otp_sent.setVisibility(View.GONE);
+                    otp1.setFocusableInTouchMode(true);
+                    otp1.setFocusable(true);
+                    otp1.setEnabled(true);
+                    otp2.setFocusableInTouchMode(true);
+                    otp2.setFocusable(true);
+                    otp2.setEnabled(true);
+                    otp3.setFocusableInTouchMode(true);
+                    otp3.setFocusable(true);
+                    otp3.setEnabled(true);
+                    otp4.setFocusableInTouchMode(true);
+                    otp4.setFocusable(true);
+                    otp4.setEnabled(true);
+                   /* otp2.setEnabled(true);
+                    otp3.setEnabled(true);
+                    otp4.setEnabled(true);*/
+                    cTimer= new CountDownTimer(30000, 1000) {
 
-                                    new Handler().postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            timer.setText("( 00 )");
-                                        }
-                                    }, 1000);
-                                }*/
+                        public void onTick(long millisUntilFinished) {
+                            timer.setBackgroundResource(R.drawable.border_filled_red_time);
+
+                            timer.setText("00:"+millisUntilFinished / 1000);
+                            String timer_limit=""+millisUntilFinished/1000;
+                            if (timer_limit.length()==1){
+
+                                timer.setText("00:"+"0"+millisUntilFinished / 1000);
 
                             }
-                            public void onFinish() {
-                                timer.setText("Resend");
+                            if (timer.getText().toString().equals("00:00")){
+                                otp1.setFocusable(false);
+                                otp2.setFocusable(false);
+                                otp3.setFocusable(false);
+                                otp4.setFocusable(false);
+                            }
+                            //here you can have your logic to set text to edittext
+                        }
+
+                        public void onFinish() {
+                            if (otp1.getText().toString().equals("")||otp2.getText().toString().equals("")||otp3.getText().toString().equals("")||otp4.getText().toString().equals("")){
+                                timer.setText("RESEND");
                                 timer.setBackgroundResource(R.drawable.border_filled_red_time);
+                                if (timer.getText().toString().equals("RESEND")){
+                                   /* otp_sent.setVisibility(View.INVISIBLE);
+                                    sent_img.setVisibility(View.INVISIBLE);
+                                    sent_text.setVisibility(View.INVISIBLE);*/
+                                }
+                            }else{
+
                             }
 
+                        }
 
                     }.start();
 
-                        try{
-                            JSONObject postjsonObject = new JSONObject();
-                            postjsonObject.put("PhoneNo", phone_number.getText().toString() );
-                            System.out.println("rrrrrrrrrrrrrrrrrrrr" + postjsonObject);
+                    try {
+                        JSONObject postjsonObject = new JSONObject();
+                        postjsonObject.put("PhoneNo", mob_no.getText().toString());
+                        System.out.println("rrrrrrrrrrrrrrrrrrrr" + postjsonObject);
 
-                            Login_post.login_posting(NewEnterOTP.this, Urls.ResendOTP, postjsonObject, new VoleyJsonObjectCallback() {
-                                @Override
-                                public void onSuccessResponse(JSONObject result) {
+                        Login_post.login_posting(NewEnterOTP.this, Urls.ResendOTP, postjsonObject, new VoleyJsonObjectCallback() {
+                            @Override
+                            public void onSuccessResponse(JSONObject result) {
 
-                                    System.out.println("kkkkkkkkkkkkkkkkkkkkkkkk" + result.toString());
+                                System.out.println("kkkkkkkkkkkkkkkkkkkkkkkk" + result.toString());
 
-                                    try{
+                                try {
 
-                                        String  Otp = result.getString("OTP");
-                                        sessionId=Otp;
-                                        String  Message = result.getString("Message");
-                                        int  status= result.getInt("Status");
+                                    String Otp = result.getString("OTP");
+                                    otp_get = Otp;
+                                    String Message = result.getString("Message");
+                                    int status = result.getInt("Status");
 
-                                        if (status==2){
-                                            Toast toast = Toast.makeText(NewEnterOTP.this,exceed_toast, Toast.LENGTH_LONG);
-                                            toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
-                                            toast.show();
-
-                                            /*Toast toast = Toast.makeText(NewEnterOTP.this, exceed_toast, Toast.LENGTH_LONG);
-                                            toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
-                                            TextView toastMessage=(TextView) toast.getView().findViewById(android.R.id.message);
-                                            toastMessage.setTextColor(Color.WHITE); toast.getView().setBackgroundResource(R.drawable.black_curve_background); toast.show();*/
-
+                                    if (status == 2) {
+                                        Snackbar snackbar = Snackbar
+                                                .make(main_layout, Message, Snackbar.LENGTH_LONG);
+                                        //snackbar.setActionTextColor(R.color.colorAccent);
+                                        View snackbarView = snackbar.getView();
+                                        TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                                        tv.setBackgroundColor(ContextCompat.getColor(NewEnterOTP.this, R.color.orange));
+                                        tv.setTextColor(Color.WHITE);
+                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                            tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                                        } else {
+                                            tv.setGravity(Gravity.CENTER_HORIZONTAL);
                                         }
-
-                                        else {
-                                            Toast toast = Toast.makeText(NewEnterOTP.this,another_chance_toast, Toast.LENGTH_LONG);
-                                            toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
-                                            toast.show();
-
-                                          /*  Toast toast = Toast.makeText(NewEnterOTP.this, another_chance_toast, Toast.LENGTH_LONG);
-                                            toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
-                                            TextView toastMessage=(TextView) toast.getView().findViewById(android.R.id.message);
-                                            toastMessage.setTextColor(Color.WHITE); toast.getView().setBackgroundResource(R.drawable.black_curve_background); toast.show();*/
-                                        }
-                                    }catch (Exception e) {
-                                        e.printStackTrace();
+                                        snackbar.show();
+                                    } else {
+                                        // Toast.makeText(VerifyOTP.this, Message, Toast.LENGTH_LONG).show();
                                     }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
                                 }
-                            });
+                            }
+                        });
 
-                        }catch (Exception e){
-                            e.printStackTrace();
-                        }
-
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                });
-
-
-            }
-        }.start();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        System.out.println("qwertyuio"+sessionId);
-
-
-        linearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                InputMethodManager inputManager = (InputMethodManager)
-                        getSystemService(Context.INPUT_METHOD_SERVICE);
-
-                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
-                        InputMethodManager.HIDE_NOT_ALWAYS);
+                }
             }
         });
 
-
-
-        ReadSms.bindListener(new SmsListener() {
+       /* ReadSms.bindListener(new SmsListener() {
             @Override
             public void messageReceived(String messageText) {
                 System.out.println("llllllllllllllllllllllllllllllllllllllllllllotp"+messageText);
+               // didnt.setText(messageText);
+                otp_string=messageText;
+                System.out.println("auto_otppp"+otp_string);
+                System.out.println("otp1text"+otp_string.charAt(0));
 
-                otpedittext.setText(messageText);
-            }
+               *//* otp1.setFocusable(false);
+                otp2.setFocusable(false);
+                otp3.setFocusable(false);
+                otp4.setFocusable(false);*//*
+
+                char ch1 =otp_string.charAt(0);
+                char ch2 =otp_string.charAt(1);
+                char ch3 =otp_string.charAt(2);
+                char ch4 =otp_string.charAt(3);
+                otp1.setText(String.valueOf(ch1));
+                otp2.setText(String.valueOf(ch2));
+                otp3.setText(String.valueOf(ch3));
+                otp4.setText(String.valueOf(ch4));
+
+                if (!(otp4.getText().toString().equals(""))) {
+                    Intent intent=new Intent(VerifyOTP.this,VerifyAadhar.class);
+                    startActivity(intent);
+                }
+
+                }
         });
+
 
         receiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                if (intent.getAction().equalsIgnoreCase("otp")) {
+                if (intent.getAction().equalsIgnoreCase("otpnumber")) {
                     final String message = intent.getStringExtra("message");
-                    // otpedittext.setText(message);
+                    System.out.println("llllllllllllllllllllllllllllllllllllplllllllllotppppppppp");
+
                 }
             }
-        };
-
-        back_feed.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent=new Intent(NewEnterOTP.this,NewSignUpActivity.class);
-                startActivity(intent);
-
-            }
-        });
-
-       /* if(getIntent().getExtras().getString("register_status").equals("login_btn")){
-
-            submit.setText(login_txt);
+        };*/
 
 
-        }else if(getIntent().getExtras().getString("register_status").equals("register_btn")){
-
-            submit.setText(register_txt);
-        }*/
-
-
-        otpedittext.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-                if(otpedittext.getText().toString().equals("")){
-
-                    otp_sent.setVisibility(View.GONE);
-                    submit.setBackgroundResource(R.drawable.grey_curved_border);
-
-                }else if(!(otpedittext.getText().toString().equals(sessionId))){
-                    otp_sent.setVisibility(View.GONE);
-                    submit.setBackgroundResource(R.drawable.grey_curved_border);
-                } else {
-                    submit.setBackgroundResource(R.drawable.border_filled_red);
-                    // otp_sent.setVisibility(View.VISIBLE);
-                }
-            }
-        });
-
-
-
-       /* otpedittext.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                if (otpedittext.length()==4){
-                    View view1 = NewEnterOTP.this.getCurrentFocus();
-                    if (view1 != null) {
-                        InputMethodManager inputManager = (InputMethodManager) getApplicationContext().getSystemService(getApplicationContext().INPUT_METHOD_SERVICE);
-                        inputManager.hideSoftInputFromWindow(view1.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-                    }
-                    VerifyOTP();
-                }
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });*/
-
-
-        regiter_backgrd.setOnClickListener(new View.OnClickListener() {
+        register_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                otp_get_text=otpedittext.getText().toString();
-                System.out.println("entered_otp"+otp_get_text);
 
-
-                if (otp_get_text.equals("")){
-                    Toast toast = Toast.makeText(NewEnterOTP.this,enter_otp_toast, Toast.LENGTH_LONG);
-                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
-                    toast.show();
-                    /*Toast toast = Toast.makeText(NewEnterOTP.this, enter_otp_toast, Toast.LENGTH_LONG);
-                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
-                    TextView toastMessage=(TextView) toast.getView().findViewById(android.R.id.message);
-                    toastMessage.setTextColor(Color.WHITE); toast.getView().setBackgroundResource(R.drawable.black_curve_background); toast.show();*/
-
+                if (otp_string==null){
+                    Snackbar snackbar = Snackbar
+                            .make(main_layout,"Please enter 4 digit OTP", Snackbar.LENGTH_LONG);
+                    View snackbarView = snackbar.getView();
+                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                    tv.setBackgroundColor(ContextCompat.getColor(NewEnterOTP.this, R.color.orange));
+                    tv.setTextColor(Color.WHITE);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                    } else {
+                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                    }
+                    snackbar.show();
                 }
 
-                else if (otp_get_text.equals(sessionId)){
-
-
-
-                    if(getIntent().getExtras().getString("register_status").equals("login_btn")){
-
-                        Intent intent = new Intent(NewEnterOTP.this,LandingPageActivity.class);
-                        startActivity(intent);
-
-                    }else if(getIntent().getExtras().getString("register_status").equals("register_btn")){
-
-                        Intent intent = new Intent(NewEnterOTP.this,LandingPageActivity.class);
-                        startActivity(intent);
-
+                else if (!(otp_string.equals(otp_get))){
+                   /* Snackbar snackbar = Snackbar
+                            .make(main_layout,"Invalid OTP", Snackbar.LENGTH_LONG);
+                    View snackbarView = snackbar.getView();
+                    TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                    tv.setBackgroundColor(ContextCompat.getColor(VerifyOTP.this, R.color.orange));
+                    tv.setTextColor(Color.WHITE);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                    } else {
+                        tv.setGravity(Gravity.CENTER_HORIZONTAL);
                     }
+                    snackbar.show();*/
 
-                   /* Intent intent=new Intent(NewEnterOTP.this,FirmShopDetailsActivity.class);
-                    startActivity(intent);
-                    sessionManager.createLoginSession(NewSignUpActivity.contact);*/
+                    Toast toast= Toast.makeText(getApplicationContext(),
+                            "Invalid OTP", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 0);
+                    toast.show();
 
+              /*      LayoutInflater inflater = getLayoutInflater();
+                    View layout = inflater.inflate(R.layout.toast_layout,
+                            (ViewGroup) findViewById(R.id.toast_text));
 
+// create a new Toast using context
+                    TextView toast_text=layout.findViewById(R.id.toast_text);
+                    toast_text.setText("Invalid OTP");
+                    Toast toast = new Toast(getApplicationContext());
+                    toast.setDuration(Toast.LENGTH_LONG); // set the duration for the Toast
+                    toast.setView(layout); // set the inflated layout
+                    toast.show(); // display the custom Toast*/
+                    otp1.setText("");
+                    otp2.setText("");
+                    otp3.setText("");
+                    otp4.setText("");
 
                 }else{
-                    Toast toast = Toast.makeText(NewEnterOTP.this,invalid_otp_toast, Toast.LENGTH_LONG);
-                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
-                    toast.show();
+                    if (getIntent().getStringExtra("Login")!=null){
+                        System.out.println("llllllogiiinn");
+                        verify_status();
 
-                   /* Toast toast = Toast.makeText(NewEnterOTP.this, invalid_otp_toast, Toast.LENGTH_LONG);
-                    toast.setGravity(Gravity.TOP|Gravity.CENTER,0,0);
-                    TextView toastMessage=(TextView) toast.getView().findViewById(android.R.id.message);
-                    toastMessage.setTextColor(Color.WHITE); toast.getView().setBackgroundResource(R.drawable.black_curve_background); toast.show();*/
+
+                    }else{
+                        Intent intent=new Intent(NewEnterOTP.this,LandingPageActivity.class);
+                        startActivity(intent);
+                    }
+
                 }
-            }
 
+            }
         });
+
     }
 
-    private void Verification() {
+    private void verify_status() {
 
-        try{
+        try {
 
             JSONObject jsonObject = new JSONObject();
+
             jsonObject.put("UserId", sessionManager.getRegId("userId"));
 
+            System.out.println("alldetailssss"+jsonObject);
 
-            Crop_Post.crop_posting(this, Urls.GetUserVerificationStatus, jsonObject, new VoleyJsonObjectCallback() {
+
+            Login_post.login_posting(NewEnterOTP.this, Urls.GetUserVerificationStatus, jsonObject, new VoleyJsonObjectCallback() {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
+                    System.out.println("111111user" + result);
+                    JSONObject json1 = new JSONObject();
 
-                    System.out.println("GGetUserVerificationStatussssssssssssss"+result);
+                    try {
+                        json1 = result.getJSONObject("VerificationStatus");
 
-                    try{
+                        IsUserUploaded = json1.getString("IsUserUploaded");
 
-                        verifictn_array = result.getJSONObject("VerificationStatus");
-
-
-                        Boolean user_status =verifictn_array.getBoolean("IsUserUploaded");
-
-
-                        if(user_status.equals(true)){
-
-                            sessionManager.createLoginSession(sessionManager.getRegId("phone"));
-                            Intent intent=new Intent(NewEnterOTP.this, LandingPageActivity.class);
+                        System.out.println("isssssuppploadeddd"+IsUserUploaded);
+                        if (IsUserUploaded.equals(true)){
+                            Intent intent=new Intent(NewEnterOTP.this,LandingPageActivity.class);
+                            intent.putExtra("Loginsuccess","Login_success");
                             startActivity(intent);
-
                         }else{
-                            sessionManager.createLoginSession(sessionManager.getRegId("phone"));
-                            Intent intent=new Intent(NewEnterOTP.this,Extra_Activity.class);
+                            Intent intent = new Intent(NewEnterOTP.this, Extra_Activity.class);
+                            // intent.putExtra("verify_aadhar", "not_verified");
                             startActivity(intent);
-
-                            // progress.setText("In Progress");
 
                         }
 
 
-
-
-                    }catch (Exception e){
+                    } catch (JSONException e) {
                         e.printStackTrace();
                     }
+
                 }
             });
 
-//
-
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
-
-
     @Override
     public void onBackPressed() {
-
-
-        Intent intent=new Intent(NewEnterOTP.this,NewSignUpActivity.class);
+        Intent intent=new Intent(NewEnterOTP.this, NewSignUpActivity.class);
         startActivity(intent);
-
     }
-
-
-
-    public void setupUI(View view) {
-
-
-        if(!(view instanceof EditText)) {
-
-            view.setOnTouchListener(new View.OnTouchListener() {
-
-                public boolean onTouch(View v, MotionEvent event) {
-                    hideSoftKeyboard(NewEnterOTP.this);
-                    return false;
-                }
-
-            });
-        }
-
-
-        if (view instanceof ViewGroup) {
-
-            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
-
-                View innerView = ((ViewGroup) view).getChildAt(i);
-
-                setupUI(innerView);
-            }
-        }
+    @Override
+    protected void onStop()
+    {
+        unregisterReceiver(connectivityReceiver);
+        super.onStop();
     }
-
-    public static void hideSoftKeyboard(Activity activity) {
-
-        InputMethodManager inputManager = (InputMethodManager)
-                activity.getSystemService(
-                        Context.INPUT_METHOD_SERVICE);
-        View focusedView = activity.getCurrentFocus();
-
-        if (focusedView != null) {
-
-            try{
-                assert inputManager != null;
-                inputManager.hideSoftInputFromWindow(focusedView.getWindowToken(),
-                        InputMethodManager.HIDE_NOT_ALWAYS);
-            }catch(AssertionError e){
-                e.printStackTrace();
-            }
-        }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        cTimer.cancel();
     }
-
 
     @Override
     public void onNetworkConnectionChanged(boolean isConnected) {
         showSnack(isConnected);
 
     }
+
 }

@@ -115,7 +115,7 @@ public class AaSettingFragment extends Fragment {
        // loans_lay=view.findViewById(R.id.loans_lay);
 
         Window window = getActivity().getWindow();
-        window.setStatusBarColor(ContextCompat.getColor(getActivity(),R.color.dark_green));
+        window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.dark_green));
         sessionManager=new SessionManager(getActivity());
         backfeed.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -781,7 +781,7 @@ System.out.println("ennnnnnnterrrrr");
 
 
     private void uploadImage(final Bitmap bitmap){
-        VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST,Urls.Update_Profile_Details,
+        VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, Urls.Update_Profile_Details,
                 new Response.Listener<NetworkResponse>(){
                     @Override
                     public void onResponse(NetworkResponse response) {
@@ -836,7 +836,7 @@ System.out.println("ennnnnnnterrrrr");
                 return params;
             }
             @Override
-            protected Map<String, VolleyMultipartRequest.DataPart> getByteData() {
+            protected Map<String, DataPart> getByteData() {
                 Map<String, DataPart> params = new HashMap<>();
                 long imagename = System.currentTimeMillis();
                 // params.put("File", new DataPart(imagename + ".png", getFileDataFromDrawable(bitmap)));

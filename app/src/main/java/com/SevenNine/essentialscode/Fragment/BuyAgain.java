@@ -69,7 +69,7 @@ public class BuyAgain extends Fragment {
 
         sessionManager=new SessionManager(getActivity());
         Window window = getActivity().getWindow();
-        window.setStatusBarColor(ContextCompat.getColor(getActivity(),R.color.dark_green));
+        window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.dark_green));
        /* back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

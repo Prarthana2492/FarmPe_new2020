@@ -11,13 +11,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
 import com.SevenNine.essentialscode.Bean.ListBean2;
 import com.SevenNine.essentialscode.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
-
 
 import java.util.List;
 
@@ -143,9 +141,9 @@ public class CartSliderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
         // Just as an example, return 0 or 2 depending on position
         // Note that unlike in ListView adapters, types don't have to be contiguous
-        System.out.println("jhdjsk"+position+" "+SliderPagerAdapter.morecount);
+        System.out.println("jhdjsk"+position+" "+ SliderPagerAdapter.morecount);
         if (position==11 & SliderPagerAdapter.morecount!=0) {
-            System.out.println("my pos "+SliderPagerAdapter.morecount);
+            System.out.println("my pos "+ SliderPagerAdapter.morecount);
             return 1;
         }
         else return 0;

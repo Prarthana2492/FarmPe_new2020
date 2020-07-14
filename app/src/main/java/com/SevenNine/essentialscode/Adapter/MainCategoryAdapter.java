@@ -175,13 +175,13 @@ public class MainCategoryAdapter extends RecyclerView.Adapter<MainCategoryAdapte
             GridLayoutManager mLayoutManager_farm = new GridLayoutManager(activity, 1, GridLayoutManager.HORIZONTAL, false);
             holder.recyclerView_second.setLayoutManager(mLayoutManager_farm);
             holder.recyclerView_second.setItemAnimator(new DefaultItemAnimator());
-            Sellbean1 bean12 = new Sellbean1("Fortune Sunflower Oil","1",R.drawable.veg,"1ltr","₹100","₹120","");
+            Sellbean1 bean12 = new Sellbean1("Fortune Sunflower Oil","1", R.drawable.veg,"1ltr","₹100","₹120","");
             newOrderBeansList_subcat.add(bean12);
-            Sellbean1 bean13= new Sellbean1("Sunpure Cooking Cooking Oil","1",R.drawable.veg,"1ltr","₹100","₹120","");
+            Sellbean1 bean13= new Sellbean1("Sunpure Cooking Cooking Oil","1", R.drawable.veg,"1ltr","₹100","₹120","");
             newOrderBeansList_subcat.add(bean13);
-            Sellbean1 bean14 = new Sellbean1("Gold Winner Cooking Oil","1",R.drawable.veg,"1ltr","₹100","₹120","");
+            Sellbean1 bean14 = new Sellbean1("Gold Winner Cooking Oil","1", R.drawable.veg,"1ltr","₹100","₹120","");
             newOrderBeansList_subcat.add(bean14);
-            Sellbean1 bean15 = new Sellbean1("Gold Winner Cooking Oil","1",R.drawable.veg,"1ltr","₹100","₹120","");
+            Sellbean1 bean15 = new Sellbean1("Gold Winner Cooking Oil","1", R.drawable.veg,"1ltr","₹100","₹120","");
             newOrderBeansList_subcat.add(bean15);
             vegAdapter = new VegSectionAdapter(activity, newOrderBeansList_subcat);
             holder.recyclerView_second.setAdapter(vegAdapter);
@@ -259,11 +259,11 @@ public class MainCategoryAdapter extends RecyclerView.Adapter<MainCategoryAdapte
             GridLayoutManager mLayoutManager_farm = new GridLayoutManager(activity, 1, GridLayoutManager.HORIZONTAL, false);
             holder.recyclerView_second.setLayoutManager(mLayoutManager_farm);
             holder.recyclerView_second.setItemAnimator(new DefaultItemAnimator());
-            Sellbean1 bean8 = new Sellbean1("Daawat Rozana\nGold Basmati Rice\n(Medium Grain)","1",R.drawable.veg,"(5 kg)","₹100","₹120","");
+            Sellbean1 bean8 = new Sellbean1("Daawat Rozana\nGold Basmati Rice\n(Medium Grain)","1", R.drawable.veg,"(5 kg)","₹100","₹120","");
             newOrderBeansList_subcat.add(bean8);
-            Sellbean1 bean9 = new Sellbean1("Exo Touch & Shine\nRound Dishwash\nBar","1",R.drawable.veg,"(1.4 kg, Pack of 2)","₹100","₹120","");
+            Sellbean1 bean9 = new Sellbean1("Exo Touch & Shine\nRound Dishwash\nBar","1", R.drawable.veg,"(1.4 kg, Pack of 2)","₹100","₹120","");
             newOrderBeansList_subcat.add(bean9);
-            Sellbean1 bean10 = new Sellbean1("Exo Touch & Shine\nRound Dishwash\nBar","1",R.drawable.veg,"(1.4 kg, Pack of 2)","₹100","₹120","");
+            Sellbean1 bean10 = new Sellbean1("Exo Touch & Shine\nRound Dishwash\nBar","1", R.drawable.veg,"(1.4 kg, Pack of 2)","₹100","₹120","");
             newOrderBeansList_subcat.add(bean10);
             /*Sellbean1 bean111 = new Sellbean1("Exo Touch & Shine\nRound Dishwash\nBar","1",R.drawable.veg,"(1.4 kg, Pack of 2)","₹100","₹120","");
             newOrderBeansList_subcat.add(bean111);*/

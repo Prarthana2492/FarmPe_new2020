@@ -36,7 +36,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 
-
 import static android.app.Activity.RESULT_OK;
 import static android.content.ContentValues.TAG;
 
@@ -100,7 +99,7 @@ public class PayUMoneyMainActivity extends Fragment {
             builder.setAmount(String.valueOf(strtext))
                     .setTxnId(System.currentTimeMillis() + "")                                             // Transaction ID
                     .setPhone(sessionManager.getRegId("phone"))                                           // User Phone number
-                    .setProductName(CurrentLocation.latitude+","+CurrentLocation.longitude)                   // Product Name or description
+                    .setProductName(CurrentLocation.latitude+","+ CurrentLocation.longitude)                   // Product Name or description
                     .setFirstName("Priya")                              // User First name
                     .setEmail("farmpe.renewin@gmail.com")                                            // User Email ID
                     .setsUrl(appEnvironment.surl())                    // Success URL (surl)"https://www.payumoney.com/mobileapp/payumoney/success.php"
@@ -274,9 +273,10 @@ public class PayUMoneyMainActivity extends Fragment {
             params.put("CreatedBy",sessionManager.getRegId("userId"));
             params.put("IsActive",1);
             params.put("RESPMsg",RESPMsg);
-            params.put("CustLongitude",CurrentLocation.longitude);
-            params.put("CustLatitude",CurrentLocation.latitude);
-            params.put("CustAddress",CurrentLocation.current_addr);
+            params.put("SelectedQuantity", CartDetailsAdapter.quantity_pick);
+            params.put("CustLongitude", CurrentLocation.longitude);
+            params.put("CustLatitude", CurrentLocation.latitude);
+            params.put("CustAddress", CurrentLocation.current_addr);
             params.put("CartProductListIds", CartDetailsAdapter.strlist);
             System.out.println("RESPMsgdsfadf"+params);
             Login_post.login_posting(getActivity(), Urls.PayuMoneyAdd, params, new VoleyJsonObjectCallback() {

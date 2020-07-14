@@ -55,7 +55,7 @@ public class DiscoverCategoryFragment_2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.discover_by_cate_frag2, container, false);
         Window window = getActivity().getWindow();
-        window.setStatusBarColor(ContextCompat.getColor(getActivity(),R.color.colorPrimaryDark1));
+        window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryDark1));
        /* Status_bar_change_singleton.getInstance().color_change(getActivity());
         HomePage_With_Bottom_Navigation.linear_bottonsheet.setVisibility(View.GONE);
         HomePage_With_Bottom_Navigation.view.setVisibility(View.GONE);*/

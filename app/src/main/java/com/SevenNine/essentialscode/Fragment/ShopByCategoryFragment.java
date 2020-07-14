@@ -55,7 +55,7 @@ public class ShopByCategoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.shop_by_cat, container, false);
         Window window = getActivity().getWindow();
-        window.setStatusBarColor(ContextCompat.getColor(getActivity(),R.color.dark_green));
+        window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.dark_green));
        /* Status_bar_change_singleton.getInstance().color_change(getActivity());
         HomePage_With_Bottom_Navigation.linear_bottonsheet.setVisibility(View.GONE);
         HomePage_With_Bottom_Navigation.view.setVisibility(View.GONE);*/
@@ -121,7 +121,7 @@ public class ShopByCategoryFragment extends Fragment {
             JSONObject jsonObject = new JSONObject();
 
 
-            Crop_Post.crop_posting(getActivity(), Urls.GetSellingType, jsonObject, new VoleyJsonObjectCallback() {
+            Crop_Post.lang_posting(getActivity(), Urls.GetSellingType, jsonObject, new VoleyJsonObjectCallback() {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
 

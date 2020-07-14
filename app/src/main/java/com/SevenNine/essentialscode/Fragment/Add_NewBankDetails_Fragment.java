@@ -96,7 +96,7 @@ public class Add_NewBankDetails_Fragment extends Fragment {
         getActivity().getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
          Window window = getActivity().getWindow();
-         window.setStatusBarColor(ContextCompat.getColor(getActivity(),R.color.dark_green));
+         window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.dark_green));
          back_feed=view.findViewById(R.id.back_feed);
         holder_name=view.findViewById(R.id.holder_name);
           state=view.findViewById(R.id.state_bank);
@@ -518,7 +518,7 @@ public class Add_NewBankDetails_Fragment extends Fragment {
             JSONObject jsonObject = new JSONObject();
 
             if (BankAccount_Adapter.bank_id_ed!=null){
-                System.out.println("bankkkkiiidd"+BankAccount_Adapter.bank_id_ed);
+                System.out.println("bankkkkiiidd"+ BankAccount_Adapter.bank_id_ed);
 
                 jsonObject.put("BankDetailsId", BankAccount_Adapter.bank_id_ed);
             }else{
@@ -532,7 +532,7 @@ public class Add_NewBankDetails_Fragment extends Fragment {
             jsonObject.put("AccountHolderName",holder_name.getText().toString());
             jsonObject.put("BankBranchName", bank_branchname.getText().toString());
             jsonObject.put("CreatedBy", sessionManager.getRegId("userId"));
-            System.out.println("stateiddddd"+StateApdater.stateid);
+            System.out.println("stateiddddd"+ StateApdater.stateid);
             jsonObject.put("IFSCCode", enterifsc.getText().toString());
             if (StateApdater.stateid!=0){
                 jsonObject.put("StateId", StateApdater.stateid);

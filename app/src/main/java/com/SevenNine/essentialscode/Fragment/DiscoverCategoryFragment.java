@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -50,7 +51,8 @@ public class DiscoverCategoryFragment extends Fragment {
     public static SelectMainAdapter mainAdapter;
     Fragment selectedFragment = null;
     TextView toolbar_title;
-    public static String livestock_status;
+    TextView search_home;
+    public static String livestock_status,search_st;
     LinearLayout back_feed,linearLayout;
     JSONArray get_categorylist_array;
     JSONArray get_soiltype;
@@ -67,7 +69,7 @@ public class DiscoverCategoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.discover_by_cate_main, container, false);
         Window window = getActivity().getWindow();
-        window.setStatusBarColor(ContextCompat.getColor(getActivity(),R.color.colorPrimaryDark1));
+        window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryDark1));
        /* Status_bar_change_singleton.getInstance().color_change(getActivity());
         HomePage_With_Bottom_Navigation.linear_bottonsheet.setVisibility(View.GONE);
         HomePage_With_Bottom_Navigation.view.setVisibility(View.GONE);*/
@@ -75,6 +77,7 @@ public class DiscoverCategoryFragment extends Fragment {
         recyclerView_main=view.findViewById(R.id.recycler_main);
         recy_veg=view.findViewById(R.id.recy_veg);
         recy_food_grails=view.findViewById(R.id.recy_food_grails);
+        search_home=view.findViewById(R.id.search_home);
         /*recyclerView_prod=view.findViewById(R.id.recycler_prod);
         recycler_cooking=view.findViewById(R.id.recycler_cooking);*/
       //  toolbar_title=view.findViewById(R.id.setting_tittle);
@@ -122,6 +125,19 @@ public class DiscoverCategoryFragment extends Fragment {
                 return true;
             }
         });
+
+        search_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                search_st="home";
+                selectedFragment = CategoryProdDetailListSearch.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout_home, selectedFragment);
+                transaction.addToBackStack("dhskss");
+                transaction.commit();
+            }
+        });
+
         newOrderBeansList.clear();
         // livestock_types_adapter = new Livestock_Types_Adapter( getActivity(),newOrderBeansList);
         GridLayoutManager mLayoutManager_farm1 = new GridLayoutManager(getActivity(), 4, GridLayoutManager.VERTICAL, false);
@@ -147,11 +163,11 @@ public class DiscoverCategoryFragment extends Fragment {
         GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 1, GridLayoutManager.HORIZONTAL, false);
        recy_food_grails.setLayoutManager(mLayoutManager_farm);
         recy_food_grails.setItemAnimator(new DefaultItemAnimator());
-        Sellbean1 bean8 = new Sellbean1("Daawat Rozana\nGold Basmati Rice\n(Medium Grain)","1",R.drawable.veg,"(5 kg)","₹100","₹120","");
+        Sellbean1 bean8 = new Sellbean1("Daawat Rozana\nGold Basmati Rice\n(Medium Grain)","1", R.drawable.veg,"(5 kg)","₹100","₹120","");
         newOrderBeansList_subcat.add(bean8);
-        Sellbean1 bean9 = new Sellbean1("Exo Touch & Shine\nRound Dishwash\nBar","1",R.drawable.veg,"(1.4 kg, Pack of 2)","₹100","₹120","");
+        Sellbean1 bean9 = new Sellbean1("Exo Touch & Shine\nRound Dishwash\nBar","1", R.drawable.veg,"(1.4 kg, Pack of 2)","₹100","₹120","");
         newOrderBeansList_subcat.add(bean9);
-        Sellbean1 bean10 = new Sellbean1("Exo Touch & Shine\nRound Dishwash\nBar","1",R.drawable.veg,"(1.4 kg, Pack of 2)","₹100","₹120","");
+        Sellbean1 bean10 = new Sellbean1("Exo Touch & Shine\nRound Dishwash\nBar","1", R.drawable.veg,"(1.4 kg, Pack of 2)","₹100","₹120","");
         newOrderBeansList_subcat.add(bean10);
             /*Sellbean1 bean111 = new Sellbean1("Exo Touch & Shine\nRound Dishwash\nBar","1",R.drawable.veg,"(1.4 kg, Pack of 2)","₹100","₹120","");
             newOrderBeansList_subcat.add(bean111);*/
@@ -163,11 +179,11 @@ public class DiscoverCategoryFragment extends Fragment {
         GridLayoutManager mLayoutManager_farm2 = new GridLayoutManager(getActivity(), 1, GridLayoutManager.HORIZONTAL, false);
         recy_veg.setLayoutManager(mLayoutManager_farm2);
         recy_veg.setItemAnimator(new DefaultItemAnimator());
-        Sellbean1 bean11 = new Sellbean1("Fresh Onion, Organic\nGoverment Gaurden","1",R.drawable.veg,"(5 kg)","₹100","₹120","");
+        Sellbean1 bean11 = new Sellbean1("Fresh Onion, Organic\nGoverment Gaurden","1", R.drawable.veg,"(5 kg)","₹100","₹120","");
         newOrderBeansList_main.add(bean11);
-        Sellbean1 bean12 = new Sellbean1("Fresh Onion, Organic\nGoverment Gaurden","1",R.drawable.veg,"(1.4 kg, Pack of 2)","₹100","₹120","");
+        Sellbean1 bean12 = new Sellbean1("Fresh Onion, Organic\nGoverment Gaurden","1", R.drawable.veg,"(1.4 kg, Pack of 2)","₹100","₹120","");
         newOrderBeansList_main.add(bean12);
-        Sellbean1 bean13 = new Sellbean1("Fresh Onion, Organic\nGoverment Gaurden","1",R.drawable.veg,"(1.4 kg, Pack of 2)","₹100","₹120","");
+        Sellbean1 bean13 = new Sellbean1("Fresh Onion, Organic\nGoverment Gaurden","1", R.drawable.veg,"(1.4 kg, Pack of 2)","₹100","₹120","");
         newOrderBeansList_main.add(bean13);
             /*Sellbean1 bean111 = new Sellbean1("Exo Touch & Shine\nRound Dishwash\nBar","1",R.drawable.veg,"(1.4 kg, Pack of 2)","₹100","₹120","");
             newOrderBeansList_subcat.add(bean111);*/

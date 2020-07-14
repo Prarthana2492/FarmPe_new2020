@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
 import com.SevenNine.essentialscode.Bean.StateBean;
 import com.SevenNine.essentialscode.Fragment.AddNewAddressFragment;
 import com.SevenNine.essentialscode.Fragment.Add_NewBankDetails_Fragment;

@@ -49,7 +49,7 @@ public class PaymentTodayFragment extends Fragment {
 
 
         Window window = getActivity().getWindow();
-        window.setStatusBarColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+        window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
 
 
         newOrderBeansList.clear();

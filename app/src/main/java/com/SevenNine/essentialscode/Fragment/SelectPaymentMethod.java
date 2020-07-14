@@ -66,7 +66,7 @@ public class SelectPaymentMethod extends Fragment {
         sessionManager=new SessionManager(getActivity());
 
         Window window = getActivity().getWindow();
-        window.setStatusBarColor(ContextCompat.getColor(getActivity(),R.color.dark_green));
+        window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.dark_green));
     //    strtext = getArguments().getDouble("pricestrtext2");
      //   strtext = Double.parseDouble("1");
 
@@ -217,8 +217,8 @@ public class SelectPaymentMethod extends Fragment {
         JSONObject params = new JSONObject();
         try {
             params.put("UserId",sessionManager.getRegId("userId"));
-            params.put("Amount",CartDetailsAdapter.total_prise_st);  // amount
-            params.put("ProductInfo",CurrentLocation.current_addr);  // amount
+            params.put("Amount", CartDetailsAdapter.total_prise_st);  // amount
+            params.put("ProductInfo", CurrentLocation.current_addr);  // amount
             params.put("TransactionFees","0.00");  //transaction fees
             params.put("DiscountAmount","0.00");
             params.put("mode","COD");
@@ -236,10 +236,26 @@ public class SelectPaymentMethod extends Fragment {
             params.put("Currency","1");
             params.put("BankTxnId","1234");
             params.put("PaymentDeskId","1234");
+            if (CartDetailsAdapter.quantity_pick==0){
+                params.put("SelectedQuantity", CartDetailsAdapter.quant_zero);
+            }else{
+                params.put("SelectedQuantity", CartDetailsAdapter.quantity_pick);
+            }
             params.put("CreatedBy",sessionManager.getRegId("userId"));
-            params.put("CustLongitude",CurrentLocation.longitude);
-            params.put("CustLatitude",CurrentLocation.latitude);
-            params.put("CustAddress",CurrentLocation.current_addr);
+            if (CurrentLocation.latitude_post!=0){
+                params.put("CustLongitude", CurrentLocation.longitude_post);
+                params.put("CustLatitude", CurrentLocation.latitude_post);
+            }else{
+                params.put("CustLongitude","");
+                params.put("CustLatitude","");
+            }
+
+            if (CurrentLocation.current_addr!=null){
+                params.put("CustAddress", CurrentLocation.current_addr);
+            }else{
+                params.put("CustAddress","");
+
+            }
             params.put("IsActive",1);
             params.put("RESPMsg","RESMsg");
             params.put("CartProductListIds", CartDetailsAdapter.strlist);

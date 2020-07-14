@@ -122,7 +122,7 @@ public class SelectStoreLocation extends AppCompatActivity implements Connectivi
         //  checkConnection();
         recyclerView =findViewById(R.id.recycler_view_lang);
         linearLayout= findViewById(R.id.main_layout);
-        continue_lng= findViewById(R.id.continue_lang);
+      //  continue_lng= findViewById(R.id.continue_lang);
         select_ur_language= findViewById(R.id.selct_ur_lng);
         selct_ur_lng= findViewById(R.id.selct_ur_lng);
 

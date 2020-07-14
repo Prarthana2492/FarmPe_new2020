@@ -10,6 +10,7 @@ import android.graphics.PixelFormat;
 import android.hardware.Camera;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
@@ -18,7 +19,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -40,7 +40,7 @@ import java.io.InputStream;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class CameraActivity extends AppCompatActivity  implements SurfaceHolder.Callback  {
+public class CameraActivity extends AppCompatActivity implements SurfaceHolder.Callback  {
 
     private static final int REQUEST_PERMISSIONS = 100;
     public Bitmap selectedImage;
@@ -103,7 +103,7 @@ public class CameraActivity extends AppCompatActivity  implements SurfaceHolder.
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_camera);
-        g_vision_controller=G_Vision_Controller.getInstance();
+        g_vision_controller= G_Vision_Controller.getInstance();
 
 
         //  final Animation slide_down = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down);

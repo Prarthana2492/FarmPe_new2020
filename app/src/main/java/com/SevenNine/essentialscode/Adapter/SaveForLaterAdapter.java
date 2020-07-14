@@ -15,7 +15,6 @@ import com.SevenNine.essentialscode.Bean.Sellbean;
 import com.SevenNine.essentialscode.R;
 import com.SevenNine.essentialscode.SessionManager;
 import com.SevenNine.essentialscode.Urls;
-import com.SevenNine.essentialscode.Utils.QuantityPicker;
 import com.SevenNine.essentialscode.Volly_class.Crop_Post;
 import com.SevenNine.essentialscode.Volly_class.VoleyJsonObjectCallback;
 import com.bumptech.glide.Glide;
@@ -26,33 +25,31 @@ import org.json.JSONObject;
 
 import java.util.List;
 
-public class CategoryProdDetailAdapter extends RecyclerView.Adapter<CategoryProdDetailAdapter.MyViewHolder> {
+public class SaveForLaterAdapter extends RecyclerView.Adapter<SaveForLaterAdapter.MyViewHolder> {
 
     private List<Sellbean> productList;
     Activity activity;
     Fragment selectedFragment;
-    public static String sellingtypeid,sellingedit_id,prodid,upid,amount,quantity,status;
-    int selected_quant;
+    public static String sellingtypeid,cart_prodlistid,prodid,upid,amount,quantity,status;
     SessionManager sessionManager;
     LinearLayout linear_layout;
-    private CategoryProdDetailAdapter.ProductItemActionListener actionListener;
+    private SaveForLaterAdapter.ProductItemActionListener actionListener;
 
 
-    public CategoryProdDetailAdapter(Activity activity, List<Sellbean> moviesList) {
+    public SaveForLaterAdapter(Activity activity, List<Sellbean> moviesList) {
         this.productList = moviesList;
         this.activity=activity;
 
 
     }
-    public void setActionListener(CategoryProdDetailAdapter.ProductItemActionListener actionListener) {
+    public void setActionListener(SaveForLaterAdapter.ProductItemActionListener actionListener) {
         this.actionListener = actionListener;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView image,prod_img_fix;
         public LinearLayout item;
-        public TextView name,weight,price,actual_price,add_cart;
-        QuantityPicker quantityPicker;
+        public TextView name,weight,price,actual_price,add_cart,remove;
 
 
         public MyViewHolder(View view) {
@@ -66,8 +63,8 @@ public class CategoryProdDetailAdapter extends RecyclerView.Adapter<CategoryProd
             price=view.findViewById(R.id.price);
             actual_price=view.findViewById(R.id.actual_price);
             add_cart=view.findViewById(R.id.add_cart);
+            remove=view.findViewById(R.id.remove);
             linear_layout=view.findViewById(R.id.linear_layout);
-            quantityPicker= view.findViewById(R.id.quantityPicker);
 
             sessionManager=new SessionManager(activity);
 
@@ -94,7 +91,7 @@ public class CategoryProdDetailAdapter extends RecyclerView.Adapter<CategoryProd
       }else{
           holder.name.setText(products.getName()+", "+products.getProd_descr()+", "+products.getBrand());
       }*/
-        holder.quantityPicker.setQuantitySelected(1);
+     // holder.remove.setVisibility(View.VISIBLE);
         holder.weight.setText(products.getWeight()+" "+products.getUom());
         holder.price.setText("Rs "+products.getPrice());
         holder.actual_price.setText("₹"+products.getActual_price());
@@ -124,6 +121,58 @@ public class CategoryProdDetailAdapter extends RecyclerView.Adapter<CategoryProd
             }
         });*/
 
+      /* holder.remove.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               cart_prodlistid=products.getId();
+
+               try{
+                   JSONObject jsonObject  = new JSONObject();
+                   jsonObject.put("CartProductListId",cart_prodlistid);
+                   jsonObject.put("ProductId",products.getProdId());
+                   jsonObject.put("IsShortlisted",0);
+                   jsonObject.put("CreatedBy",sessionManager.getRegId("userId"));
+
+                   System.out.println("bank_dvvvvetails_iddds"+jsonObject);
+
+                   Crop_Post.crop_posting(activity, Urls.AddUpdateFavouriteCartList, jsonObject, new VoleyJsonObjectCallback() {
+                       @Override
+                       public void onSuccessResponse(JSONObject result) {
+                           System.out.println("111111dddd" + result);
+
+                           try{
+
+                               status = result.getString("Status");
+
+                               if(status.equals("Success")){
+
+                                   productList.remove(position);
+                                   notifyDataSetChanged();
+                                   System.out.println("jdhjahdjkah"+productList.size());
+                                  *//* if (productList.size()==0){
+                                       selectedFragment = NoItemsFragment.newInstance();
+                                       FragmentTransaction transaction = ((FragmentActivity)activity).getSupportFragmentManager().beginTransaction();
+                                       transaction.replace(R.id.frame_layout_home, selectedFragment);
+                                       transaction.addToBackStack("cart_detail");
+                                       transaction.commit();
+
+                                   }
+*//*
+                               }
+
+                           }catch (Exception e){
+                               e.printStackTrace();
+                           }
+                       }
+                   });
+
+
+               }catch (Exception e){
+                   e.printStackTrace();
+               }
+
+           }
+       });*/
         holder.add_cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -131,7 +180,6 @@ public class CategoryProdDetailAdapter extends RecyclerView.Adapter<CategoryProd
                 upid=products.getUpid();
                 amount=products.getPrice();
                 quantity=products.getWeight();
-                selected_quant=holder.quantityPicker.getQuantity();
                 ComposeCategory();
                 if(actionListener!=null)
                     actionListener.onItemTap(holder.image);
@@ -154,8 +202,7 @@ public class CategoryProdDetailAdapter extends RecyclerView.Adapter<CategoryProd
 
             jsonObject.put("CartProductListId", 0);
             jsonObject.put("ProductId", prodid);
-            jsonObject.put("SellingQuantity", selected_quant);
-           // jsonObject.put("SelectedQuantity", selected_quant);
+            jsonObject.put("SellingQuantity", quantity);
             jsonObject.put("UnitOfPriceId", 1);
             jsonObject.put("Amount", amount);
             jsonObject.put("CreatedBy", sessionManager.getRegId("userId"));

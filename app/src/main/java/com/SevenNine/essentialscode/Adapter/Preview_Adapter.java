@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
 import com.SevenNine.essentialscode.Bean.AddTractorBean;
 import com.SevenNine.essentialscode.R;
 import com.bumptech.glide.Glide;

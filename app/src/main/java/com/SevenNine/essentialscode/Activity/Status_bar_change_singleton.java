@@ -9,7 +9,7 @@ import com.SevenNine.essentialscode.R;
 public class Status_bar_change_singleton {
 
 
-   public static  Status_bar_change_singleton status_color;
+   public static Status_bar_change_singleton status_color;
 
 
 

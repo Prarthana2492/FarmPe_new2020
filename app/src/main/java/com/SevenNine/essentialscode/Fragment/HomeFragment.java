@@ -48,7 +48,7 @@ Fragment selectedFragment;
     LinearLayout menu,prof_tab;
     String userid;
     CircleImageView image_acc;
-    TextView home,shop_cat,logout,disc_store,my_orders,list_prod,cart,account,buy_again,wishlist,notification;
+    TextView home,shop_cat,sell_on,disc_store,my_orders,list_prod,cart,account,buy_again,wishlist,notification;
     public static TextView title;
     public static String shop_cat_id;
     public static TextView cart_count,user_name_menu;
@@ -86,11 +86,12 @@ static Fragment myloadingfragment;
        // logout=view.findViewById(R.id.logout);
         destView=view.findViewById(R.id.destView);
         image_acc=view.findViewById(R.id.image_acc);
+        sell_on=view.findViewById(R.id.sell_on);
 
         sessionManager=new SessionManager(getActivity());
 
         Window window = getActivity().getWindow();
-        window.setStatusBarColor(ContextCompat.getColor(getActivity(),R.color.colorPrimaryDark1));
+        window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.colorPrimaryDark1));
         drawer = (DrawerLayout)view.findViewById(R.id.drawer_layout);
         CartCount();
         NavigationView navigationView = (NavigationView)view.findViewById(R.id.nav_view);
@@ -204,17 +205,28 @@ static Fragment myloadingfragment;
                         drawer.closeDrawers();
                     }
                 });
-/*                wishlist.setOnClickListener(new View.OnClickListener() {
+                sell_on.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        selectedFragment = SaveForLaterList.newInstance();
+                        selectedFragment = VerificationFragment.newInstance();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frame_layout1, selectedFragment);
                         transaction.addToBackStack("dhsks");
                         transaction.commit();
                         drawer.closeDrawers();
                     }
-                });*/
+                });
+                wishlist.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        selectedFragment = SaveForLaterList.newInstance();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frame_layout_home, selectedFragment);
+                        transaction.addToBackStack("dhsks");
+                        transaction.commit();
+                        drawer.closeDrawers();
+                    }
+                });
                /* logout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
 import com.SevenNine.essentialscode.Bean.SelectLanguageBean;
 import com.SevenNine.essentialscode.Fragment.ChangeLanguageFragment;
 import com.SevenNine.essentialscode.R;

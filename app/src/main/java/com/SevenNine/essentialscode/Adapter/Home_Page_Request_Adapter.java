@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import com.SevenNine.essentialscode.Bean.Request_Class_HomePage_Bean;
 import com.SevenNine.essentialscode.R;
 import com.bumptech.glide.Glide;

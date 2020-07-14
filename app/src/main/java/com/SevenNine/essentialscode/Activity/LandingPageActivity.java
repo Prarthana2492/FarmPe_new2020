@@ -33,27 +33,26 @@ import com.google.api.services.vision.v1.model.SafeSearchAnnotation;
 import org.json.JSONObject;
 
 
-public class LandingPageActivity extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener{
-    public static TextView name,price;
+public class LandingPageActivity extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener {
+    public static TextView name, price;
     Fragment selectedFragment = null;
     public static ImageView cart_img;
-
     JSONObject lngObject;
-    String toast_internet,toast_nointernet;
+    String toast_internet, toast_nointernet;
     CoordinatorLayout coordinate_layout;
     SessionManager sessionManager;
     public static Bitmap selectedImage;
 
-    public  static Activity activity;
+    public static Activity activity;
     public static String toast_click_back;
     boolean doubleBackToExitPressedOnce = false;
     private static final int MAX_DIMENSION = 200;
 
     public static EditText editname;
     private static final String TAG = LandingPageActivity.class.getSimpleName();
-    public static BottomSheetBehavior mBottomSheetBehavior6,mBottomSheetBehavior5,mBottomSheetBehavior4;
-    public static TextView name_hint,cancel,save,logout,cancel_feed,cancel_invite,prof_name,buy_now;
-    View Profile,feedback_view,invite_view;
+    public static BottomSheetBehavior mBottomSheetBehavior6, mBottomSheetBehavior5, mBottomSheetBehavior4;
+    public static TextView name_hint, cancel, save, logout, cancel_feed, cancel_invite, prof_name, buy_now;
+    View Profile, feedback_view, invite_view;
     public static boolean connectivity_check;
     ConnectivityReceiver connectivityReceiver;
 
@@ -66,10 +65,9 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
     private static final String ANDROID_CERT_HEADER = "X-Android-Cert";
     private static final String ANDROID_PACKAGE_HEADER = "X-Android-Package";
     private static final int MAX_LABEL_RESULTS = 10;
-    @Override
-    protected void onStop()
 
-    {
+    @Override
+    protected void onStop() {
         unregisterReceiver(connectivityReceiver);
         super.onStop();
     }
@@ -82,19 +80,19 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
 
     private void showSnack(boolean isConnected) {
         String message = null;
-        int color=0;
+        int color = 0;
         if (isConnected) {
-            if(connectivity_check) {
+            if (connectivity_check) {
                 message = "Good! Connected to Internet";
                 color = Color.WHITE;
 
-                int duration=1000;
-                Snackbar snackbar = Snackbar.make(coordinate_layout,toast_internet, duration);
+                int duration = 1000;
+                Snackbar snackbar = Snackbar.make(coordinate_layout, toast_internet, duration);
                 View sbView = snackbar.getView();
                 TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
-                textView.setBackgroundColor(ContextCompat.getColor(LandingPageActivity.this,R.color.orange));
+                textView.setBackgroundColor(ContextCompat.getColor(LandingPageActivity.this, R.color.orange));
                 textView.setTextColor(Color.WHITE);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                 } else {
                     textView.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -102,23 +100,23 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
                 snackbar.show();
 
 
-                connectivity_check=false;
+                connectivity_check = false;
             }
 
         } else {
             message = "No Internet Connection";
             color = Color.RED;
 
-            connectivity_check=true;
+            connectivity_check = true;
 
-            int duration=1000;
+            int duration = 1000;
             Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), toast_nointernet, duration);
             View sb = snackbar.getView();
             TextView textView = (TextView) sb.findViewById(android.support.design.R.id.snackbar_text);
             textView.setBackgroundColor(ContextCompat.getColor(LandingPageActivity.this, R.color.orange));
             textView.setTextColor(Color.WHITE);
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             } else {
                 textView.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -187,25 +185,26 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
         setContentView(R.layout.test);
         checkConnection();
 
-        coordinate_layout=findViewById(R.id.coordinator);
+        coordinate_layout = findViewById(R.id.coordinator);
 
-        coordinate_layout=findViewById(R.id.coordinator);
-      //  cancel_invite=findViewById(R.id.cancel_invite);
+        coordinate_layout = findViewById(R.id.coordinator);
+        //  cancel_invite=findViewById(R.id.cancel_invite);
 
-        logout=findViewById(R.id.logout);
-
+        logout = findViewById(R.id.logout);
+       // mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         sessionManager = new SessionManager(this);
-        activity= this;
+        activity = this;
 
         System.out.println("landiiiiiing");
 
 
         Window window = activity.getWindow();
-        window.setStatusBarColor(ContextCompat.getColor(activity,R.color.colorPrimaryDark));
+        window.setStatusBarColor(ContextCompat.getColor(activity, R.color.colorPrimaryDark));
         LandingPageActivity.this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
-        selectedFragment = HomeFragment.newInstance();
+     
+    selectedFragment = HomeFragment.newInstance();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_layout1, selectedFragment);
         transaction.commit();
@@ -242,6 +241,7 @@ public class LandingPageActivity extends AppCompatActivity implements Connectivi
 //        transaction.commit();
        super.onBackPressed();
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.frame_layout1);

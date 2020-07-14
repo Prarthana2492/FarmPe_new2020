@@ -38,6 +38,7 @@ import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
+
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -422,7 +423,7 @@ attempts++;
 
                 gps_navigated=true;
                 //will be navigated to turn on gps
-                startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
 
             }
         });

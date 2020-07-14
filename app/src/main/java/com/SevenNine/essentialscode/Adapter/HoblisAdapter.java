@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
 import com.SevenNine.essentialscode.Bean.StateBean;
 import com.SevenNine.essentialscode.Fragment.NewAddressFragment;
 import com.SevenNine.essentialscode.R;

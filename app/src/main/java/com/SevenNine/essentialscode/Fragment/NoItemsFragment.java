@@ -30,7 +30,7 @@ public class NoItemsFragment extends Fragment {
 
 
         Window window = getActivity().getWindow();
-        window.setStatusBarColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+        window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {

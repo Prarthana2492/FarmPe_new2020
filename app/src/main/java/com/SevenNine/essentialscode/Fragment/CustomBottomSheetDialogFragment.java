@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.SevenNine.essentialscode.Bean.AddTractorBean;
 import com.SevenNine.essentialscode.R;
 import com.SevenNine.essentialscode.SessionManager;

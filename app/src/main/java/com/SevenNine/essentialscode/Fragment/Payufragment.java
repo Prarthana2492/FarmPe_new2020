@@ -1,4 +1,5 @@
 package com.SevenNine.essentialscode.Fragment;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,7 +15,6 @@ import android.widget.LinearLayout;
 import com.SevenNine.essentialscode.R;
 import com.SevenNine.essentialscode.SessionManager;
 import com.android.volley.toolbox.StringRequest;
-
 import com.payumoney.core.PayUmoneySdkInitializer;
 
 public class Payufragment extends Fragment {

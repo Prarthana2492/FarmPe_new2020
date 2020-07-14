@@ -1,4 +1,5 @@
 package com.SevenNine.essentialscode.Adapter;
+
 import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -14,12 +15,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.SevenNine.essentialscode.Bean.FarmersNearMeCropBean;
-
 import com.SevenNine.essentialscode.Fragment.Payufragment;
 import com.SevenNine.essentialscode.R;
 import com.SevenNine.essentialscode.SessionManager;
 import com.bumptech.glide.Glide;
-
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;

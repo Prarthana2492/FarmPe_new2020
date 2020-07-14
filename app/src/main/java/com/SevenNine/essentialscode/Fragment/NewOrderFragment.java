@@ -58,7 +58,7 @@ public class NewOrderFragment extends Fragment {
 
         sessionManager=new SessionManager(getActivity());
         Window window = getActivity().getWindow();
-        window.setStatusBarColor(ContextCompat.getColor(getActivity(),R.color.colorPrimary));
+        window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
         OrderDetailsFragment.order_details=null;
         System.out.println("orderrrrrrrrrrrrrr");
         view.setFocusableInTouchMode(true);

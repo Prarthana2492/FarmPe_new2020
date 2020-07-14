@@ -1,10 +1,9 @@
 package com.SevenNine.essentialscode.Fragment;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -91,42 +90,10 @@ public class VerificationFragment extends Fragment {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
-
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                        // this.finishAffinity();
-
-                        if (doubleBackToExitPressedOnce) {
-                            Intent intent = new Intent(Intent.ACTION_MAIN);
-                            intent.addCategory(Intent.CATEGORY_HOME);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
-                            startActivity(intent);
-                            getActivity().finish();
-                            System.exit(0);
-                        }
-
-                        doubleBackToExitPressedOnce = true;
-                        // Toast.makeText(getActivity().getApplicationContext(), "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
-                     /*   int duration = 1000;
-                        Snackbar snackbar = Snackbar
-                                .make(linearLayout,"Please Click Back To Exit", duration);
-                        View snackbarView = snackbar.getView();
-                        TextView tv = snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                        tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
-                        tv.setTextColor(Color.WHITE);
-
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                        } else {
-                            tv.setGravity(Gravity.CENTER_HORIZONTAL);
-                        }
-                        snackbar.show();*/
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                doubleBackToExitPressedOnce = false;
-                            }
-                        }, 3000);
-                    }
+                    selectedFragment = HomeFragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout1, selectedFragment);
+                    transaction.commit();
 
                     return true;
                 }

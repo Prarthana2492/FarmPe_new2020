@@ -20,7 +20,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.SevenNine.essentialscode.Activity.Status_bar_change_singleton;
 import com.SevenNine.essentialscode.Bean.AgriBean;
 import com.SevenNine.essentialscode.R;

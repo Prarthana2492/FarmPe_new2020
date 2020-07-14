@@ -40,6 +40,7 @@ import android.widget.TextView;
 import com.SevenNine.essentialscode.Adapter.Address_Adapter;
 import com.SevenNine.essentialscode.Adapter.DistrictAdapter;
 import com.SevenNine.essentialscode.Adapter.HoblisAdapter;
+import com.SevenNine.essentialscode.Adapter.ShippingAddressAdapter;
 import com.SevenNine.essentialscode.Adapter.StateApdater;
 import com.SevenNine.essentialscode.Adapter.TalukAdapter;
 import com.SevenNine.essentialscode.Adapter.VillageAdapter;
@@ -110,7 +111,7 @@ public class AddNewAddressFragment extends Fragment {
         View view = inflater.inflate(R.layout.select_your_region_layout, container, false);
 
         Window window = getActivity().getWindow();
-        window.setStatusBarColor(ContextCompat.getColor(getActivity(),R.color.dark_green));
+        window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.dark_green));
        // select_address = view.findViewById(R.id.add_type);
         name = view.findViewById(R.id.full_name);
         landmrk = view.findViewById(R.id.landmark);
@@ -191,6 +192,29 @@ public class AddNewAddressFragment extends Fragment {
            // block_txt.setText(getArguments().getString("Addr_hobli"));
            edit_village.setText(getArguments().getString("Addr_village"));
           // address_type.setText(getArguments().getString("Addr_pickup_from"));
+           selected_addresstype = getArguments().getBoolean("Addr_pickup_from");
+           if (selected_addresstype==true){
+               home_rd.setChecked(true);
+           }else{
+               work_rd.setChecked(true);
+           }
+       }else if (ShippingAddressAdapter.edit_addr!=null){
+           System.out.println("entergdgrg");
+           name.setText(getArguments().getString("Addr_name"));
+           System.out.println("selecteddddd_idddnz" + getArguments().getString("Addr_name"));
+           mobile.setText(getArguments().getString("Addr_mobile"));
+           pincode_no.setText(getArguments().getString("Addr_pincode"));
+           // house_numb.setText(getArguments().getString("Addr_Houseno"));
+           house_numb.setText(getArguments().getString("Addr_Street"));
+           landmrk.setText(getArguments().getString("Addr_landmark"));
+           //city.setText(getArguments().getString("Addr_city"));
+
+           edit_state.setText(getArguments().getString("Addr_state"));
+           edit_districr.setText(getArguments().getString("Addr_district"));
+           ed_tsl.setText(getArguments().getString("Addr_taluk"));
+           // block_txt.setText(getArguments().getString("Addr_hobli"));
+           edit_village.setText(getArguments().getString("Addr_village"));
+           // address_type.setText(getArguments().getString("Addr_pickup_from"));
            selected_addresstype = getArguments().getBoolean("Addr_pickup_from");
            if (selected_addresstype==true){
                home_rd.setChecked(true);
@@ -550,7 +574,7 @@ public class AddNewAddressFragment extends Fragment {
                             .make(linearLayout, "Enter your name",duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
                     tv.setTextColor(Color.WHITE);
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                         tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
@@ -569,7 +593,7 @@ public class AddNewAddressFragment extends Fragment {
                             .make(linearLayout, "Enter your mobile number",duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
                     tv.setTextColor(Color.WHITE);
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                         tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
@@ -585,7 +609,7 @@ public class AddNewAddressFragment extends Fragment {
                             .make(linearLayout, "Please enter valid mobile number",duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
                     tv.setTextColor(Color.WHITE);
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                         tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
@@ -602,7 +626,7 @@ public class AddNewAddressFragment extends Fragment {
                             .make(linearLayout, "Enter your address",duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
                     tv.setTextColor(Color.WHITE);
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                         tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
@@ -618,7 +642,7 @@ public class AddNewAddressFragment extends Fragment {
                             .make(linearLayout, "Enter your landmark",duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
                     tv.setTextColor(Color.WHITE);
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                         tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
@@ -634,7 +658,7 @@ public class AddNewAddressFragment extends Fragment {
                             .make(linearLayout, "Select State",duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
                     tv.setTextColor(Color.WHITE);
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                         tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
@@ -650,7 +674,7 @@ public class AddNewAddressFragment extends Fragment {
                             .make(linearLayout, "Select District",duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
                     tv.setTextColor(Color.WHITE);
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                         tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
@@ -720,7 +744,7 @@ public class AddNewAddressFragment extends Fragment {
                             .make(linearLayout, "Enter Pincode",duration);
                     View snackbarView = snackbar.getView();
                     TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                    tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
                     tv.setTextColor(Color.WHITE);
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                         tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
@@ -794,7 +818,7 @@ public class AddNewAddressFragment extends Fragment {
 
             JSONObject jsonObject = new JSONObject();
             JSONObject jsonpost = new JSONObject();
-            jsonObject.put("DistrictId",DistrictAdapter.districtid);
+            jsonObject.put("DistrictId", DistrictAdapter.districtid);
             jsonpost.put("Blockobj",jsonObject);
 
             System.out.println("disssisiisi  "+jsonObject);
@@ -841,7 +865,7 @@ public class AddNewAddressFragment extends Fragment {
             final JSONObject jsonObject = new JSONObject();
 
             JSONObject json_post = new JSONObject();
-            jsonObject.put("TalukId",TalukAdapter.talukid);
+            jsonObject.put("TalukId", TalukAdapter.talukid);
             json_post.put("Hobliobj",jsonObject);
 
             System.out.println("hhhhhhhssssskljhgfmmmmmmmmmmmmmmmmmmmmmmmmmmmm" + json_post);
@@ -889,7 +913,7 @@ public class AddNewAddressFragment extends Fragment {
             JSONObject jsonObject = new JSONObject();
             JSONObject post_Object = new JSONObject();
             //jsonObject.put("HobliId",hoblisAdapter.hobliid);
-            jsonObject.put("BlockId",TalukAdapter.talukid);
+            jsonObject.put("BlockId", TalukAdapter.talukid);
             post_Object.put("Villageobj",jsonObject);
 
             Crop_Post.crop_posting(getActivity(), Urls.Villages, post_Object, new VoleyJsonObjectCallback() {
@@ -1046,17 +1070,17 @@ public class AddNewAddressFragment extends Fragment {
             if (StateApdater.stateid==0){
                 jsonObject.put("StateId",getArguments().getString("Addr_stateId"));
             }else{
-                jsonObject.put("StateId",StateApdater.stateid);
+                jsonObject.put("StateId", StateApdater.stateid);
             }
             if (DistrictAdapter.districtid==0){
                 jsonObject.put("DistrictId",getArguments().getString("Addr_districtId"));
             }else{
-                jsonObject.put("DistrictId",DistrictAdapter.districtid);
+                jsonObject.put("DistrictId", DistrictAdapter.districtid);
             }
             if (TalukAdapter.talukid==0){
                 jsonObject.put("BlockId",getArguments().getString("Addr_blockId"));
             }else{
-                jsonObject.put("BlockId",TalukAdapter.talukid);
+                jsonObject.put("BlockId", TalukAdapter.talukid);
             }
             if (VillageAdapter.villageid==0){
                 jsonObject.put("VillageId",getArguments().getString("Addr_villageId"));
@@ -1065,8 +1089,11 @@ public class AddNewAddressFragment extends Fragment {
             }
 
             if(Address_Adapter.add_id!=null){
-                jsonObject.put("UserAddressId",Address_Adapter.add_id);
-            }else{
+                jsonObject.put("UserAddressId", Address_Adapter.add_id);
+            }else if (ShippingAddressAdapter.add_id!=null){
+                jsonObject.put("UserAddressId", ShippingAddressAdapter.add_id);
+            }
+            else {
                 jsonObject.put("UserAddressId","");
 
             }
@@ -1107,11 +1134,17 @@ public class AddNewAddressFragment extends Fragment {
                             }
                             snackbar.show();
                           //  System.out.println("address_nav_stat"+NewAddressDetails_Fragment.address_nav_stat);
-                            selectedFragment = NewAddressDetails_Fragment.newInstance();
-                            FragmentTransaction transaction = (getActivity()).getSupportFragmentManager().beginTransaction();
-                            transaction.replace(R.id.frame_layout1, selectedFragment);
-                            transaction.commit();
-
+                          if (getArguments().getString("Shipping")!=null){
+                              selectedFragment = SelectShippingAddress.newInstance();
+                              FragmentTransaction transaction = (getActivity()).getSupportFragmentManager().beginTransaction();
+                              transaction.replace(R.id.frame_layout1, selectedFragment);
+                              transaction.commit();
+                          }else{
+                              selectedFragment = NewAddressDetails_Fragment.newInstance();
+                              FragmentTransaction transaction = (getActivity()).getSupportFragmentManager().beginTransaction();
+                              transaction.replace(R.id.frame_layout1, selectedFragment);
+                              transaction.commit();
+                          }
                             /*if (getArguments().getString("profile_addr")!=null) {
 
                             }else {
@@ -1124,7 +1157,7 @@ public class AddNewAddressFragment extends Fragment {
                                         .make(linearLayout, "Your address has not added.",duration);
                                 View snackbarView = snackbar.getView();
                                 TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
-                                tv.setBackgroundColor(ContextCompat.getColor(getActivity(),R.color.orange));
+                                tv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.orange));
                                 tv.setTextColor(Color.WHITE);
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                                     tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);

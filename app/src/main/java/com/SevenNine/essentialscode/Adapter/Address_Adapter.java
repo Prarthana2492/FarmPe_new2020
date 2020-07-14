@@ -217,7 +217,7 @@ public class Address_Adapter extends RecyclerView.Adapter<Address_Adapter.MyView
                                                     .make(linearLayout, deleted, duration);
                                             View snackbarView2 = snackbar.getView();
                                             TextView tv = (TextView) snackbarView2.findViewById(android.support.design.R.id.snackbar_text);
-                                            tv.setBackgroundColor(ContextCompat.getColor(activity,R.color.orange));
+                                            tv.setBackgroundColor(ContextCompat.getColor(activity, R.color.orange));
                                             tv.setTextColor(Color.WHITE);
 
                                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){

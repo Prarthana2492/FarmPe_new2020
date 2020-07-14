@@ -1,8 +1,7 @@
 package com.SevenNine.essentialscode;
 
 public class Urls {
-
-    private static final String ROOT_URL = "http://52.66.200.98:8383/api/";///DEV
+    private static final String ROOT_URL = "http://13.232.185.209:7070/api/";///DEV
     //private static final String ROOT_URL = "http://13.233.184.72:9090/api/";///pro
     // private static final String ROOT_URL = "http://3.17.6.57:9393/api/";///DEV
     // private static final String ROOT_URL = "http://3.17.6.57:8888//api/";//PRO
@@ -28,7 +27,7 @@ public class Urls {
     public static final String VerifyOTPNewUser=ROOT_URL+"Auth/VerifyOTPNewUser";
     public static final String GetUserDetails=ROOT_URL+"GetUserDetails";
     public static final String ValidateReferalCode=ROOT_URL+"ValidateRefferalCode";
-   public static final String CHANGE_LANGUAGE= ROOT_URL+"Lang/ChangeCurrentCulture";
+    public static final String CHANGE_LANGUAGE= ROOT_URL+"Lang/ChangeCurrentCulture";
     public static final String AddBankAccounts=ROOT_URL+"MasterTable/AddUpdateBankDetails";
     public static final String GetBankList = ROOT_URL+"MasterTable/GetBankDetailsList";
 
@@ -152,6 +151,7 @@ public class Urls {
     public static final String GetAddNewFarms = ROOT_URL + "MasterTable/GetFarmNameDetails";
     public static final String GetSellingType = ROOT_URL + "MasterTable/GetSellingTypeList";
     public static final String GetProductDetailsList = ROOT_URL + "SevenNine/GetProductDetailsList";
+    public static final String GetProductDetailsFrom7NinePartner = ROOT_URL + "SevenNine/GetProductDetailsFrom7NinePartner";
     public static final String GetFavCartList = ROOT_URL + "SevenNine/GetFavCartList";
     public static final String AddUpdateCartProductDetails = ROOT_URL + "SevenNine/AddUpdateCartProductDetails";
     public static final String AddUpateCartCheckoutDetails = ROOT_URL + "SevenNine/AddUpateCartCheckoutDetails";
@@ -159,8 +159,8 @@ public class Urls {
     public static final String GetCartProductDetails = ROOT_URL + "SevenNine/GetCartProductDetails";
     public static final String DeleteReviewCartList = ROOT_URL + "SevenNine/DeleteReviewCartList";
     public static final String AddUpdateFavouriteCartList = ROOT_URL + "SevenNine/AddUpdateFavouriteCartList";
- public static final String GetReviewCount = ROOT_URL + "SevenNine/GetReviewCount";
- public static final String GetSellingCategoryList = ROOT_URL + "MasterTable/GetSellingCategoryList";
+    public static final String GetReviewCount = ROOT_URL + "SevenNine/GetReviewCount";
+    public static final String GetSellingCategoryList = ROOT_URL + "MasterTable/GetSellingCategoryList";
     public static final String GetSellingList = ROOT_URL + "MasterTable/GetSellingList";
     public static final String Get_Profile_Details1= ROOT_URL + "Auth/GetRegUserDetails";
 
@@ -197,7 +197,7 @@ public class Urls {
     public static final String AddPondDetails = ROOT_URL + "SellingType/AddUpdateFarmPondDetails";
 
 
-  //  http://13.232.185.209:9898/api/MasterTable/GetFarmNameDetails
+    //  http://13.232.185.209:9898/api/MasterTable/GetFarmNameDetails
 
 
     public static final String Order_processed=ROOT_URL+"OrderDetails/OrderProcessed";

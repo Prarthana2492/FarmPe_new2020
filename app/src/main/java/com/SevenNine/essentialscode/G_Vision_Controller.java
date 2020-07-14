@@ -170,7 +170,7 @@ public class G_Vision_Controller {
         LableDetectionTask(Activity activity1, Vision.Images.Annotate annotate) {
             mActivityWeakReference = new WeakReference<>(activity1);
             mRequest = annotate;
-            progressDialog  = new ProgressDialog(activity1 ,R.style.MyAlertDialogStyle);
+            progressDialog  = new ProgressDialog(activity1 , R.style.MyAlertDialogStyle);
             this.activity2=activity1;
 
         }

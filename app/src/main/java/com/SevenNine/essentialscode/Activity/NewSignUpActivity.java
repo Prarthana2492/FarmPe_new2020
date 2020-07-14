@@ -29,6 +29,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.SevenNine.essentialscode.Bean.SelectLanguageBean;
 import com.SevenNine.essentialscode.R;
 import com.SevenNine.essentialscode.SessionManager;

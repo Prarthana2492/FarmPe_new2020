@@ -74,6 +74,7 @@ public class CurrentLocation extends Fragment implements
     Intent intent;
 
     public static double latitude,longitude=0;
+    public static double latitude_post,longitude_post=0;
 
     TextView current_address,add_address;
     public static String current_addr=null;
@@ -205,6 +206,8 @@ public class CurrentLocation extends Fragment implements
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                latitude_post=latitude;
+                longitude_post=longitude;
                 current_addr=current_address.getText().toString();
                 System.out.println("currentaddresss "+current_addr);
                 sessionManager.saveDefaultAddress(current_addr,"");
@@ -429,7 +432,7 @@ public class CurrentLocation extends Fragment implements
 
                 gps_navigated=true;
                 //will be navigated to turn on gps
-                startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
 
             }
         });
@@ -568,8 +571,8 @@ public class CurrentLocation extends Fragment implements
             jsonObject.put("TotalCartItems", CartDetailsAdapter.total_cart_items);
             jsonObject.put("CartProductListId", CartDetailsAdapter.strlist);
             jsonObject.put("AddressId", "");
-          //  jsonObject.put("CustLongitude",longitude);
-          //  jsonObject.put("CustLatitude",latitude);
+            jsonObject.put("CustLongitude","1");
+            jsonObject.put("CustLatitude","2");
             jsonObject.put("CustAddress",current_addr);
             jsonObject.put("UserId", sessionManager.getRegId("userId"));
             System.out.println("Add_New_AddresssssssssssssssssjsonObject11" + jsonObject);
