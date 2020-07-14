@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:297701761208:android:99ce67dd74bc319bdd944d",
         "android_client_info": {
-          "package_name": "com.SevenNine.Essentials"
+          "package_name": "com.SevenNine.essentialscode"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "297701761208-t68a4nf95t3a9pjekuo1a3s7k6n61vfu.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.SevenNine.Essentials",
+            "package_name": "com.SevenNine.essentialscode",
             "certificate_hash": "84e4bbd25e6f7d3888d3502ba18e4d62d20768f7"
           }
         },
@@ -47,7 +47,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:297701761208:android:9d5383ff2b352c2d",
         "android_client_info": {
-          "package_name": "com.SevenNine.Essentials"
+          "package_name": "com.SevenNine.essentialscode"
         }
       },
       "oauth_client": [
@@ -55,7 +55,7 @@
           "client_id": "297701761208-t20t4i6gkemkfhcqu7b72dmkd9d40te9.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.SevenNine.Essentials",
+            "package_name": "com.SevenNine.essentialscode",
             "certificate_hash": "8773e7ac3244284bf5b50481ba2e55c7f2f48a7e"
           }
         },
@@ -84,7 +84,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:297701761208:android:2914af52595e5b32dd944d",
         "android_client_info": {
-          "package_name": "com.SevenNine.Essentials"
+          "package_name": "com.SevenNine.essentialscode"
         }
       },
       "oauth_client": [
@@ -92,7 +92,7 @@
           "client_id": "297701761208-dctvpf3guhtn1qc1c7cr6urnu61hqnja.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.SevenNine.Essentials",
+            "package_name": "com.SevenNine.essentialscode",
             "certificate_hash": "84e4bbd25e6f7d3888d3502ba18e4d62d20768f7"
           }
         },
@@ -121,7 +121,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:297701761208:android:e755711831673f80dd944d",
         "android_client_info": {
-          "package_name": "com.SevenNine.Essentials"
+          "package_name": "com.SevenNine.essentialscode"
         }
       },
       "oauth_client": [
@@ -129,7 +129,7 @@
           "client_id": "297701761208-dldsjsuqvfvu2l013gak7g16b9oh1nts.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.SevenNine.Essentials",
+            "package_name": "com.SevenNine.essentialscode",
             "certificate_hash": "61df40e5453e4aa55eacd9962b8507a18f88f63d"
           }
         },

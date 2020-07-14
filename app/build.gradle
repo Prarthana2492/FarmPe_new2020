@@ -15,7 +15,7 @@ android {
     compileSdkVersion 28
 
     defaultConfig {
-        applicationId "com.SevenNine.Essentials"
+        applicationId "com.SevenNine.essentialscode"
         minSdkVersion 20
         targetSdkVersion 28
         multiDexEnabled true

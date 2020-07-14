@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.SevenNine.Essentials">
+    package="com.SevenNine.essentialscode">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permisssion.ACCESS_COARSE_LOCATION" />
@@ -19,7 +19,7 @@
         tools:node="remove" />
 
     <application
-        android:name="com.SevenNine.Essentials.Activity.MyApplication"
+        android:name="com.SevenNine.essentialscode.Activity.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/seven_nine_logo"
         android:label="@string/app_name"
@@ -30,10 +30,10 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup">
         <activity
-            android:name="com.SevenNine.Essentials.Activity.CameraActivity"
+            android:name="com.SevenNine.essentialscode.Activity.CameraActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.SevenNine.Essentials.Activity.ActivitySelectLang"
+            android:name="com.SevenNine.essentialscode.Activity.ActivitySelectLang"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,35 +42,35 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.SevenNine.Essentials.Activity.GetLocationActivity"
+            android:name="com.SevenNine.essentialscode.Activity.GetLocationActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.SevenNine.Essentials.Activity.UploadCamera_Activity"
+            android:name="com.SevenNine.essentialscode.Activity.UploadCamera_Activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.SevenNine.Essentials.Activity.SelectLanguageActivity"
+            android:name="com.SevenNine.essentialscode.Activity.SelectLanguageActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.SevenNine.Essentials.Activity.LandingPageActivity"
+            android:name="com.SevenNine.essentialscode.Activity.LandingPageActivity"
             android:resizeableActivity="false"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.SevenNine.Essentials.Activity.Extra_Activity"
+            android:name="com.SevenNine.essentialscode.Activity.Extra_Activity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.SevenNine.Essentials.Activity.Slider_Activity"
+            android:name="com.SevenNine.essentialscode.Activity.Slider_Activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.SevenNine.Essentials.Activity.NewSignUpActivity"
+            android:name="com.SevenNine.essentialscode.Activity.NewSignUpActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.SevenNine.Essentials.Activity.NewEnterOTP"
+            android:name="com.SevenNine.essentialscode.Activity.NewEnterOTP"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.SevenNine.Essentials.Activity.SelectStoreLocation"
+            android:name="com.SevenNine.essentialscode.Activity.SelectStoreLocation"
             android:screenOrientation="portrait" />
 
         <meta-data
@@ -88,13 +88,13 @@
             </intent-filter>
         </receiver>
         -->
-        <service android:name="com.SevenNine.Essentials.GpsService" /> <!-- Firebase Notifications -->
-        <service android:name="com.SevenNine.Essentials.MyFirebaseMessagingService">
+        <service android:name="com.SevenNine.essentialscode.GpsService" /> <!-- Firebase Notifications -->
+        <service android:name="com.SevenNine.essentialscode.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <service android:name="com.SevenNine.Essentials.MyFirebaseInstanceIDService">
+        <service android:name="com.SevenNine.essentialscode.MyFirebaseInstanceIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
