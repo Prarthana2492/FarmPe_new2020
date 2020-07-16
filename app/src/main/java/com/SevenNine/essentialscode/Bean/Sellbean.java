@@ -2,11 +2,11 @@ package com.SevenNine.essentialscode.Bean;
 
 public class Sellbean {
 
-    String name,id,weight,price,actual_price,uom,prod_descr,upid,prodId,selling_cat_name,brand;
+    String name,id,weight,price,actual_price,uom,prod_descr,upid,prodId,selling_cat_name,brand,offerPrice;
     String image;
 
 
-    public Sellbean(String name, String id,String image,String weight,String price,String actual_price,String uom,String prod_descr,String upid,String prodId,String selling_cat_name,String brand) {
+    public Sellbean(String name, String id,String image,String weight,String price,String actual_price,String uom,String prod_descr,String upid,String prodId,String selling_cat_name,String brand,String offerPrice) {
         this.name = name;
         this.id = id;
         this.weight = weight;
@@ -19,6 +19,7 @@ public class Sellbean {
         this.upid=upid;
         this.selling_cat_name=selling_cat_name;
         this.brand=brand;
+        this.offerPrice=offerPrice;
 
     }
 
@@ -68,5 +69,9 @@ public class Sellbean {
 
     public String getBrand() {
         return brand;
+    }
+
+    public String getOfferPrice() {
+        return offerPrice;
     }
 }

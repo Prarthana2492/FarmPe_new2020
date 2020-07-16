@@ -95,10 +95,19 @@ public class CategoryProdDetailAdapter extends RecyclerView.Adapter<CategoryProd
           holder.name.setText(products.getName()+", "+products.getProd_descr()+", "+products.getBrand());
       }*/
         holder.quantityPicker.setQuantitySelected(1);
+        holder.quantityPicker.setOnQuantityChangeListener(new QuantityPicker.OnQuantityChangeListener() {
+            @Override
+            public void onValueChanged(int quantity) {
+                if (holder.quantityPicker.getQuantity()<1){
+                    holder.quantityPicker.setQuantitySelected(1);
+                }
+            }
+        });
         holder.weight.setText(products.getWeight()+" "+products.getUom());
         holder.price.setText("Rs "+products.getPrice());
         holder.actual_price.setText("₹"+products.getActual_price());
-        holder.actual_price.setPaintFlags(holder.actual_price.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+       // holder.actual_price.setPaintFlags(holder.actual_price.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        holder.actual_price.setBackground(activity.getResources().getDrawable(R.drawable.line));
       //  CategoryProdDetailList.name.setText(products.getSelling_cat_name());
         Glide.with(activity).load(products.getImage())
                 .thumbnail(0.5f)

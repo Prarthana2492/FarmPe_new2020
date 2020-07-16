@@ -51,8 +51,10 @@ public class CartDetailsAdapter extends RecyclerView.Adapter<CartDetailsAdapter.
     SessionManager sessionManager;
     public static CardView cardView;
     public static String productidlist;
-    public static String strlist;
+    public static String strlist,getamt;
     public static int quantity_pick,quant_zero;
+    Double before_tax_text,shipping_fee_double;
+    double offerprice,save_amt;
     int totalPrice_quant,total_price_incr = 0;
 
     public static ArrayList<Integer> intlist = new ArrayList<Integer>();
@@ -64,7 +66,7 @@ public class CartDetailsAdapter extends RecyclerView.Adapter<CartDetailsAdapter.
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView prod_name,quantity,amount,shipping_fee,shipping_iscount,quant_count,delete,save_for_later,mrp;
+        public TextView prod_name,quantity,amount,shipping_fee,shipping_iscount,quant_count,delete,save_for_later,mrp,off_text;
         public ImageView image,next;
         View view_line;
         QuantityPicker quantityPicker;
@@ -77,6 +79,7 @@ public class CartDetailsAdapter extends RecyclerView.Adapter<CartDetailsAdapter.
             amount=view.findViewById(R.id.amount);
             quantity=view.findViewById(R.id.quantity);
             shipping_fee=view.findViewById(R.id.shipping);
+            off_text=view.findViewById(R.id.off_text);
             shipping_iscount=view.findViewById(R.id.shipping_iscount);
             view_line=view.findViewById(R.id.view_line);
             //  quant_count=view.findViewById(R.id.quant_count);
@@ -112,15 +115,37 @@ public class CartDetailsAdapter extends RecyclerView.Adapter<CartDetailsAdapter.
         }*/
         //  holder.prod_name.setText(products1.getProd_name()+", "+products1.getProd_desc()+", "+products1.getBrand());
         //  holder.quantity.setText("Quantity : "+products1.getQuantity());
-        holder.amount.setText("Rs "+products1.getAmount());
+        if (products1.getShippng_iscount().equals("0")){
+            holder.amount.setText("Rs "+products1.getAmount());
+        }else {
+            offerprice = ((Double.parseDouble(products1.getMRP()))-(Double.parseDouble(products1.getMRP())) * ((Double.parseDouble(products1.getShippng_iscount())) / 100));
+            holder.amount.setText("Rs " + offerprice);
+        }
         holder.quantity.setText("Quantity: "+products1.getQuantity());
         //  holder.quant_count.setText(products1.getQuantity());
        // int qt= Integer.parseInt(products1.getQuantity());
        // holder.quantityPicker.setQuantitySelected(qt);
-        holder.shipping_fee.setText("Shipping Fee: "+products1.getShipping_fee());
-        holder.shipping_iscount.setText("Shipping discount: "+products1.getShippng_iscount());
-        holder.mrp.setText("₹"+products1.getMRP());
-        holder.mrp.setPaintFlags(holder.mrp.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        holder.shipping_fee.setText("Delivery Charges: "+products1.getShipping_fee());
+        getamt=holder.amount.getText().toString().substring(3);
+        save_amt=((Double.parseDouble(products1.getMRP()))-(Double.parseDouble(getamt)));
+        holder.shipping_iscount.setText("save ₹"+save_amt);
+      //  holder.mrp.setText("₹"+products1.getMRP());
+     //   holder.mrp.setPaintFlags(holder.mrp.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        holder.mrp.setBackground(activity.getResources().getDrawable(R.drawable.line));
+        if (products1.getMRP().equals(products1.getAmount())){
+            holder.mrp.setVisibility(View.INVISIBLE);
+            holder.mrp.setVisibility(View.INVISIBLE);
+        }else{
+            holder.mrp.setText("₹"+products1.getMRP());
+            holder.mrp.setBackground(activity.getResources().getDrawable(R.drawable.line));
+        }
+        if (products1.getShippng_iscount().equals("0")){
+            holder.off_text.setVisibility(View.GONE);
+        }else{
+            holder.off_text.setVisibility(View.VISIBLE);
+            holder.off_text.setText(products1.getShippng_iscount()+"%"+"\n off");
+
+        }
         quant_zero=Integer.parseInt(products1.getQuantity());
 
 /*if (position==(productList.size()-1)){
@@ -149,11 +174,17 @@ public class CartDetailsAdapter extends RecyclerView.Adapter<CartDetailsAdapter.
         // loan_amount.setText(": ₹ "+formatter.format(rate_double));
 
         System.out.println("total_amounttt" + totalPrice);
-        CartDetailsFragment.main_total_amount.setText("₹" + formatter.format(rate_double1)+".00");
-        CartDetailsFragment.total_before_tax.setText("₹" + formatter.format(rate_double1)+".00");
+        before_tax_text=((rate_double1)+(Double.parseDouble(products1.getShipping_fee())));
+        String strDouble1 = String.format("%.2f", before_tax_text);
+        CartDetailsFragment.main_total_amount.setText("₹" + strDouble1);
+        CartDetailsFragment.total_before_tax.setText("₹" + strDouble1);
         CartDetailsFragment.items_cost.setText("₹" + formatter.format(rate_double1)+".00");
-        CartDetailsFragment.total_without_disc.setText("₹" + formatter.format(rate_double1)+".00");
+        CartDetailsFragment.total_without_disc.setText("₹" + strDouble1);
         CartDetailsFragment.total_items.setText("Subtotal(" + (productList.size()) + " Items):");
+        shipping_fee_double=Double.parseDouble(products1.getShipping_fee());
+        String shippDouble = String.format("%.2f",shipping_fee_double );
+       // shipping_fee.setText("₹"+shippDouble);
+        CartDetailsFragment.delivery_charges.setText("₹"+shippDouble);
 
         CartDetailsFragment.total_amount.setText("₹" + formatter.format(rate_double1));
        // total_price_incr=totalPrice;

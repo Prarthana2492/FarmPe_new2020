@@ -228,13 +228,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/segoeui"
-            android:hint="Apply"
+            android:text="APPLY"
             android:background="@drawable/border_filled_red"
             android:textSize="16dp"
             android:gravity="center"
             android:padding="15dp"
+            android:textColor="#fff"
             android:layout_marginTop="20dp"
-            android:textColor="#ffffff"
             />
 
         <TextView

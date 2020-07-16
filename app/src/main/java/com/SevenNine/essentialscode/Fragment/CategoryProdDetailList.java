@@ -75,7 +75,7 @@ public class CategoryProdDetailList extends Fragment {
         HomePage_With_Bottom_Navigation.view.setVisibility(View.GONE);*/
 
         recyclerView_main=view.findViewById(R.id.recycler_cat_detail);
-        search=view.findViewById(R.id.search);
+      //  search=view.findViewById(R.id.search);
         name=view.findViewById(R.id.name);
 sessionManager=new SessionManager(getActivity());
         linearLayout = view.findViewById(R.id.linearLayout);
@@ -143,7 +143,7 @@ sessionManager=new SessionManager(getActivity());
                         for(int i=0;i<get_soiltype.length();i++){
 
                             JSONObject jsonObject1 = get_soiltype.getJSONObject(i);
-                            Sellbean sellbean = new Sellbean(jsonObject1.getString("ProductName"),jsonObject1.getString("SellingCategoryId"),jsonObject1.getString("ProductIcon"),jsonObject1.getString("Quantity"),jsonObject1.getString("Amount"),jsonObject1.getString("MRP"),"Kg",jsonObject1.getString("ProductDescription"),jsonObject1.getString("SellingCategoryName"),jsonObject1.getString("ProductId"),jsonObject1.getString("SellingCategoryName"),jsonObject1.getString("Brand"));
+                            Sellbean sellbean = new Sellbean(jsonObject1.getString("ProductName"),jsonObject1.getString("SellingCategoryId"),jsonObject1.getString("ProductIcon"),jsonObject1.getString("Quantity"),jsonObject1.getString("Amount"),jsonObject1.getString("MRP"),"Kg",jsonObject1.getString("ProductDescription"),jsonObject1.getString("SellingCategoryName"),jsonObject1.getString("ProductId"),jsonObject1.getString("SellingCategoryName"),jsonObject1.getString("Brand"),jsonObject1.getString("OfferPrice"));
 
                             newOrderBeansList_subcat.add(sellbean);
                             name.setText(jsonObject1.getString("SellingCategoryName"));
@@ -168,7 +168,7 @@ sessionManager=new SessionManager(getActivity());
             e.printStackTrace();
         }
 
-        search.addTextChangedListener(new TextWatcher() {
+       /* search.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 sorting(s.toString());
@@ -186,7 +186,7 @@ sessionManager=new SessionManager(getActivity());
 
                 // TODO Auto-generated method stub
             }
-        });
+        });*/
 
         return view;
     }

@@ -41,9 +41,9 @@ public class OrderDetailsFragment extends Fragment {
     JSONObject lngObject;
     public static String order_details;
     Fragment selectedFragment;
-    String date_str;
-    TextView toolbar_title,ordered_on,items_cost,before_tax,total_amt,total_sum_amt,item_count,name_vw,pay_mode,method;
-
+    String delivery_charge;
+    TextView toolbar_title,ordered_on,items_cost,before_tax,total_amt,total_sum_amt,item_count,name_vw,pay_mode,method,shipping_fee;
+    Double rate_double1,before_tax_text,shipping_fee_double;
     public static OrderDetailsFragment newInstance() {
         OrderDetailsFragment fragment = new OrderDetailsFragment();
         return fragment;
@@ -64,6 +64,7 @@ public class OrderDetailsFragment extends Fragment {
         name_vw=view.findViewById(R.id.name_vw);
         pay_mode=view.findViewById(R.id.payment_mode);
         method=view.findViewById(R.id.method);
+        shipping_fee=view.findViewById(R.id.shipping_fee);
 
 
         Window window = getActivity().getWindow();
@@ -121,12 +122,26 @@ public class OrderDetailsFragment extends Fragment {
 
         DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.US);;
         formatter .applyPattern("##,##,##,###");
-        double rate_double1= (Double.parseDouble(getArguments().getString("Amount")));
+        if (getArguments().getString("offer_price").equals("0")){
+            rate_double1= (Double.parseDouble(getArguments().getString("Amount")));
+        }else{
+            rate_double1 = ((Double.parseDouble(getArguments().getString("uom")))-(Double.parseDouble(getArguments().getString("uom"))) * ((Double.parseDouble(getArguments().getString("offer_price"))) / 100));
+           // holder.amount.setText("₹"+offer_price);
+            System.out.println("jdkjsdhfkj"+rate_double1);
+        }
+        shipping_fee_double=Double.parseDouble(getArguments().getString("delivery_charges"));
+        String shippDouble = String.format("%.2f",shipping_fee_double );
+        shipping_fee.setText("₹"+shippDouble);
         ordered_on.setText(getArguments().getString("createdon").substring(0,10));
-        items_cost.setText("₹"+formatter.format(rate_double1)+".00");
-        before_tax.setText("₹"+formatter.format(rate_double1)+".00");
-        total_amt.setText("₹"+formatter.format(rate_double1)+".00");
-        total_sum_amt.setText("₹"+formatter.format(rate_double1)+".00");
+        String strDouble = String.format("%.2f", rate_double1);
+        items_cost.setText("₹"+strDouble);
+        delivery_charge=getArguments().getString("delivery_charges");
+        before_tax_text=((rate_double1)+(Double.parseDouble(delivery_charge)));
+        String strDouble1 = String.format("%.2f", before_tax_text);
+
+        before_tax.setText("₹"+strDouble1);
+        total_amt.setText("₹"+strDouble1);
+        total_sum_amt.setText("₹"+strDouble1);
         item_count.setText("Items -"+"1 Item");
         name_vw.setText(getArguments().getString("address"));
         pay_mode.setText("Mode: "+getArguments().getString("pay_mode"));
@@ -140,7 +155,7 @@ public class OrderDetailsFragment extends Fragment {
         recyclerView.setLayoutManager(mLayoutManager_farm);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        OrderDetailBean bean=new OrderDetailBean(getArguments().getString("ProdName"),getArguments().getString("quantity"),getArguments().getString("Amount"),"₹0","₹0",getArguments().getString("prod_img"),getArguments().getString("cat_name"),"","","",getArguments().getString("uom"));
+        OrderDetailBean bean=new OrderDetailBean(getArguments().getString("ProdName"),getArguments().getString("quantity"),getArguments().getString("Amount"),getArguments().getString("delivery_charges"),getArguments().getString("offer_price"),getArguments().getString("prod_img"),getArguments().getString("cat_name"),"","","",getArguments().getString("uom"));
         newOrderBeansList.add(bean);
 
         madapter=new OrderDetailsAdapter(getActivity(),newOrderBeansList);

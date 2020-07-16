@@ -9,68 +9,32 @@
     android:background="#f1f1f1"
     android:weightSum="100"
     >
-<!--
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="9dp"
-        android:background="@color/dark_green"
-        android:gravity="center_vertical">
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
-
-           &lt;!&ndash; <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_search_green"
-                />&ndash;&gt;
-
-            <EditText
-                android:id="@+id/search"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:padding="10dp"
-                android:drawablePadding="10dp"
-                android:drawableLeft="@drawable/ic_search_green"
-                android:background="@drawable/border_empty_curve"
-                android:fontFamily="@font/segoeui"
-                android:textColor="@color/gray"
-                />
-
-        </LinearLayout>
-    </LinearLayout>
--->
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:background="#fff"
-        android:gravity="center_vertical">
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="18dp"
-        android:textColor="#000"
-        android:paddingVertical="10dp"
-        android:fontFamily="@font/segoeui"
-        android:layout_marginLeft="10dp"
-        />
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:text="Offers"
+            android:textColor="#000"
+            android:textSize="20dp"
+             />
+
     </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="2dp"
+                android:layout_marginBottom="5dp"
                 android:gravity="center_vertical">
 
 

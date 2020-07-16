@@ -144,12 +144,15 @@ public class NewOrderFragmentAccount extends Fragment {
                             String mode=jsonObject1.getString("mode");
                             String mrp=jsonObject1.getString("MRP");
                             String CustAddress=jsonObject1.getString("CustAddress");
+                            String OfferPrice = jsonObject1.getString("OfferPrice");
+                            String DeliveryCharges = jsonObject1.getString("DeliveryCharges");
+
 
                             /*PreferedBranchBean bean=new PreferedBranchBean(Name,StreeAddress,StreeAddress1,State,Pincode,"",Id);
                             newOrderBeansList.add(bean);*/
 
                             NewOrderBean img1=new NewOrderBean(SellingListName,CreatedOn,SellingListIcon,TxnId,Amount,SelectedQuantity,mrp,SellingCategoryName,mode,
-                                    CustAddress);
+                                    CustAddress,OfferPrice,DeliveryCharges);
                             newOrderBeansList.add(img1);
 
                           //  System.out.println("adreess_list_size"+newOrderBeansList.size());

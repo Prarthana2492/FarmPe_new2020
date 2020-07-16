@@ -24,8 +24,8 @@ public class OrderDetailsAdapter extends RecyclerView.Adapter<OrderDetailsAdapte
     private List<OrderDetailBean> productList;
     Activity activity;
     Fragment selectedFragment;
-    String name;
-
+    String name,getamt;
+    double save_amt,offer_price;
 
     public static CardView cardView;
     public OrderDetailsAdapter(Activity activity, List<OrderDetailBean> moviesList) {
@@ -35,7 +35,7 @@ public class OrderDetailsAdapter extends RecyclerView.Adapter<OrderDetailsAdapte
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView prod_name,quantity,amount,shipping_fee,shipping_iscount,mrp;
+        public TextView prod_name,quantity,amount,shipping_fee,shipping_iscount,mrp,off_text;
         public ImageView image,next;
         View view_line;
 
@@ -49,6 +49,7 @@ public class OrderDetailsAdapter extends RecyclerView.Adapter<OrderDetailsAdapte
             shipping_iscount=view.findViewById(R.id.shipping_iscount);
             view_line=view.findViewById(R.id.view_line);
             mrp=view.findViewById(R.id.mrp);
+            off_text=view.findViewById(R.id.off_text);
 
         }
 
@@ -66,20 +67,40 @@ public class OrderDetailsAdapter extends RecyclerView.Adapter<OrderDetailsAdapte
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final OrderDetailBean products1 = productList.get(position);
-        if (products1.getProd_desc().equals("")){
+        holder.prod_name.setText(products1.getProd_name());
+
+       /* if (products1.getProd_desc().equals("")){
             holder.prod_name.setText(products1.getProd_name());
         }else{
-            holder.prod_name.setText(products1.getProd_name()+", "+products1.getProd_desc()+", "+products1.getBrand());
-        }
+            holder.prod_name.setText(products1.getProd_name());
+        }*/
      // holder.prod_name.setText(products1.getProd_name());
       holder.quantity.setText("Quantity : "+products1.getQuantity());
-      holder.amount.setText("₹"+products1.getAmount()+".00");
-      holder.mrp.setText("₹"+products1.getMRP());
-        holder.mrp.setPaintFlags(holder.mrp.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        if (products1.getShippng_iscount().equals("0")){
+            holder.amount.setText("₹"+products1.getAmount());
+        }else{
+            offer_price = ((Double.parseDouble(products1.getMRP()))-(Double.parseDouble(products1.getMRP())) * ((Double.parseDouble(products1.getShippng_iscount())) / 100));
+            String strDouble = String.format("%.2f", offer_price);
+            holder.amount.setText("₹"+strDouble);
+        }
+        if (products1.getShippng_iscount().equals("0")){
+            holder.off_text.setVisibility(View.GONE);
+        }else{
+            holder.off_text.setVisibility(View.VISIBLE);
+            holder.off_text.setText(products1.getShippng_iscount()+"%"+"\n off");
 
-        holder.shipping_fee.setText("Shipping Fee: "+products1.getShipping_fee());
-      holder.shipping_iscount.setText("Shipping iscount: "+products1.getShippng_iscount());
-if (position==(productList.size()-1)){
+        }
+     // holder.amount.setText("₹"+products1.getAmount());
+      holder.mrp.setText("₹"+products1.getMRP());
+      //  holder.mrp.setPaintFlags(holder.mrp.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        holder.mrp.setBackground(activity.getResources().getDrawable(R.drawable.line));
+
+        holder.shipping_fee.setText("Delivery Charges: "+products1.getShipping_fee());
+        getamt=holder.amount.getText().toString().substring(1);
+        save_amt=((Double.parseDouble(products1.getMRP()))-(Double.parseDouble(getamt)));
+        String strDouble1 = String.format("%.2f", save_amt);
+        holder.shipping_iscount.setText("save ₹"+strDouble1);
+        if (position==(productList.size()-1)){
     holder.view_line.setVisibility(View.GONE);
 }
         Glide.with(activity).load(products1.getProd_img())

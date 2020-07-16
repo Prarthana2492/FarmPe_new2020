@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/tools"
     android:background="#FFFFFF"
-    android:layout_marginBottom="2dp"
+    android:layout_marginTop="2dp"
     android:tag="cards main container">
 
     <LinearLayout
@@ -27,7 +27,8 @@
 
             <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_gravity="right">
 
             <ImageView
                 android:id="@+id/prod_img_fix"
@@ -36,12 +37,25 @@
                 android:layout_gravity="right"
                 android:src="@drawable/veg" />
 
-                <ImageView
-                    android:id="@+id/prod_img"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:src="@drawable/veg" />
+                    android:gravity="start"
+
+                    >
+
+                <TextView
+                    android:id="@+id/off_text"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/ic_circle_img"
+                    android:text="50%\n off"
+                    android:gravity="center"
+                    android:fontFamily="@font/segoeui"
+                    android:textSize="12dp"
+                    android:textColor="#fff"
+                    />
+                </LinearLayout>
             </RelativeLayout>
 
             <!--<de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -68,6 +82,7 @@
                 android:fontFamily="@font/segoeui"
                 android:gravity="center_vertical"
                 android:text="Name"
+                android:textStyle="bold"
                 android:textColor="#000"
                 android:textSize="14dp" />
             <TextView
@@ -98,12 +113,14 @@
                     android:textSize="14dp" />
 
                 <TextView
+                    android:id="@+id/mrp_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/segoeui"
                     android:text="MRP"
                     android:layout_marginLeft="10dp"
                     android:singleLine="false"
+                    android:textColor="#000"
                     android:textSize="14dp" />
 
                 <TextView
@@ -114,15 +131,12 @@
                     android:text="Rs100"
                     android:layout_marginLeft="3dp"
                     android:singleLine="false"
+                    android:textColor="#000"
                     android:textSize="14dp" />
 
 
             </LinearLayout>
-            <com.SevenNine.essentialscode.Utils.QuantityPicker
-                android:id="@+id/quantityPicker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
+<!--
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -132,38 +146,37 @@
                 >
 
                 <TextView
-                    android:id="@+id/add_cart"
+                    android:id="@+id/delete"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/segoeui"
-                    android:text="Add to Cart"
-                    android:singleLine="false"
-                    android:paddingVertical="8dp"
-                    android:paddingHorizontal="20dp"
-                    android:textStyle="bold"
-                    android:background="@drawable/border_filled_orrange"
-                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Delete"
+                    android:paddingHorizontal="30dp"
+                    android:paddingVertical="5dp"
                     android:textColor="#000"
+                    android:background="@drawable/border_grey"
+                    android:layout_weight="50"
                     android:textSize="14dp" />
 
                 <TextView
-                    android:id="@+id/remove"
+                    android:id="@+id/edit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/segoeui"
-                    android:text="Remove"
-                    android:visibility="gone"
-                    android:layout_marginLeft="20dp"
+                    android:text="EDIT"
+                    android:layout_marginLeft="10dp"
                     android:singleLine="false"
+                    android:background="@drawable/border_filled_orrange"
                     android:paddingVertical="8dp"
-                    android:paddingHorizontal="20dp"
+                    android:paddingHorizontal="40dp"
                     android:textStyle="bold"
-                    android:background="@drawable/border_filled_gray_curved"
                     android:layout_gravity="center"
                     android:textColor="#000"
                     android:textSize="14dp" />
-
             </LinearLayout>
+-->
+
 
         </LinearLayout>
 

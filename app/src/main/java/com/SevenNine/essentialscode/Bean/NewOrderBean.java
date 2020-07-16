@@ -2,9 +2,9 @@ package com.SevenNine.essentialscode.Bean;
 
 public class NewOrderBean {
 
-    String prod_name,CreatedOn,prod_img,TxnId,Amount,Quantity,Uom,productInfo,mode,firstname;
+    String prod_name,CreatedOn,prod_img,TxnId,Amount,Quantity,mrp,productInfo,mode,firstname,offer_price,delivery_charges;
 
-    public NewOrderBean(String prod_name, String CreatedOn, String prod_img, String TxnId, String Amount, String Quantity,String Uom,String productInfo,String mode,String firstname) {
+    public NewOrderBean(String prod_name, String CreatedOn, String prod_img, String TxnId, String Amount, String Quantity,String mrp,String productInfo,String mode,String firstname,String offer_price,String delivery_charges) {
 
         this.prod_name = prod_name;
         this.CreatedOn = CreatedOn;
@@ -12,10 +12,12 @@ public class NewOrderBean {
         this.TxnId = TxnId;
         this.Amount = Amount;
         this.Quantity = Quantity;
-        this.Uom = Uom;
+        this.mrp = mrp;
         this.productInfo = productInfo;
         this.mode = mode;
         this.firstname = firstname;
+        this.offer_price = offer_price;
+        this.delivery_charges = delivery_charges;
     }
 
     public String getProd_name() {
@@ -42,10 +44,6 @@ public class NewOrderBean {
         return Quantity;
     }
 
-    public String getUom() {
-        return Uom;
-    }
-
     public String getProductInfo() {
         return productInfo;
     }
@@ -56,5 +54,17 @@ public class NewOrderBean {
 
     public String getFirstname() {
         return firstname;
+    }
+
+    public String getMrp() {
+        return mrp;
+    }
+
+    public String getOffer_price() {
+        return offer_price;
+    }
+
+    public String getDelivery_charges() {
+        return delivery_charges;
     }
 }

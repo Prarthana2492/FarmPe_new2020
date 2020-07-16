@@ -192,7 +192,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Shipping Fee"
+                    android:text="Delivery Charges:"
                     android:textSize="14dp"
                     android:fontFamily="@font/segoeui"
                     android:layout_weight="70"
@@ -207,11 +207,11 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/shipping_fee"
                         android:layout_width="wrap_content"
                         android:layout_height="34dp"
                         android:fontFamily="@font/segoeui"
-                        android:text="-- --"
-                        android:textStyle="bold"
+                        android:text="00"
                         android:textSize="16dp"
                         android:textColor="#000"
                          />
@@ -311,8 +311,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="-- --"
-                        android:textStyle="bold"
+                        android:text="₹0.00"
                         android:textSize="16dp"
                         android:textColor="#000"
                         android:fontFamily="@font/segoeui"
@@ -353,6 +352,7 @@
                         />
                 </LinearLayout>
             </LinearLayout>
+<!--
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -378,7 +378,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="-- --"
+                        android:text="&#45;&#45; &#45;&#45;"
                         android:textStyle="bold"
                         android:textSize="16dp"
                         android:fontFamily="@font/segoeui"
@@ -386,6 +386,7 @@
                         />
                 </LinearLayout>
             </LinearLayout>
+-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

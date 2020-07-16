@@ -43,7 +43,7 @@ public class CartDetailsFragment extends Fragment {
     CartDetailsAdapter madapter;
     JSONObject lngObject;
     View view_line;
-    public static TextView toolbar_title,total_amount,main_total_amount,total_before_tax,total_items,items_cost,total_without_disc,name;
+    public static TextView toolbar_title,total_amount,main_total_amount,total_before_tax,total_items,items_cost,total_without_disc,name,delivery_charges;
     Fragment selectedFragment;
 
     public static CartDetailsFragment newInstance() {
@@ -66,6 +66,7 @@ public class CartDetailsFragment extends Fragment {
         items_cost=view.findViewById(R.id.items_cost);
         full_layout=view.findViewById(R.id.full_layout);
         name=view.findViewById(R.id.name);
+        delivery_charges=view.findViewById(R.id.delivery_charges);
         total_without_disc=view.findViewById(R.id.total_without_disc);
 
 sessionManager=new SessionManager(getActivity());
@@ -170,11 +171,13 @@ sessionManager=new SessionManager(getActivity());
                                 String Brand = jsonObject1.getString("Brand");
                                 String CartProductListId = jsonObject1.getString("CartProductListId");
                                 String ProductId = jsonObject1.getString("ProductId");
+                                String OfferPrice = jsonObject1.getString("OfferPrice");
+                                String DeliveryCharges = jsonObject1.getString("DeliveryCharges");
 
                             /*PreferedBranchBean bean=new PreferedBranchBean(Name,StreeAddress,StreeAddress1,State,Pincode,"",Id);
                             newOrderBeansList.add(bean);*/
 
-                                OrderDetailBean bean = new OrderDetailBean(ProductName, SellingQuantity, Amount, "₹2", "₹2", SellingListIcon, CartProductListId, ProductDescription,ProductId,Brand,MRP);
+                                OrderDetailBean bean = new OrderDetailBean(ProductName, SellingQuantity, Amount, DeliveryCharges, OfferPrice, SellingListIcon, CartProductListId, ProductDescription,ProductId,Brand,MRP);
                                 newOrderBeansList.add(bean);
                                 System.out.println("adreess_list_size" + newOrderBeansList.size());
                                 madapter = new CartDetailsAdapter(getActivity(), newOrderBeansList);

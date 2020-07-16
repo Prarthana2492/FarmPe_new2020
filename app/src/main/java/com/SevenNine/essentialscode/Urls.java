@@ -151,6 +151,8 @@ public class Urls {
     public static final String GetAddNewFarms = ROOT_URL + "MasterTable/GetFarmNameDetails";
     public static final String GetSellingType = ROOT_URL + "MasterTable/GetSellingTypeList";
     public static final String GetProductDetailsList = ROOT_URL + "SevenNine/GetProductDetailsList";
+    public static final String GetOfferDetails = ROOT_URL + "SevenNine/GetOfferDetails";
+    public static final String GetTop10listItem = ROOT_URL + "SevenNine/GetTop10listItem";
     public static final String GetProductDetailsFrom7NinePartner = ROOT_URL + "SevenNine/GetProductDetailsFrom7NinePartner";
     public static final String GetFavCartList = ROOT_URL + "SevenNine/GetFavCartList";
     public static final String AddUpdateCartProductDetails = ROOT_URL + "SevenNine/AddUpdateCartProductDetails";

@@ -134,7 +134,7 @@ public class MainCategoryAdapter extends RecyclerView.Adapter<MainCategoryAdapte
                             for(int i=0;i<get_soiltype.length();i++){
 
                                 JSONObject jsonObject1 = get_soiltype.getJSONObject(i);
-                                Sellbean sellbean = new Sellbean(jsonObject1.getString("SellingListName"),jsonObject1.getString("SellingCategoryId"),jsonObject1.getString("SellingListIcon"),jsonObject1.getString("Quantity"),jsonObject1.getString("Amount"),"","Kg",jsonObject1.getString("ProductDescription"),jsonObject1.getString("UnitOfPriceId"),jsonObject1.getString("ProductId"),"","");
+                                Sellbean sellbean = new Sellbean(jsonObject1.getString("SellingListName"),jsonObject1.getString("SellingCategoryId"),jsonObject1.getString("SellingListIcon"),jsonObject1.getString("Quantity"),jsonObject1.getString("Amount"),"","Kg",jsonObject1.getString("ProductDescription"),jsonObject1.getString("UnitOfPriceId"),jsonObject1.getString("ProductId"),"","","");
 
                                 newOrderBeansList_fruit.add(sellbean);
                             }
@@ -169,7 +169,7 @@ public class MainCategoryAdapter extends RecyclerView.Adapter<MainCategoryAdapte
             vegAdapter = new VegSectionAdapter(activity, newOrderBeansList_subcat);
             holder.recyclerView_second.setAdapter(vegAdapter);*/
         }
-        if (products.getName().equals("Cooking Oil")) {
+      /*  if (products.getName().equals("Cooking Oil")) {
             newOrderBeansList_subcat.clear();
             // livestock_types_adapter = new Livestock_Types_Adapter( getActivity(),newOrderBeansList);
             GridLayoutManager mLayoutManager_farm = new GridLayoutManager(activity, 1, GridLayoutManager.HORIZONTAL, false);
@@ -185,7 +185,7 @@ public class MainCategoryAdapter extends RecyclerView.Adapter<MainCategoryAdapte
             newOrderBeansList_subcat.add(bean15);
             vegAdapter = new VegSectionAdapter(activity, newOrderBeansList_subcat);
             holder.recyclerView_second.setAdapter(vegAdapter);
-        }
+        }*/
         if (products.getName().equals("Vegetables")||products.getName().equals("POT")) {
 
 
@@ -217,7 +217,7 @@ public class MainCategoryAdapter extends RecyclerView.Adapter<MainCategoryAdapte
                             for(int i=0;i<get_soiltype.length();i++){
 
                                 JSONObject jsonObject1 = get_soiltype.getJSONObject(i);
-                                Sellbean sellbean = new Sellbean(jsonObject1.getString("ProductName"),jsonObject1.getString("SellingCategoryId"),jsonObject1.getString("SellingListIcon"),jsonObject1.getString("Quantity"),jsonObject1.getString("Amount"),"","Kg",jsonObject1.getString("ProductDescription"),jsonObject1.getString("UnitOfPriceId"),jsonObject1.getString("ProductId"),"","");
+                                Sellbean sellbean = new Sellbean(jsonObject1.getString("ProductName"),jsonObject1.getString("SellingCategoryId"),jsonObject1.getString("SellingListIcon"),jsonObject1.getString("Quantity"),jsonObject1.getString("Amount"),"","Kg",jsonObject1.getString("ProductDescription"),jsonObject1.getString("UnitOfPriceId"),jsonObject1.getString("ProductId"),"","","");
 
                                 newOrderBeansList_subcat_veg.add(sellbean);
                             }
@@ -253,7 +253,7 @@ public class MainCategoryAdapter extends RecyclerView.Adapter<MainCategoryAdapte
         }
 
 
-        if (products.getName().equals("Groceries")) {
+       /* if (products.getName().equals("Groceries")) {
             newOrderBeansList_subcat.clear();
             // livestock_types_adapter = new Livestock_Types_Adapter( getActivity(),newOrderBeansList);
             GridLayoutManager mLayoutManager_farm = new GridLayoutManager(activity, 1, GridLayoutManager.HORIZONTAL, false);
@@ -265,11 +265,11 @@ public class MainCategoryAdapter extends RecyclerView.Adapter<MainCategoryAdapte
             newOrderBeansList_subcat.add(bean9);
             Sellbean1 bean10 = new Sellbean1("Exo Touch & Shine\nRound Dishwash\nBar","1", R.drawable.veg,"(1.4 kg, Pack of 2)","₹100","₹120","");
             newOrderBeansList_subcat.add(bean10);
-            /*Sellbean1 bean111 = new Sellbean1("Exo Touch & Shine\nRound Dishwash\nBar","1",R.drawable.veg,"(1.4 kg, Pack of 2)","₹100","₹120","");
-            newOrderBeansList_subcat.add(bean111);*/
+            *//*Sellbean1 bean111 = new Sellbean1("Exo Touch & Shine\nRound Dishwash\nBar","1",R.drawable.veg,"(1.4 kg, Pack of 2)","₹100","₹120","");
+            newOrderBeansList_subcat.add(bean111);*//*
             vegAdapter = new VegSectionAdapter(activity, newOrderBeansList_subcat);
             holder.recyclerView_second.setAdapter(vegAdapter);
-        }
+        }*/
         /*if (products.getName().equals("Leafy Vegetables")) {
             newOrderBeansList_subcat.clear();
             // livestock_types_adapter = new Livestock_Types_Adapter( getActivity(),newOrderBeansList);
@@ -432,7 +432,7 @@ public class MainCategoryAdapter extends RecyclerView.Adapter<MainCategoryAdapte
                         for(int i=0;i<get_soiltype.length();i++){
 
                             JSONObject jsonObject1 = get_soiltype.getJSONObject(i);
-                            Sellbean sellbean = new Sellbean(jsonObject1.getString("SellingListName"),jsonObject1.getString("SellingCategoryId"),jsonObject1.getString("SellingListIcon"),jsonObject1.getString("Quantity"),jsonObject1.getString("Amount"),"","Kg",jsonObject1.getString("ProductDescription"),jsonObject1.getString("UnitOfPriceId"),jsonObject1.getString("ProductId"),"","");
+                            Sellbean sellbean = new Sellbean(jsonObject1.getString("SellingListName"),jsonObject1.getString("SellingCategoryId"),jsonObject1.getString("SellingListIcon"),jsonObject1.getString("Quantity"),jsonObject1.getString("Amount"),"","Kg",jsonObject1.getString("ProductDescription"),jsonObject1.getString("UnitOfPriceId"),jsonObject1.getString("ProductId"),"","",jsonObject1.getString("OfferPrice"));
 
                             newOrderBeansList_subcat_veg.add(sellbean);
                         }

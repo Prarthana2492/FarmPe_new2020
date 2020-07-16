@@ -160,7 +160,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Shipping Fee"
+            android:text="Delivery Charges"
             android:textSize="14dp"
             android:fontFamily="@font/segoeui"
             android:layout_weight="70"
@@ -175,11 +175,11 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/delivery_charges"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/segoeui"
                 android:text="00"
-                android:textStyle="bold"
                 android:textColor="#000"
                 android:textSize="16dp" />
         </LinearLayout>
@@ -219,7 +219,7 @@
                 />
         </LinearLayout>
     </LinearLayout>
-    <LinearLayout
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -252,7 +252,7 @@
                 android:fontFamily="@font/segoeui"
                 />
         </LinearLayout>
-    </LinearLayout>
+    </LinearLayout>-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -281,7 +281,6 @@
                 android:layout_height="wrap_content"
                 android:text="00"
                 android:textSize="16dp"
-                android:textStyle="bold"
                 android:textColor="#000"
                 android:fontFamily="@font/segoeui"
                 />
@@ -322,7 +321,7 @@
                 />
         </LinearLayout>
     </LinearLayout>
-    <LinearLayout
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -355,7 +354,7 @@
                 android:textColor="#000"
                 />
         </LinearLayout>
-    </LinearLayout>
+    </LinearLayout>-->
     </LinearLayout>
 
     <View

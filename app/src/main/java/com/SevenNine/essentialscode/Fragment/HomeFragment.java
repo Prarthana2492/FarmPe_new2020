@@ -44,13 +44,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class HomeFragment extends Fragment implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener{
 Fragment selectedFragment;
     public static DrawerLayout drawer;
-    public static ImageView cart_icon;
+    public static ImageView cart_icon,search_home;
     LinearLayout menu,prof_tab;
     String userid;
     CircleImageView image_acc;
-    TextView home,shop_cat,sell_on,disc_store,my_orders,list_prod,cart,account,buy_again,wishlist,notification;
+    TextView home,shop_cat,sell_on,disc_store,my_orders,list_prod,cart,account,buy_again,wishlist,offers;
     public static TextView title;
-    public static String shop_cat_id;
+    public static String shop_cat_id,search_st;
     public static TextView cart_count,user_name_menu;
 static boolean fragloaded;
 DrawerLayout drawer_layout;
@@ -76,6 +76,7 @@ static Fragment myloadingfragment;
         account=view.findViewById(R.id.account);
         user_name_menu=view.findViewById(R.id.user_name_menu);
         prof_tab=view.findViewById(R.id.prof_tab);
+        offers=view.findViewById(R.id.offers);
       //  list_prod=view.findViewById(R.id.list_prod);
         buy_again=view.findViewById(R.id.buy_again);
         wishlist=view.findViewById(R.id.wishlist);
@@ -87,6 +88,7 @@ static Fragment myloadingfragment;
         destView=view.findViewById(R.id.destView);
         image_acc=view.findViewById(R.id.image_acc);
         sell_on=view.findViewById(R.id.sell_on);
+        search_home=view.findViewById(R.id.search);
 
         sessionManager=new SessionManager(getActivity());
 
@@ -155,7 +157,17 @@ static Fragment myloadingfragment;
             transaction.commit();
             drawer.closeDrawers();
         }
-
+        search_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              //  search_st="home";
+                selectedFragment = CategoryProdDetailListSearch.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout_home, selectedFragment);
+                transaction.addToBackStack("dhskss");
+                transaction.commit();
+            }
+        });
         cart_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -220,6 +232,17 @@ static Fragment myloadingfragment;
                     @Override
                     public void onClick(View v) {
                         selectedFragment = SaveForLaterList.newInstance();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frame_layout_home, selectedFragment);
+                        transaction.addToBackStack("dhsks");
+                        transaction.commit();
+                        drawer.closeDrawers();
+                    }
+                });
+                offers.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        selectedFragment = OffersListFragment.newInstance();
                         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frame_layout_home, selectedFragment);
                         transaction.addToBackStack("dhsks");
