@@ -114,12 +114,19 @@ sessionManager=new SessionManager(getActivity());
         buy_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedFragment = CurrentLocation.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout1, selectedFragment);
-                transaction.addToBackStack("cart_detail");
-                transaction.commit();
-
+                if (sessionManager.getRegId("default_address").equals("")){
+                    selectedFragment = CurrentLocation.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout1, selectedFragment);
+                    transaction.addToBackStack("cart_detail");
+                    transaction.commit();
+                }else {
+                    selectedFragment = SelectPaymentMethod.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout1, selectedFragment);
+                    transaction.addToBackStack("cart_detail");
+                    transaction.commit();
+                }
               /*  Intent i = new Intent(getActivity(), GetLocationActivity.class);
                 startActivity(i);*/
             }

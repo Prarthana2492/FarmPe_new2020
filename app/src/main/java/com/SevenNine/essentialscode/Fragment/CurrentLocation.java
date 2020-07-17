@@ -211,6 +211,7 @@ public class CurrentLocation extends Fragment implements
                 current_addr=current_address.getText().toString();
                 System.out.println("currentaddresss "+current_addr);
                 sessionManager.saveDefaultAddress(current_addr,"");
+                sessionManager.storeLatLong(latitude+"",longitude+"");
 
                 if(got_latlong & valid &
                         !current_address.getText().toString().contains("Ocean") &

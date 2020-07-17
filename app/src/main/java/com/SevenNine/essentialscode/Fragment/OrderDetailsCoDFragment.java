@@ -190,7 +190,7 @@ public class OrderDetailsCoDFragment extends Fragment {
                         name_vw.setText(CustAddress);
                         pay_mode.setText("Mode: "+mode);
                         if (mode.equals("COD")){
-                            method.setText("COD");
+                            method.setText("CoD");
                         }else{
                             method.setText("Online Payment");
                         }

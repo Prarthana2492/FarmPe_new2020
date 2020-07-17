@@ -246,14 +246,14 @@ public class SelectPaymentMethod extends Fragment {
                 params.put("CustLongitude", CurrentLocation.longitude_post);
                 params.put("CustLatitude", CurrentLocation.latitude_post);
             }else{
-                params.put("CustLongitude","");
-                params.put("CustLatitude","");
+                params.put("CustLongitude",sessionManager.getRegId("lng"));
+                params.put("CustLatitude",sessionManager.getRegId("lat"));
             }
 
             if (CurrentLocation.current_addr!=null){
                 params.put("CustAddress", CurrentLocation.current_addr);
             }else{
-                params.put("CustAddress","");
+                params.put("CustAddress",sessionManager.getRegId("default_address"));
 
             }
             params.put("IsActive",1);

@@ -85,6 +85,7 @@
                     android:layout_height="wrap_content"/>-->
 
                 <TextView
+                    android:id="@+id/fruits_veg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/Fruits"
@@ -110,6 +111,7 @@
                     android:background="#f1f1f1" />
 
                 <TextView
+                    android:id="@+id/food_grains"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/Foodgrains"

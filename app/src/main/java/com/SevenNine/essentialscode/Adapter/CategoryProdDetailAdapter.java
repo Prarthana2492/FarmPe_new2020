@@ -51,7 +51,7 @@ public class CategoryProdDetailAdapter extends RecyclerView.Adapter<CategoryProd
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView image,prod_img_fix;
         public LinearLayout item;
-        public TextView name,weight,price,actual_price,add_cart;
+        public TextView name,weight,price,actual_price,add_cart,off_text;
         QuantityPicker quantityPicker;
 
 
@@ -68,6 +68,7 @@ public class CategoryProdDetailAdapter extends RecyclerView.Adapter<CategoryProd
             add_cart=view.findViewById(R.id.add_cart);
             linear_layout=view.findViewById(R.id.linear_layout);
             quantityPicker= view.findViewById(R.id.quantityPicker);
+            off_text=view.findViewById(R.id.off_text);
 
             sessionManager=new SessionManager(activity);
 
@@ -94,7 +95,20 @@ public class CategoryProdDetailAdapter extends RecyclerView.Adapter<CategoryProd
       }else{
           holder.name.setText(products.getName()+", "+products.getProd_descr()+", "+products.getBrand());
       }*/
-        holder.quantityPicker.setQuantitySelected(1);
+        if (products.getOfferPrice().equals("0")){
+            holder.off_text.setVisibility(View.GONE);
+        }else{
+            holder.off_text.setVisibility(View.VISIBLE);
+            holder.off_text.setText(products.getOfferPrice()+"%"+"\n off");
+
+        }
+        if (products.getActual_price().equals(products.getPrice())){
+            holder.actual_price.setVisibility(View.INVISIBLE);
+            holder.actual_price.setVisibility(View.INVISIBLE);
+        }else{
+            holder.actual_price.setText("₹"+products.getActual_price());
+            holder.actual_price.setBackground(activity.getResources().getDrawable(R.drawable.line));
+        }        holder.quantityPicker.setQuantitySelected(1);
         holder.quantityPicker.setOnQuantityChangeListener(new QuantityPicker.OnQuantityChangeListener() {
             @Override
             public void onValueChanged(int quantity) {

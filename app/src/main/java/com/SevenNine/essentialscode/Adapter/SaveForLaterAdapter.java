@@ -49,7 +49,7 @@ public class SaveForLaterAdapter extends RecyclerView.Adapter<SaveForLaterAdapte
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView image,prod_img_fix;
         public LinearLayout item;
-        public TextView name,weight,price,actual_price,add_cart,remove;
+        public TextView name,weight,price,actual_price,add_cart,remove,off_text;
 
 
         public MyViewHolder(View view) {
@@ -65,6 +65,7 @@ public class SaveForLaterAdapter extends RecyclerView.Adapter<SaveForLaterAdapte
             add_cart=view.findViewById(R.id.add_cart);
             remove=view.findViewById(R.id.remove);
             linear_layout=view.findViewById(R.id.linear_layout);
+            off_text=view.findViewById(R.id.off_text);
 
             sessionManager=new SessionManager(activity);
 
@@ -97,6 +98,15 @@ public class SaveForLaterAdapter extends RecyclerView.Adapter<SaveForLaterAdapte
         holder.actual_price.setText("₹"+products.getActual_price());
         holder.actual_price.setPaintFlags(holder.actual_price.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
       //  CategoryProdDetailList.name.setText(products.getSelling_cat_name());
+
+
+        if (products.getOfferPrice().equals("0")){
+            holder.off_text.setVisibility(View.GONE);
+        }else{
+            holder.off_text.setVisibility(View.VISIBLE);
+            holder.off_text.setText(products.getOfferPrice()+"%"+"\n off");
+
+        }
         Glide.with(activity).load(products.getImage())
                 .thumbnail(0.5f)
                 //.crossFade()

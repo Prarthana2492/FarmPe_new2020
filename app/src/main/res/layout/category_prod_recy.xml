@@ -66,7 +66,44 @@
         />
     </LinearLayout>
 
-            <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="100"
+        android:background="#f1f1f1"
+        >
+
+        <TextView
+            android:id="@+id/last_month_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="80"
+            android:text="Last 6 Months"
+            android:fontFamily="@font/segoeui"
+            android:layout_gravity="center_vertical"
+            android:padding="10dp"
+            />
+        <View
+            android:layout_width="1dp"
+            android:layout_height="50dp"
+            android:background="#dcdcdc"
+            />
+        <TextView
+            android:id="@+id/filter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="20"
+            android:text="Filter"
+            android:fontFamily="@font/segoeui"
+            android:drawableRight="@drawable/ic_right_angle_arrow"
+            android:layout_gravity="center_vertical"
+            android:padding="10dp"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"

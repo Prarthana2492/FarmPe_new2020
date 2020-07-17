@@ -57,7 +57,7 @@ public class DiscoverCategoryFragment extends Fragment {
     public static VegSectionAdapter vegAdapter;
     public static SelectMainAdapter mainAdapter;
     Fragment selectedFragment = null;
-    TextView toolbar_title;
+    TextView toolbar_title,fruits_veg,food_grains;
     TextView search_home;
     SessionManager sessionManager;
     public static String livestock_status,search_st;
@@ -84,6 +84,8 @@ public class DiscoverCategoryFragment extends Fragment {
 
         recyclerView_main=view.findViewById(R.id.recycler_main);
         recy_veg=view.findViewById(R.id.recy_veg);
+        fruits_veg=view.findViewById(R.id.fruits_veg);
+        food_grains=view.findViewById(R.id.food_grains);
         recy_food_grails=view.findViewById(R.id.recy_food_grails);
       //  search_home=view.findViewById(R.id.search_home);
         /*recyclerView_prod=view.findViewById(R.id.recycler_prod);
@@ -95,6 +97,8 @@ public class DiscoverCategoryFragment extends Fragment {
        // sellingdetailsid=Inventory_Details_Fragment.SId;
         System.out.println("selleditiddd"+sellingdetailsid);
         sessionManager=new SessionManager(getActivity());
+       // fruits_veg.setVisibility(View.GONE);
+       // fruits_veg.setVisibility(View.GONE);
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {
@@ -152,7 +156,9 @@ public class DiscoverCategoryFragment extends Fragment {
         recyclerView_main.setLayoutManager(mLayoutManager_farm1);
         recyclerView_main.setItemAnimator(new DefaultItemAnimator());
         try{
-           //   newOrderBeansList_main.clear();
+            newOrderBeansList.clear();
+
+            //   newOrderBeansList_main.clear();
            //   newOrderBeansList_subcat.clear();
           //  newOrderBeansList.clear();
             JSONObject jsonObject = new JSONObject();

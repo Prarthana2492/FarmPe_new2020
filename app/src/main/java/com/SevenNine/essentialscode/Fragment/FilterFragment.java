@@ -110,31 +110,60 @@ public class FilterFragment extends Fragment {
                     //Orderlist();
                     bundle.putString("setText", "Open orders");
                     bundle.putString("bundlestatus", "3");
-
+                    selectedFragment = NewOrderFragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout_home, selectedFragment);
+                    selectedFragment.setArguments(bundle);
+                    transaction.commit();
                 }else if (stat.equals("cancel")){
                     //CancelOrders();
                     bundle.putString("setText", "Canceled orders");
                     bundle.putString("bundlestatus", "1");
                 }else if (stat.equals("Last 30 Days")){
                    // AllOrders();
-                    bundle.putString("bundlestatus", "2");
+                    bundle.putString("bundlestatus", "30days");
                     bundle.putString("setText", "Last 30 Days");
+                    selectedFragment = NewOrderFragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout_home, selectedFragment);
+                    selectedFragment.setArguments(bundle);
+                    transaction.commit();
                 }else if (stat.equals("Last 6 months")){
                   //  AllOrders();
-                    bundle.putString("bundlestatus", "2");
+                    bundle.putString("bundlestatus", "6month");
                     bundle.putString("setText", "Last 6 months");
+                    selectedFragment = NewOrderFragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout_home, selectedFragment);
+                    selectedFragment.setArguments(bundle);
+                    transaction.commit();
                 }else if (stat.equals((year)+"")){
                    // AllOrders();
-                    bundle.putString("bundlestatus", "2");
+                    bundle.putString("bundlestatus", "year");
                     bundle.putString("setText", year+"");
+                    selectedFragment = NewOrderFragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout_home, selectedFragment);
+                    selectedFragment.setArguments(bundle);
+                    transaction.commit();
                 }else if (stat.equals((year-1)+"")){
                     //AllOrders();
-                    bundle.putString("bundlestatus", "2");
+                    bundle.putString("bundlestatus", "year1");
                     bundle.putString("setText", (year-1)+"");
+                    selectedFragment = NewOrderFragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout_home, selectedFragment);
+                    selectedFragment.setArguments(bundle);
+                    transaction.commit();
                 }else if (stat.equals((year-2)+"")){
                    // AllOrders();
-                    bundle.putString("bundlestatus", "2");
+                    bundle.putString("bundlestatus", "year2");
                     bundle.putString("setText", (year-2)+"");
+                    selectedFragment = NewOrderFragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout_home, selectedFragment);
+                    selectedFragment.setArguments(bundle);
+                    transaction.commit();
                 }
                 else
                 {
@@ -142,13 +171,14 @@ public class FilterFragment extends Fragment {
                     bundle.putString("setText", "Orders");
                     bundle.putString("bundlestatus", "2");
                     date_status="6_months";
+                    selectedFragment = NewOrderFragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout_home, selectedFragment);
+                    selectedFragment.setArguments(bundle);
+                    transaction.commit();
                 }
 
-                selectedFragment = NewOrderFragment.newInstance();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout_home, selectedFragment);
-                selectedFragment.setArguments(bundle);
-                transaction.commit();
+
             }
         });
 

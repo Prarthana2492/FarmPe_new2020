@@ -1,6 +1,9 @@
 package com.SevenNine.essentialscode.Fragment;
 
 import android.animation.Animator;
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -50,7 +53,7 @@ public class CategoryProdDetailList extends Fragment {
     public static CategoryProdDetailAdapter livestock_types_adapter;
     JSONObject jsonObject1;
     Fragment selectedFragment = null;
-    public static TextView toolbar_title,name;
+    public static TextView toolbar_title,name,filter,last_month_text;
     EditText search;
     public static String livestock_status;
     LinearLayout back_feed,linearLayout;
@@ -77,6 +80,8 @@ public class CategoryProdDetailList extends Fragment {
         recyclerView_main=view.findViewById(R.id.recycler_cat_detail);
       //  search=view.findViewById(R.id.search);
         name=view.findViewById(R.id.name);
+        filter=view.findViewById(R.id.filter);
+        last_month_text=view.findViewById(R.id.last_month_text);
 sessionManager=new SessionManager(getActivity());
         linearLayout = view.findViewById(R.id.linearLayout);
 //        toolbar_title.setText("Select Category");
@@ -106,12 +111,59 @@ sessionManager=new SessionManager(getActivity());
                 return false;
             }
         });
+        last_month_text.setText("All");
+        filter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                final Dialog dialog = new Dialog(getActivity());
+                dialog.setContentView(R.layout.layout_filterpopup);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                final TextView all = (TextView) dialog.findViewById(R.id.recen_added);
+                final TextView price = (TextView)dialog.findViewById(R.id.sort_desendi);
+                final TextView offers = (TextView)dialog.findViewById(R.id.sort_ascendi) ;
+                //   final TextView popuptxt = (TextView)dialog.findViewById(R.id.popup_heading) ;
+                LinearLayout image = (LinearLayout) dialog.findViewById(R.id.close_popup);
+
+
+                image.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        dialog.dismiss();
+
+                    }
+                });
+
+                offers.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                       // status="Ascending";
+                        dialog.dismiss();
+                        offers_filter();
+
+                    }
+                });
+
+                all.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // status="Ascending";
+                        dialog.dismiss();
+                        all_items_filter();
+
+                    }
+                });
+
+                dialog.show();
+            }
+        });
         newOrderBeansList_subcat.clear();
         // livestock_types_adapter = new Livestock_Types_Adapter( getActivity(),newOrderBeansList);
         GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false);
         recyclerView_main.setLayoutManager(mLayoutManager_farm);
         recyclerView_main.setItemAnimator(new DefaultItemAnimator());
+        all_items_filter();
        /* Sellbean1 bean45 = new Sellbean1("Fresh Carrot, Orrange ","1",R.drawable.veg,"500g","₹100","₹120","");
         newOrderBeansList_subcat.add(bean45);
         Sellbean1 bean55= new Sellbean1("Fresh Beet Root, ","1",R.drawable.veg,"250g","₹100","₹120","");
@@ -122,51 +174,6 @@ sessionManager=new SessionManager(getActivity());
         newOrderBeansList_subcat.add(bean75);
         livestock_types_adapter = new CategoryProdDetailAdapter(getActivity(), newOrderBeansList_subcat);
         recyclerView_main.setAdapter(livestock_types_adapter);*/
-        try{
-
-            //  newOrderBeansList_subcat_veg.clear();
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("SellingCategoryId",sellingcatId);
-
-            System.out.println("jhfdfdjc111"+jsonObject);
-            Crop_Post.crop_posting(getActivity(), Urls.GetProductDetailsList, jsonObject, new VoleyJsonObjectCallback() {
-                @Override
-                public void onSuccessResponse(JSONObject result) {
-
-                    System.out.println("GetSellingTypeeeeeeee"+result);
-
-
-                    try{
-
-                        get_soiltype = result.getJSONArray("SellDetails");
-
-                        for(int i=0;i<get_soiltype.length();i++){
-
-                            JSONObject jsonObject1 = get_soiltype.getJSONObject(i);
-                            Sellbean sellbean = new Sellbean(jsonObject1.getString("ProductName"),jsonObject1.getString("SellingCategoryId"),jsonObject1.getString("ProductIcon"),jsonObject1.getString("Quantity"),jsonObject1.getString("Amount"),jsonObject1.getString("MRP"),"Kg",jsonObject1.getString("ProductDescription"),jsonObject1.getString("SellingCategoryName"),jsonObject1.getString("ProductId"),jsonObject1.getString("SellingCategoryName"),jsonObject1.getString("Brand"),jsonObject1.getString("OfferPrice"));
-
-                            newOrderBeansList_subcat.add(sellbean);
-                            name.setText(jsonObject1.getString("SellingCategoryName"));
-                        }
-                        livestock_types_adapter=new CategoryProdDetailAdapter(getActivity(),newOrderBeansList_subcat);
-                        recyclerView_main.setAdapter(livestock_types_adapter);
-                     //   name.setText(jsonObject1.getString("SellingCategoryName"));
-                        livestock_types_adapter.setActionListener(new CategoryProdDetailAdapter.ProductItemActionListener() {
-                            @Override
-                            public void onItemTap(ImageView imageView) {
-                                if (imageView != null)
-                                    makeFlyAnimation(imageView);
-                            }
-                        });
-                    }catch (Exception e){
-                        e.printStackTrace();
-                    }
-                }
-            });
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
 
        /* search.addTextChangedListener(new TextWatcher() {
             @Override
@@ -306,6 +313,110 @@ sessionManager=new SessionManager(getActivity());
             }
         });
     }
+    private void offers_filter() {
+        try{
+
+            newOrderBeansList_subcat.clear();
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("SellingCategoryId",sellingcatId);
+
+            System.out.println("jhfdfdjc111"+jsonObject);
+            Crop_Post.crop_posting(getActivity(), Urls.GetProductDetailsList, jsonObject, new VoleyJsonObjectCallback() {
+                @Override
+                public void onSuccessResponse(JSONObject result) {
+
+                    System.out.println("GetSellingTypeeeeeeee"+result);
+                    last_month_text.setText("Offers");
 
 
-}
+                    try{
+
+                        get_soiltype = result.getJSONArray("SellDetails");
+
+                        for(int i=0;i<get_soiltype.length();i++){
+
+                            JSONObject jsonObject1 = get_soiltype.getJSONObject(i);
+
+                                name.setText(jsonObject1.getString("SellingCategoryName"));
+                            if (jsonObject1.getBoolean("IsOfferAvailable")==true) {
+                                Sellbean sellbean = new Sellbean(jsonObject1.getString("ProductName"),jsonObject1.getString("SellingCategoryId"),jsonObject1.getString("ProductIcon"),jsonObject1.getString("Quantity"),jsonObject1.getString("Amount"),jsonObject1.getString("MRP"),"Kg",jsonObject1.getString("ProductDescription"),jsonObject1.getString("SellingCategoryName"),jsonObject1.getString("ProductId"),jsonObject1.getString("SellingCategoryName"),jsonObject1.getString("Brand"),jsonObject1.getString("OfferPrice"));
+
+                                newOrderBeansList_subcat.add(sellbean);
+                                System.out.println("fdjfksjd"+jsonObject1.getBoolean("IsOfferAvailable"));
+                                livestock_types_adapter = new CategoryProdDetailAdapter(getActivity(), newOrderBeansList_subcat);
+                                recyclerView_main.setAdapter(livestock_types_adapter);
+                            }else{
+
+                            }
+
+                        }
+
+                        //   name.setText(jsonObject1.getString("SellingCategoryName"));
+                        livestock_types_adapter.setActionListener(new CategoryProdDetailAdapter.ProductItemActionListener() {
+                            @Override
+                            public void onItemTap(ImageView imageView) {
+                                if (imageView != null)
+                                    makeFlyAnimation(imageView);
+                            }
+                        });
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    private void all_items_filter() {
+        try{
+
+            newOrderBeansList_subcat.clear();
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("SellingCategoryId",sellingcatId);
+
+            System.out.println("jhfdfdjc111"+jsonObject);
+            Crop_Post.crop_posting(getActivity(), Urls.GetProductDetailsList, jsonObject, new VoleyJsonObjectCallback() {
+                @Override
+                public void onSuccessResponse(JSONObject result) {
+
+                    System.out.println("GetSellingTypeeeeeeee"+result);
+
+                    last_month_text.setText("All");
+
+                    try{
+
+                        get_soiltype = result.getJSONArray("SellDetails");
+
+                        for(int i=0;i<get_soiltype.length();i++){
+
+                            JSONObject jsonObject1 = get_soiltype.getJSONObject(i);
+                            Sellbean sellbean = new Sellbean(jsonObject1.getString("ProductName"),jsonObject1.getString("SellingCategoryId"),jsonObject1.getString("ProductIcon"),jsonObject1.getString("Quantity"),jsonObject1.getString("Amount"),jsonObject1.getString("MRP"),"Kg",jsonObject1.getString("ProductDescription"),jsonObject1.getString("SellingCategoryName"),jsonObject1.getString("ProductId"),jsonObject1.getString("SellingCategoryName"),jsonObject1.getString("Brand"),jsonObject1.getString("OfferPrice"));
+
+                            newOrderBeansList_subcat.add(sellbean);
+                            name.setText(jsonObject1.getString("SellingCategoryName"));
+                        }
+                        livestock_types_adapter=new CategoryProdDetailAdapter(getActivity(),newOrderBeansList_subcat);
+                        recyclerView_main.setAdapter(livestock_types_adapter);
+                        //   name.setText(jsonObject1.getString("SellingCategoryName"));
+                        livestock_types_adapter.setActionListener(new CategoryProdDetailAdapter.ProductItemActionListener() {
+                            @Override
+                            public void onItemTap(ImageView imageView) {
+                                if (imageView != null)
+                                    makeFlyAnimation(imageView);
+                            }
+                        });
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+        }catch (Exception e) {
+            e.printStackTrace();
+        }}
+
+    }

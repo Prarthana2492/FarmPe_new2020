@@ -158,6 +158,7 @@ public class Urls {
     public static final String AddUpdateCartProductDetails = ROOT_URL + "SevenNine/AddUpdateCartProductDetails";
     public static final String AddUpateCartCheckoutDetails = ROOT_URL + "SevenNine/AddUpateCartCheckoutDetails";
     public static final String GetOrderList = ROOT_URL + "SevenNine/GetOrderList";
+    public static final String GetFiltersforOrderDetails = ROOT_URL + "SevenNine/GetFiltersforOrderDetails";
     public static final String GetCartProductDetails = ROOT_URL + "SevenNine/GetCartProductDetails";
     public static final String DeleteReviewCartList = ROOT_URL + "SevenNine/DeleteReviewCartList";
     public static final String AddUpdateFavouriteCartList = ROOT_URL + "SevenNine/AddUpdateFavouriteCartList";

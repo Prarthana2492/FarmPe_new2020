@@ -55,7 +55,7 @@ public class CartDetailsAdapter extends RecyclerView.Adapter<CartDetailsAdapter.
     public static int quantity_pick,quant_zero;
     Double before_tax_text,shipping_fee_double;
     double offerprice,save_amt;
-    int totalPrice_quant,total_price_incr = 0;
+    double totalPrice_quant;
 
     public static ArrayList<Integer> intlist = new ArrayList<Integer>();
 
@@ -158,14 +158,21 @@ public class CartDetailsAdapter extends RecyclerView.Adapter<CartDetailsAdapter.
                         .error(R.drawable.veg))
                 .into(holder.image);
 
-        int totalPrice=0;
+        double offer_priceee;
+
+        double totalPrice=0;
+       /* for (int i = 0; i<productList.size(); i++)
+        {
+            totalPrice += ((Double.parseDouble(productList.get(i).getAmount())*Integer.parseInt(productList.get(i).getQuantity()))*(Double.parseDouble(productList.get(i).getShippng_iscount())/100));
+        }*/
         for (int i = 0; i<productList.size(); i++)
         {
-            totalPrice += (Integer.parseInt(productList.get(i).getAmount())*Integer.parseInt(productList.get(i).getQuantity()));
+            totalPrice += (((Double.parseDouble(productList.get(i).getMRP()))-Double.parseDouble(productList.get(i).getMRP())*Double.parseDouble(productList.get(i).getShippng_iscount())/100)*Integer.parseInt(productList.get(i).getQuantity()));
         }
         DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.US);;
         formatter .applyPattern("##,##,##,###");
         double rate_double1= (totalPrice);
+        System.out.println("total_amtttt"+rate_double1);
 
 
         formatter.format(rate_double1);
@@ -173,20 +180,37 @@ public class CartDetailsAdapter extends RecyclerView.Adapter<CartDetailsAdapter.
         //  System.out.println("lllllllllllllllllllllll"+ formatter.format(rate_double));
         // loan_amount.setText(": ₹ "+formatter.format(rate_double));
 
-        System.out.println("total_amounttt" + totalPrice);
-        before_tax_text=((rate_double1)+(Double.parseDouble(products1.getShipping_fee())));
-        String strDouble1 = String.format("%.2f", before_tax_text);
-        CartDetailsFragment.main_total_amount.setText("₹" + strDouble1);
-        CartDetailsFragment.total_before_tax.setText("₹" + strDouble1);
-        CartDetailsFragment.items_cost.setText("₹" + formatter.format(rate_double1)+".00");
-        CartDetailsFragment.total_without_disc.setText("₹" + strDouble1);
-        CartDetailsFragment.total_items.setText("Subtotal(" + (productList.size()) + " Items):");
-        shipping_fee_double=Double.parseDouble(products1.getShipping_fee());
-        String shippDouble = String.format("%.2f",shipping_fee_double );
+
+
+        double delivery_charges = 0;
+        for (int i = 0; i<productList.size(); i++)
+        {
+            delivery_charges +=Double.parseDouble(productList.get(i).getShipping_fee()) ;
+        }
+        Double total_amount=(totalPrice+delivery_charges);
+        total_prise_st=String.valueOf(total_amount);
+        System.out.println("total_price_deliverycharges"+total_amount);
+       // shipping_fee_double=Double.parseDouble(products1.getShipping_fee());
+        String shippDouble = String.format("%.2f",delivery_charges );
        // shipping_fee.setText("₹"+shippDouble);
         CartDetailsFragment.delivery_charges.setText("₹"+shippDouble);
 
-        CartDetailsFragment.total_amount.setText("₹" + formatter.format(rate_double1));
+
+        before_tax_text=((rate_double1)+delivery_charges);
+        System.out.println("before_tax_text" + totalPrice);
+
+        String strDouble1 = String.format("%.2f", before_tax_text);
+        CartDetailsFragment.main_total_amount.setText("₹" + strDouble1);
+        CartDetailsFragment.total_before_tax.setText("₹" + strDouble1);
+
+        String strDouble_itemcost = String.format("%.2f", rate_double1);
+        CartDetailsFragment.items_cost.setText("₹" + strDouble_itemcost);
+        CartDetailsFragment.total_amount.setText("₹" + strDouble_itemcost);
+
+        CartDetailsFragment.total_without_disc.setText("₹" + strDouble1);
+        CartDetailsFragment.total_items.setText("Subtotal(" + (productList.size()) + " Items):");
+
+
        // total_price_incr=totalPrice;
         /*holder.quantityPicker.setOnQuantityChangeListener(new QuantityPicker.OnQuantityChangeListener() {
             @Override
@@ -228,7 +252,8 @@ public class CartDetailsAdapter extends RecyclerView.Adapter<CartDetailsAdapter.
         System.out.println("productidlisttesting" + strlist);
 
         cart_prod_listId=products1.getCart_prodlistid();
-        total_prise_st=String.valueOf(totalPrice);
+
+
         total_cart_items=productList.size();
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
