@@ -85,10 +85,18 @@ public class OrderDetailsAdapter extends RecyclerView.Adapter<OrderDetailsAdapte
         }
         if (products1.getShippng_iscount().equals("0")){
             holder.off_text.setVisibility(View.GONE);
+            holder.amount.setText("Rs "+products1.getAmount());
+
         }else{
             holder.off_text.setVisibility(View.VISIBLE);
-            holder.off_text.setText(products1.getShippng_iscount()+"%"+"\n off");
+            holder.amount.setText("Rs "+products1.getShippng_iscount());
 
+            //  holder.off_text.setText(products1.getShippng_iscount()+"%"+"\n off");
+            double off_price_calcu=(((Double.parseDouble(products1.getMRP()))-Double.parseDouble(products1.getShippng_iscount()))/(Double.parseDouble(products1.getMRP()))*100);
+            System.out.println("jhfdiueshfr"+off_price_calcu);
+            int offer_per_int=(int)off_price_calcu;
+            String off_price_text=String.valueOf(offer_per_int);
+            holder.off_text.setText(off_price_text+"%");
         }
      // holder.amount.setText("₹"+products1.getAmount());
       holder.mrp.setText("₹"+products1.getMRP());
@@ -96,7 +104,7 @@ public class OrderDetailsAdapter extends RecyclerView.Adapter<OrderDetailsAdapte
         holder.mrp.setBackground(activity.getResources().getDrawable(R.drawable.line));
 
         holder.shipping_fee.setText("Delivery Charges: "+products1.getShipping_fee());
-        getamt=holder.amount.getText().toString().substring(1);
+        getamt=holder.amount.getText().toString().substring(3);
         save_amt=((Double.parseDouble(products1.getMRP()))-(Double.parseDouble(getamt)));
         String strDouble1 = String.format("%.2f", save_amt);
         holder.shipping_iscount.setText("save ₹"+strDouble1);

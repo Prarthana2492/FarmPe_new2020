@@ -54,14 +54,18 @@ public class CartDetailsAdapter extends RecyclerView.Adapter<CartDetailsAdapter.
     public static String strlist,getamt;
     public static int quantity_pick,quant_zero;
     Double before_tax_text,shipping_fee_double;
-    double offerprice,save_amt;
+    double offerprice,save_amt,get_amt_souble;
     double totalPrice_quant;
 
     public static ArrayList<Integer> intlist = new ArrayList<Integer>();
+    public static ArrayList<String> productList_amount = new ArrayList<String>();
+    public static ArrayList<String> productList_quant = new ArrayList<String>();
 
     public CartDetailsAdapter(Activity activity, List<OrderDetailBean> moviesList) {
         this.productList = moviesList;
         this.activity=activity;
+        productList_amount.clear();
+        productList_quant.clear();
     }
 
 
@@ -90,6 +94,9 @@ public class CartDetailsAdapter extends RecyclerView.Adapter<CartDetailsAdapter.
             mrp=view.findViewById(R.id.mrp);
 
             sessionManager=new SessionManager(activity);
+           // productList_amount.clear();
+          //  productList_quant.clear();
+
         }
 
     }
@@ -115,20 +122,13 @@ public class CartDetailsAdapter extends RecyclerView.Adapter<CartDetailsAdapter.
         }*/
         //  holder.prod_name.setText(products1.getProd_name()+", "+products1.getProd_desc()+", "+products1.getBrand());
         //  holder.quantity.setText("Quantity : "+products1.getQuantity());
-        if (products1.getShippng_iscount().equals("0")){
-            holder.amount.setText("Rs "+products1.getAmount());
-        }else {
-            offerprice = ((Double.parseDouble(products1.getMRP()))-(Double.parseDouble(products1.getMRP())) * ((Double.parseDouble(products1.getShippng_iscount())) / 100));
-            holder.amount.setText("Rs " + offerprice);
-        }
+
         holder.quantity.setText("Quantity: "+products1.getQuantity());
         //  holder.quant_count.setText(products1.getQuantity());
        // int qt= Integer.parseInt(products1.getQuantity());
        // holder.quantityPicker.setQuantitySelected(qt);
         holder.shipping_fee.setText("Delivery Charges: "+products1.getShipping_fee());
-        getamt=holder.amount.getText().toString().substring(3);
-        save_amt=((Double.parseDouble(products1.getMRP()))-(Double.parseDouble(getamt)));
-        holder.shipping_iscount.setText("save ₹"+save_amt);
+
       //  holder.mrp.setText("₹"+products1.getMRP());
      //   holder.mrp.setPaintFlags(holder.mrp.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         holder.mrp.setBackground(activity.getResources().getDrawable(R.drawable.line));
@@ -139,13 +139,43 @@ public class CartDetailsAdapter extends RecyclerView.Adapter<CartDetailsAdapter.
             holder.mrp.setText("₹"+products1.getMRP());
             holder.mrp.setBackground(activity.getResources().getDrawable(R.drawable.line));
         }
+        System.out.println("hhdhhdhdh"+products1.getShippng_iscount());
+
         if (products1.getShippng_iscount().equals("0")){
             holder.off_text.setVisibility(View.GONE);
+            holder.amount.setText("₹" + products1.getAmount());
+            System.out.println("aaammmmm"+products1.getAmount().length());
+
+            productList_amount.add(products1.getAmount());
+            productList_quant.add(products1.getQuantity());
+
+            System.out.println("lisixze"+productList_amount.size());
+
+
+           /* for(int i = 0 ; i < products1.getAmount().length(); i++) {
+                productList_amount.add(products1.getAmount());
+                productList_quant.add(products1.getQuantity());
+            }*/
+
         }else{
+
+          //  productList_amount.add(products1.getAmount());
             holder.off_text.setVisibility(View.VISIBLE);
-            holder.off_text.setText(products1.getShippng_iscount()+"%"+"\n off");
+          //  holder.off_text.setText(products1.getShippng_iscount()+"%"+"\n off");
+            holder.amount.setText("₹" + products1.getShippng_iscount());
+
+            double off_price_calcu=(((Double.parseDouble(products1.getMRP())-Double.parseDouble(products1.getShippng_iscount()))/(Double.parseDouble(products1.getMRP())))*100);
+            System.out.println("jhfdiueshfr"+off_price_calcu);
+            int offer_per_int=(int)off_price_calcu;
+            String off_price_text=String.valueOf(offer_per_int);
+            holder.off_text.setText(off_price_text+"%");
 
         }
+        getamt=holder.amount.getText().toString().substring(1);
+        // get_amt_souble=Double.parseDouble(getamt);
+        System.out.println("sassasas"+holder.amount.getText().toString());
+        save_amt=((Double.parseDouble(products1.getMRP()))-(Double.parseDouble(getamt)));
+        holder.shipping_iscount.setText("save ₹"+save_amt);
         quant_zero=Integer.parseInt(products1.getQuantity());
 
 /*if (position==(productList.size()-1)){
@@ -161,22 +191,40 @@ public class CartDetailsAdapter extends RecyclerView.Adapter<CartDetailsAdapter.
         double offer_priceee;
 
         double totalPrice=0;
+        double totalPrice_off=0;
        /* for (int i = 0; i<productList.size(); i++)
         {
             totalPrice += ((Double.parseDouble(productList.get(i).getAmount())*Integer.parseInt(productList.get(i).getQuantity()))*(Double.parseDouble(productList.get(i).getShippng_iscount())/100));
         }*/
-        for (int i = 0; i<productList.size(); i++)
-        {
-            totalPrice += (((Double.parseDouble(productList.get(i).getMRP()))-Double.parseDouble(productList.get(i).getMRP())*Double.parseDouble(productList.get(i).getShippng_iscount())/100)*Integer.parseInt(productList.get(i).getQuantity()));
-        }
+           System.out.println("siiiiii"+productList_amount.size());
+
+for (int i = 0; i < productList_amount.size(); i++) {
+               System.out.println("amounttt"+productList_amount.get(i));
+               System.out.println("quantttt"+productList_quant.get(i));
+               System.out.println("iiiiiiiii"+i);
+               totalPrice += ((Double.parseDouble(productList_amount.get(i))*Integer.parseInt(productList_quant.get(i))));
+           }
+           System.out.println("pppppppppp"+totalPrice);
+
+        System.out.println("dissscc"+products1.getShippng_iscount());
+
+           for (int i = 0; i < productList.size(); i++) {
+               totalPrice_off += ((Double.parseDouble(productList.get(i).getShippng_iscount())*Integer.parseInt(productList.get(i).getQuantity())));
+           }
+           System.out.println("total_priceee_off"+totalPrice_off);
+
+
+       double prod_total=(totalPrice+totalPrice_off);
+
+       System.out.println("ksfjhskdj"+prod_total);
         DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.US);;
         formatter .applyPattern("##,##,##,###");
-        double rate_double1= (totalPrice);
-        System.out.println("total_amtttt"+rate_double1);
+        double rate_double1= (prod_total);
+        System.out.println("total_amtttt"+prod_total);
 
 
         formatter.format(rate_double1);
-       totalPrice_quant=totalPrice;
+      // totalPrice_quant=totalPrice;
         //  System.out.println("lllllllllllllllllllllll"+ formatter.format(rate_double));
         // loan_amount.setText(": ₹ "+formatter.format(rate_double));
 
@@ -289,10 +337,23 @@ public class CartDetailsAdapter extends RecyclerView.Adapter<CartDetailsAdapter.
                                         if(status.equals("1")){
 
                                             productList.remove(position);
+                                            productList_amount.remove(position);
+                                            productList_quant.remove(position);
+                                           /* productList_quant.notify();
+                                            productList_amount.notify();
+                                            productList.notify();*/
                                             CartCount();
                                             notifyDataSetChanged();
+
+
+                                           /* selectedFragment = CartDetailsFragment.newInstance();
+                                            FragmentTransaction transaction2 = ((FragmentActivity)activity).getSupportFragmentManager().beginTransaction();
+                                            transaction2.replace(R.id.frame_layout_home, selectedFragment);
+                                            transaction2.addToBackStack("cart_detail");
+                                            transaction2.commit();*/
+
                                             System.out.println("jdhjahdjkah"+productList.size());
-                                            if (productList.size()==0){
+                                            if (productList.size()==0&&productList_amount.size()==0){
                                                 selectedFragment = NoItemsFragment.newInstance();
                                                 FragmentTransaction transaction = ((FragmentActivity)activity).getSupportFragmentManager().beginTransaction();
                                                 transaction.replace(R.id.frame_layout_home, selectedFragment);
@@ -414,6 +475,12 @@ public class CartDetailsAdapter extends RecyclerView.Adapter<CartDetailsAdapter.
                             String Total = jsonObject1.getString("Total");
                             if (Total.equals("0")){
                                 HomeFragment.cart_count.setVisibility(View.GONE);
+                                    selectedFragment = NoItemsFragment.newInstance();
+                                    FragmentTransaction transaction = ((FragmentActivity)activity).getSupportFragmentManager().beginTransaction();
+                                    transaction.replace(R.id.frame_layout_home, selectedFragment);
+                                    transaction.addToBackStack("cart_detail");
+                                    transaction.commit();
+
                             }else {
                                 HomeFragment.cart_count.setText(Total);
                             }

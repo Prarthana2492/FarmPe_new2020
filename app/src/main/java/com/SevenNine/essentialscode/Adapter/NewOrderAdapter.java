@@ -72,7 +72,7 @@ public class NewOrderAdapter extends RecyclerView.Adapter<NewOrderAdapter.MyView
             holder.prod_name.setText(products1.getProd_name()+", "+products1.getQuantity()+" Kg"+", ₹"+products1.getAmount());
         }else{
             offerprice = ((Double.parseDouble(products1.getMrp()))-(Double.parseDouble(products1.getMrp())) * ((Double.parseDouble(products1.getOffer_price())) / 100));
-            holder.prod_name.setText(products1.getProd_name()+", "+products1.getQuantity()+" Kg"+", ₹"+offerprice);
+            holder.prod_name.setText(products1.getProd_name()+", "+products1.getQuantity()+" Kg"+", ₹"+products1.getOffer_price());
             System.out.println("hjfghdsgh"+offerprice);
         }
       holder.dispatched_date.setText("Ordered on "+products1.getCreatedOn().substring(0,10));
@@ -80,8 +80,12 @@ public class NewOrderAdapter extends RecyclerView.Adapter<NewOrderAdapter.MyView
             holder.off_text.setVisibility(View.GONE);
         }else{
             holder.off_text.setVisibility(View.VISIBLE);
-            holder.off_text.setText(products1.getOffer_price()+"%"+"\n off");
-
+          //  holder.off_text.setText(products1.getOffer_price()+"%"+"\n off");
+            double off_price_calcu=(((Double.parseDouble(products1.getMrp())-Double.parseDouble(products1.getOffer_price()))/(Double.parseDouble(products1.getMrp())))*100);
+            System.out.println("jhfdiueshfr"+off_price_calcu);
+            int offer_per_int=(int)off_price_calcu;
+            String off_price_text=String.valueOf(offer_per_int);
+            holder.off_text.setText(off_price_text+"%");
         }
         Glide.with(activity).load(products1.getProd_img())
                 .thumbnail(0.5f)
@@ -104,12 +108,16 @@ public class NewOrderAdapter extends RecyclerView.Adapter<NewOrderAdapter.MyView
                 bundle.putString("prod_img",products1.getProd_img());
                 bundle.putString("pay_mode",products1.getMode());
                 bundle.putString("uom",products1.getMrp());
+                bundle.putString("txnId",products1.getTxnId());
                 bundle.putString("address",products1.getFirstname());
                 bundle.putString("cat_name",products1.getProductInfo());
                 bundle.putString("delivery_charges",products1.getDelivery_charges());
                 bundle.putString("offer_price",products1.getOffer_price());
 
-              //  bundle.putString("uom",products1.getUom());
+                System.out.println("xxxttatta"+products1.getTxnId());
+
+
+                //  bundle.putString("uom",products1.getUom());
                 selectedFragment = OrderDetailsFragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity)activity).getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout1, selectedFragment);

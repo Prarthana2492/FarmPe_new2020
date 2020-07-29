@@ -118,7 +118,8 @@ public class NewOrderFragment extends Fragment {
                 if (bundlestatus.equals("1")){
                     // System.out.println("bundlestatus"+bundlestatus);
                     //CANCEL
-                    status="";
+                    status="CancelOrders";
+                    FilterOrderList();
                 }/*else if (bundlestatus.equals("2")) {
                     //All
                     status="";
@@ -266,7 +267,7 @@ public class NewOrderFragment extends Fragment {
                             String SellingListName=jsonObject1.getString("ProductName");
                             String SellingListIcon=jsonObject1.getString("ProductIcon");
                             String CreatedOn=jsonObject1.getString("CreatedOn");
-                            String TxnId=jsonObject1.getString("TxnId");
+                            String TxnId=jsonObject1.getString("PayUTransactionId");
                             String Amount=jsonObject1.getString("Amount");
                             String SelectedQuantity=jsonObject1.getString("SelectedQuantity");
                             String SellingCategoryName=jsonObject1.getString("SellingCategoryName");

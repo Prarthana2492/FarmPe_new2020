@@ -57,6 +57,7 @@ public class DiscoverCategoryFragment extends Fragment {
     public static VegSectionAdapter vegAdapter;
     public static SelectMainAdapter mainAdapter;
     Fragment selectedFragment = null;
+    ImageView arrow;
     TextView toolbar_title,fruits_veg,food_grains;
     TextView search_home;
     SessionManager sessionManager;
@@ -64,7 +65,7 @@ public class DiscoverCategoryFragment extends Fragment {
     LinearLayout back_feed,linearLayout;
     JSONArray get_categorylist_array;
     JSONArray get_soiltype;
-   public static String sellingdetailsid,sellnavigation;
+   public static String sellingdetailsid,sellnavigation,home_arrow;
     boolean doubleBackToExitPressedOnce = false;
 
     public static DiscoverCategoryFragment newInstance() {
@@ -87,6 +88,7 @@ public class DiscoverCategoryFragment extends Fragment {
         fruits_veg=view.findViewById(R.id.fruits_veg);
         food_grains=view.findViewById(R.id.food_grains);
         recy_food_grails=view.findViewById(R.id.recy_food_grails);
+        arrow=view.findViewById(R.id.arrow);
       //  search_home=view.findViewById(R.id.search_home);
         /*recyclerView_prod=view.findViewById(R.id.recycler_prod);
         recycler_cooking=view.findViewById(R.id.recycler_cooking);*/
@@ -138,6 +140,17 @@ public class DiscoverCategoryFragment extends Fragment {
             }
         });
 
+        arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                home_arrow="true";
+                selectedFragment = CategoryProdDetailList.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout_home, selectedFragment);
+                transaction.addToBackStack("dhskssv");
+                transaction.commit();
+            }
+        });
        /* search_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

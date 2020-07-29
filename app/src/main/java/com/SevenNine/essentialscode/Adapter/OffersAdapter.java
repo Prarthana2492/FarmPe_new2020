@@ -3,6 +3,8 @@ package com.SevenNine.essentialscode.Adapter;
 import android.app.Activity;
 import android.graphics.Paint;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.SevenNine.essentialscode.Bean.InventoryBean;
+import com.SevenNine.essentialscode.Fragment.HomeFragment;
+import com.SevenNine.essentialscode.Fragment.OfferPreviewDetails;
+import com.SevenNine.essentialscode.Fragment.What_Are_looking;
 import com.SevenNine.essentialscode.R;
 import com.SevenNine.essentialscode.SessionManager;
 import com.bumptech.glide.Glide;
@@ -25,9 +30,10 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.MyViewHold
     private List<InventoryBean> productList;
     Activity activity;
     Fragment selectedFragment;
-    public static String prod_name,mrp,brand,prod_id,amount,quantity,status,ProductId;
     SessionManager sessionManager;
     LinearLayout linear_layout;
+    public static String offer;
+    public static String sellingtypeid,sellingedit_id,prodid,upid,amount,quantity,status,prod_name,brand,mrp,offer_price,prod_img;
 
 
     public OffersAdapter(Activity activity, List<InventoryBean> moviesList) {
@@ -78,7 +84,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.MyViewHold
 
         holder.name.setText(products.getProd_name());
         holder.weight.setText(products.getQuantity()+" Kg");
-        holder.price.setText("Rs "+products.getAmount());
+        holder.price.setText("Rs "+products.getOffer_price());
         if (products.getMrp().equals(products.getAmount())){
             holder.actual_price.setVisibility(View.INVISIBLE);
             holder.mrp_text.setVisibility(View.INVISIBLE);
@@ -87,7 +93,32 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.MyViewHold
             holder.actual_price.setPaintFlags(holder.actual_price.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         }
       //  holder.actual_price.setText("₹"+products.getMrp());
-        holder.off_text.setText(products.getOffer_price()+"%"+"\n off");
+       // holder.off_text.setText(products.getOffer_price()+"%"+"\n off");
+        double off_price_calcu=(((Double.parseDouble(products.getMrp())-Double.parseDouble(products.getOffer_price()))/(Double.parseDouble(products.getMrp())))*100);
+        System.out.println("jhfdiueshfr"+off_price_calcu);
+        int offer_per_int=(int)off_price_calcu;
+        String off_price_text=String.valueOf(offer_per_int);
+        holder.off_text.setText(off_price_text+"%");
+        holder.item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                offer="true";
+                prodid=products.getProd_desc();
+                amount=products.getAmount();
+                quantity=products.getQuantity();
+                prod_name=products.getProd_name();
+                brand=products.getBrand();
+                mrp=products.getMrp();
+                offer_price=products.getOffer_price();
+                prod_img=products.getProd_icon();
+                selectedFragment = HomeFragment.newInstance();
+                FragmentTransaction transaction = ((FragmentActivity)activity).getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout1, selectedFragment);
+                transaction.addToBackStack("spicescateorye");
+                transaction.commit();
+            }
+        });
+
       //  holder.actual_price.setPaintFlags(holder.actual_price.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
        /* holder.delete.setOnClickListener(new View.OnClickListener() {

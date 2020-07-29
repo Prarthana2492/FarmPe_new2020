@@ -15,6 +15,7 @@ import com.SevenNine.essentialscode.Bean.Sellbean;
 import com.SevenNine.essentialscode.R;
 import com.SevenNine.essentialscode.SessionManager;
 import com.SevenNine.essentialscode.Urls;
+import com.SevenNine.essentialscode.Utils.QuantityPicker;
 import com.SevenNine.essentialscode.Volly_class.Crop_Post;
 import com.SevenNine.essentialscode.Volly_class.VoleyJsonObjectCallback;
 import com.bumptech.glide.Glide;
@@ -50,7 +51,7 @@ public class SaveForLaterAdapter extends RecyclerView.Adapter<SaveForLaterAdapte
         public ImageView image,prod_img_fix;
         public LinearLayout item;
         public TextView name,weight,price,actual_price,add_cart,remove,off_text;
-
+        QuantityPicker quantityPicker;
 
         public MyViewHolder(View view) {
             super(view);
@@ -66,6 +67,7 @@ public class SaveForLaterAdapter extends RecyclerView.Adapter<SaveForLaterAdapte
             remove=view.findViewById(R.id.remove);
             linear_layout=view.findViewById(R.id.linear_layout);
             off_text=view.findViewById(R.id.off_text);
+            quantityPicker=view.findViewById(R.id.quantityPicker);
 
             sessionManager=new SessionManager(activity);
 
@@ -86,26 +88,42 @@ public class SaveForLaterAdapter extends RecyclerView.Adapter<SaveForLaterAdapte
      final Sellbean products = productList.get(position);
       sellingtypeid=products.getId();
         holder.name.setText(products.getName());
-
+        holder.quantityPicker.setQuantitySelected(1);
       /*if (products.getProd_descr().equals("")){
           holder.name.setText(products.getName()+", "+", "+products.getBrand());
       }else{
           holder.name.setText(products.getName()+", "+products.getProd_descr()+", "+products.getBrand());
       }*/
      // holder.remove.setVisibility(View.VISIBLE);
-        holder.weight.setText(products.getWeight()+" "+products.getUom());
-        holder.price.setText("Rs "+products.getPrice());
-        holder.actual_price.setText("₹"+products.getActual_price());
-        holder.actual_price.setPaintFlags(holder.actual_price.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-      //  CategoryProdDetailList.name.setText(products.getSelling_cat_name());
 
+        holder.weight.setText(products.getWeight()+" "+products.getUom());
+        holder.actual_price.setText("₹"+products.getActual_price());
+      //  holder.actual_price.setPaintFlags(holder.actual_price.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        holder.actual_price.setBackground(activity.getResources().getDrawable(R.drawable.line));
+
+        //  CategoryProdDetailList.name.setText(products.getSelling_cat_name());
+        holder.quantityPicker.setOnQuantityChangeListener(new QuantityPicker.OnQuantityChangeListener() {
+            @Override
+            public void onValueChanged(int quantity) {
+                if (holder.quantityPicker.getQuantity()<1){
+                    holder.quantityPicker.setQuantitySelected(1);
+                }
+            }
+        });
 
         if (products.getOfferPrice().equals("0")){
             holder.off_text.setVisibility(View.GONE);
+            holder.price.setText("Rs "+products.getPrice());
+
         }else{
             holder.off_text.setVisibility(View.VISIBLE);
-            holder.off_text.setText(products.getOfferPrice()+"%"+"\n off");
-
+           // holder.off_text.setText(products.getOfferPrice()+"%"+"\n off");
+            holder.price.setText("Rs "+products.getOfferPrice());
+            double off_price_calcu=(((Double.parseDouble(products.getActual_price())-Double.parseDouble(products.getOfferPrice()))/(Double.parseDouble(products.getActual_price())))*100);
+            System.out.println("jhfdiueshfr"+off_price_calcu);
+            int offer_per_int=(int)off_price_calcu;
+            String off_price_text=String.valueOf(offer_per_int);
+            holder.off_text.setText(off_price_text+"%");
         }
         Glide.with(activity).load(products.getImage())
                 .thumbnail(0.5f)

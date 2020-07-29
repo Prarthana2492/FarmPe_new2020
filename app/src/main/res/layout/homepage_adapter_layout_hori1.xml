@@ -11,6 +11,7 @@
     android:tag="cards main container">
 
     <LinearLayout
+        android:id="@+id/item_click"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="100"
@@ -153,17 +154,19 @@
         android:layout_marginHorizontal="10dp"
         android:layout_marginBottom="15dp"
         >
+<!--
         <com.SevenNine.essentialscode.Utils.QuantityPicker
             android:id="@+id/quantityPicker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+-->
 
         <TextView
             android:id="@+id/add_cart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/segoeui"
-            android:text="Add to Cart"
+            android:text="ADD"
             android:singleLine="false"
             android:paddingVertical="8dp"
             android:gravity="center"

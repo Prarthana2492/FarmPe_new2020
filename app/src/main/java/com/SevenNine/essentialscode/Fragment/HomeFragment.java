@@ -24,6 +24,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.SevenNine.essentialscode.Adapter.OffersAdapter;
 import com.SevenNine.essentialscode.Adapter.ShopByCategoryAdapterNext;
 import com.SevenNine.essentialscode.R;
 import com.SevenNine.essentialscode.SessionManager;
@@ -149,7 +150,20 @@ static Fragment myloadingfragment;
             transaction.replace(R.id.frame_layout_home, selectedFragment);
             transaction.addToBackStack("dhsks");
             transaction.commit();
-        }else{
+        }else if (FilterSortByFragment.filter_str!=null){
+            selectedFragment = CategoryProdDetailList.newInstance();
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.frame_layout_home, selectedFragment);
+            transaction.addToBackStack("dhsks");
+            transaction.commit();
+        }else if (OffersAdapter.offer!=null){
+            selectedFragment = OfferPreviewDetails.newInstance();
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.frame_layout_home, selectedFragment);
+            transaction.addToBackStack("dhskss");
+            transaction.commit();
+        }
+        else{
             selectedFragment = DiscoverCategoryFragment.newInstance();
             FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.frame_layout_home, selectedFragment);

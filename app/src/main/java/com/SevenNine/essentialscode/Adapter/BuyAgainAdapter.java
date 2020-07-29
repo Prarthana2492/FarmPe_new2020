@@ -44,9 +44,10 @@ public class BuyAgainAdapter extends RecyclerView.Adapter<BuyAgainAdapter.MyView
         this.actionListener = actionListener;
     }
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView prod_name,quantity,amount,shipping_fee,shipping_iscount,mrp,buy_again;
+        public TextView prod_name,quantity,amount,shipping_fee,shipping_iscount,mrp,buy_again,off_text;
         public ImageView image,next,prod_img_fix;
         View view_line;
+
 
         public MyViewHolder(View view) {
             super(view);
@@ -60,6 +61,8 @@ public class BuyAgainAdapter extends RecyclerView.Adapter<BuyAgainAdapter.MyView
           //  shipping_iscount=view.findViewById(R.id.shipping_iscount);
             view_line=view.findViewById(R.id.view_line);
             mrp=view.findViewById(R.id.mrp);
+            off_text=view.findViewById(R.id.off_text);
+
 
             sessionManager=new SessionManager(activity);
 
@@ -88,9 +91,30 @@ public class BuyAgainAdapter extends RecyclerView.Adapter<BuyAgainAdapter.MyView
       holder.quantity.setText("Quantity : "+products1.getQuantity()+" Kg");
       holder.amount.setText("₹"+products1.getAmount()+".00");
       holder.mrp.setText("₹"+products1.getMRP());
-        holder.mrp.setPaintFlags(holder.mrp.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+      //  holder.mrp.setPaintFlags(holder.mrp.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
-  //      holder.shipping_fee.setText("Shipping Fee: "+products1.getShipping_fee());
+        if (products1.getShippng_iscount().equals("0")){
+            holder.off_text.setVisibility(View.GONE);
+            holder.amount.setText("Rs "+products1.getAmount());
+
+        }else{
+            holder.off_text.setVisibility(View.VISIBLE);
+            // holder.off_text.setText(products.getOfferPrice()+"%"+"\n off");
+            holder.amount.setText("Rs "+products1.getShippng_iscount());
+            double off_price_calcu=(((Double.parseDouble(products1.getMRP())-Double.parseDouble(products1.getShippng_iscount()))/(Double.parseDouble(products1.getMRP())))*100);
+            System.out.println("jhfdiueshfr"+off_price_calcu);
+            int offer_per_int=(int)off_price_calcu;
+            String off_price_text=String.valueOf(offer_per_int);
+            holder.off_text.setText(off_price_text+"%");
+        }
+
+        if (products1.getMRP().equals(products1.getAmount())){
+            holder.mrp.setVisibility(View.INVISIBLE);
+        }else{
+            holder.mrp.setText("₹"+products1.getMRP());
+            holder.mrp.setBackground(activity.getResources().getDrawable(R.drawable.line));
+        }
+        //      holder.shipping_fee.setText("Shipping Fee: "+products1.getShipping_fee());
   //    holder.shipping_iscount.setText("Shipping iscount: "+products1.getShippng_iscount());
 if (position==(productList.size()-1)){
     holder.view_line.setVisibility(View.GONE);

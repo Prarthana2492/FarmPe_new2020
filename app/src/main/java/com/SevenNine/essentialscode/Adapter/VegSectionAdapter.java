@@ -3,6 +3,8 @@ package com.SevenNine.essentialscode.Adapter;
 import android.app.Activity;
 import android.graphics.Paint;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,7 @@ import android.widget.TextView;
 
 import com.SevenNine.essentialscode.Bean.Sellbean;
 import com.SevenNine.essentialscode.Bean.Sellbean1;
+import com.SevenNine.essentialscode.Fragment.Top10ProductDetailsPreview;
 import com.SevenNine.essentialscode.R;
 import com.SevenNine.essentialscode.SessionManager;
 import com.SevenNine.essentialscode.Urls;
@@ -34,7 +37,7 @@ public class VegSectionAdapter extends RecyclerView.Adapter<VegSectionAdapter.My
     Fragment selectedFragment;
     private VegSectionAdapter.ProductItemActionListener actionListener;
     SessionManager sessionManager;
-    public static String sellingtypeid,sellingedit_id,prodid,upid,amount,quantity,status;
+    public static String sellingtypeid,sellingedit_id,prodid,upid,amount,quantity,status,prod_name,brand,mrp,offer_price,prod_img;
     int selected_quant;
 
 
@@ -50,7 +53,7 @@ public class VegSectionAdapter extends RecyclerView.Adapter<VegSectionAdapter.My
     }
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView image,prod_img_fix;
-        public LinearLayout item;
+        public LinearLayout item,item_click;
         public TextView name,weight,price,actual_price,add_cart,off_text,mrp_text;
         QuantityPicker quantityPicker;
 
@@ -67,7 +70,8 @@ public class VegSectionAdapter extends RecyclerView.Adapter<VegSectionAdapter.My
             mrp_text=view.findViewById(R.id.mrp_text);
             add_cart=view.findViewById(R.id.add_cart);
             off_text=view.findViewById(R.id.off_text);
-            quantityPicker=view.findViewById(R.id.quantityPicker);
+            item_click=view.findViewById(R.id.item_click);
+          //  quantityPicker=view.findViewById(R.id.quantityPicker);
             sessionManager=new SessionManager(activity);
         }
 
@@ -85,18 +89,18 @@ public class VegSectionAdapter extends RecyclerView.Adapter<VegSectionAdapter.My
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
      final Sellbean products = productList.get(position);
       sellingtypeid=products.getId();
-        holder.quantityPicker.setQuantitySelected(1);
-        holder.quantityPicker.setOnQuantityChangeListener(new QuantityPicker.OnQuantityChangeListener() {
+       // holder.quantityPicker.setQuantitySelected(1);
+       /* holder.quantityPicker.setOnQuantityChangeListener(new QuantityPicker.OnQuantityChangeListener() {
             @Override
             public void onValueChanged(int quantity) {
                 if (holder.quantityPicker.getQuantity()<1){
                     holder.quantityPicker.setQuantitySelected(1);
                 }
             }
-        });
+        });*/
         holder.name.setText(products.getName());
         holder.weight.setText(products.getWeight()+" "+products.getUom());
-        holder.price.setText("Rs "+products.getPrice());
+       // holder.price.setText("Rs "+products.getPrice());
        // holder.actual_price.setText("₹"+products.getActual_price());
         //holder.actual_price.setPaintFlags(holder.actual_price.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         if (products.getActual_price().equals(products.getPrice())){
@@ -104,35 +108,53 @@ public class VegSectionAdapter extends RecyclerView.Adapter<VegSectionAdapter.My
             holder.mrp_text.setVisibility(View.INVISIBLE);
         }else{
             holder.actual_price.setText("₹"+products.getActual_price());
-            holder.actual_price.setPaintFlags(holder.actual_price.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+           // holder.actual_price.setPaintFlags(holder.actual_price.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            holder.actual_price.setBackground(activity.getResources().getDrawable(R.drawable.line));
         }
         if (products.getOfferPrice().equals("0")){
             holder.off_text.setVisibility(View.GONE);
+            holder.price.setText("Rs "+products.getPrice());
+
         }else{
             holder.off_text.setVisibility(View.VISIBLE);
-            holder.off_text.setText(products.getOfferPrice()+"%"+"\n off");
+            holder.price.setText("Rs "+products.getOfferPrice());
 
+            //  holder.off_text.setText(products.getOfferPrice()+"%"+"\n off");
+            double off_price_calcu=(((Double.parseDouble(products.getActual_price())-Double.parseDouble(products.getOfferPrice()))/(Double.parseDouble(products.getActual_price())))*100);
+            System.out.println("jhfdiueshfr"+off_price_calcu);
+            int offer_per_int=(int)off_price_calcu;
+            String off_price_text=String.valueOf(offer_per_int);
+            holder.off_text.setText(off_price_text+"%");
         }
         Glide.with(activity).load(products.getImage())
                 .thumbnail(0.5f)
                 //.crossFade()
                 .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
-                        .error(R.drawable.ic_gallery__default))
+                        .error(R.drawable.veg))
                 .into(holder.image);
         Glide.with(activity).load(products.getImage())
                 .thumbnail(0.5f)
                 //.crossFade()
                 .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
-                        .error(R.drawable.ic_gallery__default))
+                        .error(R.drawable.veg))
                 .into(holder.prod_img_fix);
-        holder.image.setOnClickListener(new View.OnClickListener() {
+        holder.item_click.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*selectedFragment = CategoryProdDetailList.newInstance();
+                prodid=products.getProdId();
+                upid=products.getUpid();
+                amount=products.getPrice();
+                quantity=products.getWeight();
+                prod_name=products.getName();
+                brand=products.getBrand();
+                mrp=products.getActual_price();
+                offer_price=products.getOfferPrice();
+                prod_img=products.getImage();
+                selectedFragment = Top10ProductDetailsPreview.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity)activity).getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout_home, selectedFragment);
                 transaction.addToBackStack("spicescateory");
-                transaction.commit();*/
+                transaction.commit();
 
             }
         });
@@ -144,7 +166,12 @@ public class VegSectionAdapter extends RecyclerView.Adapter<VegSectionAdapter.My
                 upid=products.getUpid();
                 amount=products.getPrice();
                 quantity=products.getWeight();
-                selected_quant=holder.quantityPicker.getQuantity();
+                prod_name=products.getName();
+                brand=products.getBrand();
+                mrp=products.getActual_price();
+                offer_price=products.getOfferPrice();
+                prod_img=products.getImage();
+              //  selected_quant=holder.quantityPicker.getQuantity();
                 ComposeCategory();
                 if(actionListener!=null)
                     actionListener.onItemTap(holder.image);
@@ -171,7 +198,7 @@ public class VegSectionAdapter extends RecyclerView.Adapter<VegSectionAdapter.My
 
             jsonObject.put("CartProductListId", 0);
             jsonObject.put("ProductId", prodid);
-            jsonObject.put("SellingQuantity", selected_quant);
+            jsonObject.put("SellingQuantity", 1);
             // jsonObject.put("SelectedQuantity", selected_quant);
             jsonObject.put("UnitOfPriceId", 1);
             jsonObject.put("Amount", amount);

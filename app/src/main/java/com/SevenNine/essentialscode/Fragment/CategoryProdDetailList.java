@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -41,6 +42,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -59,8 +62,9 @@ public class CategoryProdDetailList extends Fragment {
     LinearLayout back_feed,linearLayout;
     JSONArray get_categorylist_array;
     JSONArray get_soiltype;
-    public static String sellingcatId,sellnavigation;
+    public static String sellingcatId,sellnavigation,status;
     SessionManager sessionManager;
+    private boolean ascending = true;
 
     public static CategoryProdDetailList newInstance() {
         CategoryProdDetailList fragment = new CategoryProdDetailList();
@@ -112,7 +116,35 @@ sessionManager=new SessionManager(getActivity());
             }
         });
         last_month_text.setText("All");
-        filter.setOnClickListener(new View.OnClickListener() {
+
+        newOrderBeansList_subcat.clear();
+        // livestock_types_adapter = new Livestock_Types_Adapter( getActivity(),newOrderBeansList);
+        GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false);
+        recyclerView_main.setLayoutManager(mLayoutManager_farm);
+        recyclerView_main.setItemAnimator(new DefaultItemAnimator());
+        all_items_filter();
+
+        if (FilterSortByFragment.price_low_high_str!=null){
+            String sort_str=FilterSortByFragment.price_low_high_str;
+            if (sort_str.equals("Price_low_high")){
+                sortData(ascending);
+                ascending = !ascending;
+            }else if (sort_str.equals("Price_High_Low")){
+                //sort_api="des";
+                Collections.reverse(newOrderBeansList_subcat);
+                livestock_types_adapter=new CategoryProdDetailAdapter(getActivity(),newOrderBeansList_subcat);
+                recyclerView_main.setAdapter(livestock_types_adapter);
+                //   name.setText(jsonObject1.getString("SellingCategoryName"));
+                livestock_types_adapter.setActionListener(new CategoryProdDetailAdapter.ProductItemActionListener() {
+                    @Override
+                    public void onItemTap(ImageView imageView) {
+                        if (imageView != null)
+                            makeFlyAnimation(imageView);
+                    }
+                });
+            }
+        }
+        /*filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -138,9 +170,10 @@ sessionManager=new SessionManager(getActivity());
                 offers.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                       // status="Ascending";
+                        last_month_text.setText("Offers");
+                        status="OfferAvailable";
                         dialog.dismiss();
-                        offers_filter();
+                        price_offer_filter();
 
                     }
                 });
@@ -149,8 +182,90 @@ sessionManager=new SessionManager(getActivity());
                     @Override
                     public void onClick(View v) {
                         // status="Ascending";
+                        last_month_text.setText("All");
                         dialog.dismiss();
                         all_items_filter();
+
+                    }
+                });
+                price.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+
+                                final Dialog dialog1 = new Dialog(getActivity());
+                                dialog1.setContentView(R.layout.range_filter_popup);
+                                dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                final TextView less_than_20 = (TextView) dialog1.findViewById(R.id.less_than_20);
+                                final TextView range_21_50 = (TextView)dialog1.findViewById(R.id.range_21_50);
+                                final TextView range_51_100 = (TextView)dialog1.findViewById(R.id.range_51_100) ;
+                                final TextView range_101_200 = (TextView)dialog1.findViewById(R.id.range_101_200) ;
+                                final TextView range_201_500 = (TextView)dialog1.findViewById(R.id.range_201_500) ;
+                                //   final TextView popuptxt = (TextView)dialog.findViewById(R.id.popup_heading) ;
+                                LinearLayout image = (LinearLayout) dialog1.findViewById(R.id.close_popup);
+
+
+                                image.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+
+                                        dialog1.dismiss();
+
+                                    }
+                                });
+
+                                less_than_20.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        last_month_text.setText("Less than 20");
+                                        status="LessthanRs20";
+                                        dialog1.dismiss();
+                                        price_offer_filter();
+
+                                    }
+                                });
+
+                                range_21_50.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        last_month_text.setText("Rs 21 to 50");
+                                        status="Rs21toRs50";
+                                        dialog1.dismiss();
+                                        price_offer_filter();
+
+                                    }
+                                });
+                                range_51_100.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        last_month_text.setText("Rs 51 to 100");
+                                        status="Rs51toRs100";
+                                        dialog1.dismiss();
+                                        price_offer_filter();
+
+                                    }
+                                });
+                                range_101_200.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        last_month_text.setText("Rs 101 to 200");
+                                        status="Rs101toRs200";
+                                        dialog1.dismiss();
+                                        price_offer_filter();
+                                    }
+                                });
+                                range_201_500.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        last_month_text.setText("Rs 201 to 500");
+                                        status="Rs201toRs500";
+                                        dialog1.dismiss();
+                                        price_offer_filter();
+                                    }
+                                });
+
+
+                                dialog1.show();
 
                     }
                 });
@@ -158,12 +273,19 @@ sessionManager=new SessionManager(getActivity());
                 dialog.show();
             }
         });
-        newOrderBeansList_subcat.clear();
-        // livestock_types_adapter = new Livestock_Types_Adapter( getActivity(),newOrderBeansList);
-        GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false);
-        recyclerView_main.setLayoutManager(mLayoutManager_farm);
-        recyclerView_main.setItemAnimator(new DefaultItemAnimator());
-        all_items_filter();
+*/
+
+
+        filter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedFragment = FilterTabFragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout1, selectedFragment);
+                transaction.addToBackStack("change_passrr");
+                transaction.commit();
+            }
+        });
        /* Sellbean1 bean45 = new Sellbean1("Fresh Carrot, Orrange ","1",R.drawable.veg,"500g","₹100","₹120","");
         newOrderBeansList_subcat.add(bean45);
         Sellbean1 bean55= new Sellbean1("Fresh Beet Root, ","1",R.drawable.veg,"250g","₹100","₹120","");
@@ -198,6 +320,37 @@ sessionManager=new SessionManager(getActivity());
         return view;
     }
 
+    private void sortData(boolean asc)
+    {
+        System.out.println("jhdsjsh"+newOrderBeansList_subcat.size());
+        //SORT ARRAY ASCENDING AND DESCENDING
+        if (asc)
+        {
+            Collections.sort(newOrderBeansList_subcat, new Comparator<Sellbean>() {
+                @Override
+                public int compare(Sellbean item1, Sellbean item2) {
+                    return item1.getActual_price().compareTo(item2.getActual_price());
+                }
+            });
+        }
+    /*else
+    {
+        Collections.reverse(newOrderBeansList);
+    }*/
+        //ADAPTER
+        System.out.println("jjjjjjjjjj"+newOrderBeansList_subcat.size());
+
+        livestock_types_adapter=new CategoryProdDetailAdapter(getActivity(),newOrderBeansList_subcat);
+        recyclerView_main.setAdapter(livestock_types_adapter);
+        //   name.setText(jsonObject1.getString("SellingCategoryName"));
+        livestock_types_adapter.setActionListener(new CategoryProdDetailAdapter.ProductItemActionListener() {
+            @Override
+            public void onItemTap(ImageView imageView) {
+                if (imageView != null)
+                    makeFlyAnimation(imageView);
+            }
+        });
+    }
     private void makeFlyAnimation(ImageView targetView) {
 
 
@@ -313,44 +466,42 @@ sessionManager=new SessionManager(getActivity());
             }
         });
     }
-    private void offers_filter() {
+    private void price_offer_filter() {
+        newOrderBeansList_subcat.clear();
+
         try{
 
-            newOrderBeansList_subcat.clear();
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("SellingCategoryId",sellingcatId);
+           // jsonObject.put("SellingCategoryId",sellingcatId);
+            jsonObject.put("Status",status);
 
             System.out.println("jhfdfdjc111"+jsonObject);
-            Crop_Post.crop_posting(getActivity(), Urls.GetProductDetailsList, jsonObject, new VoleyJsonObjectCallback() {
+            Crop_Post.crop_posting(getActivity(), Urls.GetFiltersforProductDetails, jsonObject, new VoleyJsonObjectCallback() {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
 
                     System.out.println("GetSellingTypeeeeeeee"+result);
-                    last_month_text.setText("Offers");
 
 
                     try{
 
-                        get_soiltype = result.getJSONArray("SellDetails");
+                        get_soiltype = result.getJSONArray("filterforProductdetails");
 
                         for(int i=0;i<get_soiltype.length();i++){
 
                             JSONObject jsonObject1 = get_soiltype.getJSONObject(i);
 
                                 name.setText(jsonObject1.getString("SellingCategoryName"));
-                            if (jsonObject1.getBoolean("IsOfferAvailable")==true) {
+
                                 Sellbean sellbean = new Sellbean(jsonObject1.getString("ProductName"),jsonObject1.getString("SellingCategoryId"),jsonObject1.getString("ProductIcon"),jsonObject1.getString("Quantity"),jsonObject1.getString("Amount"),jsonObject1.getString("MRP"),"Kg",jsonObject1.getString("ProductDescription"),jsonObject1.getString("SellingCategoryName"),jsonObject1.getString("ProductId"),jsonObject1.getString("SellingCategoryName"),jsonObject1.getString("Brand"),jsonObject1.getString("OfferPrice"));
 
                                 newOrderBeansList_subcat.add(sellbean);
                                 System.out.println("fdjfksjd"+jsonObject1.getBoolean("IsOfferAvailable"));
-                                livestock_types_adapter = new CategoryProdDetailAdapter(getActivity(), newOrderBeansList_subcat);
-                                recyclerView_main.setAdapter(livestock_types_adapter);
-                            }else{
 
-                            }
 
                         }
-
+                        livestock_types_adapter = new CategoryProdDetailAdapter(getActivity(), newOrderBeansList_subcat);
+                        recyclerView_main.setAdapter(livestock_types_adapter);
                         //   name.setText(jsonObject1.getString("SellingCategoryName"));
                         livestock_types_adapter.setActionListener(new CategoryProdDetailAdapter.ProductItemActionListener() {
                             @Override
@@ -372,11 +523,18 @@ sessionManager=new SessionManager(getActivity());
     }
 
     private void all_items_filter() {
+        newOrderBeansList_subcat.clear();
+
         try{
 
-            newOrderBeansList_subcat.clear();
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("SellingCategoryId",sellingcatId);
+            if (DiscoverCategoryFragment.home_arrow!=null){
+                jsonObject.put("SellingCategoryId",1);
+
+            }else{
+                jsonObject.put("SellingCategoryId",sellingcatId);
+
+            }
 
             System.out.println("jhfdfdjc111"+jsonObject);
             Crop_Post.crop_posting(getActivity(), Urls.GetProductDetailsList, jsonObject, new VoleyJsonObjectCallback() {
@@ -397,9 +555,45 @@ sessionManager=new SessionManager(getActivity());
                             Sellbean sellbean = new Sellbean(jsonObject1.getString("ProductName"),jsonObject1.getString("SellingCategoryId"),jsonObject1.getString("ProductIcon"),jsonObject1.getString("Quantity"),jsonObject1.getString("Amount"),jsonObject1.getString("MRP"),"Kg",jsonObject1.getString("ProductDescription"),jsonObject1.getString("SellingCategoryName"),jsonObject1.getString("ProductId"),jsonObject1.getString("SellingCategoryName"),jsonObject1.getString("Brand"),jsonObject1.getString("OfferPrice"));
 
                             newOrderBeansList_subcat.add(sellbean);
-                            name.setText(jsonObject1.getString("SellingCategoryName"));
+                           // name.setText(jsonObject1.getString("SellingCategoryName"));
                         }
-                        livestock_types_adapter=new CategoryProdDetailAdapter(getActivity(),newOrderBeansList_subcat);
+                        if (FilterSortByFragment.price_low_high_str!=null){
+                           // name.setText(jsonObject1.getString("SellingCategoryName"));
+                            String sort_str=FilterSortByFragment.price_low_high_str;
+                            if (sort_str.equals("Price_low_high")){
+                                System.out.println("listtttttt"+newOrderBeansList_subcat.size());
+                                sortData(ascending);
+                                ascending = !ascending;
+                            }else if (sort_str.equals("Price_High_Low")){
+                                //sort_api="des";
+                                System.out.println("jjjjjjjjj"+newOrderBeansList_subcat.size());
+                                Collections.reverse(newOrderBeansList_subcat);
+                                livestock_types_adapter=new CategoryProdDetailAdapter(getActivity(),newOrderBeansList_subcat);
+                                recyclerView_main.setAdapter(livestock_types_adapter);
+                                //   name.setText(jsonObject1.getString("SellingCategoryName"));
+                                livestock_types_adapter.setActionListener(new CategoryProdDetailAdapter.ProductItemActionListener() {
+                                    @Override
+                                    public void onItemTap(ImageView imageView) {
+                                        if (imageView != null)
+                                            makeFlyAnimation(imageView);
+                                    }
+                                });
+                            }
+                        }else{
+                           // name.setText(jsonObject1.getString("SellingCategoryName"));
+
+                            livestock_types_adapter=new CategoryProdDetailAdapter(getActivity(),newOrderBeansList_subcat);
+                            recyclerView_main.setAdapter(livestock_types_adapter);
+                            //   name.setText(jsonObject1.getString("SellingCategoryName"));
+                            livestock_types_adapter.setActionListener(new CategoryProdDetailAdapter.ProductItemActionListener() {
+                                @Override
+                                public void onItemTap(ImageView imageView) {
+                                    if (imageView != null)
+                                        makeFlyAnimation(imageView);
+                                }
+                            });
+                        }
+                       /* livestock_types_adapter=new CategoryProdDetailAdapter(getActivity(),newOrderBeansList_subcat);
                         recyclerView_main.setAdapter(livestock_types_adapter);
                         //   name.setText(jsonObject1.getString("SellingCategoryName"));
                         livestock_types_adapter.setActionListener(new CategoryProdDetailAdapter.ProductItemActionListener() {
@@ -408,7 +602,7 @@ sessionManager=new SessionManager(getActivity());
                                 if (imageView != null)
                                     makeFlyAnimation(imageView);
                             }
-                        });
+                        });*/
                     }catch (Exception e){
                         e.printStackTrace();
                     }

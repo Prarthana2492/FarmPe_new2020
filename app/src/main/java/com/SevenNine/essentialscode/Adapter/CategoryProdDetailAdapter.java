@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.SevenNine.essentialscode.Bean.Sellbean;
+import com.SevenNine.essentialscode.Fragment.CategoryProdDetailList;
 import com.SevenNine.essentialscode.R;
 import com.SevenNine.essentialscode.SessionManager;
 import com.SevenNine.essentialscode.Urls;
@@ -89,7 +90,7 @@ public class CategoryProdDetailAdapter extends RecyclerView.Adapter<CategoryProd
      final Sellbean products = productList.get(position);
       sellingtypeid=products.getId();
         holder.name.setText(products.getName());
-
+      //  CategoryProdDetailList.name.setText(products.getSelling_cat_name());
       /*if (products.getProd_descr().equals("")){
           holder.name.setText(products.getName()+", "+", "+products.getBrand());
       }else{
@@ -97,10 +98,17 @@ public class CategoryProdDetailAdapter extends RecyclerView.Adapter<CategoryProd
       }*/
         if (products.getOfferPrice().equals("0")){
             holder.off_text.setVisibility(View.GONE);
+            holder.price.setText("Rs "+products.getPrice());
+
         }else{
             holder.off_text.setVisibility(View.VISIBLE);
-            holder.off_text.setText(products.getOfferPrice()+"%"+"\n off");
-
+           // holder.off_text.setText(products.getOfferPrice()+"%"+"\n off");
+            holder.price.setText("Rs "+products.getOfferPrice());
+            double off_price_calcu=(((Double.parseDouble(products.getActual_price())-Double.parseDouble(products.getOfferPrice()))/(Double.parseDouble(products.getActual_price())))*100);
+            System.out.println("jhfdiueshfr"+off_price_calcu);
+            int offer_per_int=(int)off_price_calcu;
+            String off_price_text=String.valueOf(offer_per_int);
+            holder.off_text.setText(off_price_text+"%");
         }
         if (products.getActual_price().equals(products.getPrice())){
             holder.actual_price.setVisibility(View.INVISIBLE);
@@ -118,7 +126,6 @@ public class CategoryProdDetailAdapter extends RecyclerView.Adapter<CategoryProd
             }
         });
         holder.weight.setText(products.getWeight()+" "+products.getUom());
-        holder.price.setText("Rs "+products.getPrice());
         holder.actual_price.setText("₹"+products.getActual_price());
        // holder.actual_price.setPaintFlags(holder.actual_price.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         holder.actual_price.setBackground(activity.getResources().getDrawable(R.drawable.line));
@@ -127,13 +134,13 @@ public class CategoryProdDetailAdapter extends RecyclerView.Adapter<CategoryProd
                 .thumbnail(0.5f)
                 //.crossFade()
                 .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
-                        .error(R.drawable.ic_gallery__default))
+                        .error(R.drawable.veg))
                 .into(holder.image);
         Glide.with(activity).load(products.getImage())
                 .thumbnail(0.5f)
                 //.crossFade()
                 .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
-                        .error(R.drawable.ic_gallery__default))
+                        .error(R.drawable.veg))
                 .into(holder.prod_img_fix);
        /* holder.image.setOnClickListener(new View.OnClickListener() {
             @Override

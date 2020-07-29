@@ -151,6 +151,7 @@ public class Urls {
     public static final String GetAddNewFarms = ROOT_URL + "MasterTable/GetFarmNameDetails";
     public static final String GetSellingType = ROOT_URL + "MasterTable/GetSellingTypeList";
     public static final String GetProductDetailsList = ROOT_URL + "SevenNine/GetProductDetailsList";
+    public static final String GetFiltersforProductDetails = ROOT_URL + "SevenNine/GetFiltersforProductDetails";
     public static final String GetOfferDetails = ROOT_URL + "SevenNine/GetOfferDetails";
     public static final String GetTop10listItem = ROOT_URL + "SevenNine/GetTop10listItem";
     public static final String GetProductDetailsFrom7NinePartner = ROOT_URL + "SevenNine/GetProductDetailsFrom7NinePartner";
@@ -162,6 +163,7 @@ public class Urls {
     public static final String GetCartProductDetails = ROOT_URL + "SevenNine/GetCartProductDetails";
     public static final String DeleteReviewCartList = ROOT_URL + "SevenNine/DeleteReviewCartList";
     public static final String AddUpdateFavouriteCartList = ROOT_URL + "SevenNine/AddUpdateFavouriteCartList";
+    public static final String CancelCODOrders = ROOT_URL + "SevenNine/CancelCODOrders";
     public static final String GetReviewCount = ROOT_URL + "SevenNine/GetReviewCount";
     public static final String GetSellingCategoryList = ROOT_URL + "MasterTable/GetSellingCategoryList";
     public static final String GetSellingList = ROOT_URL + "MasterTable/GetSellingList";

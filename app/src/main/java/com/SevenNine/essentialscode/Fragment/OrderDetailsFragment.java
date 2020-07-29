@@ -1,9 +1,13 @@
 package com.SevenNine.essentialscode.Fragment;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -21,6 +25,9 @@ import com.SevenNine.essentialscode.Adapter.OrderDetailsAdapter;
 import com.SevenNine.essentialscode.Bean.OrderDetailBean;
 import com.SevenNine.essentialscode.R;
 import com.SevenNine.essentialscode.SessionManager;
+import com.SevenNine.essentialscode.Urls;
+import com.SevenNine.essentialscode.Volly_class.Crop_Post;
+import com.SevenNine.essentialscode.Volly_class.VoleyJsonObjectCallback;
 
 import org.json.JSONObject;
 
@@ -42,7 +49,8 @@ public class OrderDetailsFragment extends Fragment {
     public static String order_details;
     Fragment selectedFragment;
     String delivery_charge;
-    TextView toolbar_title,ordered_on,items_cost,before_tax,total_amt,total_sum_amt,item_count,name_vw,pay_mode,method,shipping_fee;
+    String txnid;
+    TextView toolbar_title,ordered_on,items_cost,before_tax,total_amt,total_sum_amt,item_count,name_vw,pay_mode,method,shipping_fee,cancel;
     Double rate_double1,before_tax_text,shipping_fee_double;
     public static OrderDetailsFragment newInstance() {
         OrderDetailsFragment fragment = new OrderDetailsFragment();
@@ -64,11 +72,13 @@ public class OrderDetailsFragment extends Fragment {
         name_vw=view.findViewById(R.id.name_vw);
         pay_mode=view.findViewById(R.id.payment_mode);
         method=view.findViewById(R.id.method);
+        cancel=view.findViewById(R.id.cancel);
         shipping_fee=view.findViewById(R.id.shipping_fee);
 
 
         Window window = getActivity().getWindow();
         window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.dark_green));
+        sessionManager=new SessionManager(getActivity());
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,6 +118,85 @@ public class OrderDetailsFragment extends Fragment {
 
             }
         });
+        if (getArguments().getString("pay_mode").equals("PayU")){
+            cancel.setVisibility(View.GONE);
+        }else {
+            cancel.setVisibility(View.VISIBLE);
+
+        }
+      txnid=getArguments().getString("txnId");
+      System.out.println("ttatta"+txnid);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final Dialog dialog = new Dialog(getActivity());
+                dialog.setContentView(R.layout.delete_details_popup);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+                TextView ok = dialog.findViewById(R.id.ok);
+                TextView cancel = dialog.findViewById(R.id.cancel);
+                TextView details = dialog.findViewById(R.id.details);
+
+                details.setText("Do you want to Cancel the order?");
+                ok.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        try {
+                            JSONObject jsonObject = new JSONObject();
+                            jsonObject.put("PayUTransactionId", txnid);
+                            jsonObject.put("IsPaymentCancelled", 1);
+                            jsonObject.put("UserId", sessionManager.getRegId("userId"));
+
+                            System.out.println("bank_dvvvvetails_iddds" + jsonObject);
+
+                            Crop_Post.crop_posting(getActivity(), Urls.CancelCODOrders, jsonObject, new VoleyJsonObjectCallback() {
+                                @Override
+                                public void onSuccessResponse(JSONObject result) {
+                                    System.out.println("111111dddd" + result);
+
+                                    try {
+
+                                        String status = result.getString("Status");
+
+                                        if (status.equals("Success")) {
+                                            order_details = "order";
+
+                                            selectedFragment = HomeFragment.newInstance();
+                                            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                            transaction.replace(R.id.frame_layout1, selectedFragment);
+                                            transaction.addToBackStack("dhsksw");
+                                            transaction.commit();
+                                        }
+
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        dialog.dismiss();
+
+                    }
+                });
+
+
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+
+                    }
+                });
+
+                dialog.show();
+
+            }
+            });
+
 /*date_str=getArguments().getString("createdon");
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 
@@ -128,6 +217,7 @@ public class OrderDetailsFragment extends Fragment {
             rate_double1 = ((Double.parseDouble(getArguments().getString("uom")))-(Double.parseDouble(getArguments().getString("uom"))) * ((Double.parseDouble(getArguments().getString("offer_price"))) / 100));
            // holder.amount.setText("₹"+offer_price);
             System.out.println("jdkjsdhfkj"+rate_double1);
+
         }
         shipping_fee_double=Double.parseDouble(getArguments().getString("delivery_charges"));
         String shippDouble = String.format("%.2f",shipping_fee_double );

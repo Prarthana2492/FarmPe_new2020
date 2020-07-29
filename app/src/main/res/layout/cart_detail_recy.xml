@@ -29,13 +29,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="#fff"
+        android:weightSum="10"
         android:gravity="center_vertical">
         <TextView
             android:id="@+id/name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Deliver to Jagdish - Bengaluru 560098"
             android:textSize="14dp"
+            android:layout_weight="9"
             android:drawablePadding="10dp"
             android:textColor="#000"
             android:layout_marginRight="10dp"
@@ -45,11 +47,19 @@
             android:layout_marginLeft="10dp"
             />
 
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            >
         <ImageView
             android:id="@+id/right_arrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_weight="1"
             android:src="@drawable/ic_right_angle_arrow"/>
+
+        </LinearLayout>
     </LinearLayout>
     <View
         android:id="@+id/view_line"
@@ -285,7 +295,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="00"
+                android:text="₹0.00"
                 android:textSize="16dp"
                 android:textColor="#000"
                 android:fontFamily="@font/segoeui"

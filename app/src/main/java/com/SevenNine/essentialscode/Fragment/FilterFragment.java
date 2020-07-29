@@ -119,6 +119,11 @@ public class FilterFragment extends Fragment {
                     //CancelOrders();
                     bundle.putString("setText", "Canceled orders");
                     bundle.putString("bundlestatus", "1");
+                    selectedFragment = NewOrderFragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout_home, selectedFragment);
+                    selectedFragment.setArguments(bundle);
+                    transaction.commit();
                 }else if (stat.equals("Last 30 Days")){
                    // AllOrders();
                     bundle.putString("bundlestatus", "30days");

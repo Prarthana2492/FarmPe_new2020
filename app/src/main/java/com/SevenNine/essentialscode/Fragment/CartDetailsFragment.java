@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -43,6 +44,7 @@ public class CartDetailsFragment extends Fragment {
     CartDetailsAdapter madapter;
     JSONObject lngObject;
     View view_line;
+    ImageView right_arrow;
     public static TextView toolbar_title,total_amount,main_total_amount,total_before_tax,total_items,items_cost,total_without_disc,name,delivery_charges;
     Fragment selectedFragment;
 
@@ -68,6 +70,7 @@ public class CartDetailsFragment extends Fragment {
         name=view.findViewById(R.id.name);
         delivery_charges=view.findViewById(R.id.delivery_charges);
         total_without_disc=view.findViewById(R.id.total_without_disc);
+        right_arrow=view.findViewById(R.id.right_arrow);
 
 sessionManager=new SessionManager(getActivity());
         Window window = getActivity().getWindow();
@@ -97,6 +100,16 @@ sessionManager=new SessionManager(getActivity());
 
         }
 
+        right_arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedFragment = CurrentLocation.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout1, selectedFragment);
+                transaction.addToBackStack("cart_detail");
+                transaction.commit();
+            }
+        });
         newOrderBeansList.clear();
         GridLayoutManager mLayoutManager_farm = new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager_farm);

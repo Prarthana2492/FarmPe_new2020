@@ -218,7 +218,7 @@ public class SelectPaymentMethod extends Fragment {
         try {
             params.put("UserId",sessionManager.getRegId("userId"));
             params.put("Amount", CartDetailsAdapter.total_prise_st);  // amount
-            params.put("ProductInfo", CurrentLocation.current_addr);  // amount
+            params.put("ProductInfo", sessionManager.getRegId("default_address"));  // amount
             params.put("TransactionFees","0.00");  //transaction fees
             params.put("DiscountAmount","0.00");
             params.put("mode","COD");
