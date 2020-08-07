@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.CheckBox;
 import android.widget.ExpandableListAdapter;
 import android.widget.TextView;
 
@@ -21,6 +22,7 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
     private Context context;
     private List<String> expandableListTitle;
     private HashMap<String, List<String>> expandableListDetail;
+    public static String price_range,category,category_text;
 
     public CustomExpandableListAdapter(Context context, List<String> expandableListTitle,
                                        HashMap<String, List<String>> expandableListDetail) {
@@ -49,9 +51,71 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(R.layout.filter_expandable_item, null);
         }
-        TextView expandedListTextView = (TextView) convertView
+        final TextView expandedListTextView = (TextView) convertView
                 .findViewById(R.id.expandedListItem);
+        final CheckBox check_category = (CheckBox) convertView
+                .findViewById(R.id.check_category);
         expandedListTextView.setText(expandedListText);
+        expandedListTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                check_category.setChecked(true);
+                category_text=expandedListTextView.getText().toString();
+                System.out.println("jsdfdjs"+expandedListTextView.getText().toString());
+                if (expandedListTextView.getText().toString().equals("Less than Rs 20")){
+                    category=null;
+                    price_range="LessthanRs20";
+                }else if (expandedListTextView.getText().toString().equals("Rs 21 to Rs 50")) {
+                    category=null;
+                    price_range = "Rs21toRs50";
+                }else if (expandedListTextView.getText().toString().equals("Rs 51 to Rs 100")) {
+                    category=null;
+                    price_range = "Rs51toRs100";
+                }else if (expandedListTextView.getText().toString().equals("Rs 101 to Rs 200")) {
+                    category=null;
+                    price_range = "Rs101toRs200";
+                }
+                else if (expandedListTextView.getText().toString().equals("Rs 201 to Rs 500")) {
+                    category=null;
+                    price_range = "Rs201toRs500";
+                }else if (expandedListTextView.getText().toString().equals("Fruits & Vegetables")){
+                    category = "Fruits_veg";
+
+                }
+
+
+
+
+            }
+        });
+
+        check_category.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("jsdfdjs"+expandedListTextView.getText().toString());
+                if (expandedListTextView.getText().toString().equals("Less than Rs 20")){
+                    category=null;
+                    price_range="LessthanRs20";
+                }else if (expandedListTextView.getText().toString().equals("Rs 21 to Rs 50")) {
+                    category=null;
+                    price_range = "Rs21toRs50";
+                }else if (expandedListTextView.getText().toString().equals("Rs 51 to Rs 100")) {
+                    category=null;
+                    price_range = "Rs51toRs100";
+                }else if (expandedListTextView.getText().toString().equals("Rs 101 to Rs 200")) {
+                    category=null;
+                    price_range = "Rs101toRs200";
+                }
+                else if (expandedListTextView.getText().toString().equals("Rs 201 to Rs 500")) {
+                    category=null;
+                    price_range = "Rs201toRs500";
+                }else if (expandedListTextView.getText().toString().equals("Fruits & Vegetables")){
+                    category = "Fruits_veg";
+
+                }
+
+            }
+        });
         return convertView;
     }
 

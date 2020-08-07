@@ -137,33 +137,59 @@ static Fragment myloadingfragment;
                 return true;
             }
         });
-        if (OrderDetailsFragment.order_details!=null){
-            selectedFragment = NewOrderFragment.newInstance();
-            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.frame_layout_home, selectedFragment);
-            transaction.addToBackStack("dhsks");
-            transaction.commit();
-        }else if (ShopByCategoryAdapterNext.shop_cat_home!=null){
-            shop_cat_id=getArguments().getString("sellingCatId_shop");
-            selectedFragment = CategoryProdDetailList.newInstance();
-            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.frame_layout_home, selectedFragment);
-            transaction.addToBackStack("dhsks");
-            transaction.commit();
-        }else if (FilterSortByFragment.filter_str!=null){
-            selectedFragment = CategoryProdDetailList.newInstance();
-            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.frame_layout_home, selectedFragment);
-            transaction.addToBackStack("dhsks");
-            transaction.commit();
-        }else if (OffersAdapter.offer!=null){
+        Bundle bundle=getArguments();
+        if (bundle!=null){
+            if (getArguments().getString("order_details")!=null){
+               // OfferPreviewDetails.offer_price=null;
+                selectedFragment = NewOrderFragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout_home, selectedFragment);
+                transaction.addToBackStack("dhsks");
+                transaction.commit();
+            }else if (getArguments().getString("ShopbyCat")!=null){
+              //  OfferPreviewDetails.offer_price=null;
+                shop_cat_id=getArguments().getString("sellingCatId_shop");
+                selectedFragment = CategoryProdDetailList.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout_home, selectedFragment);
+                transaction.addToBackStack("dhsks");
+                transaction.commit();
+            }else if (getArguments().getString("filter_sort")!=null){
+              //  OfferPreviewDetails.offer_price=null;
+                selectedFragment = CategoryProdDetailList.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout_home, selectedFragment);
+                transaction.addToBackStack("dhsks");
+                transaction.commit();
+            }else if (getArguments().getString("filter_refine")!=null){
+               // OfferPreviewDetails.offer_price=null;
+                selectedFragment = CategoryProdDetailList.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout_home, selectedFragment);
+                transaction.addToBackStack("dhsks");
+                transaction.commit();
+            }/*else if (OffersAdapter.offer!=null){
             selectedFragment = OfferPreviewDetails.newInstance();
             FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.frame_layout_home, selectedFragment);
             transaction.addToBackStack("dhskss");
             transaction.commit();
-        }
-        else{
+        }*/else if (getArguments().getString("offer_preview")!=null){
+                selectedFragment = OffersListFragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout_home, selectedFragment);
+                transaction.addToBackStack("dhskss");
+                transaction.commit();
+            }else if (getArguments().getString("location")!=null){
+               // OfferPreviewDetails.offer_price=null;
+                selectedFragment = CartDetailsFragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout_home, selectedFragment);
+                transaction.addToBackStack("dhskss");
+                transaction.commit();
+            }
+        } else{
+            OfferPreviewDetails.offer_price=null;
             selectedFragment = DiscoverCategoryFragment.newInstance();
             FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.frame_layout_home, selectedFragment);

@@ -10,6 +10,7 @@
     android:tag="cards main container">
 
     <LinearLayout
+        android:id="@+id/item_click"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -122,6 +123,7 @@
                     android:textSize="14dp" />
 
                 <TextView
+                    android:id="@+id/mrp_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/segoeui"

@@ -47,7 +47,8 @@ public class OrderDetailsCoDFragment extends Fragment {
     public static String order_details;
     Fragment selectedFragment;
     String date_str;
-    TextView toolbar_title,ordered_on,items_cost,before_tax,total_amt,total_sum_amt,item_count,name_vw,pay_mode,method;
+    Double before_tax_text;
+    TextView toolbar_title,ordered_on,items_cost,before_tax,total_amt,total_sum_amt,item_count,name_vw,pay_mode,method,shipping_fee;
 
     public static OrderDetailsCoDFragment newInstance() {
         OrderDetailsCoDFragment fragment = new OrderDetailsCoDFragment();
@@ -69,6 +70,7 @@ public class OrderDetailsCoDFragment extends Fragment {
         name_vw=view.findViewById(R.id.name_vw);
         pay_mode=view.findViewById(R.id.payment_mode);
         method=view.findViewById(R.id.method);
+        shipping_fee=view.findViewById(R.id.shipping_fee);
 
         sessionManager=new SessionManager(getActivity());
         Window window = getActivity().getWindow();
@@ -173,19 +175,36 @@ public class OrderDetailsCoDFragment extends Fragment {
                             String ProductInfo=jsonObject1.getString("CustAddress");
                             String mode=jsonObject1.getString("mode");
                             String mrp=jsonObject1.getString("MRP");
-                            String CustAddress=jsonObject1.getString("CustAddress");
+                        String OfferPrice = jsonObject1.getString("OfferPrice");
+                        String DeliveryCharges = jsonObject1.getString("DeliveryCharges");
+
+                        String CustAddress=jsonObject1.getString("CustAddress");
 
                             /*PreferedBranchBean bean=new PreferedBranchBean(Name,StreeAddress,StreeAddress1,State,Pincode,"",Id);
                             newOrderBeansList.add(bean);*/
 
                         DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.US);;
                         formatter .applyPattern("##,##,##,###");
-                        double rate_double1= (Double.parseDouble(Amount));
+                        double rate_double1=0;
+                        if (OfferPrice.equals("0")){
+                            rate_double1= (Double.parseDouble(Amount));
+
+                        }else {
+                             rate_double1= (Double.parseDouble(OfferPrice));
+
+                        }
                         ordered_on.setText(CreatedOn.substring(0,10));
-                        items_cost.setText("₹"+formatter.format(rate_double1)+".00");
-                        before_tax.setText("₹"+formatter.format(rate_double1)+".00");
-                        total_amt.setText("₹"+formatter.format(rate_double1)+".00");
-                        total_sum_amt.setText("₹"+formatter.format(rate_double1)+".00");
+                        items_cost.setText("₹"+rate_double1+".00");
+                       /* items_cost.setText("₹"+rate_double1+".00");
+                        String shippDouble = String.format("%.2f",DeliveryCharges );
+                        shipping_fee.setText("₹"+shippDouble);*/
+                        before_tax_text=((rate_double1)+(Double.parseDouble(DeliveryCharges)));
+                        String strDouble1 = String.format("%.2f", before_tax_text);
+
+                        before_tax.setText("₹"+strDouble1);
+                      //  before_tax.setText("₹"+formatter.format(rate_double1)+".00");
+                        total_amt.setText("₹"+strDouble1);
+                        total_sum_amt.setText("₹"+strDouble1);
                         item_count.setText("Items -"+"1 Item");
                         name_vw.setText(CustAddress);
                         pay_mode.setText("Mode: "+mode);

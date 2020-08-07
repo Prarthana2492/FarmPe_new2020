@@ -592,7 +592,9 @@
 
 
 
-            <TextView
+
+
+           <!-- <TextView
                 android:id="@+id/cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -606,9 +608,69 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
                 android:textColor="#000"
-                android:textSize="14dp" />
+                android:textSize="14dp" />-->
 
     </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cancel_lay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="10"
+
+            android:background="@drawable/border_grey_filled"
+            >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="5">
+                <TextView
+                    android:id="@+id/cancel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/segoeui"
+                    android:text="CANCEL"
+                    android:singleLine="false"
+                    android:layout_weight="5"
+                    android:paddingVertical="12dp"
+                    android:paddingHorizontal="10dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:background="@drawable/border_grey_filled"
+                    android:layout_gravity="center"
+                    android:textColor="#000"
+                    android:textSize="14dp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/buy_again"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/segoeui"
+                android:text="BUY AGAIN"
+                android:singleLine="false"
+                android:layout_weight="5"
+                android:paddingVertical="12dp"
+                android:paddingHorizontal="10dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:background="@drawable/border_filled_orrange_no_curve"
+                android:layout_gravity="center"
+                android:textColor="#000"
+                android:textSize="14dp" />
+
+
+
+        </LinearLayout>
+
+
+
+
     </LinearLayout>
     </ScrollView>
 

@@ -111,9 +111,9 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.MyViewHold
                 mrp=products.getMrp();
                 offer_price=products.getOffer_price();
                 prod_img=products.getProd_icon();
-                selectedFragment = HomeFragment.newInstance();
+                selectedFragment = OfferPreviewDetails.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity)activity).getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout1, selectedFragment);
+                transaction.replace(R.id.frame_layout_home, selectedFragment);
                 transaction.addToBackStack("spicescateorye");
                 transaction.commit();
             }

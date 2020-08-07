@@ -37,7 +37,7 @@ class ExpandableListDataPump {
             price.add("Rs 21 to Rs 50");
         price.add("Rs 51 to Rs 100");
         price.add("Rs 101 to Rs 200");
-        price.add("Rs 202 to Rs 500");
+        price.add("Rs 201 to Rs 500");
         price.add("More than Rs 501");
 
         List<String> offers = new ArrayList<String>();

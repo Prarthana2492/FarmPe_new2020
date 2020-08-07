@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.SevenNine.essentialscode.Adapter.CategoryProdDetailAdapter;
+import com.SevenNine.essentialscode.Adapter.CustomExpandableListAdapter;
 import com.SevenNine.essentialscode.Adapter.MainCategoryAdapter;
 import com.SevenNine.essentialscode.Adapter.SelectMainAdapter;
 import com.SevenNine.essentialscode.Adapter.VegSectionAdapter;
@@ -101,6 +102,10 @@ public class DiscoverCategoryFragment extends Fragment {
         sessionManager=new SessionManager(getActivity());
        // fruits_veg.setVisibility(View.GONE);
        // fruits_veg.setVisibility(View.GONE);
+        FilterSortByFragment.price_low_high_str=null;
+        FilterProductsExpandableFragment.filter_refine_by=null;
+        CustomExpandableListAdapter.category_text=null;
+        CustomExpandableListAdapter.category=null;
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         view.setOnKeyListener(new View.OnKeyListener() {

@@ -50,6 +50,7 @@ public class OrderDetailsFragment extends Fragment {
     Fragment selectedFragment;
     String delivery_charge;
     String txnid;
+    LinearLayout cancel_lay;
     TextView toolbar_title,ordered_on,items_cost,before_tax,total_amt,total_sum_amt,item_count,name_vw,pay_mode,method,shipping_fee,cancel;
     Double rate_double1,before_tax_text,shipping_fee_double;
     public static OrderDetailsFragment newInstance() {
@@ -69,6 +70,7 @@ public class OrderDetailsFragment extends Fragment {
         total_sum_amt=view.findViewById(R.id.total_sum_amt);
         total_amt=view.findViewById(R.id.total_amt);
         item_count=view.findViewById(R.id.item_count);
+        cancel_lay=view.findViewById(R.id.cancel_lay);
         name_vw=view.findViewById(R.id.name_vw);
         pay_mode=view.findViewById(R.id.payment_mode);
         method=view.findViewById(R.id.method);
@@ -82,6 +84,8 @@ public class OrderDetailsFragment extends Fragment {
         back_feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle bundle=new Bundle();
+                bundle.putString("order_details","order_details");
                 order_details="order";
                 /*FragmentManager fm = getFragmentManager();
                 fm.popBackStack();*/
@@ -89,6 +93,7 @@ public class OrderDetailsFragment extends Fragment {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout1, selectedFragment);
                 transaction.addToBackStack("dhsksw");
+                selectedFragment.setArguments(bundle);
                 transaction.commit();
             }
         });
@@ -102,7 +107,8 @@ public class OrderDetailsFragment extends Fragment {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
-
+                    Bundle bundle=new Bundle();
+                    bundle.putString("order_details","order_details");
                     order_details="order";
                 /*FragmentManager fm = getFragmentManager();
                 fm.popBackStack();*/
@@ -110,6 +116,7 @@ public class OrderDetailsFragment extends Fragment {
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_layout1, selectedFragment);
                     transaction.addToBackStack("dhsksw");
+                    selectedFragment.setArguments(bundle);
                     transaction.commit();
 
                     return true;
@@ -119,9 +126,9 @@ public class OrderDetailsFragment extends Fragment {
             }
         });
         if (getArguments().getString("pay_mode").equals("PayU")){
-            cancel.setVisibility(View.GONE);
+            cancel_lay.setVisibility(View.GONE);
         }else {
-            cancel.setVisibility(View.VISIBLE);
+            cancel_lay.setVisibility(View.VISIBLE);
 
         }
       txnid=getArguments().getString("txnId");
@@ -160,11 +167,13 @@ public class OrderDetailsFragment extends Fragment {
 
                                         if (status.equals("Success")) {
                                             order_details = "order";
-
+                                            Bundle bundle=new Bundle();
+                                            bundle.putString("order_details","order_details");
                                             selectedFragment = HomeFragment.newInstance();
                                             FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                                             transaction.replace(R.id.frame_layout1, selectedFragment);
                                             transaction.addToBackStack("dhsksw");
+                                            selectedFragment.setArguments(bundle);
                                             transaction.commit();
                                         }
 
@@ -214,7 +223,9 @@ public class OrderDetailsFragment extends Fragment {
         if (getArguments().getString("offer_price").equals("0")){
             rate_double1= (Double.parseDouble(getArguments().getString("Amount")));
         }else{
-            rate_double1 = ((Double.parseDouble(getArguments().getString("uom")))-(Double.parseDouble(getArguments().getString("uom"))) * ((Double.parseDouble(getArguments().getString("offer_price"))) / 100));
+            rate_double1= (Double.parseDouble(getArguments().getString("offer_price")));
+
+            //  rate_double1 = ((Double.parseDouble(getArguments().getString("uom")))-(Double.parseDouble(getArguments().getString("uom"))) * ((Double.parseDouble(getArguments().getString("offer_price"))) / 100));
            // holder.amount.setText("₹"+offer_price);
             System.out.println("jdkjsdhfkj"+rate_double1);
 

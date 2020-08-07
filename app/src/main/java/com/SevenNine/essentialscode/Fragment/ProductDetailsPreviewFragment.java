@@ -18,7 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.SevenNine.essentialscode.Adapter.OffersAdapter;
+import com.SevenNine.essentialscode.Adapter.CategoryProdDetailAdapter;
 import com.SevenNine.essentialscode.CircleAnimationUtil;
 import com.SevenNine.essentialscode.R;
 import com.SevenNine.essentialscode.SessionManager;
@@ -36,7 +36,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class OfferPreviewDetails extends Fragment {
+public class ProductDetailsPreviewFragment extends Fragment {
     public static RecyclerView recyclerView;
     LinearLayout back_feed;
     SessionManager sessionManager;
@@ -44,16 +44,16 @@ public class OfferPreviewDetails extends Fragment {
     Fragment selectedFragment;
     TextView toolbar_title,prod_name,price,actual_price,offer_perc,abt_product,add_cart;
     ImageView prod_img,prod_img_fix;
-    private OfferPreviewDetails.ProductItemActionListener actionListener;
-    public static String sellingtypeid,sellingedit_id,prodid,upid,amount,quantity,status,brand,mrp,offer_price;
+    private ProductDetailsPreviewFragment.ProductItemActionListener actionListener;
+    public static String sellingtypeid,sellingedit_id,prodid,upid,amount,quantity,status,brand,mrp,offer_price,preview;
     QuantityPicker quantityPicker;
-    public static OfferPreviewDetails newInstance() {
-        OfferPreviewDetails fragment = new OfferPreviewDetails();
+    public static ProductDetailsPreviewFragment newInstance() {
+        ProductDetailsPreviewFragment fragment = new ProductDetailsPreviewFragment();
         return fragment;
     }
-   /* public static void setActionListener(OffersAdapter.ProductItemActionListener actionListener) {
+    public static void setActionListener(CategoryProdDetailAdapter.ProductItemActionListener actionListener) {
         actionListener = actionListener;
-    }*/
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -101,16 +101,13 @@ public class OfferPreviewDetails extends Fragment {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
-                    offer_price="offer";
-                    Bundle bundle=new Bundle();
-                    bundle.putString("offer_preview","offer_preview");
+                    preview="Preview";
                    /* FragmentManager fm = getFragmentManager();
                     fm.popBackStack();*/
                     selectedFragment = HomeFragment.newInstance();
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame_layout1, selectedFragment);
                     transaction.addToBackStack("track24");
-                    selectedFragment.setArguments(bundle);
                     transaction.commit();
                     return true;
                 }
@@ -124,31 +121,31 @@ public class OfferPreviewDetails extends Fragment {
         actual_price.setText(getArguments().getString("product_mrp_st"));
         abt_product.setText(getArguments().getString("product_name_st")+", "+getArguments().getString("prod_brand_st")+", "+getArguments().getString("prod_quant"));
 */
-        prod_name.setText(OffersAdapter.prod_name);
+        prod_name.setText(CategoryProdDetailAdapter.prod_name);
       //  price.setText("Rs"+OffersAdapter.product_price_st);
-        actual_price.setText("₹"+OffersAdapter.mrp);
+        actual_price.setText("₹"+CategoryProdDetailAdapter.mrp);
         actual_price.setBackground(getActivity().getResources().getDrawable(R.drawable.line));
 
-        if (OffersAdapter.offer_price.equals("")){
-            price.setText("Rs "+OffersAdapter.amount);
-            double off_price_calcu=(((Double.parseDouble(OffersAdapter.mrp)-Double.parseDouble(OffersAdapter.amount))/(Double.parseDouble(OffersAdapter.mrp)))*100);
+        if (CategoryProdDetailAdapter.offer_price.equals("")){
+            price.setText("Rs "+CategoryProdDetailAdapter.amount);
+            double off_price_calcu=(((Double.parseDouble(CategoryProdDetailAdapter.mrp)-Double.parseDouble(CategoryProdDetailAdapter.amount))/(Double.parseDouble(CategoryProdDetailAdapter.mrp)))*100);
             System.out.println("jhfdiueshfr"+off_price_calcu);
             int offer_per_int=(int)off_price_calcu;
             String off_price_text=String.valueOf(offer_per_int);
             offer_perc.setText(off_price_text+"%");
         }else{
-            price.setText("Rs "+OffersAdapter.offer_price);
-            double off_price_calcu=(((Double.parseDouble(OffersAdapter.mrp)-Double.parseDouble(OffersAdapter.offer_price))/(Double.parseDouble(OffersAdapter.mrp)))*100);
+            price.setText("Rs "+CategoryProdDetailAdapter.offer_price);
+            double off_price_calcu=(((Double.parseDouble(CategoryProdDetailAdapter.mrp)-Double.parseDouble(CategoryProdDetailAdapter.offer_price))/(Double.parseDouble(CategoryProdDetailAdapter.mrp)))*100);
             System.out.println("jhfdiueshfr"+off_price_calcu);
             int offer_per_int=(int)off_price_calcu;
             String off_price_text=String.valueOf(offer_per_int);
             offer_perc.setText(off_price_text+"%");
         }
-        if (OffersAdapter.brand.equals("")){
-            abt_product.setText(OffersAdapter.prod_name+", "+OffersAdapter.quantity+" Kg");
+        if (CategoryProdDetailAdapter.brand.equals("")){
+            abt_product.setText(CategoryProdDetailAdapter.prod_name+", "+CategoryProdDetailAdapter.quantity+" Kg");
 
         }else{
-            abt_product.setText(OffersAdapter.prod_name+", "+OffersAdapter.brand+", "+OffersAdapter.quantity+" Kg");
+            abt_product.setText(CategoryProdDetailAdapter.prod_name+", "+CategoryProdDetailAdapter.brand+", "+CategoryProdDetailAdapter.quantity+" Kg");
 
         }
 
@@ -158,13 +155,13 @@ public class OfferPreviewDetails extends Fragment {
         String off_price_text=String.valueOf(offer_per_int);
         offer_perc.setText(off_price_text+"%");*/
 
-        Glide.with(getActivity()).load(OffersAdapter.prod_img)
+        Glide.with(getActivity()).load(CategoryProdDetailAdapter.prod_img)
                 .thumbnail(0.5f)
                 //.crossFade()
                 .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
                         .error(R.drawable.ic_gallery__default))
                 .into(prod_img);
-        Glide.with(getActivity()).load(OffersAdapter.prod_img)
+        Glide.with(getActivity()).load(CategoryProdDetailAdapter.prod_img)
                 .thumbnail(0.5f)
                 //.crossFade()
                 .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
@@ -176,11 +173,11 @@ public class OfferPreviewDetails extends Fragment {
         add_cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("jhfsdkjhkj"+OffersAdapter.prodid);
-                prodid=OffersAdapter.prodid;
-                upid=OffersAdapter.upid;
-                amount=OffersAdapter.amount;
-                quantity=OffersAdapter.quantity;
+                System.out.println("jhfsdkjhkj"+CategoryProdDetailAdapter.prodid);
+                prodid=CategoryProdDetailAdapter.prodid;
+                upid=CategoryProdDetailAdapter.upid;
+                amount=CategoryProdDetailAdapter.amount;
+                quantity=CategoryProdDetailAdapter.quantity;
 
                 //  selected_quant=holder.quantityPicker.getQuantity();
                 ComposeCategory();

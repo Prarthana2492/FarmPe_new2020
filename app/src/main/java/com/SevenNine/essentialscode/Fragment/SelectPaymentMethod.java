@@ -260,6 +260,7 @@ public class SelectPaymentMethod extends Fragment {
             params.put("RESPMsg","RESMsg");
             params.put("CartProductListIds", CartDetailsAdapter.strlist);
             System.out.println("RESPMsgdsfadf"+params);
+
             Login_post.login_posting(getActivity(), Urls.PayuMoneyAdd, params, new VoleyJsonObjectCallback() {
                 @Override
                 public void onSuccessResponse(JSONObject result) {

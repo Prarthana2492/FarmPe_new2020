@@ -81,6 +81,7 @@ public class ShopByCategoryAdapterNext extends RecyclerView.Adapter<ShopByCatego
                 shop_cat_home="shop_by_cat";
                 Bundle bundle=new Bundle();
                 bundle.putString("sellingCatId_shop",products.getId());
+                bundle.putString("ShopbyCat","ShopbyCatt");
                 selectedFragment = HomeFragment.newInstance();
                 FragmentTransaction transaction = ((FragmentActivity)activity).getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout1, selectedFragment);

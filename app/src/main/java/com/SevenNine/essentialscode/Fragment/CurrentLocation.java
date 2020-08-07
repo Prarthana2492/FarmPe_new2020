@@ -21,9 +21,11 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,7 +91,7 @@ public class CurrentLocation extends Fragment implements
     LinearLayout nomap;
 
     boolean loc_frst_set;
-
+    public static String location;
     private LatLng currLatLong=null;
 
     private GoogleMap currentgoogleMap;
@@ -140,6 +142,31 @@ public class CurrentLocation extends Fragment implements
 
                     currentgoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currLatLong, 17f));
                 }
+            }
+        });
+        view.setFocusableInTouchMode(true);
+        view.requestFocus();
+        view.setOnKeyListener(new View.OnKeyListener() {
+
+
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+                    location="back";
+                    Bundle bundle=new Bundle();
+                    bundle.putString("location","location");
+                   /* FragmentManager fm = getFragmentManager();
+                    fm.popBackStack();*/
+                    selectedFragment = HomeFragment.newInstance();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame_layout1, selectedFragment);
+                    transaction.addToBackStack("track24");
+                    selectedFragment.setArguments(bundle);
+                    transaction.commit();
+                    return true;
+                }
+                return false;
+
             }
         });
 
@@ -595,12 +622,20 @@ public class CurrentLocation extends Fragment implements
 
 
                         if (status.equals("Success")) {
-                            selectedFragment = SelectPaymentMethod.newInstance();
+                            /*selectedFragment = SelectPaymentMethod.newInstance();
                             FragmentTransaction transaction =getActivity().getSupportFragmentManager().beginTransaction();
                             transaction.replace(R.id.frame_layout1, selectedFragment);
                             transaction.addToBackStack("track1");
+                            transaction.commit();*/
+                            location="back";
+                            Bundle bundle=new Bundle();
+                            bundle.putString("location","location");
+                            selectedFragment = HomeFragment.newInstance();
+                            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                            transaction.replace(R.id.frame_layout1, selectedFragment);
+                            transaction.addToBackStack("track24");
+                            selectedFragment.setArguments(bundle);
                             transaction.commit();
-
                         }
 
                     } catch (Exception e) {

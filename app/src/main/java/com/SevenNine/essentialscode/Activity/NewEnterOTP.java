@@ -166,10 +166,10 @@ public class NewEnterOTP extends AppCompatActivity implements ConnectivityReceiv
                 startActivity(intent);
             }
         });
-        if (getIntent().getStringExtra("Login")!=null){
+        if (getIntent().getStringExtra("register_status").equals("register_btn")){
             System.out.println("llllllogiiinn");
-            // register_btn.setText("Login");
-            try {
+             register_btn.setText("REGISTER");
+           /* try {
 
                 lngObject = new JSONObject(sessionManager.getRegId("language"));
 
@@ -177,11 +177,11 @@ public class NewEnterOTP extends AppCompatActivity implements ConnectivityReceiv
 
             } catch (JSONException e) {
                 e.printStackTrace();
-            }
+            }*/
 
         }else{
-            // register_btn.setText("Register");
-            try {
+             register_btn.setText("LOGIN");
+           /* try {
 
                 lngObject = new JSONObject(sessionManager.getRegId("language"));
 
@@ -189,7 +189,7 @@ public class NewEnterOTP extends AppCompatActivity implements ConnectivityReceiv
 
             } catch (JSONException e) {
                 e.printStackTrace();
-            }
+            }*/
         }
         mob_no.setText(sessionManager.getRegId("phone"));
         System.out.println("uuuuuuuuuu"+sessionManager.getRegId("phone"));
@@ -629,10 +629,64 @@ otp1.setOnClickListener(new View.OnClickListener() {
                     otp4.setText("");
 
                 }else{
-                    if (getIntent().getStringExtra("Login")!=null){
+                    if (getIntent().getStringExtra("register_status")!=null){
                         System.out.println("llllllogiiinn");
                         verify_status();
+                      /*  JSONObject postjsonObject = new JSONObject();
+                        JSONObject postjsonObject1 = new JSONObject();
+                        try {
 
+                            postjsonObject.put("PhoneNo",sessionManager.getRegId("phone"));
+                            postjsonObject1.put("objUser",postjsonObject);
+                            System.out.println("ffffffffffffff"+postjsonObject1);
+
+                            Login_post.VerifyOTP(NewEnterOTP.this, postjsonObject1, new VoleyJsonObjectCallback() {
+                                @Override
+                                public void onSuccessResponse(JSONObject result) {
+                                    System.out.println("llllllllllllllllllllllllllll"+result);
+                                    try {
+                                        System.out.println("nnnnnmnm" + result.toString());
+                                        JSONObject responseobject = new JSONObject(result.toString());
+                                        JSONObject response = responseobject.getJSONObject("Response");
+                                        String status=response.getString("Status");
+                                        String message=response.getString("Message");
+
+                                        if(status.equals("0")){
+
+                                            Toast.makeText(NewEnterOTP.this,"User Registered Successfully",Toast.LENGTH_SHORT).show();
+                                        int duration=1000;
+                                        Snackbar snackbar = Snackbar
+                                                .make(linearLayout, "User Registered Successfully", duration);
+                                        View snackbarView = snackbar.getView();
+                                        TextView tv = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                                        tv.setBackgroundColor(ContextCompat.getColor(EnterOTP.this,R.color.orange));
+                                        tv.setTextColor(Color.WHITE);
+                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                                            tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                                        } else {
+                                            tv.setGravity(Gravity.CENTER_HORIZONTAL);
+                                        }
+                                        snackbar.show();
+
+
+                                            System.out.println("fgddgdfgdfgffffffffff"+ message);
+
+                                            Intent intent=new Intent(NewEnterOTP.this, LandingPageActivity.class);
+                                            startActivity(intent);
+
+                                        }
+                                        else {
+                                            Toast.makeText(NewEnterOTP.this,"OTP has not verified",Toast.LENGTH_SHORT).show();
+                                        }
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }*/
 
                     }else{
                         Intent intent=new Intent(NewEnterOTP.this,LandingPageActivity.class);

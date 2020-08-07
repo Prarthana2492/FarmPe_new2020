@@ -3,6 +3,8 @@ package com.SevenNine.essentialscode.Adapter;
 import android.app.Activity;
 import android.graphics.Paint;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,8 @@ import android.widget.TextView;
 
 import com.SevenNine.essentialscode.Bean.Sellbean;
 import com.SevenNine.essentialscode.Fragment.CategoryProdDetailList;
+import com.SevenNine.essentialscode.Fragment.ProductDetailsPreviewFragment;
+import com.SevenNine.essentialscode.Fragment.Top10ProductDetailsPreview;
 import com.SevenNine.essentialscode.R;
 import com.SevenNine.essentialscode.SessionManager;
 import com.SevenNine.essentialscode.Urls;
@@ -32,7 +36,7 @@ public class CategoryProdDetailAdapter extends RecyclerView.Adapter<CategoryProd
     private List<Sellbean> productList;
     Activity activity;
     Fragment selectedFragment;
-    public static String sellingtypeid,sellingedit_id,prodid,upid,amount,quantity,status;
+    public static String sellingtypeid,sellingedit_id,prodid,upid,amount,quantity,status,prod_name,brand,mrp,offer_price,prod_img;
     int selected_quant;
     SessionManager sessionManager;
     LinearLayout linear_layout;
@@ -51,8 +55,8 @@ public class CategoryProdDetailAdapter extends RecyclerView.Adapter<CategoryProd
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView image,prod_img_fix;
-        public LinearLayout item;
-        public TextView name,weight,price,actual_price,add_cart,off_text;
+        public LinearLayout item,item_click;
+        public TextView name,weight,price,actual_price,add_cart,off_text,mrp_text;
         QuantityPicker quantityPicker;
 
 
@@ -70,6 +74,8 @@ public class CategoryProdDetailAdapter extends RecyclerView.Adapter<CategoryProd
             linear_layout=view.findViewById(R.id.linear_layout);
             quantityPicker= view.findViewById(R.id.quantityPicker);
             off_text=view.findViewById(R.id.off_text);
+            mrp_text=view.findViewById(R.id.mrp_text);
+            item_click=view.findViewById(R.id.item_click);
 
             sessionManager=new SessionManager(activity);
 
@@ -111,8 +117,8 @@ public class CategoryProdDetailAdapter extends RecyclerView.Adapter<CategoryProd
             holder.off_text.setText(off_price_text+"%");
         }
         if (products.getActual_price().equals(products.getPrice())){
-            holder.actual_price.setVisibility(View.INVISIBLE);
-            holder.actual_price.setVisibility(View.INVISIBLE);
+            holder.actual_price.setVisibility(View.VISIBLE);
+            holder.mrp_text.setVisibility(View.VISIBLE);
         }else{
             holder.actual_price.setText("₹"+products.getActual_price());
             holder.actual_price.setBackground(activity.getResources().getDrawable(R.drawable.line));
@@ -142,6 +148,26 @@ public class CategoryProdDetailAdapter extends RecyclerView.Adapter<CategoryProd
                 .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
                         .error(R.drawable.veg))
                 .into(holder.prod_img_fix);
+        holder.item_click.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                prodid=products.getProdId();
+                upid=products.getUpid();
+                amount=products.getPrice();
+                quantity=products.getWeight();
+                prod_name=products.getName();
+                brand=products.getBrand();
+                mrp=products.getActual_price();
+                offer_price=products.getOfferPrice();
+                prod_img=products.getImage();
+                selectedFragment = ProductDetailsPreviewFragment.newInstance();
+                FragmentTransaction transaction = ((FragmentActivity)activity).getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout_home, selectedFragment);
+                transaction.addToBackStack("spicescateory");
+                transaction.commit();
+
+            }
+        });
        /* holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

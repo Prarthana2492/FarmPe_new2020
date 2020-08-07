@@ -35,7 +35,7 @@ public class FilterFragment extends Fragment {
     int year,month,day;
     RadioButton current_year,previous_year,two_years_back;
     public static String date_status;
-
+    /*two_years_back*/
 
     public static FilterFragment newInstance() {
         FilterFragment fragment = new FilterFragment();
@@ -52,7 +52,7 @@ public class FilterFragment extends Fragment {
         order_radio_btn=view.findViewById(R.id.order_radio_btn);
         current_year=view.findViewById(R.id.current_year);
         previous_year=view.findViewById(R.id.pre_year);
-        two_years_back=view.findViewById(R.id.pre_pre_year);
+      //  two_years_back=view.findViewById(R.id.pre_pre_year);
         order_radio_btn.setChecked(true);
 
         view.setFocusableInTouchMode(true);
@@ -93,7 +93,7 @@ public class FilterFragment extends Fragment {
 
         current_year.setText(year+"");
         previous_year.setText((year-1)+"");
-        two_years_back.setText((year-2)+"");
+      //  two_years_back.setText((year-2)+"");
 
         System.out.println("yearrsss"+year+" "+(year-1)+" "+(year-2));
 

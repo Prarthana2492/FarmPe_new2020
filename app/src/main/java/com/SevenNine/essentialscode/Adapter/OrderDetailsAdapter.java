@@ -76,13 +76,13 @@ public class OrderDetailsAdapter extends RecyclerView.Adapter<OrderDetailsAdapte
         }*/
      // holder.prod_name.setText(products1.getProd_name());
       holder.quantity.setText("Quantity : "+products1.getQuantity());
-        if (products1.getShippng_iscount().equals("0")){
+       /* if (products1.getShippng_iscount().equals("0")){
             holder.amount.setText("₹"+products1.getAmount());
         }else{
-            offer_price = ((Double.parseDouble(products1.getMRP()))-(Double.parseDouble(products1.getMRP())) * ((Double.parseDouble(products1.getShippng_iscount())) / 100));
-            String strDouble = String.format("%.2f", offer_price);
-            holder.amount.setText("₹"+strDouble);
-        }
+          //  offer_price = ((Double.parseDouble(products1.getMRP()))-(Double.parseDouble(products1.getMRP())) * ((Double.parseDouble(products1.getShippng_iscount())) / 100));
+           // String strDouble = String.format("%.2f", offer_price);
+            holder.amount.setText("₹"+products1.getShippng_iscount());
+        }*/
         if (products1.getShippng_iscount().equals("0")){
             holder.off_text.setVisibility(View.GONE);
             holder.amount.setText("Rs "+products1.getAmount());

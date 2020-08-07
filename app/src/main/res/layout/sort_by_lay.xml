@@ -54,6 +54,7 @@
 
 
             <RadioButton
+                android:id="@+id/alphabetic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
@@ -61,7 +62,7 @@
                 android:textAlignment="textStart"
                 android:layout_gravity="start"
                 android:fontFamily="@font/segoeui"
-                android:text="Alhabetical"
+                android:text="Alphabetical"
                 android:textSize="16dp" />
 
             <RadioButton
