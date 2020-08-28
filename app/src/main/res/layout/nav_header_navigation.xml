@@ -152,6 +152,7 @@
              />
 
 
+<!--
          <TextView
              android:id="@+id/rewards"
              android:layout_width="match_parent"
@@ -164,6 +165,7 @@
              android:fontFamily="@font/segoeui"
              android:textColor="#000"
              />
+-->
          <!--<TextView
              android:id="@+id/account"
              android:layout_width="match_parent"
@@ -184,7 +186,7 @@
              android:text="Offers"
              android:textSize="16dp"
              android:paddingLeft="40dp"
-             android:layout_marginTop="10dp"
+             android:layout_marginTop="25dp"
 
              android:layout_marginBottom="15dp"
              android:fontFamily="@font/segoeui"

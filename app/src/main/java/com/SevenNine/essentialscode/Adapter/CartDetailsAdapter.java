@@ -64,8 +64,8 @@ public class CartDetailsAdapter extends RecyclerView.Adapter<CartDetailsAdapter.
     public CartDetailsAdapter(Activity activity, List<OrderDetailBean> moviesList) {
         this.productList = moviesList;
         this.activity=activity;
-        productList_amount.clear();
-        productList_quant.clear();
+       // productList_amount.clear();
+      //  productList_quant.clear();
     }
 
 
@@ -146,10 +146,10 @@ public class CartDetailsAdapter extends RecyclerView.Adapter<CartDetailsAdapter.
             holder.amount.setText("₹" + products1.getAmount());
             System.out.println("aaammmmm"+products1.getAmount().length());
 
-            productList_amount.add(products1.getAmount());
-            productList_quant.add(products1.getQuantity());
+          //  productList_amount.add(products1.getAmount());
+          //  productList_quant.add(products1.getQuantity());
 
-            System.out.println("lisixze"+productList_amount.size());
+          //  System.out.println("lisixze"+productList_amount.size());
 
 
            /* for(int i = 0 ; i < products1.getAmount().length(); i++) {
@@ -192,13 +192,19 @@ public class CartDetailsAdapter extends RecyclerView.Adapter<CartDetailsAdapter.
 
         double totalPrice=0;
         double totalPrice_off=0;
-       /* for (int i = 0; i<productList.size(); i++)
-        {
-            totalPrice += ((Double.parseDouble(productList.get(i).getAmount())*Integer.parseInt(productList.get(i).getQuantity()))*(Double.parseDouble(productList.get(i).getShippng_iscount())/100));
-        }*/
-           System.out.println("siiiiii"+productList_amount.size());
+        System.out.println("sizzzee "+productList.size());
 
-for (int i = 0; i < productList_amount.size(); i++) {
+        for (int i = 0; i<productList.size(); i++)
+        {
+            System.out.println("ammmooouun "+productList.get(i).getAmount());
+
+            totalPrice += ((Double.parseDouble(productList.get(i).getAmount())*Integer.parseInt(productList.get(i).getQuantity())));
+            System.out.println("siiiiii "+totalPrice);
+
+        }
+           System.out.println("siiiiii "+totalPrice);
+
+/*for (int i = 0; i < productList_amount.size(); i++) {
                System.out.println("amounttt"+productList_amount.get(i));
                System.out.println("quantttt"+productList_quant.get(i));
                System.out.println("iiiiiiiii"+i);
@@ -210,11 +216,11 @@ for (int i = 0; i < productList_amount.size(); i++) {
 
            for (int i = 0; i < productList.size(); i++) {
                totalPrice_off += ((Double.parseDouble(productList.get(i).getShippng_iscount())*Integer.parseInt(productList.get(i).getQuantity())));
-           }
-           System.out.println("total_priceee_off"+totalPrice_off);
+           }*/
+         //  System.out.println("total_priceee_off"+totalPrice_off);
 
 
-       double prod_total=(totalPrice+totalPrice_off);
+       double prod_total=totalPrice;
 
        System.out.println("ksfjhskdj"+prod_total);
         DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.US);;
@@ -337,8 +343,8 @@ for (int i = 0; i < productList_amount.size(); i++) {
                                         if(status.equals("1")){
 
                                             productList.remove(position);
-                                            productList_amount.remove(position);
-                                            productList_quant.remove(position);
+                                          //  productList_amount.remove(position);
+                                          //  productList_quant.remove(position);
                                            /* productList_quant.notify();
                                             productList_amount.notify();
                                             productList.notify();*/
@@ -353,7 +359,7 @@ for (int i = 0; i < productList_amount.size(); i++) {
                                             transaction2.commit();*/
 
                                             System.out.println("jdhjahdjkah"+productList.size());
-                                            if (productList.size()==0&&productList_amount.size()==0){
+                                            if (productList.size()==0){
                                                 selectedFragment = NoItemsFragment.newInstance();
                                                 FragmentTransaction transaction = ((FragmentActivity)activity).getSupportFragmentManager().beginTransaction();
                                                 transaction.replace(R.id.frame_layout_home, selectedFragment);

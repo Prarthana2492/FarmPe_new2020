@@ -145,7 +145,7 @@ sessionManager=new SessionManager(getActivity());
 
                             if (jsonObject1.getString("IsShortlisted").equals("true")){
 
-                                Sellbean sellbean = new Sellbean(jsonObject1.getString("ProductName"),jsonObject1.getString("CartProductListId"),jsonObject1.getString("ProductIcon"),jsonObject1.getString("SelectedQuantity"),jsonObject1.getString("Amount"),jsonObject1.getString("MRP"),"Kg",jsonObject1.getString("ProductDescription"),jsonObject1.getString("UnitOfPriceId"),jsonObject1.getString("ProductId"),"","",jsonObject1.getString("OfferPrice"));
+                                Sellbean sellbean = new Sellbean(jsonObject1.getString("ProductName"),jsonObject1.getString("CartProductListId"),jsonObject1.getString("ProductIcon"),jsonObject1.getString("SelectedQuantity"),jsonObject1.getString("Amount"),jsonObject1.getString("MRP"),"Kg",jsonObject1.getString("ProductDescription"),jsonObject1.getString("UnitOfPriceId"),jsonObject1.getString("ProductId"),jsonObject1.getString("Id"),"",jsonObject1.getString("OfferPrice"));
                                 newOrderBeansList_subcat.add(sellbean);
                                 System.out.println(";bbbbeee"+jsonObject1.getString("IsShortlisted"));
 

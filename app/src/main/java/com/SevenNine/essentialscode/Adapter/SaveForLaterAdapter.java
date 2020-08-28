@@ -1,7 +1,10 @@
 package com.SevenNine.essentialscode.Adapter;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -31,7 +34,7 @@ public class SaveForLaterAdapter extends RecyclerView.Adapter<SaveForLaterAdapte
     private List<Sellbean> productList;
     Activity activity;
     Fragment selectedFragment;
-    public static String sellingtypeid,cart_prodlistid,prodid,upid,amount,quantity,status;
+    public static String sellingtypeid,Id,prodid,upid,amount,quantity,status;
     SessionManager sessionManager;
     LinearLayout linear_layout;
     private SaveForLaterAdapter.ProductItemActionListener actionListener;
@@ -50,7 +53,7 @@ public class SaveForLaterAdapter extends RecyclerView.Adapter<SaveForLaterAdapte
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView image,prod_img_fix;
         public LinearLayout item;
-        public TextView name,weight,price,actual_price,add_cart,remove,off_text;
+        public TextView name,weight,price,actual_price,add_cart,remove,off_text,delete;
         QuantityPicker quantityPicker;
 
         public MyViewHolder(View view) {
@@ -68,6 +71,7 @@ public class SaveForLaterAdapter extends RecyclerView.Adapter<SaveForLaterAdapte
             linear_layout=view.findViewById(R.id.linear_layout);
             off_text=view.findViewById(R.id.off_text);
             quantityPicker=view.findViewById(R.id.quantityPicker);
+            delete=view.findViewById(R.id.delete);
 
             sessionManager=new SessionManager(activity);
 
@@ -201,6 +205,76 @@ public class SaveForLaterAdapter extends RecyclerView.Adapter<SaveForLaterAdapte
 
            }
        });*/
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Id=products.getSelling_cat_name();
+
+                final Dialog dialog = new Dialog(activity);
+                dialog.setContentView(R.layout.delete_details_popup);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+                TextView ok=dialog.findViewById(R.id.ok);
+                TextView cancel=dialog.findViewById(R.id.cancel);
+
+
+                ok.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        try{
+                            JSONObject jsonObject  = new JSONObject();
+                            jsonObject.put("Id",Id);
+                            jsonObject.put("CreatedBy",sessionManager.getRegId("userId"));
+
+                            System.out.println("bank_dvvvvetails_iddd"+jsonObject);
+
+                            Crop_Post.crop_posting(activity, Urls.DeleteSaveForLater, jsonObject, new VoleyJsonObjectCallback() {
+                                @Override
+                                public void onSuccessResponse(JSONObject result) {
+                                    System.out.println("111111dddd" + result);
+
+                                    try{
+
+                                        status = result.getString("Status");
+
+                                        if(status.equals("1")){
+
+                                            productList.remove(position);
+                                            notifyDataSetChanged();
+                                            System.out.println("jdhjahdjkah"+productList.size());
+
+                                        }
+
+                                    }catch (Exception e){
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+
+
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+
+                        dialog.dismiss();
+
+                    }
+                });
+
+
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+
+                    }
+                });
+
+                dialog.show();
+
+            }
+        });
+
+
         holder.add_cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -164,6 +164,7 @@ public class Urls {
     public static final String DeleteReviewCartList = ROOT_URL + "SevenNine/DeleteReviewCartList";
     public static final String AddUpdateFavouriteCartList = ROOT_URL + "SevenNine/AddUpdateFavouriteCartList";
     public static final String CancelCODOrders = ROOT_URL + "SevenNine/CancelCODOrders";
+    public static final String DeleteSaveForLater = ROOT_URL + "SevenNine/DeleteSaveForLater";
     public static final String GetReviewCount = ROOT_URL + "SevenNine/GetReviewCount";
     public static final String GetSellingCategoryList = ROOT_URL + "MasterTable/GetSellingCategoryList";
     public static final String GetSellingList = ROOT_URL + "MasterTable/GetSellingList";
