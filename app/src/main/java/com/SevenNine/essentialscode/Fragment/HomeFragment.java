@@ -322,6 +322,18 @@ static Fragment myloadingfragment;
                     }
                 });
 
+                prof_tab.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        selectedFragment = AaSettingFragment.newInstance();
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frame_layout1, selectedFragment);
+                        transaction.addToBackStack("dhsks");
+                        transaction.commit();
+                        drawer.closeDrawers();
+                    }
+                });
+
             }
         });
 

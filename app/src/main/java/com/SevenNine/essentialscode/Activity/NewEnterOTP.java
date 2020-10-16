@@ -631,7 +631,9 @@ otp1.setOnClickListener(new View.OnClickListener() {
                 }else{
                     if (getIntent().getStringExtra("register_status")!=null){
                         System.out.println("llllllogiiinn");
-                        verify_status();
+                        Intent intent=new Intent(NewEnterOTP.this,LandingPageActivity.class);
+                        startActivity(intent);
+                       // verify_status();
                       /*  JSONObject postjsonObject = new JSONObject();
                         JSONObject postjsonObject1 = new JSONObject();
                         try {
@@ -723,17 +725,9 @@ otp1.setOnClickListener(new View.OnClickListener() {
                         IsUserUploaded = json1.getString("IsUserUploaded");
 
                         System.out.println("isssssuppploadeddd"+IsUserUploaded);
-                        if (IsUserUploaded.equals(true)){
-                            Intent intent=new Intent(NewEnterOTP.this,LandingPageActivity.class);
-                            intent.putExtra("Loginsuccess","Login_success");
-                            startActivity(intent);
-                        }else{
-                            Intent intent = new Intent(NewEnterOTP.this, Extra_Activity.class);
-                            // intent.putExtra("verify_aadhar", "not_verified");
-                            startActivity(intent);
-
-                        }
-
+                        Intent intent=new Intent(NewEnterOTP.this,LandingPageActivity.class);
+                        intent.putExtra("Loginsuccess","Login_success");
+                        startActivity(intent);
 
                     } catch (JSONException e) {
                         e.printStackTrace();

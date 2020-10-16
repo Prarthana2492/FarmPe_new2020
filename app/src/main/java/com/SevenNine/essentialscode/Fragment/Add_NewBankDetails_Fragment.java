@@ -126,8 +126,12 @@ public class Add_NewBankDetails_Fragment extends Fragment {
                     InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(getActivity().INPUT_METHOD_SERVICE);
                     inputManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                 }
-                FragmentManager fm = getFragmentManager();
-                fm.popBackStack();
+                /*FragmentManager fm = getFragmentManager();
+                fm.popBackStack();*/
+                selectedFragment = BankAccount_Fragment.newInstance();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_layout1, selectedFragment);
+                transaction.commit();
             }
         });
 
@@ -544,7 +548,7 @@ public class Add_NewBankDetails_Fragment extends Fragment {
                 //jsonObject.put("BankDetailsId", BankAccount_Adapter.bank_id_ed);
             }
             System.out.println("poooooossttiing_parameters11"+jsonObject);
-            Login_post.login_posting(getActivity(), "http://52.66.200.98:8383/api/MasterTable/AddUpdateBankDetails", jsonObject, new VoleyJsonObjectCallback() {
+            Login_post.login_posting(getActivity(), Urls.AddUpdateBankDetails, jsonObject, new VoleyJsonObjectCallback() {
                 @Override
                 public void onSuccessResponse(JSONObject result) {
                     System.out.println("111111useruuuu" + result);

@@ -1,21 +1,17 @@
 package com.SevenNine.essentialscode.Fragment;
 
 import android.animation.Animator;
-import android.app.Dialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.SevenNine.essentialscode.Adapter.CategoryProdDetailAdapter;
+import com.SevenNine.essentialscode.Adapter.CategoryProdDetailAdapterFirestore;
 import com.SevenNine.essentialscode.Adapter.CustomExpandableListAdapter;
 import com.SevenNine.essentialscode.Bean.Sellbean;
 import com.SevenNine.essentialscode.CircleAnimationUtil;
@@ -37,6 +34,9 @@ import com.SevenNine.essentialscode.Urls;
 import com.SevenNine.essentialscode.Volly_class.Crop_Post;
 import com.SevenNine.essentialscode.Volly_class.Login_post;
 import com.SevenNine.essentialscode.Volly_class.VoleyJsonObjectCallback;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -47,14 +47,16 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import static com.SevenNine.essentialscode.Fragment.Payfragment.TAG;
 
-public class CategoryProdDetailList extends Fragment {
+
+public class CategoryProdDetailListFirestore extends Fragment {
 
     public static ArrayList<Sellbean> newOrderBeansList_subcat = new ArrayList<>();
     private List<Sellbean> searchresultAraaylist = new ArrayList<>();
 
     public static RecyclerView recyclerView_main;
-    public static CategoryProdDetailAdapter livestock_types_adapter;
+    public static CategoryProdDetailAdapterFirestore livestock_types_adapter;
     JSONObject jsonObject1;
     Fragment selectedFragment = null;
     public static TextView toolbar_title,name,filter,last_month_text;
@@ -67,8 +69,11 @@ public class CategoryProdDetailList extends Fragment {
     SessionManager sessionManager;
     private boolean ascending = true;
     String sort_str;
-    public static CategoryProdDetailList newInstance() {
-        CategoryProdDetailList fragment = new CategoryProdDetailList();
+   // static FirebaseFirestore db;
+
+    public static CategoryProdDetailListFirestore newInstance() {
+        CategoryProdDetailListFirestore fragment = new CategoryProdDetailListFirestore();
+       // db = FirebaseFirestore.getInstance();
         return fragment;
     }
 
@@ -129,7 +134,45 @@ sessionManager=new SessionManager(getActivity());
         recyclerView_main.setItemAnimator(new DefaultItemAnimator());
         System.out.println("kjdhfs"+CustomExpandableListAdapter.category);
         last_month_text.setText("All");
-        if (FilterProductsExpandableFragment.filter_refine_by!=null){
+       /* db.collection("versionControl")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+
+                                //document.getData().get("Date").toString();
+                                //document.getData().get("Version").toString();
+                                //List<String> dungeonGroup = (List<String>) document.get("Details");
+                                //ArrayList<String> documentGroup = (ArrayList<String>) document.get("Details");
+
+                                Sellbean updateMessage = new Sellbean(
+                                        document.getData().get("ProductName").toString(),
+                                        "",
+                                       "",
+                                        document.getData().get("ProductQuantity").toString(),
+                                        document.getData().get("Price").toString(),
+                                        document.getData().get("MRP").toString(),
+                                       "Kg",
+                                        document.getData().get("ProductDescription").toString(),
+                                       "",
+                                        document.getData().get("ProductId").toString(),
+                                        "",
+                                        document.getData().get("ProductBrand").toString(),
+                                        document.getData().get("OfferPrice").toString());
+
+
+                                newOrderBeansList_subcat.add(updateMessage);
+
+                                //Log.d(TAG, "onComplete: ");
+                            }
+                        }
+                    }
+                });*/
+       /* if (FilterProductsExpandableFragment.filter_refine_by!=null){
             if (CustomExpandableListAdapter.category!=null){
                 all_items_filter();
 
@@ -141,7 +184,7 @@ sessionManager=new SessionManager(getActivity());
         else{
             all_items_filter();
 
-        }
+        }*/
 
        /* if (FilterSortByFragment.price_low_high_str!=null){
             String sort_str=FilterSortByFragment.price_low_high_str;
@@ -367,10 +410,10 @@ sessionManager=new SessionManager(getActivity());
         //ADAPTER
         System.out.println("jjjjjjjjjj"+newOrderBeansList_subcat.size());
 
-        livestock_types_adapter=new CategoryProdDetailAdapter(getActivity(),newOrderBeansList_subcat);
+        livestock_types_adapter=new CategoryProdDetailAdapterFirestore(getActivity(),newOrderBeansList_subcat);
         recyclerView_main.setAdapter(livestock_types_adapter);
         //   name.setText(jsonObject1.getString("SellingCategoryName"));
-        livestock_types_adapter.setActionListener(new CategoryProdDetailAdapter.ProductItemActionListener() {
+        livestock_types_adapter.setActionListener(new CategoryProdDetailAdapterFirestore.ProductItemActionListener() {
             @Override
             public void onItemTap(ImageView imageView) {
                 if (imageView != null)
@@ -483,9 +526,9 @@ sessionManager=new SessionManager(getActivity());
 
                 }
             }
-        livestock_types_adapter=new CategoryProdDetailAdapter(getActivity(),searchresultAraaylist);
+        livestock_types_adapter=new CategoryProdDetailAdapterFirestore(getActivity(),searchresultAraaylist);
         recyclerView_main.setAdapter(livestock_types_adapter);
-        livestock_types_adapter.setActionListener(new CategoryProdDetailAdapter.ProductItemActionListener() {
+        livestock_types_adapter.setActionListener(new CategoryProdDetailAdapterFirestore.ProductItemActionListener() {
             @Override
             public void onItemTap(ImageView imageView) {
                 if (imageView != null)
@@ -531,10 +574,10 @@ sessionManager=new SessionManager(getActivity());
 
 
                         }
-                        livestock_types_adapter = new CategoryProdDetailAdapter(getActivity(), newOrderBeansList_subcat);
+                        livestock_types_adapter = new CategoryProdDetailAdapterFirestore(getActivity(), newOrderBeansList_subcat);
                         recyclerView_main.setAdapter(livestock_types_adapter);
                         //   name.setText(jsonObject1.getString("SellingCategoryName"));
-                        livestock_types_adapter.setActionListener(new CategoryProdDetailAdapter.ProductItemActionListener() {
+                        livestock_types_adapter.setActionListener(new CategoryProdDetailAdapterFirestore.ProductItemActionListener() {
                             @Override
                             public void onItemTap(ImageView imageView) {
                                 if (imageView != null)
@@ -560,10 +603,10 @@ sessionManager=new SessionManager(getActivity());
 
             JSONObject jsonObject = new JSONObject();
             if (DiscoverCategoryFragment.home_arrow!=null){
-                jsonObject.put("SellingCategoryId",sellingcatId);
+                jsonObject.put("SellingCategoryId",1);
 
             }else{
-                jsonObject.put("SellingCategoryId",sellingcatId);
+                jsonObject.put("SellingCategoryId",1);
 
             }
 
@@ -609,10 +652,10 @@ sessionManager=new SessionManager(getActivity());
                                // Collections.reverse(newOrderBeansList_subcat);
                                 System.out.println("listtttttt"+newOrderBeansList_subcat.size());
 
-                                livestock_types_adapter=new CategoryProdDetailAdapter(getActivity(),newOrderBeansList_subcat);
+                                livestock_types_adapter=new CategoryProdDetailAdapterFirestore(getActivity(),newOrderBeansList_subcat);
                                 recyclerView_main.setAdapter(livestock_types_adapter);
                                 //   name.setText(jsonObject1.getString("SellingCategoryName"));
-                                livestock_types_adapter.setActionListener(new CategoryProdDetailAdapter.ProductItemActionListener() {
+                                livestock_types_adapter.setActionListener(new CategoryProdDetailAdapterFirestore.ProductItemActionListener() {
                                     @Override
                                     public void onItemTap(ImageView imageView) {
                                         if (imageView != null)
@@ -629,10 +672,10 @@ sessionManager=new SessionManager(getActivity());
                         }else if (CustomExpandableListAdapter.category!=null){
                             last_month_text.setText(CustomExpandableListAdapter.category_text);
                             System.out.println("kdjhjgjsk");
-                            livestock_types_adapter=new CategoryProdDetailAdapter(getActivity(),newOrderBeansList_subcat);
+                            livestock_types_adapter=new CategoryProdDetailAdapterFirestore(getActivity(),newOrderBeansList_subcat);
                             recyclerView_main.setAdapter(livestock_types_adapter);
                             //   name.setText(jsonObject1.getString("SellingCategoryName"));
-                            livestock_types_adapter.setActionListener(new CategoryProdDetailAdapter.ProductItemActionListener() {
+                            livestock_types_adapter.setActionListener(new CategoryProdDetailAdapterFirestore.ProductItemActionListener() {
                                 @Override
                                 public void onItemTap(ImageView imageView) {
                                     if (imageView != null)
@@ -644,10 +687,10 @@ sessionManager=new SessionManager(getActivity());
                             // name.setText(jsonObject1.getString("SellingCategoryName"));
                             last_month_text.setText("All");
                             System.out.println("kdjhjgjsk");
-                            livestock_types_adapter=new CategoryProdDetailAdapter(getActivity(),newOrderBeansList_subcat);
+                            livestock_types_adapter=new CategoryProdDetailAdapterFirestore(getActivity(),newOrderBeansList_subcat);
                             recyclerView_main.setAdapter(livestock_types_adapter);
                             //   name.setText(jsonObject1.getString("SellingCategoryName"));
-                            livestock_types_adapter.setActionListener(new CategoryProdDetailAdapter.ProductItemActionListener() {
+                            livestock_types_adapter.setActionListener(new CategoryProdDetailAdapterFirestore.ProductItemActionListener() {
                                 @Override
                                 public void onItemTap(ImageView imageView) {
                                     if (imageView != null)

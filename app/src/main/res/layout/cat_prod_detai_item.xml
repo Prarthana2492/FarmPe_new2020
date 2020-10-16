@@ -19,6 +19,7 @@
         >
 
         <LinearLayout
+            android:id="@+id/item_image"
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:orientation="vertical"
@@ -156,6 +157,7 @@
                 android:gravity="center"
                 android:layout_marginTop="15dp"
                 >
+<!--
                 <TextView
                     android:id="@+id/delete"
                     android:layout_width="wrap_content"
@@ -169,6 +171,7 @@
                     android:background="@drawable/border_grey"
                     android:layout_weight="50"
                     android:textSize="14dp" />
+-->
 
 
                 <TextView
@@ -183,7 +186,7 @@
                     android:textStyle="bold"
                     android:background="@drawable/border_filled_orrange"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="0dp"
                     android:textColor="#000"
                     android:textSize="14dp" />
 

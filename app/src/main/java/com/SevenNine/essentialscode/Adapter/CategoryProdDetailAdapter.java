@@ -55,7 +55,7 @@ public class CategoryProdDetailAdapter extends RecyclerView.Adapter<CategoryProd
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView image,prod_img_fix;
-        public LinearLayout item,item_click;
+        public LinearLayout item,item_click,item_image;
         public TextView name,weight,price,actual_price,add_cart,off_text,mrp_text;
         QuantityPicker quantityPicker;
 
@@ -76,6 +76,7 @@ public class CategoryProdDetailAdapter extends RecyclerView.Adapter<CategoryProd
             off_text=view.findViewById(R.id.off_text);
             mrp_text=view.findViewById(R.id.mrp_text);
             item_click=view.findViewById(R.id.item_click);
+            item_image=view.findViewById(R.id.item_image);
 
             sessionManager=new SessionManager(activity);
 
@@ -148,7 +149,7 @@ public class CategoryProdDetailAdapter extends RecyclerView.Adapter<CategoryProd
                 .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL)
                         .error(R.drawable.veg))
                 .into(holder.prod_img_fix);
-        holder.item_click.setOnClickListener(new View.OnClickListener() {
+        holder.item_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 prodid=products.getProdId();

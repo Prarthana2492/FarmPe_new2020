@@ -30,6 +30,7 @@ public class Urls {
     public static final String CHANGE_LANGUAGE= ROOT_URL+"Lang/ChangeCurrentCulture";
     public static final String AddBankAccounts=ROOT_URL+"MasterTable/AddUpdateBankDetails";
     public static final String GetBankList = ROOT_URL+"MasterTable/GetBankDetailsList";
+    public static final String AddUpdateBankDetails = ROOT_URL+"MasterTable/AddUpdateBankDetails";
 
 
     // public static final String CHANGE_LANGUAGE= "http://13.232.185.209:909/api/Lang/ChangeCurrentCulture";

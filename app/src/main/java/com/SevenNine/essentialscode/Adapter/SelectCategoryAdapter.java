@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.SevenNine.essentialscode.Bean.MainVerticalBean;
 import com.SevenNine.essentialscode.Fragment.CategoryProdDetailList;
+import com.SevenNine.essentialscode.Fragment.CategoryProdDetailListFirestore;
 import com.SevenNine.essentialscode.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
