@@ -14,7 +14,7 @@
         android:layout_height="0dp"
         android:layout_weight="9"
         android:orientation="vertical"
-        android:background="#1e8434">
+        android:background="@color/lang_bg_color">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -75,9 +75,9 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:paddingHorizontal="5dp"
-                    android:text="7-Nine"
+                    android:text="FarmPe"
                     android:layout_weight="70"
-                    android:textColor="#fff"
+                    android:textColor="@color/white_text"
                     android:textSize="22dp" />
 
                 <ImageView
@@ -153,17 +153,58 @@
 
         </LinearLayout>
 
+
+
+
     </LinearLayout>
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="9"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:background="@color/lang_bg_color"
+    android:orientation="horizontal"
+    >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/green_border"
+            android:fontFamily="@font/segoeui"
+            android:hint="   Search"
+            android:drawableLeft="@drawable/ic_search_grey"
+            android:padding="10dp"
+            android:inputType="textCapWords|textCapSentences"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:textColorHint="@color/grey_text_color"
+            app:theme="@style/MyStyle" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="13dp"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/ic_search_green"/>
+
+
+</LinearLayout>
+
 
     <FrameLayout
         android:id="@+id/frame_layout_home"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="91"
+        android:layout_weight="82"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
 
         tools:background="#f5f5f5">
-<!--
+        <!--
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

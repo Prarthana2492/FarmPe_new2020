@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#fafafa"
+    android:background="@color/lang_bg_color"
     android:weightSum="100"
 
     >
@@ -14,7 +14,7 @@
        android:layout_height="0dp"
        android:layout_weight="9"
        android:gravity="center_vertical"
-       android:background="#1e8434"
+       android:background="@color/seperator"
        android:orientation="vertical"
        >
 
@@ -58,7 +58,7 @@
                 android:id="@+id/user_name_menu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hello, Priya"
+                android:text="Hello, ABC"
                 android:textSize="20dp"
                 android:fontFamily="@font/segoeui"
                 android:textStyle="bold"
@@ -70,89 +70,86 @@
 
 
    </LinearLayout>
+
    <ScrollView
        android:layout_width="match_parent"
        android:layout_height="0dp"
        android:layout_weight="91"
-       android:orientation="vertical"
-       >
+       android:orientation="vertical">
 
       <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="0dp"
           android:orientation="vertical"
-          >
+          android:background="@color/lang_bg_color">
+
          <TextView
              android:id="@+id/home"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:text="Home"
              android:layout_marginTop="15dp"
-             android:textSize="16dp"
-             android:paddingLeft="40dp"
              android:fontFamily="@font/segoeui"
-             android:textColor="#000"
-             />
+             android:paddingLeft="40dp"
+             android:text="Home"
+             android:textColor="@color/white_text"
+             android:textSize="16dp" />
 
          <TextView
              android:id="@+id/shop_cat"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:text="Shop by Category"
              android:layout_marginTop="25dp"
-             android:textSize="16dp"
-             android:paddingLeft="40dp"
              android:layout_marginBottom="15dp"
              android:fontFamily="@font/segoeui"
-             android:textColor="#000"
-             />
+             android:paddingLeft="40dp"
+             android:text="Shop by Category"
+             android:textColor="@color/white_text"
+             android:textSize="16dp" />
 
 
-
-         <View
-             android:layout_width="match_parent"
-             android:layout_height="1dp"
-             android:background="#dcdcdc"
-             />
 
          <TextView
              android:id="@+id/my_orders"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:text="Your Orders"
              android:layout_marginTop="15dp"
-             android:textSize="16dp"
-             android:paddingLeft="40dp"
              android:fontFamily="@font/segoeui"
-             android:textColor="#000"
-             />
+             android:paddingLeft="40dp"
+             android:text="Your Orders"
+             android:textColor="@color/white_text"
+             android:textSize="16dp" />
+
+         <View
+             android:layout_width="match_parent"
+             android:layout_height="1dp"
+             android:background="#dcdcdc" />
+
+
          <TextView
              android:id="@+id/wishlist"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:text="Save for Later"
              android:layout_marginTop="25dp"
-             android:textSize="16dp"
-             android:paddingLeft="40dp"
              android:fontFamily="@font/segoeui"
-             android:textColor="#000"
-             />
+             android:paddingLeft="40dp"
+             android:text="Save for Later"
+             android:textColor="@color/white_text"
+             android:textSize="16dp" />
 
 
          <TextView
              android:id="@+id/buy_again"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:text="Buy Again"
              android:layout_marginTop="25dp"
-             android:textSize="16dp"
-             android:paddingLeft="40dp"
              android:fontFamily="@font/segoeui"
-             android:textColor="#000"
-             />
+             android:paddingLeft="40dp"
+             android:text="Buy Again"
+             android:textColor="@color/white_text"
+             android:textSize="16dp" />
 
 
-<!--
+         <!--
          <TextView
              android:id="@+id/rewards"
              android:layout_width="match_parent"
@@ -183,46 +180,42 @@
              android:id="@+id/offers"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:text="Offers"
-             android:textSize="16dp"
-             android:paddingLeft="40dp"
              android:layout_marginTop="25dp"
-
              android:layout_marginBottom="15dp"
              android:fontFamily="@font/segoeui"
-             android:textColor="#000"
-             />
+             android:paddingLeft="40dp"
+
+             android:text="Offers"
+             android:textColor="@color/white_text"
+             android:textSize="16dp" />
 
          <View
              android:layout_width="match_parent"
              android:layout_height="1dp"
-             android:background="#dcdcdc"
-             />
+             android:background="#dcdcdc" />
 
          <TextView
              android:id="@+id/account"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:text="My Accounts"
              android:layout_marginTop="15dp"
-             android:textSize="16dp"
-             android:paddingLeft="40dp"
-             android:textColor="#000"
              android:fontFamily="@font/segoeui"
-             />
+             android:paddingLeft="40dp"
+             android:text="My Accounts"
+             android:textColor="@color/white_text"
+             android:textSize="16dp" />
 
-         <TextView
-             android:id="@+id/sell_on"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="Sell on 7-Nine"
-             android:layout_marginTop="25dp"
-             android:textSize="16dp"
-             android:paddingLeft="40dp"
-             android:textColor="#000"
-             android:fontFamily="@font/segoeui"
-             />
-<!--
+<!--         <TextView-->
+<!--             android:id="@+id/sell_on"-->
+<!--             android:layout_width="match_parent"-->
+<!--             android:layout_height="wrap_content"-->
+<!--             android:layout_marginTop="25dp"-->
+<!--             android:fontFamily="@font/segoeui"-->
+<!--             android:paddingLeft="40dp"-->
+<!--             android:text="Sell on 7-Nine"-->
+<!--             android:textColor="@color/white_text"-->
+<!--             android:textSize="16dp" />-->
+         <!--
          <TextView
              android:id="@+id/logout"
              android:layout_width="match_parent"

@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/lang_bg_color"
+    >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="15dp"
+
+            >
+
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FarmPe"
+               android:textSize="40dp"
+               android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+               android:fontFamily="@font/segoeui"
+               android:textColor="@color/white_text"
+
+                android:textStyle="bold"
+           />
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="SellerHub"-->
+<!--                android:textSize="22dp"-->
+<!--                android:layout_marginBottom="20dp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:fontFamily="@font/segoeui"-->
+<!--                android:textColor="@color/white_text"-->
+<!--                android:textStyle="bold" />-->
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Your Language"
+                android:textSize="20dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/segoeui"
+                android:textColor="@color/white_text"
+
+                android:textStyle="bold"
+                android:id="@+id/setting_tittle" />
+
+
+            <LinearLayout
+                android:id="@+id/lang_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/grey_filled_border"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp"
+                android:weightSum="100"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="100"
+                    android:paddingVertical="23dp"
+                    >
+
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoeui"
+                        android:gravity="center"
+                        android:text="English"
+                        android:textColor="@color/white_text"
+                        android:textSize="18dp" />
+
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/grey_filled_border"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp"
+                android:weightSum="100"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="100"
+                    android:paddingVertical="23dp"
+                    >
+
+
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Kannada"
+                        android:textSize="18dp"
+                        android:gravity="center"
+                        android:textColor="@color/white_text"
+                        android:fontFamily="@font/segoeui"
+                        />
+
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/grey_filled_border"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp"
+                android:weightSum="100"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="100"
+                    android:paddingVertical="23dp"
+                    >
+
+
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Hindi"
+                        android:textSize="18dp"
+                        android:gravity="center"
+                        android:textColor="@color/white_text"
+                        android:fontFamily="@font/segoeui"
+                        />
+
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/grey_filled_border"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp"
+                android:weightSum="100"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="100"
+                    android:paddingVertical="23dp"
+                    >
+
+
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Telugu"
+                        android:textSize="18dp"
+                        android:gravity="center"
+                        android:textColor="@color/white_text"
+                        android:fontFamily="@font/segoeui"
+                        />
+
+
+
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/grey_filled_border"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp"
+                android:weightSum="100"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="100"
+                    android:paddingVertical="23dp"
+                    >
+
+
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Tamil"
+                        android:textSize="18dp"
+                        android:gravity="center"
+                        android:textColor="@color/white_text"
+                        android:fontFamily="@font/segoeui"
+                        />
+
+
+
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+
+</LinearLayout>
+

@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_black"
+    android:weightSum="100"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="91"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            tools:ignore="MissingConstraints">
+
+
+            <LinearLayout
+                android:id="@+id/back_feed"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:gravity="center">
+
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_go_back_left_arrow_"
+                    />
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location and Image"
+                android:textSize="22dp"
+                android:textStyle="bold"
+                android:textColor="#fff"
+                android:layout_marginHorizontal="10dp"
+                android:id="@+id/toolbar_title" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="40">
+
+
+            <TextView
+                android:id="@+id/select_shop_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:text=""
+                android:textColor="#000"
+                android:fontFamily="@font/segoeui"
+                android:layout_marginTop="30dp"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:weightSum="100"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/grey_filled_border"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/select_location_onclick"
+                    android:layout_width="0dp"
+                    android:layout_height="180dp"
+                    android:gravity="center"
+                    android:layout_weight="80"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/select_location"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:src="@drawable/ic_location" />
+
+                    <TextView
+                        android:id="@+id/select_loc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/segoeui"
+                        android:gravity="center"
+                        android:text="Capture Location"
+                        android:textColor="@color/white_text"
+                        android:textSize="14dp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/edit_loc"
+                    android:layout_width="0dp"
+                    android:layout_height="180dp"
+                    android:layout_weight="20"
+                    android:visibility="gone"
+                    android:background="@color/blue_txt"
+                    android:gravity="center">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoeui"
+                        android:text="Edit"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold"
+                        android:textSize="18dp" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="44">
+
+
+            <TextView
+                android:id="@+id/capture_shop_photo_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/segoeui"
+                android:text=""
+                android:textColor="#000"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:weightSum="100"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/grey_filled_border"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="180dp"
+                    android:layout_weight="80"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:id="@+id/capture_image"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_photo_camera"
+                        />
+
+                    <TextView
+                        android:id="@+id/capture_photo_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/segoeui"
+                        android:gravity="center"
+                        android:text="Capture Photo"
+                        android:textColor="@color/white_text"
+                        android:textSize="14dp" />
+
+
+                </LinearLayout>
+
+
+
+
+
+
+
+                <LinearLayout
+                    android:id="@+id/edit_capture_photo"
+                    android:layout_width="0dp"
+                    android:layout_height="180dp"
+                    android:layout_weight="20"
+                    android:background="@color/blue_txt"
+android:visibility="gone"
+                    android:gravity="center">
+
+
+                    <TextView
+                        android:id="@+id/edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoeui"
+                        android:text="Edit"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:textColor="@color/white_text"
+                        android:textStyle="bold"
+                        android:textSize="18dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="180dp"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:background="@drawable/border_2_empty">-->
+
+            <!--<FrameLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content">-->
+
+            <!--<ImageView-->
+            <!--android:id="@+id/image_acc"-->
+            <!--android:layout_width="80dp"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_height="80dp"-->
+            <!--android:src="@drawable/fruit" />-->
+
+
+            <!--<ImageView-->
+            <!--android:layout_width="40dp"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:layout_gravity="bottom|right"-->
+            <!--android:layout_marginLeft="60dp"-->
+            <!--android:layout_marginTop="60dp"-->
+            <!--android:src="@drawable/camera" />-->
+
+            <!--</FrameLayout>-->
+
+            <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textSize="14dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:gravity="center"-->
+            <!--android:text="Capture Photo"-->
+            <!--android:textColor="#000"-->
+            <!--android:fontFamily="@font/segoeui"-->
+            <!--/>-->
+            <!--</LinearLayout>-->
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/continu_btn"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:background="@drawable/green_border_filled"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+
+
+
+        <TextView
+            android:id="@+id/proceed_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Proceed"
+            android:textAllCaps="true"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:padding="15dp"
+            android:fontFamily="@font/segoeui"
+            android:textColor="#ffffff"
+            />
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

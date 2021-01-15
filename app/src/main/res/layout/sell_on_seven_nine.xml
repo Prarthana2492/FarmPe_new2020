@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="100"
+    android:orientation="vertical"
+    android:background="@color/white"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:orientation="horizontal"
+        android:background="@color/menu_green">
+
+
+<!--
+
+        <LinearLayout
+            android:id="@+id/back_feed"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_filter_state"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
+
+
+            <ImageView
+                android:id="@+id/back_arrw"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_go_back_left_arrow_"
+
+                />
+
+        </LinearLayout>
+-->
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sell On 7-Nine"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="#fff"
+            android:layout_marginLeft="30dp"
+            android:layout_gravity="center"
+            android:id="@+id/setting_tittle" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="40"
+        android:orientation="vertical"
+        >
+        <ImageView
+            android:id="@+id/imgggg"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_call_center_agent"
+            android:layout_weight="40"
+            />
+
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="50"
+        android:layout_marginHorizontal="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="30"
+            android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="For any queries, reach out to us at:"
+            android:paddingLeft="10dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/segoeui"
+            android:layout_marginTop="20dp"
+            android:paddingRight="10dp"
+            android:textSize="18dp"
+            />
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="farmpe.renewin@gmail.com"
+            android:paddingLeft="10dp"
+            android:textColor="@color/black"
+            android:drawablePadding="10dp"
+            android:layout_gravity="center"
+            android:drawableLeft="@drawable/ic_close_envelop"
+            android:fontFamily="@font/segoeui"
+            android:editable="false"
+            android:layout_marginTop="10dp"
+            android:paddingRight="10dp"
+            android:textSize="16dp"
+            android:background="@drawable/border_transperent"
+            />
+            <TextView
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="8762901589"
+                android:paddingLeft="10dp"
+                android:textColor="@color/black"
+                android:drawablePadding="10dp"
+                android:layout_gravity="center"
+                android:drawableLeft="@drawable/ic_phone"
+                android:fontFamily="@font/segoeui"
+                android:editable="false"
+                android:layout_marginTop="10dp"
+                android:paddingRight="10dp"
+                android:textSize="16dp"
+                android:background="@drawable/border_transperent"
+                />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:padding="9dp"
                 app:layout_scrollFlags="enterAlways"
-                android:background="@color/dark_green"
+                android:background="@color/menu_green"
                 android:gravity="center_vertical">
 
 

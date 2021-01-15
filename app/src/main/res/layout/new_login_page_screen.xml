@@ -48,10 +48,10 @@
                 android:orientation="vertical"
                 >
                 <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/seven_nine_logo" />
+                    android:src="@drawable/logo_seven_nine" />
 
             </LinearLayout>
 

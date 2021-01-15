@@ -155,7 +155,7 @@
         android:layout_marginBottom="15dp"
         >
 <!--
-        <com.SevenNine.essentialscode.Utils.QuantityPicker
+        <QuantityPicker
             android:id="@+id/quantityPicker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>

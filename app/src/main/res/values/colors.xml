@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#26A541</color>
-    <color name="colorPrimaryDark">#26A541</color>
-    <color name="colorPrimaryDark1">#28b446</color>
-    <color name="dark_green">#1e8434</color>
-    <color name="colorAccent">#1e8434</color>
+
+
+        <color name="colorPrimary">#192133</color>
+        <color name="colorPrimaryDark">#192133</color>
+        <color name="colorAccent">#D81B60</color>
+
+        <color name="bg_black">#262212</color>
+        <color name="white_text">#f1f1f1</color>
+        <color name="lang_bg_color">#192133</color>
+        <color name="bg_green_color">#00BF6F</color>
+        <color name="grey_text_color">#9F9F9F</color>
+        <color name="orange_txt">#DB882A</color>
+        <color name="blue_txt">#1F80E0</color>
+        <color name="profile_box">#1D273F</color>
+
+        <color name="seperator">#2D3751</color>
+
+    <color name="dark_green">#192133</color>
+
+
+    <!--    <color name="colorPrimary">#26A541</color>-->
+<!--    <color name="colorPrimaryDark">#26A541</color>-->
+<!--    <color name="colorPrimaryDark1">#28b446</color>-->
+<!--    <color name="dark_green">#1e8434</color>-->
+<!--    <color name="colorAccent">#1e8434</color>-->
 
 
     <!--<color name="colorAccent">#F72C1D</color>
@@ -19,9 +39,9 @@
     <color name="light_gray">#DCDCDC</color>
     <color name="light_grey1">#F4F4F4</color>
     <color name="red">#EC4848</color>
-    <color name="green">#26A541</color>
+    <color name="green">#192133</color>
     <color name="sky_blue">#2680EB</color>
-    <color name="menu_green">#26A541</color>
+    <color name="menu_green">#192133</color>
     <color name="lite_blue">#E2EDFD</color>
     <color name="lightgray">#999999</color>
 

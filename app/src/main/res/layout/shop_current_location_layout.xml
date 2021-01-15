@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:id="@+id/main_layout"
+    android:background="@color/grey_text_color"
     android:layout_height="match_parent"
     android:weightSum="100">
 
@@ -26,7 +27,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="80"
+        android:layout_weight="68"
         >
 
         <fragment xmlns:android="http://schemas.android.com/apk/res/android"
@@ -48,7 +49,6 @@
                     android:id="@+id/back_feed"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/ic_filter_state"
                     android:gravity="center">
 
 
@@ -66,51 +66,7 @@
             </LinearLayout>
 
 
-            <!--<LinearLayout-->
-            <!--android:id="@+id/nomap"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:background="#928F8F"-->
-            <!--android:orientation="horizontal" />-->
 
-
-            <!--<android.support.design.widget.FloatingActionButton-->
-            <!--android:id="@+id/fab"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="end|bottom"-->
-            <!--android:layout_marginBottom="20dp"-->
-            <!--android:layout_marginRight="5dp"-->
-            <!--android:background="@color/white"-->
-            <!--android:src="@drawable/ic_target"-->
-            <!--app:fabSize="mini"-->
-            <!--app:backgroundTint="@android:color/white"-->
-            <!--app:layout_anchorGravity="bottom|right|end" />-->
-
-
-            <!--<LinearLayout-->
-            <!--android:id="@+id/back_feed"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:padding="10dp"-->
-            <!--android:layout_marginHorizontal="15dp"-->
-            <!--android:layout_marginTop="20dp"-->
-            <!--android:background="@drawable/ic_filter_state"-->
-            <!--&gt;-->
-
-
-            <!--<ImageView-->
-            <!--android:id="@+id/b_arrow"-->
-            <!--android:layout_width="15dp"-->
-            <!--android:layout_height="15dp"-->
-            <!--android:layout_gravity="center_vertical"-->
-            <!--android:src="@drawable/ic_go_back_left_arrow"-->
-            <!--style="@style/SelectableItemBackground"-->
-            <!--android:background="?attr/selectableItemBackgroundBorderless"-->
-            <!--/>-->
-
-            <!--</LinearLayout>-->
-        <!--    />-->
         </fragment>
 
 
@@ -125,44 +81,120 @@
 
     </RelativeLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="22"
+        android:background="@color/bg_black"
+        >
 
+        <LinearLayout
+            android:id="@+id/address_book"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+
+            >
+
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/ic_location"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+
+                >
+
+                <LinearLayout
+                    android:id="@+id/linear_frame"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="1dp"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/name1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Lorem Ipsum"
+                        android:textColor="@color/white_text"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/street_address1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="#12 5th main 2nd cross xyz Apartments"
+                        android:textColor="@color/white_text"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/colony"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Colony"
+                        android:textColor="@color/white_text"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/districttt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Bangalore"
+                        android:textColor="@color/white_text"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Enter Address"
+                        android:gravity="right"
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/blue_txt"
+                        android:textSize="16dp" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 
 
     <LinearLayout
+        android:id="@+id/capture_loc1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="9"
+        android:layout_weight="10"
         >
 
         <Button
             android:id="@+id/capture_loc"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/border_filled_red_not_curved"
-            android:textColor="@color/white"
-            android:text="Capture"
-            android:textSize="18dp"
+            android:background="@drawable/green_border_filled"
+            android:textColor="@color/white_text"
+            android:text="CAPTURE"
+            android:textSize="20dp"
 
             />
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10"
-        >
-
-        <TextView
-            android:id="@+id/select_address"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textColor="#000"
-            android:gravity="center"
-            android:text="Select Address from list"
-            android:textSize="18dp"
-
-            />
-    </LinearLayout>
-
 </LinearLayout>

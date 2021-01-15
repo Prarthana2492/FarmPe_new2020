@@ -113,7 +113,7 @@
         android:layout_weight="1"
         android:textColor="#fff"
         android:layout_marginHorizontal="15dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/bg_green_color"
         android:layout_height="match_parent"
         android:text="Confirm location"
         />
@@ -124,7 +124,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="7"
-        android:textColor="#005474"
+        android:textColor="@color/blue_txt"
         android:textSize="20dp"
         android:textStyle="bold"
         android:gravity="center"

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/lang_bg_color"
+    android:weightSum="100"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="100">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:gravity="center_vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:orientation="horizontal"
+                    tools:ignore="MissingConstraints">
+
+
+                    <TextView
+
+                        android:id="@+id/toolbar_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Basic Information"
+                        android:textSize="25dp"
+                        android:textColor="@color/white_text"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        android:layout_marginHorizontal="10dp"
+                        />
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="22dp"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/firm_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/ic_astrick_icon"
+                    android:drawablePadding="5dp"
+                    android:text="Name"
+                    android:textColor="@color/grey_text_color"
+                    android:textSize="16dp" />
+
+
+                <EditText
+                    android:id="@+id/shopname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:fontFamily="@font/segoeui"
+                    android:maxLength="30"
+                    android:textColor="@color/white_text"
+                    android:backgroundTint="#707070"
+                    android:textColorHint="@color/grey_text_color"
+                    android:singleLine="true"
+                    android:textSize="18dp"
+
+                    />
+
+
+                <TextView
+                    android:id="@+id/firm_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="Address Details"
+                    android:textColor="@color/grey_text_color"
+                    android:textSize="18dp" />
+
+
+                <EditText
+                    android:id="@+id/address_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/segoeui"
+                    android:singleLine="true"
+                    android:hint="Line 1 *"
+                    android:paddingBottom="20dp"
+                    android:backgroundTint="#707070"
+                    android:textColor="@color/white_text"
+                    android:textColorHint="@color/grey_text_color"
+                    android:textSize="16dp"
+
+                    />
+
+
+
+                <EditText
+                    android:id="@+id/address_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/segoeui"
+                    android:singleLine="true"
+                    android:hint="Line 2"
+                    android:paddingBottom="20dp"
+                    android:textColor="@color/white_text"
+                    android:backgroundTint="#707070"
+                    android:textColorHint="@color/grey_text_color"
+                    android:textSize="16dp"
+
+                    />
+
+
+                <EditText
+                    android:id="@+id/gst"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:backgroundTint="#707070"
+                    android:fontFamily="@font/segoeui"
+                    android:hint="PAN(Optional)"
+                    android:paddingBottom="20dp"
+                    android:textColor="@color/white_text"
+                    android:singleLine="true"
+                    android:textColorHint="@color/grey_text_color"
+                    android:textSize="16dp"
+
+
+                    />
+
+                <EditText
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/segoeui"
+                    android:singleLine="true"
+                    android:hint="GST(Optional)"
+                    android:paddingBottom="20dp"
+                    android:textColor="@color/white_text"
+                    android:backgroundTint="#707070"
+                    android:textColorHint="@color/grey_text_color"
+                    android:textSize="16dp"
+
+
+                    />
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/continuebtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/green_border_filled"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+
+
+        <TextView
+            android:id="@+id/proceed_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Proceed"
+            android:textAllCaps="true"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:padding="15dp"
+            android:fontFamily="@font/segoeui"
+            android:textColor="@color/white_text"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

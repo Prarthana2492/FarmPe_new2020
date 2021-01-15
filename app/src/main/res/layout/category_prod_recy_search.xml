@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="9dp"
-        android:background="@color/dark_green"
+        android:background="@color/menu_green"
         android:gravity="center_vertical">
 
 

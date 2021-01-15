@@ -6,7 +6,7 @@
     <ImageView
         android:id="@+id/im_slider"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/farms_home_page_logo"
-        android:scaleType="fitXY"/>
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/farms_home_page_logo" />
 </LinearLayout>

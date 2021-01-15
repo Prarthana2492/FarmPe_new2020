@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linear_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="100"
+    android:orientation="vertical"
+    android:background="@color/lang_bg_color"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="70"
+        android:weightSum="100"
+        android:orientation="vertical"
+        >
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="70"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="FarmPe"
+            android:gravity="center"
+            android:textSize="40dp"
+            android:textColor="@color/white_text"
+            />
+
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="@color/white_text"-->
+<!--            android:textSize="22dp"-->
+<!--            android:gravity="center"-->
+
+<!--            android:text="SellerHub"-->
+<!--            />-->
+
+</LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="30"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+
+
+            <TextView
+                android:id="@+id/farmer_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Made For Farming Comunity"
+                android:paddingLeft="10dp"
+                android:textColor="@color/white_text"
+                android:fontFamily="@font/segoeui"
+                android:paddingRight="10dp"
+                android:textSize="22dp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                />
+
+
+            <TextView
+                android:id="@+id/farmer_desc1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="The Confluence of farmers \n and fair trade"
+                android:paddingLeft="10dp"
+                android:textColor="@color/grey_text_color"
+                android:fontFamily="@font/segoeui"
+                android:paddingRight="10dp"
+                android:textSize="19dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="30"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:orientation="vertical"
+        >
+
+
+        <TextView
+            android:id="@+id/mob_no_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text = "Enter your phone number to get started"
+            android:textColor="@color/grey_text_color"
+            android:layout_marginTop ="15dp"
+            android:textSize = "18dp"
+            android:layout_marginLeft = "15dp"/>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="100"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft = "15dp"
+                android:layout_weight="13"
+                android:layout_marginTop="10dp"
+                android:textSize="20dp"
+                android:textColor="@color/grey_text_color"
+                android:text="+91"
+                />
+
+
+            <EditText
+                android:id="@+id/phonenumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="87"
+                android:maxLength="10"
+                android:textColor="@color/grey_text_color"
+                android:inputType="number"
+                android:layout_marginRight="15dp"
+                android:backgroundTint="@color/bg_green_color"
+
+                />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="17dp"
+            android:layout_marginBottom="10dp"
+            android:weightSum="2"
+            android:gravity="center">
+
+
+
+            <TextView
+                android:id="@+id/register_btn"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:background="@drawable/green_border_filled"
+                android:layout_weight="1"
+                android:text="REGISTER"
+                android:gravity="center"
+                android:textColor="@color/white_text"
+                android:textSize="18dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp" />
+
+            <TextView
+                android:id="@+id/login_btn"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:background="@drawable/green_border_filled"
+                android:layout_weight="1"
+                android:text="LOGIN"
+                android:gravity="center"
+                android:textColor="@color/white_text"
+                android:textSize="18dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp" />
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
+
+
+
+

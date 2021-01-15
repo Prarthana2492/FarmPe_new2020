@@ -24,6 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
+        android:background="@color/lang_bg_color"
         android:orientation="vertical"
         android:weightSum="100"
         >
@@ -36,7 +37,7 @@
             android:layout_marginTop="20dp"
             android:textStyle="bold"
             android:layout_gravity="center"
-            android:textColor="#000"
+            android:textColor="@color/white_text"
             android:textSize="18dp"
             />
 
@@ -71,7 +72,7 @@
                   android:layout_height="wrap_content"
                   android:text="Whatsapp"
                   android:layout_marginTop="10dp"
-                  android:textColor="#000"
+                  android:textColor="@color/white_text"
                   android:textSize="14dp"
                   />
 
@@ -98,7 +99,7 @@
                   android:layout_height="wrap_content"
                   android:text="Facebook"
                   android:layout_marginTop="10dp"
-                  android:textColor="#000"
+                  android:textColor="@color/white_text"
                   android:textSize="14dp"
                   />
 
@@ -125,7 +126,7 @@
                   android:layout_height="wrap_content"
                   android:text="Instagram"
                   android:layout_marginTop="10dp"
-                  android:textColor="#000"
+                  android:textColor="@color/white_text"
                   android:textSize="14dp"
                   />
 
@@ -165,7 +166,7 @@
                     android:layout_height="wrap_content"
                     android:text="Twitter"
                     android:layout_marginTop="10dp"
-                    android:textColor="#000"
+                    android:textColor="@color/white_text"
                     android:textSize="14dp"
                     />
 
@@ -191,7 +192,7 @@
                     android:layout_height="wrap_content"
                     android:text="Messenger"
                     android:layout_marginTop="10dp"
-                    android:textColor="#000"
+                    android:textColor="@color/white_text"
                     android:textSize="14dp"
                     />
 
@@ -218,7 +219,7 @@
                     android:layout_height="wrap_content"
                     android:text="Message"
                     android:layout_marginTop="10dp"
-                    android:textColor="#000"
+                    android:textColor="@color/white_text"
                     android:textSize="14dp"
                     />
 
@@ -243,7 +244,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:background="#ffffff"
+        android:background="@color/lang_bg_color"
         android:orientation="vertical"
         android:paddingBottom="40dp"
         android:gravity="center"
@@ -256,7 +257,7 @@
             android:text="Cancel"
             android:layout_marginTop="20dp"
             android:textStyle="bold"
-            android:textColor="#279E5E"
+    android:textColor="@color/white_text"
             android:textSize="14dp"
             />
 

@@ -145,7 +145,7 @@
 
 
             </LinearLayout>
-            <com.SevenNine.essentialscode.Utils.QuantityPicker
+            <com.SevenNine.essentials.Utils.QuantityPicker
                 android:id="@+id/quantityPicker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>

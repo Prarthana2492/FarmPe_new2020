@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#f1f1f1"
+    android:background="@color/lang_bg_color"
     android:weightSum="100"
     >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/menu_green"
+        android:background="@color/lang_bg_color"
         android:orientation="horizontal"
         android:padding="8dp">
 
@@ -43,7 +43,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
             android:text="Shop by Category"
-            android:textColor="#fff"
+            android:textColor="@color/white_text"
             android:textSize="20dp"
             android:textStyle="bold" />
 
@@ -71,7 +71,7 @@
                     android:id="@+id/recy_shopby"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#fff"
+                    android:background="@color/lang_bg_color"
                     android:paddingVertical="10dp"
                     android:orientation="horizontal" />
 

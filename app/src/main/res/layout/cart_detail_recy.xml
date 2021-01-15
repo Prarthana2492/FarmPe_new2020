@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#fff"
-            android:visibility="invisible"
+            android:visibility="visible"
             android:orientation="vertical">
     <LinearLayout
         android:id="@+id/default_name_sec"
@@ -427,7 +427,7 @@
         android:id="@+id/buy_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/border_filled_red_not_curved"
+        android:background="@drawable/green_border_filled"
         android:orientation="horizontal"
         android:gravity="center"
         >

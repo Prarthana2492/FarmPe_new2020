@@ -21,7 +21,7 @@
             android:layout_height="0dp"
             android:layout_weight="100"
             android:paddingBottom="10dp"
-            tools:context=".MainActivity">
+            tools:context="com.SevenNine.essentials.MainActivity">
 
             <ExpandableListView
                 android:id="@+id/expandableListView"

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "838912350869",
+    "project_id": "farmpe-5dc4c",
+    "storage_bucket": "farmpe-5dc4c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:838912350869:android:e0702a1ac6f4c77cfcd99c",
+        "android_client_info": {
+          "package_name": "com.SevenNine.essentials"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "838912350869-7f5jnsbml31r069e0saa1lv1bnnpl5k2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.SevenNine.essentials",
+            "certificate_hash": "84e4bbd25e6f7d3888d3502ba18e4d62d20768f7"
+          }
+        },
+        {
+          "client_id": "838912350869-i9shg8pkpk3sbjr024mtp71hl835rrkc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoXF4Z7-8ip5rbU0KqqAzSonbR56dDmjI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "838912350869-i9shg8pkpk3sbjr024mtp71hl835rrkc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
